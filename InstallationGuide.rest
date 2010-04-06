@@ -68,8 +68,8 @@ II. Installing Xen
        wget http://qubes-os.org/keys/qubes-master-signing-key.asc
        wget http://qubes-os.org/keys/qubes-release-1-signing-key.asc
 
-`Verify the keys </wiki/WikiStart???>`__ and then install the key in the
-rpm database:
+`Verify the keys </wiki/VerifyingSignatures>`__ and then install the key
+in the rpm database:
 
 .. code:: wiki
 
