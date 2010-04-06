@@ -5,7 +5,7 @@ For Users
 ---------
 
 -  `Installation guide </wiki/InstallationGuide>`__
--  `On digital signatures? </wiki/VeryfingSignatures>`__
+-  `On digital signatures </wiki/VerifyingSignatures>`__
 -  `Documentation </wiki/UserDoc>`__
 -  `FAQ </wiki/UserFaq>`__
 
