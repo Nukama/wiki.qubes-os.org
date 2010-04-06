@@ -1,0 +1,114 @@
+<h1 id="InstallationGuideforRelease1Alpha1">Installation Guide (for Release 1 Alpha 1)</h1>
+<p>At this stage we don't have a standalone automatic installer, so the installation process is currently a bit complicated and requires some knowledge of Linux. The installation consists of a few stages that are described in detail below...</p>
+<h2 id="I.InstallingFedora12Linux">I. Installing Fedora 12 Linux</h2>
+<p>First we need to install a minimal Linux distribution that would later become our Dom0 system. We strongly recommend choosing a 64-bit Fedora 12 distribution.</p>
+<ol>
+<li>Download the 64-bit version of Fedora 12 installation DVD ISO:</li>
+</ol>
+<p><a href="http://fedoraproject.org/en/get-fedora-all">​http://fedoraproject.org/en/get-fedora-all</a></p>
+<p>...and burn it on a DVD. Proceed with the default installation...</p>
+<p>While it is not absolutely necessary, you might want to enable the Fedora 12 'Updates' repository during the installation to have the updated versions of the packages installed. This requires a network connection (wired, not wireless) during the installation, of course.</p>
+<ol start="2">
+<li>When asked about packages to install, choose</li>
+</ol>
+<p>none, and choose &quot;Customize now&quot;...</p>
+<ol start="3">
+<li>...in the next screen choose only the following groups of packages:</li>
+</ol>
+<p>(i.e. uncheck all the other groups)</p>
+<ul>
+<li>Desktop Environments/KDE</li>
+<li>Applications/Editors</li>
+<li>Base System/Base</li>
+<li>Base System/Fonts</li>
+<li>Base System/Hardware Support</li>
+<li>Base System/X Window System</li>
+</ul>
+<p>You really won't need anything more in Dom0 (even this is too much).</p>
+<p>Complete the installation, reboot, verify you have X Window System working, complete the post-installation setup in which you create an unprivileged user account, that will be used for logging into the X system.</p>
+<p>If you can't get your X Window System working at this time, it means you have have a graphics card not supported by a mainstream Linux distribution. This really should happen only in case of some very exotic hardware. In any case, this is nothing Qubes or Xen, related, so please do not ask about the solution on Qubes or Xen mailing lists.</p>
+<h2 id="II.InstallingXen">II. Installing Xen</h2>
+<ol>
+<li><p>Change to root:</p>
+<pre class="wiki"><code>su -</code></pre></li>
+</ol>
+<ol>
+<li><p>Download the Qubes Master and &quot;Release 1&quot; signing keys:</p>
+<pre class="wiki"><code>wget http://qubes-os.org/keys/qubes-master-signing-key.asc
+wget http://qubes-os.org/keys/qubes-release-1-signing-key.asc</code></pre></li>
+</ol>
+<p><a href="/wiki/wiki/WikiStart???">Verify the keys</a> and then install the key in the rpm database:</p>
+<pre class="wiki"><code>rpm --import qubes-release-signing-key.asc</code></pre>
+<ol start="2">
+<li><p>Configure Qubes repository:</p>
+<pre class="wiki"><code>wget http://qubes-os.org/yum/qubes.repo
+mv qubes.repo /etc/yum.repos.d/</code></pre></li>
+</ol>
+<ol start="3">
+<li>Install Xen and Dom0 kernel using the Qubes repository (Fedora 12 doesn't</li>
+</ol>
+<p>have support for Xen Dom0 kernel, and the Xen it provides is too old for the Dom0 kernel that Qubes uses, that's why we install Xen and Dom0 kernel from Qubes repository):</p>
+<pre class="wiki"><code>yum install kernel-qubes-dom0</code></pre>
+<ol start="4">
+<li>Reboot (but first read this whole paragraph) and verify that the X Window</li>
+</ol>
+<p>System still works fine.</p>
+<p>NOTE: Before rebooting you might consider changing the <code>timeout=</code> line in your <code>/boot/grub.conf</code> file to something like <code>3</code> to give you some time to choose a filesafe boot in GRUB menu in case your normal boot would not work.</p>
+<p>If you can't get your X Window System working at this time, it suggests your graphics card driver is incompatible with Xen, which is a polite way of saying that the driver is most likely broken, as any decently written driver should be Xen compatible (when used in Dom0). The Xen mailing list might be a proper place to report the problem, but we would also be interested in learning about <del>broken</del> Xen-incompatible cards, so please also copy your report to the Qubes mailing list.</p>
+<p>NOTE: If you have an NVidia graphics card, read the <a href="/wiki/wiki/NvidiaTroubleshooting">NVidia Troubleshooting Guide</a></p>
+<h2 id="III.InstallingQubes">III. Installing Qubes</h2>
+<ol>
+<li><p>Install the Qubes Dom0 packages:</p>
+<pre class="wiki"><code>yum install qubes-core-dom0 qubes-gui-dom0 qubes-dom0-cleanup</code></pre></li>
+</ol>
+<ol start="2">
+<li><p>Add the user account you use to log into the system to the 'qubes' group:</p>
+<pre class="wiki"><code>usermod -a -G qubes &lt;username&gt;</code></pre></li>
+</ol>
+<ol start="3">
+<li><p>Set default NetVM (for now we will use dom0):</p>
+<pre class="wiki"><code>qvm-set-default-netvm dom0</code></pre></li>
+</ol>
+<ol start="4">
+<li>Reboot your system.</li>
+</ol>
+<h2 id="IV.InstallingQubesVirtualMachineTemplates">IV. Installing Qubes Virtual Machine Templates</h2>
+<ol>
+<li>Now you can install a template image, which will be used for creating all</li>
+</ol>
+<p>your AppVMs, and netvm image, used to isolate all your networking in an unprivileged VM</p>
+<pre class="wiki"><code>yum install qubes-template-linux-x64 qubes-servicevm-netvm</code></pre>
+<p>This will probably take some time...</p>
+<ol start="2">
+<li>Now, lets create some AppVMs to see if this all works...</li>
+</ol>
+<p>NOTE: you should now work as normal user, i.e. the same you use for logging into your X system, and the same you added to the qubes 'group' in the previous step, or you will not be able to star this VM as a normal user!</p>
+<pre class="wiki"><code>qvm-create personal --label yellow
+qvm-create work --label green
+qvm-create shopping --label orange
+qvm-create bank --label green
+qvm-create random --label red</code></pre>
+<p>You can verify if new AppVMs have indeed been created by using qvm-ls:</p>
+<pre class="wiki"><code>qvm-ls</code></pre>
+<p>... and you can remove them using qvm-remove (be careful not to remove your data accidentally!).</p>
+<p>There are much more <code>qvm-*</code> tools in the <code>/usr/bin</code> -- most of them should be self-explanatory.</p>
+<p>3) Wait a few seconds and see if icons have been created and added to the &quot;Start&quot; menu in your Dom0 Window Manager.</p>
+<p>Try running some applications, e.g. Firefox from the random machine. When you run an application for the first time, and the corresponding AppVM has not yet been started, it might take some time (15-30 seconds) for it to start. Subsequent apps from the same AppVM will be starting much faster.</p>
+<h2 id="V.SwitchingtoNetVM">V. Switching to NetVM</h2>
+<ol>
+<li><p>First shut down all the VMs in the system, e.g.:</p>
+<pre class="wiki"><code>qvm-run --all --wait -uroot poweroff</code></pre></li>
+</ol>
+<ol start="2">
+<li><p>Now as a root user do:</p>
+<pre class="wiki"><code>/etc/init.d/qubes_netvm stop
+qvm-set-default-netvm netvm
+/etc/init.d/qubes_netvm start</code></pre></li>
+</ol>
+<ol start="3">
+<li>Add <code>iommu=pv</code> option to Xen boot argument by editing the <code>/boot/grub.conf</code> file. Reboot.</li>
+</ol>
+<ol start="4">
+<li>Verify that Xen uses IOMMU/VT-d indeed by looking into <code>xm dmesg</code> output</li>
+</ol>
+<p>NOTE: Xen can use IOMMU/VT-d only if you have hardware with IOMMU/VT-d support and a non-broken BIOS that also supports VT-d (specifically BIOS should expose a correct ACPI DMAR table)</p>
