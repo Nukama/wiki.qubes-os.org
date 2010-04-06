@@ -1,0 +1,47 @@
+<h1 id="NVidiaTroubleshootingGuide">NVidia Troubleshooting Guide</h1>
+<p>If you have an NVidia graphics card it will probably not work under Xen out of the box. If your system freezes during boot and you don't see the graphical login manager after you installed Xen, then this problem most likely affects you. The following steps should provide a work around so that you should be able to use your NVidia with X under Xen, however without any fancy &quot;desktop effects&quot;.</p>
+<ol>
+<li>Boot your system using the &quot;failsafe&quot; boot menu, that should have been automatically added to your <code>grub.conf</code> when you installed the Dom0 kernel.</li>
+</ol>
+<p>If the X Window System doesn't start now, this is probably a non-Xen related issue and this guide will probably not help you.</p>
+<p>Assuming your X Window System works fine now when you booted from the &quot;failsafe&quot; configuration, do the next steps...</p>
+<ol start="2">
+<li>Do not log into X, but instead switch to a text console (press Ctrl-Alt-F2)</li>
+</ol>
+<ol start="3">
+<li>Log in as root</li>
+</ol>
+<ol start="4">
+<li>Switch to runlevel 3 (this should kill your X server):</li>
+</ol>
+<pre class="wiki"><code>init 3</code></pre>
+<ol start="5">
+<li>Run X-autoconfiguration:</li>
+</ol>
+<pre class="wiki"><code>Xorg -configure</code></pre>
+<p>This should generate a file <code>xorg.conf.new</code> in the <code>/root</code> directory.</p>
+<p>In most cases you can ignore any warning or error messages displayed by the X server, assuming it generated the xorg.conf.new file.</p>
+<ol start="6">
+<li>Edit this newly generated <code>xorg.conf.new</code> file and introduce the following two modifications:</li>
+</ol>
+<ul>
+<li><p>Uncomment the ShadowFB option, so that you should now have something like this:</p>
+<pre class="wiki"><code>Option     &quot;ShadowFB&quot;                   # [&lt;bool&gt;]</code></pre></li>
+</ul>
+<ul>
+<li><p>Change the driver name to <code>nouveau</code> (you will probably have <code>nv</code> written there):</p>
+<pre class="wiki"><code>Driver      &quot;nouveau&quot;</code></pre></li>
+</ul>
+<p>Save the modification, exit the editor.</p>
+<ol start="7">
+<li>Move the file to <code>/etc/X11</code> and rename it as <code>xorg.conf</code>:</li>
+</ol>
+<pre class="wiki"><code>mv /root/xorg.conf.new /etc/X11/xorg.conf</code></pre>
+<ol start="8">
+<li>Verify that X will work with those new settings:</li>
+</ol>
+<pre class="wiki"><code>xinit</code></pre>
+<p>If you see a terminal window in the top left corner, it means you most likely succeeded, even if your keyboard or mouse do not work now (don't worry about them).</p>
+<ol start="9">
+<li>Reboot and let the system boot from the normal boot configuration. You should be able to use X under Xen now.</li>
+</ol>
