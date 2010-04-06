@@ -30,4 +30,6 @@ Coming soon...
 
 ### Project administrators
 
-Joanna Rutkowska \<[​joanna@invisiblethingslab.com](mailto:joanna@invisiblethingslab.com)\> Rafal Wojtczuk \<[​rafal@invisiblethingslab.com](mailto:rafal@invisiblethingslab.com)\>
+-   Joanna Rutkowska \<[​joanna@invisiblethingslab.com](mailto:joanna@invisiblethingslab.com)\>
+-   Rafal Wojtczuk \<[​rafal@invisiblethingslab.com](mailto:rafal@invisiblethingslab.com)\>
+
