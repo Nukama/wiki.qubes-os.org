@@ -10,7 +10,7 @@ For Users
 ---------
 
 -   [Installation guide](/wiki/InstallationGuide)
--   [On digital signatures?](/wiki/VeryfingSignatures)
+-   [On digital signatures](/wiki/VerifyingSignatures)
 -   [Documentation](/wiki/UserDoc)
 -   [FAQ](/wiki/UserFaq)
 
