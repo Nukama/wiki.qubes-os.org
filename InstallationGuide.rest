@@ -28,6 +28,8 @@ connection (wired, not wireless) during the installation, of course.
 
 none, and choose "Customize now"...
 
+|http://www.qubes-os.org/files/screenshots/release-1-alpha-1/installation-software-selection.png|
+
 3. ...in the next screen choose only the following groups of packages:
 
 (i.e. uncheck all the other groups)
@@ -215,3 +217,6 @@ V. Switching to NetVM
 NOTE: Xen can use IOMMU/VT-d only if you have hardware with IOMMU/VT-d
 support and a non-broken BIOS that also supports VT-d (specifically BIOS
 should expose a correct ACPI DMAR table)
+
+.. |http://www.qubes-os.org/files/screenshots/release-1-alpha-1/installation-software-selection.png| image:: http://www.qubes-os.org/files/screenshots/release-1-alpha-1/installation-software-selection.png
+   :target: http://www.qubes-os.org/files/screenshots/release-1-alpha-1/installation-software-selection.png
