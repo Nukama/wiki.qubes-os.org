@@ -37,6 +37,8 @@ qubes-devel+subscribe@googlegroups.com
 
 ### Project administrators
 
+*Note: Please send all the questions regarding Qubes to the mailing list. The below addresses are only for contacts in administration-related matters.*
+
 -   Joanna Rutkowska \<joanna at invisiblethingslab.com\>
 -   Rafal Wojtczuk \<rafal at invisiblethingslab.com\>
 
