@@ -56,7 +56,11 @@ mv qubes.repo /etc/yum.repos.d/</code></pre></li>
 <p>System still works fine.</p>
 <p>NOTE: Before rebooting you might consider changing the <code>timeout=</code> line in your <code>/boot/grub.conf</code> file to something like <code>3</code> to give you some time to choose a filesafe boot in GRUB menu in case your normal boot would not work.</p>
 <p>If you can't get your X Window System working at this time, it suggests your graphics card driver is incompatible with Xen, which is a polite way of saying that the driver is most likely broken, as any decently written driver should be Xen compatible (when used in Dom0). The Xen mailing list might be a proper place to report the problem, but we would also be interested in learning about <del>broken</del> Xen-incompatible cards, so please also copy your report to the Qubes mailing list.</p>
-<p>NOTE: If you have an NVidia graphics card, read the <a href="/wiki/wiki/NvidiaTroubleshooting">NVidia Troubleshooting Guide</a></p>
+<p>NOTE:</p>
+<ul>
+<li>If you have an NVidia graphics card, read the <a href="/wiki/wiki/NvidiaTroubleshooting">NVidia Troubleshooting Guide</a></li>
+<li>If you have ATI/Radeon you might want to check this <a href="http://groups.google.com/group/qubes-devel/browse_thread/thread/d63f673d6286387e#">​thread</a> at qubes-devel.</li>
+</ul>
 <h2 id="III.InstallingQubes">III. Installing Qubes</h2>
 <ol>
 <li><p>Install the Qubes Dom0 packages:</p>
