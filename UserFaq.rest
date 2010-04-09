@@ -1,6 +1,19 @@
 Qubes User's FAQ
 ================
 
+Q: How much memory is recommended for Qubes?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+4 GB at least. Sure, you can try it on a system with 2GB, but don't
+expect to be able to run more than 3 AppVMs at the same time.
+
+Q: Can I install Qubes on a system without VT-x?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Yes. Xen doesn't use VT-x (not AMD-v) for PV guests virtualization (it
+uses ring0/3 separation instead). But, of course, without VT-x, you will
+also not have VT-d -- see the next question.
+
 Q: Can I install Qubes on a system without VT-d?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
