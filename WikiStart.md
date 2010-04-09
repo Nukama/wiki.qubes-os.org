@@ -20,6 +20,7 @@ For Developers
 -   [Documentation](/wiki/SystemDoc)
 -   [Source Code](/wiki/SourceCode)
 -   [FAQ](/wiki/DevelFaq)
+-   [How can I contribute to the Qubes Project?](/wiki/ContributingHowto)
 
 Contact
 -------
