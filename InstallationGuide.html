@@ -56,7 +56,7 @@ mv qubes.repo /etc/yum.repos.d/</code></pre></li>
 <li>Reboot (but first read this whole paragraph) and verify that the X Window</li>
 </ol>
 <p>System still works fine.</p>
-<p>NOTE: Before rebooting you might consider changing the <code>timeout=</code> line in your <code>/boot/grub.conf</code> file to something like <code>3</code> to give you some time to choose a filesafe boot in GRUB menu in case your normal boot would not work.</p>
+<p>NOTE: Before rebooting you might consider changing the <code>timeout=</code> line in your <code>/boot/grub/grub.conf</code> file to something like <code>3</code> to give you some time to choose a filesafe boot in GRUB menu in case your normal boot would not work.</p>
 <p>If you can't get your X Window System working at this time, it suggests your graphics card driver is incompatible with Xen, which is a polite way of saying that the driver is most likely broken, as any decently written driver should be Xen compatible (when used in Dom0). The Xen mailing list might be a proper place to report the problem, but we would also be interested in learning about <del>broken</del> Xen-incompatible cards, so please also copy your report to the Qubes mailing list.</p>
 <p>NOTE:</p>
 <ul>
@@ -113,7 +113,7 @@ qvm-set-default-netvm netvm
 /etc/init.d/qubes_netvm start</code></pre></li>
 </ol>
 <ol start="3">
-<li>Add <code>iommu=pv</code> option to Xen boot argument by editing the <code>/boot/grub.conf</code> file. Reboot.</li>
+<li>Add <code>iommu=pv</code> option to Xen boot argument by editing the <code>/boot/grub/grub.conf</code> file. Reboot.</li>
 </ol>
 <ol start="4">
 <li>Verify that Xen uses IOMMU/VT-d indeed by looking into <code>xm dmesg</code> output</li>
