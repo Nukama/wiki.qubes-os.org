@@ -112,8 +112,8 @@ kernel from Qubes repository):
 System still works fine.
 
 NOTE: Before rebooting you might consider changing the ``timeout=`` line
-in your ``/boot/grub.conf`` file to something like ``3`` to give you
-some time to choose a filesafe boot in GRUB menu in case your normal
+in your ``/boot/grub/grub.conf`` file to something like ``3`` to give
+you some time to choose a filesafe boot in GRUB menu in case your normal
 boot would not work.
 
 If you can't get your X Window System working at this time, it suggests
@@ -225,7 +225,7 @@ V. Switching to NetVM
        /etc/init.d/qubes_netvm start
 
 3. Add ``iommu=pv`` option to Xen boot argument by editing the
-   ``/boot/grub.conf`` file. Reboot.
+   ``/boot/grub/grub.conf`` file. Reboot.
 
 4. Verify that Xen uses IOMMU/VT-d indeed by looking into ``xm dmesg``
    output
