@@ -89,3 +89,10 @@ your mouse.
 
 Once the Template VM got update, shut it down, and then any AppVM you
 start will already be using update software.
+
+Q: What is the root and user password for TemplateVM/AppVM?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+-  ````\ ``user/userpass``\ ````
+-  ````\ ``root/rootpass``\ ````
+
