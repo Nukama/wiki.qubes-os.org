@@ -61,3 +61,31 @@ other words Qubes will evolve into a true standalone system, not based
 on any specific Linux distribution (well, we still will probably use
 Fedora RPMs for most of the packages and probably the Anaconda
 installer, but this will be hidden from the user).
+
+Q: What is the recommended way update the template VM?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Shutdown all the running AppVMs that are based on this template
+(normally all your AppVMs are based on the same template):
+
+.. code:: wiki
+
+    qvm-run --shutdown --wait --all --exclude netvm
+
+(In the comming weeks we will provide a graphical VM manager where you
+will be able to do the above with just one or two mouse clicks :)
+
+Next, start either console, e.g. Konsole, or KPackageKit application in
+your Template VM (normally it's called "linux-x64"), using the KDE menu,
+and proceed with the updates. If you use console then you will want to
+use yum (you must switch to root), e.g.:
+
+.. code:: wiki
+
+    yum update
+
+If you chose KPackageKit, then you should be able to update using just
+your mouse.
+
+Once the Template VM got update, shut it down, and then any AppVM you
+start will already be using update software.
