@@ -53,3 +53,8 @@ Those KDE-specific things are:
    somebody were willing to send the code for GNOME, we would be more
    that happy to incorporate it into mainstream repo.
 
+Q: What is the recommended build environment?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Fedora 12 Linux, 64-bit, with most of the regular development packages
+installed.
