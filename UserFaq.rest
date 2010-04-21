@@ -96,3 +96,4 @@ Q: What is the root and user password for TemplateVM/AppVM?
 -  ````\ ``user/userpass``\ ````
 -  ````\ ``root/rootpass``\ ````
 
+**NOTE:** This will be changed in the next Alpha (see the ticket:24)
