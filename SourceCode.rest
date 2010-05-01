@@ -11,8 +11,8 @@ into several components, each of which has its own separate repository:
    Qubes templates and NetVM images.
 
 You can browse the repositories `​on line via
-GitWeb <http://gitweb.qubes-os.org/gitweb/>`__. The Qubes official
-repositories are in the ``mainstream`` directory.
+GitWeb <http://qubes-os.org/gitweb/>`__. The Qubes official repositories
+are in the ``mainstream`` directory.
 
 To clone a repository:
 
