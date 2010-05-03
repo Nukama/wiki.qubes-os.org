@@ -33,3 +33,6 @@
 <p>No. In order to really built a secure OS, we need to control the whole system, e.g. what packages are installed in Dom0, how is network configured there (i.e. that there will be *no* networking there), etc. The best way to achieve this is to have a standalone OS (or distro as you call it), not an add-on to some other distro.</p>
 <h3 id="Q:ButwouldntitbecooltousesomehardeneddistroasDom0">Q: But wouldn't it be cool to use some hardened distro as Dom0?</h3>
 <p>The main idea behind Qubes architecture is to have Dom0 isolated from the outside world, so there is little point in further hardening it via e.g. grsecurity, etc.</p>
+<h3 id="Q:PerhapsitwouldmakesensethentohaveatemplateVMbasedonsomehardeneddistro">Q: Perhaps it would make sense then to have a template VM based on some hardened distro?</h3>
+<p>Yup, that would make sense indeed. Feel free to build one -- you can use the template_builder:</p>
+<p><a href="http://qubes-os.org/gitweb/?p=mainstream/template-builder.git;a=tree">​http://qubes-os.org/gitweb/?p=mainstream/template-builder.git;a=tree</a></p>
