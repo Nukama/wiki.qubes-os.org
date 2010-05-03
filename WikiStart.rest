@@ -17,6 +17,8 @@ For Developers
 -  `FAQ </wiki/DevelFaq>`__
 -  `How can I contribute to the Qubes
    Project? </wiki/ContributingHowto>`__
+-  `Books </wiki/DevelBooks>`__
+-  `Research </wiki/QubesResearch>`__
 
 Contact
 -------
