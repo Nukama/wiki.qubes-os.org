@@ -21,6 +21,8 @@ For Developers
 -   [Source Code](/wiki/SourceCode)
 -   [FAQ](/wiki/DevelFaq)
 -   [How can I contribute to the Qubes Project?](/wiki/ContributingHowto)
+-   [Books](/wiki/DevelBooks)
+-   [Research](/wiki/QubesResearch)
 
 Contact
 -------
