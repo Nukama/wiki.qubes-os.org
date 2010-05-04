@@ -11,18 +11,18 @@ For Users
 
 -   [Installation guide](/wiki/InstallationGuide)
 -   [On digital signatures](/wiki/VerifyingSignatures)
--   [Documentation](/wiki/UserDoc)
+-   [Qubes User Documentation](/wiki/UserDoc)
 -   [FAQ](/wiki/UserFaq)
 
 For Developers
 --------------
 
--   [Documentation](/wiki/SystemDoc)
+-   [How can I contribute to the Qubes Project?](/wiki/ContributingHowto)
+-   [Books for Developers](/wiki/DevelBooks)
+-   [Research papers related to Qubes](/wiki/QubesResearch)
+-   [Qubes Developer Documentation](/wiki/SystemDoc)
 -   [Source Code](/wiki/SourceCode)
 -   [FAQ](/wiki/DevelFaq)
--   [How can I contribute to the Qubes Project?](/wiki/ContributingHowto)
--   [Books](/wiki/DevelBooks)
--   [Research](/wiki/QubesResearch)
 
 Contact
 -------
