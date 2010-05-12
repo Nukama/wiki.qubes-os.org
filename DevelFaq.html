@@ -14,5 +14,23 @@
 <h3 id="Q:HowtobuildQubesfromsources">Q: How to build Qubes from sources?</h3>
 <p>See <a href="https://groups.google.com/group/qubes-devel/browse_thread/thread/710f725713cc7e8a#">​this message</a>.</p>
 <h3 id="Q:HowdoIsubmitapatch">Q: How do I submit a patch?</h3>
-<p>See this message:</p>
-<p><a href="https://groups.google.com/group/qubes-devel/msg/c3f6c50502595424">​https://groups.google.com/group/qubes-devel/msg/c3f6c50502595424</a></p>
+<ol>
+<li>Make all the changes in your working directory, i.e. edit files, move</li>
+</ol>
+<p>them around (you can use 'git mv' for this), etc.</p>
+<ol start="2">
+<li>Add the changes and commit them (git add, git commit).</li>
+</ol>
+<p>Never mix different changes into one commit!</p>
+<p>Write a good description of the commit. The first line should contain a short summary, and then, if you feel like more explanations are needed, enter an empty new line, and then start the long, detailed description (optional).</p>
+<ol start="3">
+<li>Test your changes NOW: check if RPMs build fine, etc.</li>
+</ol>
+<ol start="4">
+<li>Create the patch using 'git format-patch'. This has an advantage over</li>
+</ol>
+<p>'git diff', because the former will also include your commit message, your name and email, so that *your* name will be used as a commit's author.</p>
+<ol start="5">
+<li>Send your patch to qubes-devel. Start the message subject with the</li>
+</ol>
+<p>'[PATCH]' string.</p>
