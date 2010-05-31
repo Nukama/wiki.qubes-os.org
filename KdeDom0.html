@@ -1,0 +1,17 @@
+<h1 id="Qubes-customizedKDEpackagesforDom0">Qubes-customized KDE packages for Dom0</h1>
+<p>The Qubes kde-dom0 project (see <a href="/wiki/wiki/SourceCode">Source Code</a>) contains the source code needed for building the customized KDE packages for use in Qubes Dom0 (the user desktop). The packages are based on Fedora 12 KDE packages, but are heavily slimmed down (Qubes doesn't need lots of KDE functionality in Dom0, such as most of the KDE apps). In the near future those KDE packages will also get some Qubes specific extensions, such as coloured titlebars/frames nicely integrated into the KDE Window Manager. And, of course, custom themes, e.g. for KDM :)</p>
+<h2 id="Gettingthesources">Getting the sources</h2>
+<pre class="wiki"><code>git clone git://qubes-os.org/mainstream/kde-dom0.git kde-dom0</code></pre>
+<h2 id="Buildingthepackages">Building the packages</h2>
+<p>It's best to use Fedora 12 or 13 as a development system.</p>
+<p>First, you should download and verify the original KDE sources (not part of the kde-dom0 repository):</p>
+<pre class="wiki"><code>make get-sources verify-sources</code></pre>
+<p>Now, check if you have all the required build dependencies:</p>
+<pre class="wiki"><code>make prep</code></pre>
+<p>Install any required packages that <code>make</code> might have complained about. Then you're ready to build the rpms (you might want to adjust the release of each rpm package by editing the <code>rel</code> variable at the beginning of each <code>.spec</code> file):</p>
+<pre class="wiki"><code>make rpms</code></pre>
+<p><strong>Note:</strong> The <code>kdebase-*</code> packages build process requires corresponding <code>kdelibs-devel</code> package to be installed first. If your build system is based on Fedora 12/13, and if the <code>kdelibs-devel</code> package exist in Fedora repo that is based the same KDE software version (e.g. 4.4.3) as the KDE packages you're building (see the <code>version</code> file), than you should be able to use the Fedora package:</p>
+<pre class="wiki"><code>yum install kdelibs-devel-{version}</code></pre>
+<p>If not, then you should build your <code>kdelibs-devel</code> first (<code>cd kdelibs-devel &amp;&amp; make rpms</code>), then install it on your build system, and then you can build all the rest (<code>make rpms</code>).</p>
+<h2 id="InstallingKDEpackagesfromQubesrepository">Installing KDE packages from Qubes repository</h2>
+<p>TODO</p>
