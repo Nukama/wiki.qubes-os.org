@@ -23,8 +23,8 @@ that have at least 3-4GB memory, they do have 64-bit CPUs anyway).
 Q: Why do you use KDE in Dom0? What is the roadmap for Gnome support?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-There are very few things that are KDE-specific and thus it should not
-be a big problem to port add Gnome support to Qubes (in Dom0 of course).
+There a few things that are KDE-specific, but generally it should not be
+a big problem to also add Gnome support to Qubes (in Dom0 of course).
 Those KDE-specific things are:
 
 -  Qubes requires KDM (KDE Login Manager), rather than GDM, for the very
@@ -42,16 +42,17 @@ Those KDE-specific things are:
    ````\ ``/usr/bin/X``\ ```` instead of ````\ ``/usr/bin/Xorg``\ ````,
    we would love to hear about it!
 
--  We're planning to patch the KDE's Window Manager (KWin) to draw
-   window decorations in the color of the specific AppVM's label.
-   Currently we draw frames in the `AppViewers? </wiki/AppViewers>`__,
-   but it would be a better user experience to also see the title bars
-   having the color of the VM's label. Most likely this should also be
-   possible to be done on GNOME's Window Manager too, but as we have
-   very litmited resources, we are forced to pick only one Window
-   Manager, and we decided to pick KDE (just because we like it). If
-   somebody were willing to send the code for GNOME, we would be more
-   that happy to incorporate it into mainstream repo.
+-  We maintain a special `repository </wiki/KdeDom0>`__ for building
+   packages specifically for Qubes Dom0.
+
+-  We've patched the KDE's Window Manager (specifically `​one of the
+   decoration
+   plugins <https://qubes-os.org/gitweb/?p=mainstream/kde-dom0.git;a=commit;h=e1a530d8188a47921da35beff03998eb3fce8e2c>`__)
+   to draw window decorations in the color of the specific AppVM's
+   label.
+
+If you're interested in porting GNOME for Qubes Dom0 use, let us know --
+we will most likely welcome patches in this area.
 
 Q: What is the recommended build environment?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
