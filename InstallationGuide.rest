@@ -309,10 +309,11 @@ AESNI support, which apparently is buggy.
    Qubes.
 
 5. The clock in AppVMs is not properly updated after resume from S3
-   sleep, if you don't use NTP in the VMs.
+   sleep. The temporary workaround is to use NTP for clock syncing in
+   each AppVM.
 
-6. Sometimes an AppVM might lock up after a resume from S3 sleep.
+6. On processors with Hyper-Threading support, such as Intel Core i5/i7
+   (but not Core 2 Duo), the AppVM might lock up after a resume from S3
+   sleep. A temporary work around for this is to disable
+   `HyperThreading? </wiki/HyperThreading>`__ in BIOS.
 
-**Generally, please consider the suspend/resume to be highly
-experimental currently, and always save your work before suspending your
-system too S3 sleep'''**
