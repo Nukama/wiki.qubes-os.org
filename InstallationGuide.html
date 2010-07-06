@@ -157,9 +157,8 @@ qvm-set-default-netvm netvm
 <li>If you have Intel HD graphics card on Core i5/i7 processor, do <strong>not</strong> enable desktop effects (or at least do not choose OpenGL engine). There is a known problem with those cards drivers that causes X to crash every few minutes, when OpenGL is used. This happens on standard Fedora installation, even without Xen and without Qubes.</li>
 </ol>
 <ol start="5">
-<li>The clock in AppVMs is not properly updated after resume from S3 sleep, if you don't use NTP in the VMs.</li>
+<li>The clock in AppVMs is not properly updated after resume from S3 sleep. The temporary workaround is to use NTP for clock syncing in each AppVM.</li>
 </ol>
 <ol start="6">
-<li>Sometimes an AppVM might lock up after a resume from S3 sleep.</li>
+<li>On processors with Hyper-Threading support, such as Intel Core i5/i7 (but not Core 2 Duo), the AppVM might lock up after a resume from S3 sleep. A temporary work around for this is to disable <a href="/wiki/wiki/HyperThreading">HyperThreading?</a> in BIOS.</li>
 </ol>
-<p><strong>Generally, please consider the suspend/resume to be highly experimental currently, and always save your work before suspending your system too S3 sleep'''</strong></p>
