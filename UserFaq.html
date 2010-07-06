@@ -24,11 +24,9 @@
 <p>If you chose KPackageKit, then you should be able to update using just your mouse.</p>
 <p>Once the Template VM got update, shut it down, and then any AppVM you start will already be using update software.</p>
 <h3 id="Q:WhatistherootanduserpasswordforTemplateVMAppVM">Q: What is the root and user password for TemplateVM/AppVM?</h3>
-<ul>
-<li><code></code><code>user/userpass</code><code></code></li>
-<li><code></code><code>root/rootpass</code><code></code></li>
-</ul>
-<p><strong>NOTE:</strong> This will be changed in the next Alpha (see the ticket:24)</p>
+<p>There is none, really! If you need to run something as root in one of your VMs, then you should use the qvm-run command:</p>
+<pre class="wiki"><code>qvm-run &lt;vmname&gt; -u root &lt;cmd&gt;</code></pre>
+<p>where cmd can be e.g. <code></code><code>konsole</code><code></code>.</p>
 <h3 id="Q:IsQubesamulti-usersystem">Q: Is Qubes a multi-user system?</h3>
 <p>No, Qubes does not pretend to be a multi-user system. Qubes assumes that the user that controls Dom0, controls the whole system. It will be very difficult to <strong>securely</strong> implement multi-user support -- see this message:</p>
 <p><a href="https://groups.google.com/group/qubes-devel/msg/899f6f3efc4d9a06">​https://groups.google.com/group/qubes-devel/msg/899f6f3efc4d9a06</a></p>
