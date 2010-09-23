@@ -8,10 +8,10 @@
 </ul>
 <p>Therefore, in Qubes another solution is used. There is the <em>qmemman</em> dom0 daemon. All VMs report their memory usage (via xenstore) to <em>qmemman</em>, and it makes decisions on whether to balance memory across domains. The actual mechanism to add/remove memory from a domain (<em>xc.domain_set_target_mem</em>) is already supported by both PV Linux guests and Windows guests (the latter via PV drivers).</p>
 <p>Similarly, when there is need for Xen free memory (for instance, in order to create a new VM), traditionally the memory is obtained from dom0 only. When <em>qmemman</em> is running, it offers interface to obtain memory from all domains.</p>
-<p>To sum up, pros and cons. Pros:</p>
+<p>To sum up, <em>qmemman</em> pros and cons. Pros:</p>
 <ul>
 <li>provides automatic balancing of memory across participating PV and HVM domains, based on their memory demand</li>
-<li>works well in practise, particularly with less than 1% CPU consumption in the idle case</li>
+<li>works well in practice, with less than 1% CPU consumption in the idle case</li>
 <li>simple, concise implementation</li>
 </ul>
 <p>Cons:</p>
@@ -24,7 +24,7 @@
 <h2 id="Interface">Interface</h2>
 <p><em>qmemman</em> listens for the following events:</p>
 <ul>
-<li>writes to <code>/local/domain/domid/memory/meminfo</code> xenstore keys by <em>meminfo-writer</em> process in VM. The content of this key is taken from the VM's <code>/proc/meminfo</code> pseudofile ; <em>meminfo-writer</em> just strips some unused lines from it. Note that <em>meminfo-writer</em> writes its xenstore key only if the VM memory usage has changed significantly enough since the last update (by default 30MB)</li>
+<li>writes to <code>/local/domain/domid/memory/meminfo</code> xenstore keys by <em>meminfo-writer</em> process in VM. The content of this key is taken from the VM's <code>/proc/meminfo</code> pseudofile ; <em>meminfo-writer</em> just strips some unused lines from it. Note that <em>meminfo-writer</em> writes its xenstore key only if the VM memory usage has changed significantly enough since the last update (by default 30MB), to prevent flooding with almost identical data</li>
 <li>commands issued over Unix socket <code>/var/run/qubes/qmemman.sock</code>. Currently, the only command recognized is to free the specified amount of memory. The QMemmanClient class implements the protocol.</li>
 <li>if the <code>/var/run/qubes/do-not-membalance</code> file exists, <em>qmemman</em> suspends memory balancing. It is primarily used when allocating memory for a to-be-created domain, to prevent using up the free Xen memory by the balancing algorithm before the domain creation is completed.</li>
 </ul>
@@ -41,9 +41,9 @@
 <li>redistribute memory reclaimed in the previous step between the rest of domains, proportionally to their <code>prefmem</code></li>
 </ol></li>
 </ol>
-<p>The memory redistribution is actually executed only if one of the below conditions hold:</p>
+<p>In order to avoid too frequent memory redistribution, it is actually executed only if one of the below conditions hold:</p>
 <ul>
-<li>the sum of memory changes for all domains is more than MIN_TOTAL_MEMORY_TRANSFER (150MB)</li>
+<li>the sum of memory size changes for all domains is more than MIN_TOTAL_MEMORY_TRANSFER (150MB)</li>
 <li>one of the domains is below its <code>prefmem</code>, and more than MIN_MEM_CHANGE_WHEN_UNDER_PREF (15MB) would be added to it</li>
 </ul>
 <p>Additionally, the balance algorithm is tuned so that XEN_FREE_MEM_LEFT (50MB) is always left as Xen free memory, to make coherent memory allocations in driver domains work.</p>
