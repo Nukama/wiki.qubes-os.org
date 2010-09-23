@@ -8,8 +8,8 @@
 <p><em>qfilexchgd</em> is started after first <em>qubes_guid</em> has been started, so that it has access to X display in dom0 to present dialog messages.</p>
 <p><em>qfilexchgd</em> is event driven. The sources of events are:</p>
 <ul>
-<li>trigger of xenstore watch for the changes in /local/domain xenstore hierarchy - to detect start/stop of VMs, and maintain vmname-&gt;vm_xid dictionary</li>
-<li>triger of xenstore watch for a change in /local/domain/domid/device/qpen key - VMs write to this key to request service from <em>qfilexchgd</em></li>
+<li>trigger of xenstore watch for the changes in <code>/local/domain</code> xenstore hierarchy - to detect start/stop of VMs, and maintain vmname-&gt;vm_xid dictionary</li>
+<li>trigger of xenstore watch for a change in <code>/local/domain/domid/device/qpen</code> key - VMs write to this key to request service from <em>qfilexchgd</em></li>
 </ul>
 <p></p>
 <h2 id="CopyingfilesbetweenAppVMs">Copying files between AppVMs</h2>
