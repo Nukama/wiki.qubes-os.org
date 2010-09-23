@@ -25,3 +25,6 @@ Selected Subsystems Documentation
 
 -   [File exchange daemon (used by DisposableVMs)](/wiki/Qfileexchgd)
 
+-   [VM Memory management daemon](/wiki/Qmemman)
+
+
