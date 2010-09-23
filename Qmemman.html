@@ -1,0 +1,57 @@
+<h1 id="qmemmanQubesmemorymanager">qmemman, Qubes memory manager</h1>
+<h2 id="Rationale">Rationale</h2>
+<p>Traditionally, Xen VMs are assigned a fixed amount of memory. It is not the optimal solution, as some VMs may require more memory, while others underutilize memory. Thus, there is a need for solution capable of shifting free memory from VM to another VM.</p>
+<p>The <a href="http://oss.oracle.com/projects/tmem/">​tmem</a> project provides a &quot;pseudo-RAM&quot; that is assigned on per-need basis. However this solution has some disadvantages:</p>
+<ul>
+<li>It does not provide real RAM, just an interface to copy memory to/from fast, RAM-based storage. It is perfect for swap, but not ideal for many tasks.</li>
+<li>It is deeply integrated with the Linux kernel. When Qubes will support Windows guests natively, we would have to port <em>tmem</em> to Windows, which may be challenging.</li>
+</ul>
+<p>Therefore, in Qubes another solution is used. There is the <em>qmemman</em> dom0 daemon. All VMs report their memory usage (via xenstore) to <em>qmemman</em>, and it makes decisions on whether to balance memory across domains. The actual mechanism to add/remove memory from a domain (<em>xc.domain_set_target_mem</em>) is already supported by both PV Linux guests and Windows guests (the latter via PV drivers).</p>
+<p>Similarly, when there is need for Xen free memory (for instance, in order to create a new VM), traditionally the memory is obtained from dom0 only. When <em>qmemman</em> is running, it offers interface to obtain memory from all domains.</p>
+<p>To sum up, pros and cons. Pros:</p>
+<ul>
+<li>provides automatic balancing of memory across participating PV and HVM domains, based on their memory demand</li>
+<li>works well in practise, particularly with less than 1% CPU consumption in the idle case</li>
+<li>simple, concise implementation</li>
+</ul>
+<p>Cons:</p>
+<ul>
+<li>the algorithm to calculate the memory requirement for a domain is necessarily simple, and may not closely reflect reality</li>
+<li><em>qmemman</em> is notified by a VM about memory usage change not more often than 10 times per seconds (to limit CPU overhead in VM). Thus, there can be up to 0.1s delay until qmemman starts to react to the new memory requirements</li>
+<li>it takes more time to obtain free Xen memory, as all participating domains need to instructed to yield memory</li>
+</ul>
+<p></p>
+<h2 id="Interface">Interface</h2>
+<p><em>qmemman</em> listens for the following events:</p>
+<ul>
+<li>writes to <code>/local/domain/domid/memory/meminfo</code> xenstore keys by <em>meminfo-writer</em> process in VM. The content of this key is taken from the VM's <code>/proc/meminfo</code> pseudofile ; <em>meminfo-writer</em> just strips some unused lines from it. Note that <em>meminfo-writer</em> writes its xenstore key only if the VM memory usage has changed significantly enough since the last update (by default 30MB)</li>
+<li>commands issued over Unix socket <code>/var/run/qubes/qmemman.sock</code>. Currently, the only command recognized is to free the specified amount of memory. The QMemmanClient class implements the protocol.</li>
+<li>if the <code>/var/run/qubes/do-not-membalance</code> file exists, <em>qmemman</em> suspends memory balancing. It is primarily used when allocating memory for a to-be-created domain, to prevent using up the free Xen memory by the balancing algorithm before the domain creation is completed.</li>
+</ul>
+<h2 id="Algorithmsbasics">Algorithms basics</h2>
+<p>The core VM property is <code>prefmem</code>. It denotes the amount of memory that should be enough for a domain to run efficiently in the nearest future. All <em>qmemman</em> algorithms will never shrink domain memory below <code>prefmem</code>. Currently, <code>prefmem</code> is simply 130% of current memory usage in a domain (without buffers and cache, but including swap). Naturally, <code>prefmem</code> is calculated by <em>qmemman</em> based on the information passed by <em>meminfo-writer</em>.</p>
+<p>Whenever <em>meminfo-writer</em> running in domain A provides new data on memory usage to <em>qmemman</em>, the <code>prefmem</code> value for A is updated and the following balance algorithm (<em>qmemman_algo.balance</em>) is triggered. Its output is the list of (domain_id, new_memory_target_to_be_set) pairs:</p>
+<ol>
+<li>TOTAL_PREFMEM = sum of <code>prefmem</code> of all participating domains</li>
+<li>TOTAL_MEMORY = sum of all memory assigned to participating domains plus Xen free memory</li>
+<li>if TOTAL_MEMORY &gt; TOTAL_PREFMEM, then redistribute TOTAL_MEMORY across all domains proportionally to their <code>prefmem</code></li>
+<li>if TOTAL_MEMORY &lt; TOTAL_PREFMEM, then
+<ol>
+<li>for all domains whose <code>prefmem</code> is less than actual memory, shrink them to their <code>prefmem</code></li>
+<li>redistribute memory reclaimed in the previous step between the rest of domains, proportionally to their <code>prefmem</code></li>
+</ol></li>
+</ol>
+<p>The memory redistribution is actually executed only if one of the below conditions hold:</p>
+<ul>
+<li>the sum of memory changes for all domains is more than MIN_TOTAL_MEMORY_TRANSFER (150MB)</li>
+<li>one of the domains is below its <code>prefmem</code>, and more than MIN_MEM_CHANGE_WHEN_UNDER_PREF (15MB) would be added to it</li>
+</ul>
+<p>Additionally, the balance algorithm is tuned so that XEN_FREE_MEM_LEFT (50MB) is always left as Xen free memory, to make coherent memory allocations in driver domains work.</p>
+<p>Whenever <em>qmemman</em> is asked to return X megabytes of memory to Xen free pool, the following algorithm (<em>qmemman_algo.balloon</em>) is executed:</p>
+<ol>
+<li>find all domains (&quot;donors&quot;) whose actual memory is greater than its <code>prefmem</code></li>
+<li>calculate how much memory can be reclaimed by shrinking donors to their <code>prefmem</code>. If is is less than X, return error.</li>
+<li>shrink donors, proportionally to their <code>prefmem</code>, so that X MB should become free</li>
+<li>wait BALOON_DELAY (0.1s)</li>
+<li>if some domain have not given back any memory, remove it from the donors list, and go to step 2, unless we already did MAX_TRIES (20) iterations (then return error).</li>
+</ol>
