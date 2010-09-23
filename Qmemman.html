@@ -1,9 +1,9 @@
 <h1 id="qmemmanQubesmemorymanager">qmemman, Qubes memory manager</h1>
 <h2 id="Rationale">Rationale</h2>
-<p>Traditionally, Xen VMs are assigned a fixed amount of memory. It is not the optimal solution, as some VMs may require more memory, while others underutilize memory. Thus, there is a need for solution capable of shifting free memory from VM to another VM.</p>
+<p>Traditionally, Xen VMs are assigned a fixed amount of memory. It is not the optimal solution, as some VMs may require more memory than assigned initially, while others underutilize memory. Thus, there is a need for solution capable of shifting free memory from VM to another VM.</p>
 <p>The <a href="http://oss.oracle.com/projects/tmem/">​tmem</a> project provides a &quot;pseudo-RAM&quot; that is assigned on per-need basis. However this solution has some disadvantages:</p>
 <ul>
-<li>It does not provide real RAM, just an interface to copy memory to/from fast, RAM-based storage. It is perfect for swap, but not ideal for many tasks.</li>
+<li>It does not provide real RAM, just an interface to copy memory to/from fast, RAM-based storage. It is perfect for swap, good for file cache, but not ideal for many tasks.</li>
 <li>It is deeply integrated with the Linux kernel. When Qubes will support Windows guests natively, we would have to port <em>tmem</em> to Windows, which may be challenging.</li>
 </ul>
 <p>Therefore, in Qubes another solution is used. There is the <em>qmemman</em> dom0 daemon. All VMs report their memory usage (via xenstore) to <em>qmemman</em>, and it makes decisions on whether to balance memory across domains. The actual mechanism to add/remove memory from a domain (<em>xc.domain_set_target_mem</em>) is already supported by both PV Linux guests and Windows guests (the latter via PV drivers).</p>
