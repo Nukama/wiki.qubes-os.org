@@ -3,7 +3,7 @@
 <p><em>qfilexchgd</em> is a dom0 daemon responsible for managing exchange of block devices (&quot;virtual pendrives&quot;) between VMs. It is used for</p>
 <ul>
 <li>copying files between AppVMs</li>
-<li>copying a single file between an AppVM and a DVM</li>
+<li>copying a single file between an AppVM and a DisposableVM</li>
 </ul>
 <p><em>qfilexchgd</em> is started after first <em>qubes_guid</em> has been started, so that it has access to X display in dom0 to present dialog messages.</p>
 <p><em>qfilexchgd</em> is event driven. The sources of events are:</p>
@@ -13,24 +13,24 @@
 </ul>
 <p></p>
 <h2 id="CopyingfilesbetweenAppVMs">Copying files between AppVMs</h2>
-<ul>
+<ol>
 <li>AppVM1 user runs <em>qvm-copy-to-vm</em> script (accessible from Dolphin file manager by right click on a &quot;file(s)-&gt;Actions-&gt;Send to VM&quot; menu). It calls <em>/usr/lib/qubes/qubes_penctl new</em>, and it writes &quot;new&quot; request to its <code>device/qpen</code> xenstore key. <em>qfilexchgd</em> creates a new 1G file, makes vfat fs on it, and does block-attach so that this file is attached as <code>/dev/xvdg</code> in AppVM1.</li>
 <li>AppVM1 mounts <code>/dev/xvdg</code> on <code>/mnt/outgoing</code> and copies requested files there, then unmounts it.</li>
 <li>AppVM1 writes &quot;send DestVM&quot; request to its <code>device/qpen</code> xenstore key (calling <em>/usr/lib/qubes/qubes_penctl send DestVM</em>). After getting confirmation by displaying a dialog box in dom0 display, <em>qfilexchgd</em> detaches <code>/dev/xvdg</code> from AppVM1, attaches it as <code>/dev/xvdh</code> to DestVM.</li>
 <li>In DestVM, udev script for <code>/dev/xvdh</code> named <em>qubes_add_pendrive_script</em> (see <code>/etc/udev/rules.d/qubes.rules</code>) mounts <code>/dev/xvdh</code> on <code>/mnt/incoming</code>, and then waits for <code>/mnt/incoming</code> to become unmounted. A file manager running in DestVM shows a new volume, and user in DestVM may copy files from it. When user in DestVM is done, then user unmounts <code>/mnt/incoming</code>. <em>qubes_add_pendrive</em>_script then tells <em>qfilexchgd</em> to detach <code>/dev/xvdh</code> and terminates.</li>
-</ul>
-<h2 id="CopyingasinglefilebetweenAppVMandaDVM">Copying a single file between AppVM and a DVM</h2>
-<p>In order to minimize attack surface presented by necessity to process virtual pendrive metadata sent by (potentially compromised and malicious) DVM, AppVM&lt;-&gt;DVM file exchange protocol does not use any filesystem.</p>
-<ul>
-<li>User in AppVM1 runs <em>qvm-open-in-dvm</em> (accessible from Dolphin file manager by right click on a &quot;file-&gt;Actions-&gt;Open in DVM&quot; menu). <em>qvm-open-in-dvm</em>
-<ul>
+</ol>
+<h2 id="CopyingasinglefilebetweenAppVMandaDisposableVM">Copying a single file between AppVM and a DisposableVM</h2>
+<p>In order to minimize attack surface presented by necessity to process virtual pendrive metadata sent by (potentially compromised and malicious) DisposableVM, AppVM&lt;-&gt;DisposableVM file exchange protocol does not use any filesystem.</p>
+<ol>
+<li>User in AppVM1 runs <em>qvm-open-in-dvm</em> (accessible from Dolphin file manager by right click on a &quot;file-&gt;Actions-&gt;Open in DisposableVM&quot; menu). <em>qvm-open-in-dvm</em>
+<ol>
 <li>gets a new <code>/dev/xvdg</code> (just as described in previous paragraph)</li>
 <li>computes a new unique transaction seq SEQ by incrementing <code>/home/user/.dvm/seq</code> contents,</li>
 <li>writes the requested file name (say, /home/user/document.txt) to <code>/home/user/.dvm/SEQ</code></li>
 <li>creates a dvm_header (see core.git/appvm/dvm.h) on <code>/dev/xvdg</code>, followed by file contents</li>
 <li>writes the &quot;send disposable SEQ&quot; command to its <code>device/qpen</code> xenstore key.</li>
-</ul></li>
-<li><em>qfilexchgd</em> sees that &quot;send&quot; argument==&quot;disposable&quot;, and creates a new DVM by calling <em>/usr/lib/qubes/qubes_restore</em>. It adds the new DVM to qubesDB via qvm_collection.add_new_disposablevm. Then it attaches the virtual pendrive (previously attached as <code>/dev/xvdg</code> at AppVM1) as <code>/dev/xvdh</code> in DVM.</li>
-<li>In DVM, <em>qubes_add_pendrive_script</em> sees non-zero <code>qubes_transaction_seq</code> key in xenstore, and instead processing the virtual pendrive as in the case of normal copy, treats it as DVM transaction (a request, because we run in DVM). It retrieves the body of the file passed in <code>/dev/xvdh</code>, copies to /tmp, and runs <em>mime-open</em> utility to open appropriate executable to edit it. When <em>mime-open</em> returns, if the file was modified, it is sent back to AppVM1 (by writing &quot;send AppVM1 SEQ&quot; to <code>device/qpen</code> xenstore key). Then DVM destroys itself.</li>
-<li>In AppVM1, a new <code>/dev/xvdh</code> appears (because DVM sent it). <em>qubes_add_pendrive_script</em> sees non-zero <code>qubes_transaction_seq</code> key, and treats it as DVM transaction (a response, because we run in AppVM, not DVM). It retrieves the filename from <code>/home/user/.dvm/SEQ</code>, and copies data from <code>/dev/xvdh</code> to it.</li>
-</ul>
+</ol></li>
+<li><em>qfilexchgd</em> sees that &quot;send&quot; argument==&quot;disposable&quot;, and creates a new DisposableVM by calling <em>/usr/lib/qubes/qubes_restore</em>. It adds the new DisposableVM to qubesDB via qvm_collection.add_new_disposablevm. Then it attaches the virtual pendrive (previously attached as <code>/dev/xvdg</code> at AppVM1) as <code>/dev/xvdh</code> in DisposableVM.</li>
+<li>In DisposableVM, <em>qubes_add_pendrive_script</em> sees non-zero <code>qubes_transaction_seq</code> key in xenstore, and instead processing the virtual pendrive as in the case of normal copy, treats it as DVM transaction (a request, because we run in DisposableVM). It retrieves the body of the file passed in <code>/dev/xvdh</code>, copies to /tmp, and runs <em>mime-open</em> utility to open appropriate executable to edit it. When <em>mime-open</em> returns, if the file was modified, it is sent back to AppVM1 (by writing &quot;send AppVM1 SEQ&quot; to <code>device/qpen</code> xenstore key). Then DisposableVM destroys itself.</li>
+<li>In AppVM1, a new <code>/dev/xvdh</code> appears (because DisposableVM has sent it). <em>qubes_add_pendrive_script</em> sees non-zero <code>qubes_transaction_seq</code> key, and treats it as DVM transaction (a response, because we run in AppVM, not DisposableVM). It retrieves the filename from <code>/home/user/.dvm/SEQ</code>, and copies data from <code>/dev/xvdh</code> to it.</li>
+</ol>
