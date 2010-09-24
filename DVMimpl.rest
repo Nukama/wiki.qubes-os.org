@@ -43,7 +43,7 @@ steps:
 usually called by *qvm-create-default-dvm* script, that takes care of
 creating a special AppVM (named template\_name-dvm) to be passed to
 *qubes\_prepare\_saved\_domain.sh*, as well as copying the savefile to
-/dev/shm (the latter action is not made if the
+/dev/shm (the latter action is not done if the
 ``/var/lib/qubes/dvmdata/dont_use_shm`` file exists).
 
 Restoring a DisposableVM from the savefile
@@ -52,7 +52,7 @@ Restoring a DisposableVM from the savefile
 When *qfilexchgd* daemon, described `here </wiki/Qfileexchgd>`__, sees a
 request to create a DVM, it executes */usr/lib/qubes/qubes\_restore*
 script. It is crucial that this script executes quickly, to make
-DisposableVM creation overhead bareable for the user. Its main steps
+DisposableVM creation overhead bearable for the user. Its main steps
 are:
 
 #. modify the savefile so that the VM name, VM UUID, MAC address and IP
