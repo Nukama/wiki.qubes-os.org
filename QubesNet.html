@@ -1,0 +1,121 @@
+<h1 id="VMnetworkinQubes">VM network in Qubes</h1>
+<h2 id="Overalldescription">Overall description</h2>
+<p>In Qubes, the standard Xen networking is used, based on backend driver in the driver domain and frontend drivers in VMs. In order to eliminate layer 2 attacks originating from a compromised VM, routed networking is used instead of the default bridging of <code>vif</code> devices. The default <em>vif-route</em> script had some deficiencies (requires <code>eth0</code> device to be up, and sets some redundant iptables rules), therefore the custom <em>vif-route-qubes</em> script is used.</p>
+<p>The IP address of <code>eth0</code> interface in AppVM, as well as two IP addresses to be used as nameservers (<code>DNS1</code> and <code>DNS2</code>), are passed via xenstore to AppVM during its boot (thus, there is no need for DHCP daemon in the network driver domain). <code>DNS1</code> and <code>DNS2</code> are private addresses; whenever an interface is brought up in the network driver domain, the <em>/usr/lib/qubes/qubes_setup_dnat_to_ns</em> script sets up the DNAT iptables rules translating <code>DNS1</code> and <code>DNS2</code> to the newly learned real dns servers. This way AppVM networking configuration does not need to be changed when configuration in the network driver domain changes (e.g. user switches to a different WLAN). Moreover, in the network driver domain, there is no DNS server either, and consequently there are no ports open to the VMs.</p>
+<h2 id="Routingtablesexamples">Routing tables examples</h2>
+<p>VM routing table is simple:<br /></p>
+<table>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Destination</td>
+<td style="text-align: left;">Gateway</td>
+<td style="text-align: left;">Genmask</td>
+<td style="text-align: left;">Flags</td>
+<td style="text-align: left;">Metric</td>
+<td style="text-align: left;">Ref</td>
+<td style="text-align: left;">Use</td>
+<td style="text-align: left;">Iface</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">0.0.0.0</td>
+<td style="text-align: left;">0.0.0.0</td>
+<td style="text-align: left;">0.0.0.0</td>
+<td style="text-align: left;">U</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">eth0</td>
+</tr>
+</tbody>
+</table>
+<p>Network driver domain routing table is a bit longer:</p>
+<table>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Destination</td>
+<td style="text-align: left;">Gateway</td>
+<td style="text-align: left;">Genmask</td>
+<td style="text-align: left;">Flags</td>
+<td style="text-align: left;">Metric</td>
+<td style="text-align: left;">Ref</td>
+<td style="text-align: left;">Use</td>
+<td style="text-align: left;">Iface</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">10.2.0.16</td>
+<td style="text-align: left;">0.0.0.0</td>
+<td style="text-align: left;">255.255.255.255</td>
+<td style="text-align: left;">UH</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">vif4.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">10.2.0.7</td>
+<td style="text-align: left;">0.0.0.0</td>
+<td style="text-align: left;">255.255.255.255</td>
+<td style="text-align: left;">UH</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">vif10.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">10.2.0.9</td>
+<td style="text-align: left;">0.0.0.0</td>
+<td style="text-align: left;">255.255.255.255</td>
+<td style="text-align: left;">UH</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">vif9.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">10.2.0.8</td>
+<td style="text-align: left;">0.0.0.0</td>
+<td style="text-align: left;">255.255.255.255</td>
+<td style="text-align: left;">UH</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">vif8.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">10.2.0.12</td>
+<td style="text-align: left;">0.0.0.0</td>
+<td style="text-align: left;">255.255.255.255</td>
+<td style="text-align: left;">UH</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">vif3.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">192.168.0.0</td>
+<td style="text-align: left;">0.0.0.0</td>
+<td style="text-align: left;">255.255.255.0</td>
+<td style="text-align: left;">U</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">eth0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">0.0.0.0</td>
+<td style="text-align: left;">192.168.0.1</td>
+<td style="text-align: left;">0.0.0.0</td>
+<td style="text-align: left;">UG</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">eth0</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Locationofthenetworkdriverdomain">Location of the network driver domain</h2>
+<p>Traditionally, the network driver domain is dom0. This design means that a lot of code (networking stack, drivers) running in the all-powerful domain is exposed to potential attack. Although it is supported (one can execute <em>qvm-set-default-netvm dom0</em>), it is strongly discouraged.</p>
+<p>Instead, a dedicated domain called <code>netvm</code> should be used. In order to activate it, one needs to install the <code>qubes-servicevm-netvm</code> rpm package, and enable it via command <em>qvm-set-default-netvm netvm</em>. This domain will be assigned all PCI devices that are network cards. One can interact with the <em>Networkmanager</em> daemon running in <code>netvm</code> in the same way as with any other VM GUI application (with one detail that <em>nm-applet</em> requires a system tray, thus one needs to start it via &quot;KDEMenu-&gt;Applications-&gt;Netvm-&gt;Show Tray&quot;).</p>
+<p>Note that in order to isolate <code>netvm</code> properly, the platform must support VTd and it must be activated. Otherwise, compromised <code>netvm</code> can use DMA to get control over dom0 and even the hypervisor.</p>
+<p>When using <code>netvm</code>, there is no network connectivity in dom0. This is the desired configuration - it eliminates all network-bourne attacks. Observe that dom0 is meant to be used for administrative tasks only, and (with one exception) they do not need network. Anything not related to system administration should be done in one of AppVMs.</p>
+<p>The above-mentioned exception is the system packages upgrade. Again, one must not install random applications in dom0, but there is a need to e.g. upgrade existing packages. While one may argue that the new packages could be downloaded on a separate machine and copied to dom0 via a pendrive, this solution has its own problems. Therefore, the advised method to temporarily grant network connectivity to dom0 is to use <em>qvm-dom0-network-via-netvm up</em> command. It will pause all running VMs (so that they can do no harm to dom0) and connect dom0 to netvm network just like another AppVM. Having completed package upgrade, execute <em>qvm-dom0-network-via-netvm down</em> to revert to the normal state.</p>
