@@ -142,7 +142,7 @@ qvm-set-default-netvm netvm
 </ol>
 <p>NOTE: Xen can use IOMMU/VT-d only if you have hardware with IOMMU/VT-d support and a non-broken BIOS that also supports VT-d (specifically BIOS should expose a correct ACPI DMAR table)</p>
 <p>Read more about Qubes networking <a href="/wiki/wiki/QubesNet">here</a>.</p>
-<h2 id="VIII.KnownIssuesandWorkarounds">VIII. Known Issues and Workarounds</h2>
+<h2 id="VIII.KnownIssuesandWorkaroundsforQubesAlpha3">VIII. Known Issues and Workarounds for Qubes Alpha 3</h2>
 <ol>
 <li><p>If you use full disk encryption via LUKS (default if you chose &quot;Encrypt disk&quot; in Fedora installer), and if you have a Core i5/i7 processor that supports the new AESNI instruction, you should pass the following argument to your kernel (by editing your <code></code><code>/boot/grub/grub.conf</code><code></code> file):</p>
 <pre class="wiki"><code>rdblacklist=aesni-intel</code></pre></li>
@@ -156,11 +156,5 @@ qvm-set-default-netvm netvm
 <li>If you have Nvidia graphics card, you can experience strange icon distortions after resume from suspend. Hopefully some new xorg driver will resolve this issue.</li>
 </ol>
 <ol start="4">
-<li>If you have Intel HD graphics card on Core i5/i7 processor, do <strong>not</strong> enable desktop effects (or at least do not choose OpenGL engine). There is a known problem with those cards drivers that causes X to crash every few minutes, when OpenGL is used. This happens on standard Fedora installation, even without Xen and without Qubes.</li>
-</ol>
-<ol start="5">
-<li>The clock in AppVMs is not properly updated after resume from S3 sleep. The temporary workaround is to use NTP for clock syncing in each AppVM.</li>
-</ol>
-<ol start="6">
-<li>On processors with Hyper-Threading support, such as Intel Core i5/i7 (but not Core 2 Duo), the AppVM might lock up after a resume from S3 sleep. A temporary work around for this is to disable <a href="/wiki/wiki/HyperThreading">HyperThreading?</a> in BIOS.</li>
+<li>If you have Intel HD graphics card on Core i5/i7 processor, do <strong>not</strong> enable desktop effects right after installation (or at least do not choose OpenGL engine). There is a known problem with those cards drivers that causes the original X shipped with F13 to crash every few minutes, when OpenGL is used. This happens on standard Fedora installation, even without Xen and without Qubes. This problem vanishes when one upgrades to xorg-x11-server 1.8.2, OpenGL and composition works flawlessy then.</li>
 </ol>
