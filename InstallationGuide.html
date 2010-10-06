@@ -123,8 +123,7 @@ qvm-create random --label red</code></pre>
 </ol>
 <p>&quot;Start&quot; menu in your Dom0 Window Manager.</p>
 <p>Try running some applications, e.g. Firefox from the random machine. When you run an application for the first time, and the corresponding AppVM has not yet been started, it might take some time (15-30 seconds) for it to start. Subsequent apps from the same AppVM will be starting much faster.</p>
-<h2 id="VII.SwitchingtoNetVM">VII. <del>Switching to NetVM</del></h2>
-<p>This is temporarily unsupported for Alpha2. We're working on the solution.</p>
+<h2 id="VII.SwitchingtoNetVM">VII. Switching to NetVM</h2>
 <ol>
 <li><p>First shut down all the VMs in the system, e.g.:</p>
 <pre class="wiki"><code>qvm-run --all --wait -uroot poweroff</code></pre></li>
@@ -142,6 +141,7 @@ qvm-set-default-netvm netvm
 <li>Verify that Xen uses IOMMU/VT-d indeed by looking into <code>xm dmesg</code> output</li>
 </ol>
 <p>NOTE: Xen can use IOMMU/VT-d only if you have hardware with IOMMU/VT-d support and a non-broken BIOS that also supports VT-d (specifically BIOS should expose a correct ACPI DMAR table)</p>
+<p>Read more about Qubes networking <a href="/wiki/wiki/QubesNet">here</a>.</p>
 <h2 id="VIII.KnownIssuesandWorkarounds">VIII. Known Issues and Workarounds</h2>
 <ol>
 <li><p>If you use full disk encryption via LUKS (default if you chose &quot;Encrypt disk&quot; in Fedora installer), and if you have a Core i5/i7 processor that supports the new AESNI instruction, you should pass the following argument to your kernel (by editing your <code></code><code>/boot/grub/grub.conf</code><code></code> file):</p>
