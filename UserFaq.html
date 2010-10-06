@@ -37,3 +37,5 @@
 <h3 id="Q:PerhapsitwouldmakesensethentohaveatemplateVMbasedonsomehardeneddistro">Q: Perhaps it would make sense then to have a template VM based on some hardened distro?</h3>
 <p>Yup, that would make sense indeed. Feel free to build one -- you can use the template_builder:</p>
 <p><a href="http://qubes-os.org/gitweb/?p=mainstream/template-builder.git;a=tree">​http://qubes-os.org/gitweb/?p=mainstream/template-builder.git;a=tree</a></p>
+<h3 id="Q:SometimesittakesalongtimeforQubestobootwhy">Q: Sometimes it takes a long time for Qubes to boot, why?</h3>
+<p>This is likely because Qubes re-creates a Disposable VM savefile -- an image used for super quick starting of Disposable VMs. Normally this happens when you update your default template, and takes about 2 minutes. You can hit ESC during boot to see the progress information.</p>
