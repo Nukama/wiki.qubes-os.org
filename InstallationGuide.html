@@ -103,6 +103,11 @@ yum install qubes-manager</code></pre></li>
 <pre class="wiki"><code>yum install qubes-template-linux-x64</code></pre>
 <p>This will probably take some time...</p>
 <ol start="2">
+<li><p>Create the default DisposableVM savefile. It is the saved VM image that is used to quickly bring up a DisposableVM. As user in <em>qubes</em> group execute</p>
+<pre class="wiki"><code>qvm-create-default-dvm --default-template --default-script</code></pre></li>
+</ol>
+<p>This should take about 150 seconds.</p>
+<ol start="3">
 <li>Now, lets create some AppVMs to see if this all works...</li>
 </ol>
 <p><strong>NOTE:</strong> If you're migrating from a previous system (e.g. Alpha 1), and want to restore your previous AppVMs from a backup, use the <a href="/wiki/wiki/BackupRestore">qvm-backup-restore</a> tool.</p>
@@ -117,7 +122,7 @@ qvm-create random --label red</code></pre>
 <pre class="wiki"><code>qvm-ls</code></pre>
 <p>... and you can remove them using qvm-remove (be careful not to remove your data accidentally!).</p>
 <p>There are much more <code>qvm-*</code> tools in the <code>/usr/bin</code> -- most of them should be self-explanatory.</p>
-<ol start="3">
+<ol start="4">
 <li>Wait a few seconds and see if icons have been created and added to the</li>
 </ol>
 <p>&quot;Start&quot; menu in your Dom0 Window Manager.</p>
