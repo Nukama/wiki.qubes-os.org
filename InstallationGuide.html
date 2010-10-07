@@ -3,7 +3,7 @@
 <p><strong>NOTE:</strong> Do not try to install Qubes in a VM, e.g. VMWare. Qubes has its own bare-metal hypervisor, and, as the name suggests, it should be installed on a bare-metal, not in some VM. Even if you somehow succeed installing it inside some other VMM system, you will likely get horrible performance and perhaps even some strange crashes, caused by the outer VMM, that is obviously not prepared for running a nested hypervisor in its VMs.</p>
 <p>At this stage we don't have a standalone automatic installer, so the installation process is currently a bit complicated and requires some knowledge of Linux. The installation consists of a few stages that are described in detail below...</p>
 <h2 id="I.InstallingFedora13Linux">I. Installing Fedora 13 Linux</h2>
-<p><strong>NOTE:</strong> If you're migrating from <strong>Qubes Alpha 1</strong>, and want to preserve your AppVMs (specifically your data), you should use <code></code><code>qvm-backup</code><code></code> tool to make a backup (Qubes Alpha 2 will let you automatically restore it later).</p>
+<p><strong>NOTE:</strong> If you're migrating from <strong>Qubes Alpha 1</strong>, and want to preserve your AppVMs (specifically your data), you should use <code></code><code>qvm-backup</code><code></code> tool to make a backup (Qubes Alpha 3 will let you automatically restore it later).</p>
 <p><strong>NOTE:</strong> Do not try to install Qubes Alpha 3 on top of an already installed <strong>Qubes Alpha 1</strong> -- you should reinstall everything from scratch!</p>
 <p><strong>NOTE:</strong> If you're migrating from <strong>Qubes Alpha 2</strong>, however, then <code></code><code>yum update</code><code></code> executed in Dom0 konsole should do the work, and you could skip this guide.</p>
 <p>First we need to install a minimal Linux distribution that would later become our Dom0 system. We strongly recommend choosing a <strong>64-bit Fedora 13 distribution</strong>.</p>
@@ -59,7 +59,7 @@ mv qubes-r1-dom0.repo /etc/yum.repos.d/</code></pre></li>
 <pre class="wiki"><code>yum install qubes-kde-dom0
 yum install knetworkmanager</code></pre></li>
 </ol>
-<p>The last package (<em>knetworkmanager</em>) is needed only if one intends to use networking in Dom0, rather than in NetVM. However, as we're currently having problems with the NetVM working with our new Dom0 kernel in Alpha 2, we have decided to temporary withhold the release of a new NetVM package for Alpha 2, and so you must currently use networking in Dom0, and it's recommended to install this package. Rest assured, we will be working on getting NetVM back in the next version.</p>
+<p>The last package (<em>knetworkmanager</em>) is needed only if one intends to use networking in Dom0, rather than in NetVM.</p>
 <ol start="3">
 <li>Via the KDE &quot;Start Menu&quot;, go to: Computer/System Settings/Appearance/Windows, and then choose <strong>Plastik for Qubes</strong> Window decoration plugin.</li>
 </ol>
