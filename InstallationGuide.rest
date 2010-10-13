@@ -33,10 +33,11 @@ scratch!
 however, then ````\ ``yum update``\ ```` executed in Dom0 konsole should
 do the work, and you could skip this guide.] Some people reported
 problems when upgrading from Alpha 2 to Alpha 3, so it seems like it
-might better to reinstall from scratch in that case too. First we need
-to install a minimal Linux distribution that would later become our Dom0
-system. We strongly recommend choosing a **64-bit Fedora 13
-distribution**.
+might better to reinstall from scratch in that case too.
+
+First we need to install a minimal Linux distribution that would later
+become our Dom0 system. We strongly recommend choosing a **64-bit Fedora
+13 distribution**.
 
 #. Download the 64-bit version of Fedora 13 installation DVD ISO:
 
