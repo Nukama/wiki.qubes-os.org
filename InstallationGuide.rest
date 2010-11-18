@@ -165,7 +165,8 @@ V. Installing Qubes
 
    .. code:: wiki
 
-       yum install qubes-core-dom0 qubes-gui-dom0
+       yum install qubes-core-dom0
+       yum install qubes-gui-dom0
        yum install qubes-manager
 
 2. Add the user account you use to log into the system to the 'qubes'
