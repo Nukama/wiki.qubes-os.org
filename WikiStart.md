@@ -24,8 +24,10 @@ For Developers
 -   [Source Code](/wiki/SourceCode)
 -   [FAQ](/wiki/DevelFaq)
 
-Contact
--------
+-   [Contributors List](/wiki/ContributorsList)
+
+Contacts
+--------
 
 ### Mailing list
 
