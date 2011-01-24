@@ -20,8 +20,10 @@ For Developers
 -  `Source Code </wiki/SourceCode>`__
 -  `FAQ </wiki/DevelFaq>`__
 
-Contact
--------
+-  `Contributors List </wiki/ContributorsList>`__
+
+Contacts
+--------
 
 Mailing list
 ~~~~~~~~~~~~
