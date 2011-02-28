@@ -22,7 +22,7 @@ you're mounting its first partition, so **/dev/sdb1** (the usual case).
 
 .. code:: wiki
 
-    xm block-detach random /dev/xvdi
+    xm block-detach <vmname> /dev/xvdi
 
 6. You can remove the device.
 
