@@ -30,3 +30,19 @@ gpg:               imported: 1  (RSA: 1)</code></pre>
 <p>You can also download all the currently used developer's keys (and also a copy of the Master Key) in the keys directory on our server:</p>
 <p><a href="http://qubes-os.org/keys/">​http://qubes-os.org/keys/</a></p>
 <p>The developer keys are set to be valid for 1 year only, while the Qubes Master Singing Key has no expiration date. This key has been generated and is kept only within a special 'vault' machine that has no networking, and the private portion (hopefully) is never to leave this isolated machine.</p>
+<h2 id="VerifyingQubescode">Verifying Qubes code</h2>
+<p>To verify signed git tag, you can use:</p>
+<pre class="wiki"><code>$ git tag -v &lt;tag name&gt;</code></pre>
+<p>You can also set git alias to automatically pull latest tag and verify its signature:</p>
+<pre class="wiki"><code>$ git config --global alias.vpull &#39;!f() { tag=`git ls-remote $@ |tail -2 |head -1 |cut -d/ -f 3-`; git pull $@ tag $tag; git tag -v $tag; }; f&#39;</code></pre>
+<p>then use:</p>
+<pre class="wiki"><code>$ git vpull git://git.qubes-os.org/mainstream/core.git
+Already up-to-date.
+object 80826329a71c693fcd08544458b9d6219ca5b28c
+type commit
+tag v1.3.16-dom0
+tagger Joanna Rutkowska &lt;joanna@invisiblethingslab.com&gt; 1290384222 +0100
+
+v1.3.16-dom0
+gpg: Signature made Mon 22 Nov 2010 01:03:50 CET using RSA key ID C37BB66B
+gpg: Good signature from &quot;Joanna Rutkowska (Qubes OS signing key) &lt;joanna@invisiblethingslab.com&gt;&quot;</code></pre>
