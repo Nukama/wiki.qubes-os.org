@@ -1,0 +1,9 @@
+<h1 id="HowtobuildQubesinstallationISO">How to build Qubes installation ISO</h1>
+<p>Qubes uses <a href="/wiki/wiki/FedoraUnity">FedoraUnity?</a> <a href="http://revisor.fedoraunity.org/">​Revisor</a> to build the installation ISO.</p>
+<p>So, get <a href="http://git.qubes-os.org/?p=smoku/revisor">​Qubes version of Revisor</a> build it (<code>cd package; rpmbuild -bb revisor.spec</code>) and install all built revisor packages.</p>
+<h2 id="BuildISO">Build ISO</h2>
+<p>All configuration files for Qubes Revisor assume that the working directory is <code>/Devel/Qubes</code>. So either modify the configuration files to your needs, or just symlink your working directory as <code>/Devel/Qubes</code>.</p>
+<p>You will need to put all additional packages, not present in Fedora and Qubes repos to local repository <code>file:///Devel/Qubes/rpmbuild/RPMS/</code> and <code>cd /Devel/Qubes/rpmbuild/RPMS &amp;&amp; createrepo .</code> to create repository metadata.</p>
+<p>Next just run:</p>
+<pre class="wiki"><code>revisor --cli --config=qubes-install-respin.conf --model=qubes1-x86_64 --install-dvd</code></pre>
+<p>and wait... (You may add <code>-d 99</code> to get a ton of debugging information.)</p>
