@@ -19,6 +19,12 @@ Building Qubes Packages from Sources
 
 -  `KDE Dom0 packages for Qubes </wiki/KdeDom0>`__
 
+Release related documentation
+-----------------------------
+
+-  `How to build Qubes installation
+   ISO </wiki/InstallationIsoBuilding>`__
+
 Selected Subsystems Documentation
 ---------------------------------
 
