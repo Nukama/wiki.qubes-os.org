@@ -1,9 +1,32 @@
 <h1 id="HowtobuildQubesinstallationISO">How to build Qubes installation ISO</h1>
 <p>Qubes uses <a href="/wiki/wiki/FedoraUnity">FedoraUnity?</a> <a href="http://revisor.fedoraunity.org/">​Revisor</a> to build the installation ISO.</p>
-<p>So, get <a href="http://git.qubes-os.org/?p=smoku/revisor">​Qubes version of Revisor</a> build it (<code>cd package; rpmbuild -bb revisor.spec</code>) and install all built revisor packages.</p>
-<h2 id="BuildISO">Build ISO</h2>
+<p>You may want to get familiar with <a href="http://revisor.fedoraunity.org/documentation">​Revisor documentation</a>.</p>
+<h2 id="Buildinstallerpackages">Build installer packages</h2>
+<p>Get <a href="http://git.qubes-os.org/?p=smoku/installer">​Qubes Installer repository</a> and build its packages:</p>
+<pre class="wiki"><code>cd installer
+make rpms</code></pre>
+<p>Packages will be in <code>rpm/noarch</code> and <code>rpm/x86_64</code>.</p>
+<h2 id="InstallRevisor">Install Revisor</h2>
+<p>Next install the freshly built revisor:</p>
+<pre class="wiki"><code>yum install rpm/noarch/revisor*.rpm</code></pre>
+<h2 id="Prepareconfigurationfiles">Prepare configuration files</h2>
 <p>All configuration files for Qubes Revisor assume that the working directory is <code>/Devel/Qubes</code>. So either modify the configuration files to your needs, or just symlink your working directory as <code>/Devel/Qubes</code>.</p>
-<p>You will need to put all additional packages, not present in Fedora and Qubes repos to local repository <code>file:///Devel/Qubes/rpmbuild/RPMS/</code> and <code>cd /Devel/Qubes/rpmbuild/RPMS &amp;&amp; createrepo .</code> to create repository metadata.</p>
-<p>Next just run:</p>
-<pre class="wiki"><code>revisor --cli --config=qubes-install-respin.conf --model=qubes1-x86_64 --install-dvd</code></pre>
-<p>and wait... (You may add <code>-d 99</code> to get a ton of debugging information.)</p>
+<p>See the end of this document for description of the configuration files purpose.</p>
+<h2 id="Createlocalrepository">Create local repository</h2>
+<p>Revisor fetches all RPM packages from YUM repositories. You will need to put all additional packages not present in Fedora and Qubes repos (like the ones you've built in the first step) to local repository. By default it is <code>file:///Devel/Qubes/yum/r1/installer/rpm/</code>.</p>
+<p>Copy or link all <code>installer/rpm/*/*.rpm</code> packages to <code>/evel/Qubes/yum/r1/installer/rpm</code>. Then create repository metadata.</p>
+<pre class="wiki"><code>mkdir -p /Devel/Qubes/yum/r1/installer/rpm
+cd /Devel/Qubes/installer
+make update-repo
+cd /Devel/Qubes/yum/r1/installer/rpm
+createrepo .</code></pre>
+<h2 id="BuildISO">Build ISO</h2>
+<p>Now you're finally ready to build the ISO image:</p>
+<pre class="wiki"><code>revisor --cli --config=/conf/qubes-install-respin.conf --model=qubes1-x86_64 --install-dvd</code></pre>
+<p>and wait...</p>
+<p>You may add <code>-d 99</code> to get a ton of debugging information.</p>
+<h2 id="Revisorconfigurationfiles">Revisor configuration files</h2>
+<p><strong>conf/qubes-install-respin.conf</strong> - Main Revisor configuration file. This configures Revisor to build Qubes Installation image based on Fedora 13. All other configuration files and working directories are pointed here.</p>
+<p><strong>conf/qubes1-x86_64-respin.conf</strong> - As said Revisor gets all packages it uses form YUM repositories. This file describes all repositories needed to build Qubes R1 for x86_64 architecture. This file also points the local repository you created before.</p>
+<p><strong>conf/qubes-1-respin.cfg</strong> - Fedora Kickstart formatted file describing which packages should land in the ISO <code>/Packages</code> repository. This describes basically what will be available for installation. The packages list built using this file will be further filtered by the comps file.</p>
+<p><strong>conf/comps-qubes1.xml</strong> - Repository Comps file for ISO <code>/Packages</code> repository, describing packages and package groups of the installer repository. Package groups are used to select which of the packages are mandatory to install, which are optional and which are to be just available on the ISO but not installed by default. Package groups may also be optional - this allows them to be selected during installation in Anaconda interface.</p>
