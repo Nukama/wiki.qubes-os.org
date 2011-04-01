@@ -7,8 +7,9 @@
 make rpms</code></pre>
 <p>Packages will be in <code>rpm/noarch</code> and <code>rpm/x86_64</code>.</p>
 <h2 id="InstallRevisor">Install Revisor</h2>
-<p>Next install the freshly built revisor:</p>
-<pre class="wiki"><code>yum install rpm/noarch/revisor*.rpm</code></pre>
+<p>Next install the freshly built revisor and anaconda:</p>
+<pre class="wiki"><code>yum install rpm/noarch/revisor*.rpm
+yum install rpm/x86_64/anaconda*.rpm</code></pre>
 <h2 id="Prepareconfigurationfiles">Prepare configuration files</h2>
 <p>All configuration files for Qubes Revisor assume that the working directory is <code>/Devel/Qubes</code>. So either modify the configuration files to your needs, or just symlink your working directory as <code>/Devel/Qubes</code>.</p>
 <p>See the end of this document for description of the configuration files purpose.</p>
