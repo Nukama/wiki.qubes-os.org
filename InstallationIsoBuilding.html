@@ -10,24 +10,35 @@ make rpms</code></pre>
 <p>Next install the freshly built revisor and anaconda:</p>
 <pre class="wiki"><code>yum install rpm/noarch/revisor*.rpm
 yum install rpm/x86_64/anaconda*.rpm</code></pre>
-<h2 id="Prepareconfigurationfiles">Prepare configuration files</h2>
-<p>All configuration files for Qubes Revisor assume that the working directory is <code>/Devel/Qubes</code>. So either modify the configuration files to your needs, or just symlink your working directory as <code>/Devel/Qubes</code>.</p>
-<p>See the end of this document for description of the configuration files purpose.</p>
+<h2 id="Reviewconfigurationfiles">Review configuration files</h2>
+<p>All configuration files for Qubes Revisor are kept in the <code></code><code>conf/</code><code></code> directory:</p>
+<ul>
+<li><code></code><code>conf/qubes-install-respin.conf</code><code></code> - Main Revisor configuration file. This configures Revisor to build Qubes Installation image based on Fedora 13. All other configuration files and working directories are pointed here.</li>
+</ul>
+<ul>
+<li><code></code><code>conf/qubes1-x86_64-respin.conf</code><code></code> - As said Revisor gets all packages it uses form YUM repositories. This file describes all repositories needed to build Qubes R1 for x86_64 architecture. This file also points the local repository you created before.</li>
+</ul>
+<ul>
+<li><code></code><code>conf/qubes-1-respin.cfg</code><code></code> - Fedora Kickstart formatted file describing which packages should land in the ISO <code>/Packages</code> repository. This describes basically what will be available for installation. The packages list built using this file will be further filtered by the comps file.</li>
+</ul>
+<ul>
+<li><code></code><code>conf/comps-qubes1.xml</code><code></code> - Repository Comps file for ISO <code>/Packages</code> repository, describing packages and package groups of the installer repository. Package groups are used to select which of the packages are mandatory to install, which are optional and which are to be just available on the ISO but not installed by default. Package groups may also be optional - this allows them to be selected during installation in Anaconda interface.</li>
+</ul>
 <h2 id="Createlocalrepository">Create local repository</h2>
-<p>Revisor fetches all RPM packages from YUM repositories. You will need to put all additional packages not present in Fedora and Qubes repos (like the ones you've built in the first step) to local repository. By default it is <code>file:///Devel/Qubes/yum/r1/installer/rpm/</code>.</p>
-<p>Copy or link all <code>installer/rpm/*/*.rpm</code> packages to <code>/evel/Qubes/yum/r1/installer/rpm</code>. Then create repository metadata.</p>
-<pre class="wiki"><code>mkdir -p /Devel/Qubes/yum/r1/installer/rpm
-cd /Devel/Qubes/installer
-make update-repo
-cd /Devel/Qubes/yum/r1/installer/rpm
-createrepo .</code></pre>
+<p>Revisor fetches all RPM packages from YUM repositories. We currently use 5 repositories:</p>
+<ul>
+<li><code></code><code>build/yum/installer</code><code></code> (installer-related rpms)</li>
+<li><code></code><code>build/yum/qubes-dom0</code><code></code> (all the Qubes stuff)</li>
+<li><code></code><code>build/yum/dom0-updates</code><code></code> (for select 3rd party packages, e.g. Xorg)</li>
+<li><code></code><code>build/fedora13-repo</code><code></code> (local fedora 13 repo, copy from DVD, we don't keep it uder build/yum, because we don't want our update script to process it every time)</li>
+<li>remote fedora repo for extra packages (usually deps for qubes-dom0)</li>
+</ul>
+<p>You need to manually copy the Fedora 13 installation DVD contents (<code></code><code>Packages/</code><code></code> and <code></code><code>repodata/</code><code></code> directories) into <code></code><code>build/fedora13-repo</code><code></code>.</p>
+<p>Also, you need to copy all the qubes dom0 rpms into <code></code><code>build/yum/qubes-dom0/rpm</code><code></code> and run the <code></code><code>yum/update_repo.sh</code><code></code> script afterwards.</p>
+<p>In order to fill the <code></code><code>build/yum/installer</code><code></code> repo one can just use <code></code><code>make update-repo</code><code></code>.</p>
+<p>The <code></code><code>build/yum/dom0-updates</code><code></code> is to be used for select rpms that should also be used instead of those from the fedora (loacal and remote) repos.</p>
 <h2 id="BuildISO">Build ISO</h2>
 <p>Now you're finally ready to build the ISO image:</p>
-<pre class="wiki"><code>revisor --cli --config=/conf/qubes-install-respin.conf --model=qubes1-x86_64 --install-dvd</code></pre>
+<pre class="wiki"><code>make iso</code></pre>
 <p>and wait...</p>
-<p>You may add <code>-d 99</code> to get a ton of debugging information.</p>
-<h2 id="Revisorconfigurationfiles">Revisor configuration files</h2>
-<p><strong>conf/qubes-install-respin.conf</strong> - Main Revisor configuration file. This configures Revisor to build Qubes Installation image based on Fedora 13. All other configuration files and working directories are pointed here.</p>
-<p><strong>conf/qubes1-x86_64-respin.conf</strong> - As said Revisor gets all packages it uses form YUM repositories. This file describes all repositories needed to build Qubes R1 for x86_64 architecture. This file also points the local repository you created before.</p>
-<p><strong>conf/qubes-1-respin.cfg</strong> - Fedora Kickstart formatted file describing which packages should land in the ISO <code>/Packages</code> repository. This describes basically what will be available for installation. The packages list built using this file will be further filtered by the comps file.</p>
-<p><strong>conf/comps-qubes1.xml</strong> - Repository Comps file for ISO <code>/Packages</code> repository, describing packages and package groups of the installer repository. Package groups are used to select which of the packages are mandatory to install, which are optional and which are to be just available on the ISO but not installed by default. Package groups may also be optional - this allows them to be selected during installation in Anaconda interface.</p>
+<p>You may add <code>-d 1</code> (or <code>-d 99</code> if you're a masochist) in the Makefile at the end of the revisor command to get (a ton of) debugging information.</p>
