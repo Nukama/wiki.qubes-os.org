@@ -30,7 +30,8 @@ Selected Subsystems Documentation
 
 -  `Implementation of DisposableVMs </wiki/DVMimpl>`__
 
--  `File exchange daemon (used by DisposableVMs) </wiki/Qfileexchgd>`__
+-  `File exchange daemon (used by DisposableVMs) (note that at Beta1,
+   this is obsolete, see InterVM file copy) </wiki/Qfileexchgd>`__
 
 -  `VM Memory management daemon </wiki/Qmemman>`__
 
