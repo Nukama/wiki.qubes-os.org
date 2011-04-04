@@ -1,0 +1,43 @@
+<h1 id="InterVMfilecopydesign">InterVM file copy design</h1>
+<p>There are two cases when we need a mechanism to copy files between VMs:</p>
+<ul>
+<li>&quot;regular&quot; file copy - when user instructs file manager to copy a given files/directories to a different VM</li>
+<li>DVM copy - user selects &quot;open in DVM&quot; on a file; this file must be copied to DVM, edited by user, and possibly a modified file copied back from DVM to VM.</li>
+</ul>
+<p>Prior to Qubes Beta1, for both cases, a block device (backed by a file in dom0 with a vfat filesystem on it) was attached to VM, file(s) copied there, and then the device was detached and attached to target VM. In the DVM case, if a edited file has been modified, another block device is passed to requester VM in order to update the source file.</p>
+<p>This has the following disadvantages:</p>
+<ul>
+<li>performance - dom0 has to attach/detach block devices, which is slow because of hotplug scripts involvement.</li>
+<li>security - VM kernel parses partition table and filesystem metadata from the block device.</li>
+</ul>
+<p>The current solution is based on the &quot;qrexec&quot; mechanism. Dom0 can call <em>qrexec_client</em> program, which will execute a given program in a given VM, passing stdin/stdout/stderr/exit code over vchan connection; possibly attaching the remote stdin/stdout to a local program. In the latter case, the syntax is <em>qrexec_client peer_vm command_in_vm -l command_in_dom0</em></p>
+<p>In order to support qrexec, there are two permanent processes: <em>qrexec-daemon</em> in dom0 and <em>qrexec-agent</em> in VM, connected over vchan. These processes are started when a domain is created. All data exchanged by pairs of processes created by <em>qrexec_client DestVM command_in_vm</em> pass via the vchan connecting qrexec-daemon and qrexec-agent.</p>
+<p>Notably, qrexec-agent possess ability to signal its qrexec-daemon peer to execute a predefined command. This way, VM-side code can initiate setup of <em>vm process &lt;-&gt; vchan &lt;-&gt; dom0 process</em> structure. As the range of dom0 commands will be predefined, there is no &quot;arbitrary code execution&quot; vulnerability here.</p>
+<p>In Qubes Beta1, we have reimplemented interVM file copy using qrexec, which addresses the abovementioned disadvantages.</p>
+<p>Note, the qrexec mechanism works over vchan, and vchan is a channel between VM and dom0 (not between two VMs). We could imagine vchan extension, in which instead of using facilities available for dom0 only (like <em>xc_map_foreign_range</em>), the channel would be setup over granted pages, between two AppVMs. Reimplementing vchan this way is nontrivial. Also, it creates some security design questions; currently, everything is mediated via dom0, which has the ability to allow/deny communication, possibly asking user via dialog popups.</p>
+<p>&quot;Regular&quot; file copy would be implemented as follows:</p>
+<ul>
+<li>in srcVM, qvm-copy-to-vm utility
+<ul>
+<li>stores the information on the files_to_be_copied to <em>~/.filecopyspool</em> directory</li>
+<li>tells <em>qrexec-agent</em> (by writing to its command fifo) to send &quot;EXECUTE_FILE_COPY&quot; command to qrexec-daemon</li>
+</ul></li>
+<li><em>qrexec-daemon</em> sees EXECUTE_FILE_COPY command, executes <br /> <em>qrexec_client srcVM qfile-agent -l qfile-daemon</em></li>
+<li>qfile-agent inspects <em>~/.filecopyspool</em>, sees the description about the file copy request. <em>qfile-agent</em> walks the directory tree, sends destination vmname, sends file metadata and data, then exits</li>
+<li>qfile-daemon gets the first 32 characters from stdin (copy destination vmname), then executes (execve, really turn into new process) <br /> <em>qrexec_client dstVM qfile-unpacker</em> <br /> At this point, two <em>qrexec_client</em> processes running in dom0 just pass data between srcVM and dstVM. When the one connected to srcVM sees incoming EOF, it just closes input to the other qrexec_client.</li>
+</ul>
+<p>DVM copy would be implemented as follows:</p>
+<ul>
+<li>in source_VM, <em>qvm-open-in-dvm</em> utility
+<ul>
+<li>stores the information on file_to_be_edited in <em>~/.dvmspool</em> directory</li>
+<li>tells <em>qrexec-agent</em> (by writing to qrexec-agent command fifo) to send &quot;EXECUTE_FILE_COPY_FOR_DISPVM&quot; command to <em>qrexec-daemon</em></li>
+</ul></li>
+<li>qrexec-daemon sees EXECUTE_FILE_COPY_FOR_DISPVM command, executes <br /> <em>qrexec_client srcVM qfile-agent-dvm -l qfile-daemon-dvm</em></li>
+<li><em>qfile-agent-dvm</em> inspects <em>~/.dvmspool</em>, sees the description about file_to_be_edited, sends data about it to its peer, closes stdout</li>
+<li><em>qfile-daemon-dvm</em> creates DispVM, then forks <br /> <em>qrexec_client DVM dvm_file_editor</em> <br /> at this point, two qrexec_client processes running in dom0 just pass data between srcVM and DispVM. <em>qfile-daemon-dvm</em> just waits for its child qrexec_client process termination.</li>
+<li><em>dvm_file_editor</em> gets file contents (end of transfer signalled by EOF), spawns mime handler, if the file has changed, sends modified file to its stdout, closes stdout</li>
+<li>the response from <em>dvm_file_editor</em> (terminated by EOF) is passed (via two qrexec_client processes in dom0) to <em>qfile-agent-dvm</em>. When <em>qfile-daemon-dvm</em> sees its child qrexec_client has exited (because of EOFs in both directions), it kills DVM.</li>
+<li><em>qfile-agent-dvm</em> retrieves response (terminated by EOF), if nonempty, it updates the edited file.</li>
+</ul>
+<p>Note that <em>qfile-unpacker</em> must be coded securely, as it processes potentially untrusted data format. Particularly, we do not want to use external tar or cpio and be prone to all vulnerabilities in them; we want a simplified, small utility, that handles only directory/file/symlink file type, permissions, mtime/atime, and assume user/user ownership. In the current implementation, the code that actually parses the data from srcVM has ca 100 lines of code and executes chrooted to the destination directory.</p>
