@@ -24,7 +24,7 @@
 <p>Typical remote desktop applications, like <em>vnc</em>, pass the information on all changed window content in-band (say, over tcp). As the channel has limited throughput, this impacts video performance. In case of Qubes, <em>qubes_gui</em> does not transfer all changed pixels via vchan. Instead, for each window, upon its creation or size change, <em>qubes_gui</em></p>
 <ul>
 <li>asks <em>qubes_drv</em> driver for the list of physical memory frames that hold the composition buffer of a window</li>
-<li>pass this information via {{{MFNDUMP}} message to <em>qubes_guid</em> in dom0</li>
+<li>pass this information via <code>MFNDUMP</code> message to <em>qubes_guid</em> in dom0</li>
 </ul>
 <p>Now, <em>qubes_guid</em> has to tell dom0 Xorg server about the location of the buffer. There is no supported way (e.g. Xorg extension) to do this zero-copy style. The following method is used in Qubes:</p>
 <ul>
