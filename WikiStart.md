@@ -24,10 +24,10 @@ For Developers
 -   [Source Code](/wiki/SourceCode)
 -   [FAQ](/wiki/DevelFaq)
 
--   [Contributors List](/wiki/ContributorsList)
-
 Contacts
 --------
+
+*Note: Please send all the questions regarding Qubes to the mailing list (see below)*
 
 ### Mailing list
 
@@ -40,10 +40,19 @@ To post to a group you don't need to subscribe, just send a message to the group
 qubes-devel+subscribe@googlegroups.com
 ```
 
-### Project administrators
+### Core developers
 
-*Note: Please send all the questions regarding Qubes to the mailing list. The below addresses are only for contacts in administration-related matters.*
+(In the order of joining the project)
+
+-   Joanna Rutkowska \<joanna at invisiblethingslab dot com\> - architecture & project management
+
+-   Rafal Wojtczuk \<rafal at invisiblethingslab dot com\> - architecture & system-level stuff
+
+-   Tomasz Sterna \<tomek at xiaoka dot com\> - installer & gui
+
+-   Marek Marczykowski \<marmarek at mimuw dot edu dot pl\> - core
+
+### Press contact
 
 -   Joanna Rutkowska \<joanna at invisiblethingslab.com\>
--   Rafal Wojtczuk \<rafal at invisiblethingslab.com\>
 
