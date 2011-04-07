@@ -12,13 +12,14 @@ For Users
 For Developers
 --------------
 
+-  `Qubes Developer Documentation </wiki/SystemDoc>`__
+-  `Source Code </wiki/SourceCode>`__
+-  `FAQ </wiki/DevelFaq>`__
+
 -  `How can I contribute to the Qubes
    Project? </wiki/ContributingHowto>`__
 -  `Books for Developers </wiki/DevelBooks>`__
 -  `Research papers related to Qubes </wiki/QubesResearch>`__
--  `Qubes Developer Documentation </wiki/SystemDoc>`__
--  `Source Code </wiki/SourceCode>`__
--  `FAQ </wiki/DevelFaq>`__
 
 Contacts
 --------
