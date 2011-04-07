@@ -33,6 +33,7 @@
 <li>when Xorg tries to attach the segment (via glibc <em>shmat</em>) <em>shmoverride.so</em> intercepts this call and instead maps AppVM memory via <em>xc_map_foreign_range</em></li>
 <li>since then, we can use MIT-SHM functions, e.g. <em>XShmPutImage</em> to draw onto a dom0 window. <em>XShmPutImage</em> will paint with DRAM speed; actually, many drivers use DMA for this.</li>
 </ul>
+<p>The important detail is that <em>xc_map_foreign_range</em> verifies that a given mfn range actually belongs to a given domain id (and the latter is provided by trusted <em>qubes_guid</em>). Therefore, rogue AppVM cannot gain anything by passing crafted mnfs in the {{{MFNDUMP}} message.</p>
 <p>To sum up, this solution has the following benefits:</p>
 <ul>
 <li>window updates at DRAM speed</li>
@@ -62,6 +63,7 @@
 <p><em>qubes_guid</em> writes debugging information to <em>/var/log/qubes/qubes.domain_id.log</em> file; <em>qubes_gui</em> writes debugging information to <em>/var/log/qubes/gui_agent.log</em>. Include these files when reporting a bug.</p>
 <h2 id="AppVM-dom0messages">AppVM -&gt; dom0 messages</h2>
 <p>Proper handling of the below messages is security-critical. Observe that beside two messages (<code>CLIPBOARD</code> and <code>MFNDUMP</code>) the rest have fixed size, so the parsing code can be small.</p>
+<p>The <em>override_redirect</em> window attribute is explained at <a href="http://tronche.com/gui/x/xlib/window/attributes/override-redirect.html">​Override Redirect Flag</a>. The <em>transient_for</em> attribute is explained at <a href="http://tronche.com/gui/x/icccm/sec-4.html#WM_TRANSIENT_FOR">​Transient_for attribute</a>.</p>
 <p>Each message starts with the following header</p>
 <pre class="wiki"><code>struct msghdr {   
         uint32_t type;
@@ -110,7 +112,7 @@
 <tr class="odd">
 <td style="text-align: left;">MSG_MFNDUMP</td>
 <td style="text-align: left;"><code> struct shm_cmd { </code> <br /> <code> uint32_t shmid; </code> <br /> <code> uint32_t width; </code> <br /> <code> uint32_t height; </code> <br /> <code> uint32_t bpp; </code> <br /> <code> uint32_t off; </code> <br /> <code> uint32_t num_mfn; </code> <br /> <code> uint32_t domid; </code> <br /> <code> uint32_t mfns[0]; </code> <br /> <code> }; </code></td>
-<td style="text-align: left;">Retrieve the array of mfns that constitute the composition buffer of a remote window. <br /> The &quot;num_mfn&quot; 32bit integers follow the shm_cmd structure.</td>
+<td style="text-align: left;">Retrieve the array of mfns that constitute the composition buffer of a remote window. <br /> The &quot;num_mfn&quot; 32bit integers follow the shm_cmd structure; &quot;off&quot; is the offset of the composite buffer start in the first frame; &quot;shmid&quot; and &quot;domid&quot; parameters are just placeholders (to be filled by <em>qubes_guid</em>), so that we can use the same structure when talking to <em>shmoverride.so</em></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">MSG_SHMIMAGE</td>
