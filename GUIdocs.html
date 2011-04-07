@@ -1,0 +1,149 @@
+<h1 id="QubesGUIprotocol">Qubes GUI protocol</h1>
+<h2 id="AppVM-dom0messages">AppVM -&gt; dom0 messages</h2>
+<p>Proper handling of the below messages is security-critical. Observe that beside two messages (<code>CLIPBOARD</code> and <code>MFNDUMP</code>) the rest have fixed size, so there is no need for error-prone parsing.</p>
+<p>Each message starts with the following header</p>
+<pre class="wiki"><code>struct msghdr {   
+        uint32_t type;
+        uint32_t window;
+};</code></pre>
+<p>The header is followed by message-specific data.</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Message name</th>
+<th style="text-align: left;">Structure after header</th>
+<th style="text-align: left;">Action</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">MSG_CLIPBOARD_DATA</td>
+<td style="text-align: left;">amorphic blob (length determined by the &quot;window&quot; field)</td>
+<td style="text-align: left;">Store the received clipboard content (not parsing in any way)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">MSG_CREATE</td>
+<td style="text-align: left;"><code> struct msg_create { </code> <br /> <code> uint32_t x; </code> <br /> <code> uint32_t y; </code> <br /> <code> uint32_t width; </code> <br /> <code> uint32_t height; </code> <br /> <code> uint32_t parent; </code> <br /> <code> uint32_t override_redirect; </code> <br /> <code> }; </code></td>
+<td style="text-align: left;">Create a window with given parameters</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">MSG_DESTROY</td>
+<td style="text-align: left;">None</td>
+<td style="text-align: left;">Destroy a window</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">MSG_MAP</td>
+<td style="text-align: left;"><code> struct msg_map_info { </code> <br /> <code> uint32_t transient_for; </code> <br /> <code> uint32_t override_redirect; </code> <br /> <code> }; </code></td>
+<td style="text-align: left;">Map a window with given parameters</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">MSG_UNMAP</td>
+<td style="text-align: left;">None</td>
+<td style="text-align: left;">Unmap a window</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">MSG_CONFIGURE</td>
+<td style="text-align: left;"><code> struct msg_configure { </code> <br /> <code> uint32_t x; </code> <br /> <code> uint32_t y; </code> <br /> <code> uint32_t width; </code> <br /> <code> uint32_t height; </code> <br /> <code> uint32_t override_redirect; </code> <br /> <code> }; </code></td>
+<td style="text-align: left;">Change window position/size/type</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">MSG_MFNDUMP</td>
+<td style="text-align: left;"><code> struct shm_cmd { </code> <br /> <code> uint32_t shmid; </code> <br /> <code> uint32_t width; </code> <br /> <code> uint32_t height; </code> <br /> <code> uint32_t bpp; </code> <br /> <code> uint32_t off; </code> <br /> <code> uint32_t num_mfn; </code> <br /> <code> uint32_t domid; </code> <br /> <code> uint32_t mfns[0]; </code> <br /> <code> }; </code></td>
+<td style="text-align: left;">Retrieve the array of mfns that constitute the composition buffer of a remote window. <br /> The &quot;num_mfn&quot; 32bit integers follow the shm_cmd structure.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">MSG_SHMIMAGE</td>
+<td style="text-align: left;"><code> struct msg_shmimage { </code> <br /> <code>    uint32_t x; </code> <br /> <code>    uint32_t y;</code> <br /> <code>    uint32_t width;</code> <br /> <code>    uint32_t height;</code> <br /> <code> }; </code></td>
+<td style="text-align: left;">Repaint the given window fragment</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">MSG_WMNAME</td>
+<td style="text-align: left;"><code> struct msg_wmname { </code> <br /> <code> char data[128]; </code> <br /> <code> } ; </code></td>
+<td style="text-align: left;">Set the window name; only printable characters are allowed</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">MSG_DOCK</td>
+<td style="text-align: left;">None</td>
+<td style="text-align: left;">Dock the window in the tray</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Dom0-AppVMmessages">Dom0 -&gt; AppVM messages</h2>
+<p>Proper handling of the below messages is NOT security-critical.</p>
+<p>Each message starts with the following header</p>
+<pre class="wiki"><code>struct msghdr {   
+        uint32_t type;
+        uint32_t window;
+};</code></pre>
+<p>The header is followed by message-specific data. <br /> <code> KEYPRESS, BUTTON, MOTION </code> messages pass information extracted from dom0 XEvent; see appropriate event documentation.</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Message name</th>
+<th style="text-align: left;">Structure after header</th>
+<th style="text-align: left;">Action</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">MSG_KEYPRESS</td>
+<td style="text-align: left;"><code> struct msg_keypress {  </code> <br /> <code> uint32_t type;  </code> <br /> <code> uint32_t x;  </code> <br /> <code> uint32_t y;  </code> <br /> <code> uint32_t state;  </code> <br /> <code> uint32_t keycode;  </code> <br /> <code> }; </code></td>
+<td style="text-align: left;">Tell qubes driver to generate a keypress</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">MSG_BUTTON</td>
+<td style="text-align: left;"><code> struct msg_button {  </code> <br /> <code> uint32_t type;  </code> <br /> <code> uint32_t x;  </code> <br /> <code> uint32_t y;  </code> <br /> <code> uint32_t state;  </code> <br /> <code> uint32_t button;  </code> <br /> <code> }; </code></td>
+<td style="text-align: left;">Tell qubes driver to generate mouseclick</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">MSG_MOTION</td>
+<td style="text-align: left;"><code> struct msg_motion {  </code> <br /> <code> uint32_t x;  </code> <br /> <code> uint32_t y;  </code> <br /> <code> uint32_t state;  </code> <br /> <code> uint32_t is_hint;  </code> <br /> <code> }; </code></td>
+<td style="text-align: left;">Tell qubes driver to generate motion</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">MSG_CONFIGURE</td>
+<td style="text-align: left;"><code> struct msg_configure { </code> <br /> <code> uint32_t x; </code> <br /> <code> uint32_t y; </code> <br /> <code> uint32_t width; </code> <br /> <code> uint32_t height; </code> <br /> <code> uint32_t override_redirect; </code> <br /> <code> }; </code></td>
+<td style="text-align: left;">Change window position/size/type</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">MSG_MAP</td>
+<td style="text-align: left;"><code> struct msg_map_info { </code> <br /> <code> uint32_t transient_for; </code> <br /> <code> uint32_t override_redirect; </code> <br /> <code> }; </code></td>
+<td style="text-align: left;">Map a window with given parameters</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">MSG_CLOSE</td>
+<td style="text-align: left;">None</td>
+<td style="text-align: left;">send wmDeleteMessage to the window</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">MSG_CROSSING</td>
+<td style="text-align: left;">Obsolete</td>
+<td style="text-align: left;">Obsolete, unused</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">MSG_FOCUS</td>
+<td style="text-align: left;"><code> struct msg_focus {  </code> <br /> <code> uint32_t type;  </code> <br /> <code> uint32_t mode;  </code> <br /> <code> uint32_t detail;  </code> <br /> <code>  }; </code></td>
+<td style="text-align: left;">Raise a window, XSetInputFocus</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">MSG_CLIPBOARD_REQ</td>
+<td style="text-align: left;">None</td>
+<td style="text-align: left;">Retrieve the local clipboard, pass contents to gui-daemon</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">MSG_CLIPBOARD_DATA</td>
+<td style="text-align: left;">amorphic blob</td>
+<td style="text-align: left;">Insert the received data into local clipboard</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">MSG_EXECUTE</td>
+<td style="text-align: left;">Obsolete</td>
+<td style="text-align: left;">Obsolete, unused</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">MSG_KEYMAP_NOTIFY</td>
+<td style="text-align: left;"><code> unsigned char remote_keys[32]; </code></td>
+<td style="text-align: left;">Synchronize the keyboard state (key pressed/depressed) with dom0</td>
+</tr>
+</tbody>
+</table>
