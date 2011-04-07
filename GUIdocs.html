@@ -33,7 +33,7 @@
 <li>when Xorg tries to attach the segment (via glibc <em>shmat</em>) <em>shmoverride.so</em> intercepts this call and instead maps AppVM memory via <em>xc_map_foreign_range</em></li>
 <li>since then, we can use MIT-SHM functions, e.g. <em>XShmPutImage</em> to draw onto a dom0 window. <em>XShmPutImage</em> will paint with DRAM speed; actually, many drivers use DMA for this.</li>
 </ul>
-<p>The important detail is that <em>xc_map_foreign_range</em> verifies that a given mfn range actually belongs to a given domain id (and the latter is provided by trusted <em>qubes_guid</em>). Therefore, rogue AppVM cannot gain anything by passing crafted mnfs in the {{{MFNDUMP}} message.</p>
+<p>The important detail is that <em>xc_map_foreign_range</em> verifies that a given mfn range actually belongs to a given domain id (and the latter is provided by trusted <em>qubes_guid</em>). Therefore, rogue AppVM cannot gain anything by passing crafted mnfs in the <code>MFNDUMP</code> message.</p>
 <p>To sum up, this solution has the following benefits:</p>
 <ul>
 <li>window updates at DRAM speed</li>
