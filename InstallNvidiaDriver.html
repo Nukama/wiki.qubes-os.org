@@ -1,6 +1,7 @@
 <h1 id="Nvidiaproprietarydriverinstallation">Nvidia proprietary driver installation</h1>
 <p>The NVIDIA proprietary driver works <strong>much</strong> more stable than nouveau, so it's good idea to install it. But this is somehow complicated: First - download it from nvidia.com site. Here &quot;NVIDIA-Linux-x86_64-260.19.44.run&quot; is used. Copy it to dom0. Every next step is done in dom0.</p>
 <p>See <a href="/wiki/wiki/CopyToDomZero">this page</a> for instruction on how to transfer files to Dom0 (where there is normallyno networking).</p>
+<p><strong>WARNING</strong>: Nvidia doesn't sign their files. To make it worse, you are forced to download them over a plaintext connection. This means there are virtually dozens of possibilities for somebody to modify this file and provide you with a malicious/backdoored file. You should realize that installing untrusted files into your Dom0 is really a bad idea. Perhaps it might be a better idea to just get a new laptop with integrated Intel GPU? You have been warned, anyway.</p>
 <h2 id="Userspacecomponents">Userspace components</h2>
 <p>Install libraries, Xorg driver, configuration utilities. This can by done by nvidia-installer:</p>
 <pre class="wiki"><code>./NVIDIA-Linux-x86_64-260.19.44.run --ui=none --no-x-check --keep --no-nouveau-check</code></pre>
