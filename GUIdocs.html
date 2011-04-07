@@ -1,6 +1,67 @@
 <h1 id="QubesGUIprotocol">Qubes GUI protocol</h1>
+<h2 id="qubes_guiandqubes_guidprocesses">qubes_gui and qubes_guid processes</h2>
+<p>All AppVM X applications connect to local (running in AppVM) Xorg server, that uses the following &quot;hardware&quot; drivers:</p>
+<ul>
+<li><em>dummy_drv</em> - video driver, that paints onto a framebuffer located in RAM, not connected to real hardware</li>
+<li><em>qubes_drv</em> - it provides a virtual keyboard and mouse (in fact, more, see below)</li>
+</ul>
+<p>For each AppVM, there is a pair of <em>qubes_gui</em> (running in AppVM) and <em>qubes_guid</em> (running in dom0) processes, connected over vchan. Main responsibilities of <em>qubes_gui</em> are:</p>
+<ul>
+<li>call XCompositeRedirectSubwindows on the root window, so that each window has its own composition buffer</li>
+<li>instruct the local Xorg server to notify it about window creation, configuration and damage events; pass information on these events to dom0</li>
+<li>receive information about keyboard and mouse events from dom0, tell <em>qubes_drv</em> to fake appropriate events</li>
+<li>receive information about window size/position change, apply them to the local window</li>
+</ul>
+<p>Main responsibilities of <em>qubes_guid</em> are:</p>
+<ul>
+<li>create a window in dom0 whenever an information on window creation in AppVM is received from <em>qubes_gui</em></li>
+<li>whenever the local window receives XEvent, pass information on it to AppVM (particularly, mouse and keyboard data)</li>
+<li>whenever AppVM signals damage event, tell local Xorg server to repaint a given window fragment</li>
+<li>receive information about window size/position change, apply them to the local window</li>
+</ul>
+<p>Note that keyboard and mouse events are passed to AppVM only if a window belonging to this AppVM has focus. AppVM has no way to get information on keystrokes fed to other AppVMs (e.g. XTEST extension will report the status of local AppVM keyboard only), nor synthetize and pass events to other AppVMs.</p>
+<h2 id="Windowcontentupdatesimplementation">Window content updates implementation</h2>
+<p>Typical remote desktop applications, like <em>vnc</em>, pass the information on all changed window content in-band (say, over tcp). As the channel has limited throughput, this impacts video performance. In case of Qubes, <em>qubes_gui</em> does not transfer all changed pixels via vchan. Instead, for each window, upon its creation or size change, <em>qubes_gui</em></p>
+<ul>
+<li>asks <em>qubes_drv</em> driver for the list of physical memory frames that hold the composition buffer of a window</li>
+<li>pass this information via {{{MFNDUMP}} message to <em>qubes_guid</em> in dom0</li>
+</ul>
+<p>Now, <em>qubes_guid</em> has to tell dom0 Xorg server about the location of the buffer. There is no supported way (e.g. Xorg extension) to do this zero-copy style. The following method is used in Qubes:</p>
+<ul>
+<li>in dom0, the Xorg server is started with <em>LD_PRELOAD</em>-ed library named <em>shmoverride.so</em>. This library hooks all function calls related to shared memory.</li>
+<li><em>qubes_guid</em> creates a shared memory segment, and then tells Xorg to attach it via <em>MIT-SHM</em> extension</li>
+<li>when Xorg tries to attach the segment (via glibc <em>shmat</em>) <em>shmoverride.so</em> intercepts this call and instead maps AppVM memory via <em>xc_map_foreign_range</em></li>
+<li>since then, we can use MIT-SHM functions, e.g. <em>XShmPutImage</em> to draw onto a dom0 window. <em>XShmPutImage</em> will paint with DRAM speed; actually, many drivers use DMA for this.</li>
+</ul>
+<p>To sum up, this solution has the following benefits:</p>
+<ul>
+<li>window updates at DRAM speed</li>
+<li>no changes to Xorg code</li>
+<li>minimal size of the supporting code</li>
+</ul>
+<p><a href="/wiki/chrome/site/../../../site/gui.png"><img src="/wiki/chrome/site/../../../site/gui.png" title="gui.png" alt="gui.png" /></a></p>
+<h2 id="Securitymarkersondom0windows">Security markers on dom0 windows</h2>
+<p>It is important that user knows which AppVM a given window belongs to. This prevents an attack when a rogue AppVM paints a window pretending to belong to other AppVM or dom0, and tries to steal e.g. passwords.</p>
+<p>In Qubes, the custom window decorator is used, that paints a colourful frame (the colour is determined during AppVM creation) around decorated windows. Additionally, window title always starts with <strong>[name of the AppVM]</strong>. If a window has a <em>override_redirect</em> attribute, meaning that it should not be treated by a window manager (typical case is menu windows), <em>qubes_guid</em> draws a two-pixel colourful frame around it manually.</p>
+<h2 id="Clipboardsharingimplementation">Clipboard sharing implementation</h2>
+<p>Certainly, it would be insecure to allow AppVM to read/write clipboard of other AppVMs unconditionally. Therefore, the following mechanism is used:</p>
+<ul>
+<li>there is a &quot;qubes clipboard&quot; in dom0 - its contents is stored in a regular file in dom0.</li>
+<li>if user wants to copy local AppVM clipboard to qubes clipboard, she must focus on any window belonging to this AppVM, and press <strong>Ctrl-Shift-C</strong>. This combination is trapped by <em>qubes-guid</em>, and <code>CLIPBOARD_REQ</code> message is sent to AppVM. <em>qubes-gui</em> responds with <em>CLIPBOARD_DATA</em> message followed by clipboard contents.</li>
+<li>user focuses on other AppVM window, presses <strong>Ctrl-Shift-V</strong>. This combination is trapped by <em>qubes-guid</em>, and <code>CLIPBOARD_DATA</code> message followed by qubes clipboard contents is sent to AppVM; <em>qubes_gui</em> copies data to the the local clipboard, and then user can paste its contents to local applications normally.</li>
+</ul>
+<p>This way, user can quickly copy clipboards between AppVMs. This action is fully controlled by the user, it cannot be triggered/forced by any AppVM.</p>
+<h2 id="qubes_guiandqubes_guidcodenotes"><em>qubes_gui</em> and <em>qubes_guid</em> code notes</h2>
+<p>Both applications are structures similarly. They use <em>select</em> function to wait for any of the two event sources</p>
+<ul>
+<li>messages from the local X server</li>
+<li>messages from the vchan connecting to the remote party</li>
+</ul>
+<p>The XEvents are handled by <em>handle_xevent_eventname</em> function, messages are handled by <em>handle_messagename</em> function. One should be very careful when altering the actual <em>select</em> loop - e.g. both XEvents and vchan messages are buffered, meaning that <em>select</em> will not wake for each message.</p>
+<p>If one changes the number/order/signature of messages, one should increase the <em>QUBES_GUID_PROTOCOL_VERSION</em> constant in <em>messages.h</em> include file.</p>
+<p><em>qubes_guid</em> writes debugging information to <em>/var/log/qubes/qubes.domain_id.log</em> file; <em>qubes_gui</em> writes debugging information to <em>/var/log/qubes/gui_agent.log</em>. Include these files when reporting a bug.</p>
 <h2 id="AppVM-dom0messages">AppVM -&gt; dom0 messages</h2>
-<p>Proper handling of the below messages is security-critical. Observe that beside two messages (<code>CLIPBOARD</code> and <code>MFNDUMP</code>) the rest have fixed size, so there is no need for error-prone parsing.</p>
+<p>Proper handling of the below messages is security-critical. Observe that beside two messages (<code>CLIPBOARD</code> and <code>MFNDUMP</code>) the rest have fixed size, so the parsing code can be small.</p>
 <p>Each message starts with the following header</p>
 <pre class="wiki"><code>struct msghdr {   
         uint32_t type;
@@ -75,7 +136,7 @@
         uint32_t type;
         uint32_t window;
 };</code></pre>
-<p>The header is followed by message-specific data. <br /> <code> KEYPRESS, BUTTON, MOTION </code> messages pass information extracted from dom0 XEvent; see appropriate event documentation.</p>
+<p>The header is followed by message-specific data. <br /> <code> KEYPRESS, BUTTON, MOTION, FOCUS </code> messages pass information extracted from dom0 XEvent; see appropriate event documentation.</p>
 <table>
 <thead>
 <tr class="header">
@@ -88,17 +149,17 @@
 <tr class="odd">
 <td style="text-align: left;">MSG_KEYPRESS</td>
 <td style="text-align: left;"><code> struct msg_keypress {  </code> <br /> <code> uint32_t type;  </code> <br /> <code> uint32_t x;  </code> <br /> <code> uint32_t y;  </code> <br /> <code> uint32_t state;  </code> <br /> <code> uint32_t keycode;  </code> <br /> <code> }; </code></td>
-<td style="text-align: left;">Tell qubes driver to generate a keypress</td>
+<td style="text-align: left;">Tell <em>qubes_drv</em> driver to generate a keypress</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">MSG_BUTTON</td>
 <td style="text-align: left;"><code> struct msg_button {  </code> <br /> <code> uint32_t type;  </code> <br /> <code> uint32_t x;  </code> <br /> <code> uint32_t y;  </code> <br /> <code> uint32_t state;  </code> <br /> <code> uint32_t button;  </code> <br /> <code> }; </code></td>
-<td style="text-align: left;">Tell qubes driver to generate mouseclick</td>
+<td style="text-align: left;">Tell <em>qubes_drv</em> driver to generate mouseclick</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">MSG_MOTION</td>
 <td style="text-align: left;"><code> struct msg_motion {  </code> <br /> <code> uint32_t x;  </code> <br /> <code> uint32_t y;  </code> <br /> <code> uint32_t state;  </code> <br /> <code> uint32_t is_hint;  </code> <br /> <code> }; </code></td>
-<td style="text-align: left;">Tell qubes driver to generate motion</td>
+<td style="text-align: left;">Tell <em>qubes_drv</em> driver to generate motion event</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">MSG_CONFIGURE</td>
