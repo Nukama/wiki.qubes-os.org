@@ -21,14 +21,14 @@ uid   Qubes Master Signing Key</code></pre>
 <pre class="wiki"><code>gpg --edit-key 0x36879494
 and then: trust, 5, y, q</code></pre>
 <p>Now you can easily download any of the developer or release keys that happen to be used to sign particular rpm, tgz, or git tags. E.g.:</p>
-<pre class="wiki"><code>$ gpg --keyserver pgp.mit.edu --recv 1403BEDE
-gpg: requesting key 1403BEDE from hkp server pgp.mit.edu
-gpg: key 1403BEDE: public key &quot;Qubes OS Release 1 Signing Key&quot; imported
+<pre class="wiki"><code>$ gpg --recv-keys AC1BF9B3
+gpg: requesting key AC1BF9B3 from hkp server keys.gnupg.net
+gpg: key AC1BF9B3: public key &quot;Qubes OS Release 1 Signing Key&quot; imported
 gpg: no ultimately trusted keys found
 gpg: Total number processed: 1
 gpg:               imported: 1  (RSA: 1)</code></pre>
 <p>You can also download all the currently used developer's keys (and also a copy of the Master Key) in the keys directory on our server:</p>
-<p><a href="http://qubes-os.org/keys/">​http://qubes-os.org/keys/</a></p>
+<p><a href="http://keys.qubes-os.org/keys/">​http://keys.qubes-os.org/keys/</a></p>
 <p>The developer keys are set to be valid for 1 year only, while the Qubes Master Singing Key has no expiration date. This key has been generated and is kept only within a special 'vault' machine that has no networking, and the private portion (hopefully) is never to leave this isolated machine.</p>
 <h2 id="VerifyingQubescode">Verifying Qubes code</h2>
 <p>Developers who fetch code from our Git server should always verify tags on the latest commit. Any commits that are not followed by a signed tag should not be trusted!</p>
