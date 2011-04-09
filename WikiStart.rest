@@ -7,7 +7,7 @@ For Users
 -  `Installation guide </wiki/InstallationGuide>`__
 -  `On digital signatures and how to verify Qubes
    downloads </wiki/VerifyingSignatures>`__
--  `User's Guide </wiki/UserDoc>`__
+-  `User Guide </wiki/UserDoc>`__
 -  `FAQ </wiki/UserFaq>`__
 
 For Developers
