@@ -148,6 +148,8 @@ Known Issues
    KDE-specific bug and applies to some GPUs only. The solution is to
    switch off composition (normally Alt-Shift-F12) before putting the
    computer into sleep.
+-  It might take up to 1 minute after you log in for the NetVM's network
+   icon to appear in the tray -- be patient!
 
 Getting Help
 ------------
