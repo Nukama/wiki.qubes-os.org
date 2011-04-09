@@ -22,7 +22,8 @@
 </ul>
 <p>See this <a href="/wiki/wiki/VerifyingSignatures">page</a> for more info about how to download and verify our GPG keys. Then, verify the downloaded ISO:</p>
 <pre class="wiki"><code>gpg -v ISO.asc</code></pre>
-<p>Once you verify this is an authentic ISO, you should burn it on a DVD. For instructions on how to &quot;burn&quot; it on a USB stick, see <a href="/wiki/wiki/UsbInstallation">this page</a>. Before proceeding with the installation, you should first read the <em>Known Issues paragraph</em>, below.</p>
+<p>Once you verify this is an authentic ISO, you should burn it on a DVD. For instructions on how to &quot;burn&quot; it on a USB stick, see <a href="/wiki/wiki/UsbInstallation">this page</a>. Before proceeding with the installation, you are encouraged to first read all the information on this page, especially the <em>Known Issues</em> paragraph.</p>
+<p>Then, when finally ready, boot your system from the installer DVD and follow the instructions on screen. The installer is very simple and asks very few questions -- it's actually easier to install Qubes right now, then most other Linux distributions :)</p>
 <h2 id="MigratingfromQubesAlpha3">Migrating from Qubes Alpha 3</h2>
 <p>If you have Qubes Alpha 3 currently installed you must reinstall from scratch, as we offer no direct upgrade option in the installer. However, we do offer tools for smooth migration of your AppVMs. In order to do that, please backup your AppVMs using the <code></code><code>qvm-backup</code><code></code> tool [BackupRestore: as usual] (under Qubes Alpha 3). Then, after you install Qubes Beta 1, you will need to restore them using a special argument that would tell the restore tool to replace the old template name, used on Alpha 3, with the new one that we use on Qubes Beta 1:</p>
 <pre class="wiki"><code>qvm-backup-restore /mnt/backup/&lt;backup_dir&gt; --replace-template=linux-x64:fedora-14-x64</code></pre>
