@@ -1,4 +1,4 @@
-Qubes User Manual
+Qubes User Guides
 =================
 
 -  Getting started
