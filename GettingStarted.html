@@ -1,0 +1,18 @@
+<h1 id="GettingStartedwithQubesOS">Getting Started with Qubes OS</h1>
+<p>So, you just installed a fresh Qubes OS, huh? Let's see what your next steps could be...</p>
+<h2 id="WhatareAppVMsdomains">What are AppVMs (domains)?</h2>
+<p>In Qubes you run all your programs in <em>domains</em>, also called <em>AppVMs</em>, because those domains are implemented as lightweight Virtual Machines (VMs). It's not true that every app runs in its own VM -- that would be a big waste of resources. Instead the VMs represent security domains, such as: <em>work</em>, <em>personal</em>, <em>banking</em>, <em>random browsing</em> (we call it <em>red</em>), etc.</p>
+<p>If you have proceeded with the default installation options, Qubes has already pre-created 3 domains for you:</p>
+<ul>
+<li>work</li>
+<li>personal</li>
+<li>red (for all the untrusted activity, such as random web browsing)</li>
+</ul>
+<p>Each domain, apart form having a distinct name, is also assigned a <strong>label</strong>, which basically is one of the several per-defined colors. These colors, which are used for drawing window decorations by the trusted Window Manager (color frames), are supposed to be user friendly, easy noticeable, indicators of how trusted a given window is. It's totally up to the user how he or she interprets these colors. For me, it has been somehow obvious to associate the red color with something that is untrusted and dangerous (the “red light” -- stop! danger!), green with something that is safe and trusted, while yellow and orange with something in the middle. I have also extended this scheme, to also include blue, and black, which I interpret as indicating progressively more trusted domains than green, with black being something ultimately trusted.</p>
+<p>There is, however, one special domain that is called <em>Dom0</em> which is where the Desktop Manager (currently KDE) runs, and this is where you log into. This domain doesn't have any networking connectivity and is essentially only dedicated for running the Window and Desktop Manager, nothing else.</p>
+<h2 id="Startingappsindomains">Starting apps in domains</h2>
+<p>TODO</p>
+<h2 id="AddingRemovingdomains">Adding/Removing domains</h2>
+<p>TODO</p>
+<h2 id="HowmanydomainsdoIneed">How many domains do I need?</h2>
+<p>TODO</p>
