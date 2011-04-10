@@ -18,7 +18,7 @@ Minimum:
    tested ATI hardware)
 -  10GB of disk (Note that **it is possible to install Qubes on an
    external USB disk**, so that you can try it without sacrificing your
-   current system. Mind, however that USB disks are usually SLOW!)
+   current system. Mind, however, that USB disks are usually SLOW!)
 
 Additional requirements:
 
