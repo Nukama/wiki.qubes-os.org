@@ -2,8 +2,8 @@ Qubes User Guides
 =================
 
 -  `Getting started </wiki/GettingStarted>`__
--  Copy and paste between domains (AppVMs)
--  Copying files between domains (AppVMs)
+-  `Copy and paste between domains (AppVMs) </wiki/CopyPaste>`__
+-  `Copying files between domains (AppVMs) </wiki/CopyingFiles>`__
 -  Using Disposable VMs
 -  Using Qubes firewall
 -  Updating and adding new software to domains (AppVMs)
