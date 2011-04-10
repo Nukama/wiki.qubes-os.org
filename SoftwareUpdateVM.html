@@ -1,0 +1,11 @@
+<h1 id="InstallingandupdatingsoftwareinVMs">Installing and updating software in VMs</h1>
+<h2 id="HowTemplateVMworksinQubes">How Template VM works in Qubes</h2>
+<p>Most of the AppVMs (domains) are based on a <em>template VM</em>, which means that their root filesystem (i.e. all the programs and system files) is based on the root filesystem of the corresponding template VM. This dramatically saves disk space, because each new AppVM needs disk space only for storing the user's files (i.e. the home directory). Of course the AppVM has only read-access to the template's filesystem -- it cannot modify it in any way.</p>
+<p>In addition to saving on the disk space, and reducing domain creation time, another advantage of such scheme is the possibility for centralized software update. It's just enough to do the update in the template VM, and then all the AppVMs based on this template get updates automatically after they are restarted.</p>
+<p>The default template in Qubes R1 is called <strong>fedora-14-x64</strong>.</p>
+<h2 id="OutdatedVMs">&quot;Outdated&quot; VMs</h2>
+<p>TODO</p>
+<h2 id="StandaloneVMs">Standalone VMs</h2>
+<p>TODO</p>
+<h2 id="Usingmorethanonetemplate">Using more than one template</h2>
+<p>TODO</p>
