@@ -2,14 +2,17 @@ Qubes User Guides
 =================
 
 -  `Getting started </wiki/GettingStarted>`__
--  `Copy and paste between domains (AppVMs) </wiki/CopyPaste>`__
--  `Copying files between domains (AppVMs) </wiki/CopyingFiles>`__
+-  `Copy and paste between domains </wiki/CopyPaste>`__
+-  `Copying files between domains </wiki/CopyingFiles>`__
+-  [SoftwareUpdateVM Updating and adding new software to domains]
+-  [SoftwareUpdateDom0 Updating software in Dom0]
+-  `Backup/Restore/Migration </wiki/BackupRestore>`__
+
+Advanced topics:
+
 -  Using Disposable VMs
 -  Using Qubes firewall
--  Updating and adding new software to domains (AppVMs)
--  Updating software Dom0
 -  `How to mount USB stick to an AppVM? </wiki/StickMounting>`__
--  `Backup/Restore/Migration </wiki/BackupRestore>`__
 -  `How to install Nvidia driver in dom0 </wiki/InstallNvidiaDriver>`__
 -  `How to copy files to Dom0? </wiki/CopyToDomZero>`__
 
