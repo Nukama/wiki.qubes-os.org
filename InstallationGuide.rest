@@ -163,9 +163,12 @@ Known Issues
 Getting Help
 ------------
 
--  User manuals are `here </wiki/UserDoc>`__
+-  **User manuals are `here </wiki/UserDoc>`__.** (Strongly
+   recommended!)
+
 -  Developers documentation (normally not needed by users) is
    `here </wiki/SystemDoc>`__
+
 -  If you don't find answer in the sources given above, write to the
    *qubes-devel* mailing list:
 
