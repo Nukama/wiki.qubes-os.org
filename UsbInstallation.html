@@ -1,8 +1,21 @@
 <h1 id="HowtocreateabootableUSBstickfromQubesISO">How to create a bootable USB stick from Qubes ISO</h1>
 <ul>
-<li>download the qubes-usb-installer archive and its signature from here FIXME; it is a bash script, so you need to run it on an existing Linux system</li>
-<li>verify the archive signature the same way you have verified iso integrity</li>
-<li><code> tar -zxvf qubes-usb-installer-1.2.tgz </code></li>
-<li><code> ./qubes-usb-installer-1.2/qubes-usb-installer path_to_qubes_iso /dev/sdX </code>, where /dev/sdX is your USB stick</li>
+<li>download the qubes-usb-installer archive and its signature:
+<ul>
+<li><a href="http://www.qubes-os.org/files/misc/qubes-usb-installer-1.2.tgz">​http://www.qubes-os.org/files/misc/qubes-usb-installer-1.2.tgz</a></li>
+<li><a href="http://www.qubes-os.org/files/misc/qubes-usb-installer-1.2.tgz.asc">​http://www.qubes-os.org/files/misc/qubes-usb-installer-1.2.tgz.asc</a></li>
+</ul></li>
 </ul>
-<p>Note that all contents of the /dev/sdX device will be destroyed - be careful to pass the correct device name there (e.g. not your harddrive).</p>
+<ul>
+<li><p>verify the archive signature the same way you have verified iso integrity:</p>
+<pre class="wiki"><code>gpg -v &lt;file&gt;.asc</code></pre></li>
+</ul>
+<ul>
+<li><p>Unpack the archive (e.g. in your home directory):</p>
+<pre class="wiki"><code>tar -zxvf qubes-usb-installer-1.2.tgz</code></pre></li>
+</ul>
+<ul>
+<li><p>&quot;Burn&quot; the Qubes ISO onto the USB stick:</p>
+<pre class="wiki"><code>./qubes-usb-installer-1.2/qubes-usb-installer path_to_qubes_iso /dev/sdX</code></pre></li>
+</ul>
+<p>... where <code></code><code>/dev/sdX</code><code></code> is your USB stick. Note that all contents of the <code></code><code>/dev/sdX</code><code></code> device will be destroyed - be careful to pass the correct device name there (e.g. not your harddrive).</p>
