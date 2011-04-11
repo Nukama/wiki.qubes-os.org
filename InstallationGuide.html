@@ -68,6 +68,9 @@ xm dmesg | grep -i vtd</code></pre>
 <ul>
 <li>Virtualized try icons might look incorrectly directly for some apps. This problem seems to vanish whenever the app refreshes the icon.</li>
 </ul>
+<ul>
+<li>If using a wired connection in netvm, it might not come up properly after suspend/resume. One may need to manually do <code> ifconfig eth0 down; ifconfig eth0 up</code> in netvm after resume.</li>
+</ul>
 <h2 id="GettingHelp">Getting Help</h2>
 <ul>
 <li><strong>User manuals are <a href="/wiki/wiki/UserDoc">here</a>.</strong> (Strongly recommended!)</li>
