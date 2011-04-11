@@ -19,7 +19,8 @@
 <li><em>/usr/src/kernels/2.6.34.1-12.xenlinux.qubes.x86_64/arch/x64/include/mach-xen</em> should be present (if not - take it from kernel sources)</li>
 </ul>
 <p>If it is not true - correct it manually. To build kernel module, enter <em>NVIDIA-Linux-x86_64-260.19.44/kernel</em> directory and execute:</p>
-<pre class="wiki"><code>IGNORE_XEN_PRESENCE=1 CC=&quot;gcc -DNV_VMAP_4_PRESENT -DNV_SIGNAL_STRUCT_RLIM&quot; make -f Makefile.kbuild
+<pre class="wiki"><code>make
+IGNORE_XEN_PRESENCE=1 CC=&quot;gcc -DNV_VMAP_4_PRESENT -DNV_SIGNAL_STRUCT_RLIM&quot; make -f Makefile.kbuild
 mv /lib/modules/2.6.34.1-12.xenlinux.qubes.x86_64/kernel/drivers/video/nvidia.ko /lib/modules/2.6.34.1-12.xenlinux.qubes.x86_64/extra/</code></pre>
 <p>Ignore error while inserting nvidia.ko (at the end of make phase). Now you should disable nouveau:</p>
 <pre class="wiki"><code>cat /etc/modprobe.d/nouveau-disable.conf
