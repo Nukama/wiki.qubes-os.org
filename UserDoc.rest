@@ -8,12 +8,17 @@ Qubes User Guides
    domains </wiki/SoftwareUpdateVM>`__
 -  `Updating software in Dom0 </wiki/SoftwareUpdateDom0>`__
 -  `Backup/Restore/Migration </wiki/BackupRestore>`__
+-  Using Disposable VMs
 
 Advanced topics:
 
--  Using Disposable VMs
 -  Using Qubes firewall
 -  `How to mount USB stick to an AppVM? </wiki/StickMounting>`__
--  `How to install Nvidia driver in dom0 </wiki/InstallNvidiaDriver>`__
 -  `How to copy files to Dom0? </wiki/CopyToDomZero>`__
+
+Optional topics:
+
+-  `How to install Nvidia driver in dom0 </wiki/InstallNvidiaDriver>`__
+-  `Getting Sony Vaio Z laptop to work with
+   Qubes </wiki/SonyVaioTinkering>`__
 
