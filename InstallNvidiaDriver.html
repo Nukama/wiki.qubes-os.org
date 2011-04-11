@@ -4,7 +4,7 @@
 <p><strong>WARNING</strong>: Nvidia doesn't sign their files. To make it worse, you are forced to download them over a plaintext connection. This means there are virtually dozens of possibilities for somebody to modify this file and provide you with a malicious/backdoored file. You should realize that installing untrusted files into your Dom0 is really a bad idea. Perhaps it might be a better idea to just get a new laptop with integrated Intel GPU? You have been warned, anyway.</p>
 <h2 id="Userspacecomponents">Userspace components</h2>
 <p>Install libraries, Xorg driver, configuration utilities. This can by done by nvidia-installer:</p>
-<pre class="wiki"><code>./NVIDIA-Linux-x86_64-260.19.44.run --ui=none --no-x-check --keep --no-nouveau-check</code></pre>
+<pre class="wiki"><code>./NVIDIA-Linux-x86_64-260.19.44.run --ui=none --no-x-check --keep --no-nouveau-check --no-kernel-module</code></pre>
 <h2 id="Kernelmodule">Kernel module</h2>
 <p>You will need:</p>
 <ul>
