@@ -3,9 +3,20 @@
 <p>Most of the AppVMs (domains) are based on a <em>template VM</em>, which means that their root filesystem (i.e. all the programs and system files) is based on the root filesystem of the corresponding template VM. This dramatically saves disk space, because each new AppVM needs disk space only for storing the user's files (i.e. the home directory). Of course the AppVM has only read-access to the template's filesystem -- it cannot modify it in any way.</p>
 <p>In addition to saving on the disk space, and reducing domain creation time, another advantage of such scheme is the possibility for centralized software update. It's just enough to do the update in the template VM, and then all the AppVMs based on this template get updates automatically after they are restarted.</p>
 <p>The default template in Qubes R1 is called <strong>fedora-14-x64</strong>.</p>
-<h2 id="OutdatedVMs">&quot;Outdated&quot; VMs</h2>
-<p>TODO</p>
+<h2 id="InstallingorupdatingsoftwareinthetemplateVM">Installing (or updating) software in the template VM</h2>
+<p>In order to permanently install new software, you should start the template VM and then start either console or dedicated software management application, such as gpk-application (Start-&gt;Applications-&gt;Template: fedora-14-x64-&gt;<a href="/wiki/wiki/Add/Remove">Add/Remove?</a> software&quot;.</p>
+<p>Install/update software as usual (e.g. using yum, or the dedicated GUI application). Then, shutdown the template VM.</p>
+<p>You will see now that all the AppVMs based on this template (by default all your VMs) will be marked as &quot;outdated&quot; in the manager. This is because their fielsystem has not been yet updated -- in order to do that, you must restart each VM. You don't need to restart all of them at the same time -- e.g. if you just need the newly installed software to be available in your 'personal' domain, then restart only this VM. You will restart others whenever this will be convenient to you.</p>
 <h2 id="StandaloneVMs">Standalone VMs</h2>
-<p>TODO</p>
+<p>Standalone VMs have their own copy of the whole filesystem, and thus can be updated and managed on its own. But this means that they take a few GBs on disk, and also that centralized updates do not apply to them.</p>
+<p>Sometime it might be convenient to have a VM that has its own filesystem, where you can directly introduce changes, without the need to start/stop the template VM. Such situations include e.g.:</p>
+<ul>
+<li>VMs used for development (devel environments requires a lot of *-devel packages and specific devel tools)</li>
+<li>VMs used for installing untrusted packages. Normally you install digitally signed software from Red <a href="/wiki/wiki/Hat/Fedora">Hat/Fedora?</a> repositories, and it's reasonable that such software has non malicious <em>installation</em> scripts (rpm pre/post scripts). However, when you would like to install some packages form less trusted sources, or unsigned, then using a dedicated (untrusted) standalone VM might be a better way.</li>
+</ul>
+<p>In order to create a standalone VM you must currently use command line (from console in Dom0):</p>
+<pre class="wiki"><code>qvm-create &lt;vmname&gt; --standalone --label &lt;label&gt;</code></pre>
 <h2 id="Usingmorethanonetemplate">Using more than one template</h2>
-<p>TODO</p>
+<p>It's also possible to have more than one template VM in the system. E.g. one could clone the default template using the <code></code><code>qvm-clone-template</code><code></code> command in Dom0. This allows to have a customized template, e.g. with devel packages, or less trusted apps, shared by some subset of domains.</p>
+<p>When you create a new domain you can choose which template this VM should be based on. If you use command line, you should use the <code></code><code>--template</code>` switch:</p>
+<pre class="wiki"><code>qvm-create &lt;vmname&gt; --template &lt;templatename&gt; --label &lt;label&gt;</code></pre>
