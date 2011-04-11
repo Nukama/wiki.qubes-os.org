@@ -141,7 +141,7 @@ Known Issues
 
 -  KDE taskbar might look ugly. This problem can be easily solved by
    turning composition on (it's called "Desktop Effects", and can be
-   found in System `Settings/Desktop? </wiki/Settings/Desktop>`__ tab).
+   found in System Settings/Desktop tab).
 
 -  Currently there is no support for delegating single USB devices to
    NetVMs, which likely mean that you will not be able to use your 3G
