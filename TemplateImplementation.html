@@ -18,14 +18,14 @@
 <p>When TemplateVM is started, it receives the snapshot-origin device connected as a root device (in read-write mode). Therefore, every change to this device is immediately saved in root.img - but remains invisible to the AppVM, which uses the snapshot.</p>
 <p>When TemplateVM is stopped, the xen script removes root-cow.img and creates a new one (using the qvm-template-commit tool). The snapshot device will remain untouched due to the loop device, which uses an actual file on the disk (by inode, not by name). Linux kernel frees the old root-cow.img files as soon as they are unused by all snapshot devices (to be exact, loop devices). The new root-cow.img file will get a new inode number, and so new AppVMs will get new snapshot devices (with different names).</p>
 <h2 id="SnapshotdeviceinAppVM">Snapshot device in AppVM</h2>
-<p>Root device is exposed to AppVM in read-only mode. The only place where AppVM can write something is:</p>
+<p>Root device is exposed to AppVM in read-only mode. AppVM can write only in:</p>
 <ul>
-<li>private.img - persistent storage (mounted in /rw) used for /home, /usr/local and maybe more in future versions</li>
-<li>volatile.img - temporary storage, which is discarded after AppVM restart</li>
+<li>private.img - persistent storage (mounted in /rw) used for /home, /usr/local - in future versions, its use may be extended</li>
+<li>volatile.img - temporary storage, which is discarded after an AppVM restart</li>
 </ul>
-<p>The volatile.img is divided into two partitions:</p>
+<p>volatile.img is divided into two partitions:</p>
 <ol>
 <li>changes to root device</li>
 <li>swap partition</li>
 </ol>
-<p>Inside of AppVM, root device is wrapped by snapshot with first partition of volatile.img. Thanks to this AppVM can write anything to its filesystem (but this changes will be discarded after restart).</p>
+<p>Inside of an AppVM, the root device is wrapped by the snapshot in the first partition of volatile.img. Therefore, the AppVM can write anything to its filesystem - however, such changes will be discarded after a restart.</p>
