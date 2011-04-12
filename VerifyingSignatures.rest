@@ -58,7 +58,7 @@ e.g.:
 
 .. code:: wiki
 
-    gpg --recv 0x36879494
+    gpg --recv-keys 0x36879494
 
 (You can use other key server than ``pgp.mit.edu``, which is just an
 example)
