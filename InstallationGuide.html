@@ -28,23 +28,6 @@
 <p>If you have Qubes Alpha 3 currently installed on your system, you must reinstall from scratch, as we offer no direct upgrade option in the installer. However, we do offer tools for smooth migration of your AppVMs. In order to do that, please backup your AppVMs using the <code></code><code>qvm-backup</code><code></code> tool <a href="/wiki/wiki/BackupRestore">as usual</a> (under Qubes Alpha 3). Then, after you install Qubes Beta 1, you will need to restore them using a special argument that would tell the restore tool to replace the old template name, used on Alpha 3, with the new one that we use on Qubes Beta 1:</p>
 <pre class="wiki"><code>qvm-backup-restore /mnt/backup/&lt;backup_dir&gt; --replace-template=linux-x64:fedora-14-x64</code></pre>
 <p>As you can see we decided to name our default template in Beta 1 in a bit more descriptive way (<em>fedora-14-x64</em>), mostly because we might be providing more templates in the future (e.g. based on other Linux distros).</p>
-<h2 id="EnableVT-dIOMMU">Enable VT-d/IOMMU</h2>
-<p>In order to take advantage of NetVM isolation you should enable VT-d/IOMMU (if your system supports it). To do that you should add <code></code><code>iommu=1</code><code></code> boot option to Xen by editing your <code></code><code>grub.conf</code><code></code> file. This can be done in the following way:</p>
-<ol>
-<li>Open konsole in Dom0 (Start-&gt;Applications-&gt;System Tools-&gt;Terminal)</li>
-<li><p>Working now under console, switch to root first:</p>
-<pre class="wiki"><code>sudo bash</code></pre></li>
-<li><p>Use your favourite editor such as vi or joe to open the /boot/grub/grub.conf and add <strong><code></code><code>iommu=1</code><code></code></strong> just after the <code></code><code>/xen.gz</code><code></code> string as shown in the example below (some fragments of the file omitted for clarity):</p>
-<pre class="wiki"><code>title Qubes (2.6.34.1-14.xenlinux.qubes.x86_64)
-    root (hd0,0)
-    kernel /xen.gz iommu=1
-    module /vmlinuz-2.6.34.1-14.xenlinux.qubes.x86_64 (...)
-    module /initramfs-2.6.34.1-14.xenlinux.qubes.x86_64.img</code></pre></li>
-</ol>
-<p>You should now reboot your system and examine Xen logs to see if VT-d has indeed been enabled (Xen can fail to enable VT-d on your system for various of reasons, lack of proper BIOS support being the most common one). To do that just grep the Xen system log for iommu and vtd strings (you need to open konsole in Dom0 again):</p>
-<pre class="wiki"><code>xm dmesg | grep -i iommu
-xm dmesg | grep -i vtd</code></pre>
-<p>Yes, we will make this procedure more user friendly in the next Beta :)</p>
 <h2 id="KnownIssues">Known Issues</h2>
 <ul>
 <li>NVIDIA GPU will likely cause problems, especially if you use suspend-to-RAM. This mostly results from the general poor support for NVIDIA GPUs under Linux, which in turn is caused by the lack of open documentation for those GPUs. You might try to use the NVIDIA's proprietary driver (see the instructions <a href="/wiki/wiki/InstallNvidiaDriver">here</a>), which apparently helps a lot.</li>
@@ -95,3 +78,20 @@ chkconfig qubes_setupdvm on</code></pre></li>
 <li><code></code><code>qubes-devel@googlegroups.com</code><code></code></li>
 </ul></li>
 </ul>
+<h2 id="EnablingVT-dIOMMUprotection">Enabling VT-d/IOMMU protection</h2>
+<p>In order to take advantage of NetVM isolation you should enable VT-d/IOMMU (if your system supports it) after you complete the installation. To do that you should add <code></code><code>iommu=1</code><code></code> boot option to Xen by editing your <code></code><code>grub.conf</code><code></code> file. This can be done in the following way:</p>
+<ol>
+<li>Open konsole in Dom0 (Start-&gt;Applications-&gt;System Tools-&gt;Terminal)</li>
+<li><p>Working now under console, switch to root first:</p>
+<pre class="wiki"><code>sudo bash</code></pre></li>
+<li><p>Use your favourite editor such as vi or joe to open the /boot/grub/grub.conf and add <strong><code></code><code>iommu=1</code><code></code></strong> just after the <code></code><code>/xen.gz</code><code></code> string as shown in the example below (some fragments of the file omitted for clarity):</p>
+<pre class="wiki"><code>title Qubes (2.6.34.1-14.xenlinux.qubes.x86_64)
+    root (hd0,0)
+    kernel /xen.gz iommu=1
+    module /vmlinuz-2.6.34.1-14.xenlinux.qubes.x86_64 (...)
+    module /initramfs-2.6.34.1-14.xenlinux.qubes.x86_64.img</code></pre></li>
+</ol>
+<p>You should now reboot your system and examine Xen logs to see if VT-d has indeed been enabled (Xen can fail to enable VT-d on your system for various of reasons, lack of proper BIOS support being the most common one). To do that just grep the Xen system log for iommu and vtd strings (you need to open konsole in Dom0 again):</p>
+<pre class="wiki"><code>xm dmesg | grep -i iommu
+xm dmesg | grep -i vtd</code></pre>
+<p>Yes, we will make this procedure more user friendly in the next Beta :)</p>
