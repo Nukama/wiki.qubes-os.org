@@ -65,6 +65,9 @@ you should disable nouveau:
     # blacklist isn't enough...
     install nouveau /bin/true
 
+Add *rdblacklist=nouveau* option to /boot/grub/menu.lst (at the end of
+line containing *vmlinuz*).
+
 Configure Xorg
 --------------
 
@@ -77,3 +80,4 @@ After all, you should configure Xorg to use nvidia driver. You can use
     mv /root/xorg.conf.new /etc/X11/xorg.conf
     # replace Driver in Device section by "nvidia"
 
+Now you should reboot the system.
