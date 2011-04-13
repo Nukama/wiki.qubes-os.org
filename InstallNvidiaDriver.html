@@ -26,8 +26,10 @@ mv /lib/modules/2.6.34.1-12.xenlinux.qubes.x86_64/kernel/drivers/video/nvidia.ko
 <pre class="wiki"><code>cat /etc/modprobe.d/nouveau-disable.conf
 # blacklist isn&#39;t enough...
 install nouveau /bin/true</code></pre>
+<p>Add <em>rdblacklist=nouveau</em> option to /boot/grub/menu.lst (at the end of line containing <em>vmlinuz</em>).</p>
 <h2 id="ConfigureXorg">Configure Xorg</h2>
 <p>After all, you should configure Xorg to use nvidia driver. You can use <em>nvidia-xconfig</em> or do it manually:</p>
 <pre class="wiki"><code>X -configure
 mv /root/xorg.conf.new /etc/X11/xorg.conf
 # replace Driver in Device section by &quot;nvidia&quot;</code></pre>
+<p>Now you should reboot the system.</p>
