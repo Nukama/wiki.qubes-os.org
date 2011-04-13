@@ -52,6 +52,8 @@ cat /etc/modprobe.d/nouveau-disable.conf
 install nouveau /bin/true
 ```
 
+Add *rdblacklist=nouveau* option to /boot/grub/menu.lst (at the end of line containing *vmlinuz*).
+
 Configure Xorg
 --------------
 
@@ -62,3 +64,5 @@ X -configure
 mv /root/xorg.conf.new /etc/X11/xorg.conf
 # replace Driver in Device section by "nvidia"
 ```
+
+Now you should reboot the system.
