@@ -15,6 +15,8 @@ enables modifying root.img without stopping the AppVMs and the second
 one, which is contained in the AppVM, enables modifying its filesystem.
 These modifications will be discarded after a restart of the AppVM.
 
+|TemplateSharing2.png|
+
 Snapshot device in Dom0
 -----------------------
 
@@ -81,3 +83,6 @@ Inside of an AppVM, the root device is wrapped by the snapshot in the
 first partition of volatile.img. Therefore, the AppVM can write anything
 to its filesystem - however, such changes will be discarded after a
 restart.
+
+.. |TemplateSharing2.png| image:: /chrome/site/../../../site/TemplateSharing2.png
+   :target: /chrome/site/../../../site/TemplateSharing2.png
