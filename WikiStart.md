@@ -18,6 +18,7 @@ For Developers
 --------------
 
 -   [Qubes Developer Documentation](/wiki/SystemDoc)
+-   [Ideas Incubator?](/wiki/IdeasIncubator)
 -   [Source Code](/wiki/SourceCode)
 -   [FAQ](/wiki/DevelFaq)
 
