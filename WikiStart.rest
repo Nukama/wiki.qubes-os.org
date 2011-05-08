@@ -14,6 +14,7 @@ For Developers
 --------------
 
 -  `Qubes Developer Documentation </wiki/SystemDoc>`__
+-  `Ideas Incubator? </wiki/IdeasIncubator>`__
 -  `Source Code </wiki/SourceCode>`__
 -  `FAQ </wiki/DevelFaq>`__
 
