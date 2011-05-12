@@ -37,8 +37,8 @@ to the netvm, and run yum update:
     # qvm-dom0-networking up
     # yum update
 
-Note that by default there is only one repository enabled: this is
-qubes-dom0-current.you
+Note that by default there is only one repository enabled:
+````\ ``qubes-dom0-current``\ ````.
 
 When finished, detach Dom0 from the network:
 
