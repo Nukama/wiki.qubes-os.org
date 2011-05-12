@@ -80,6 +80,17 @@ bit more descriptive way (*fedora-14-x64*), mostly because we might be
 providing more templates in the future (e.g. based on other Linux
 distros).
 
+Installing Updates
+------------------
+
+Currently the user must start the update process manually (in future
+versions we will make this automatic).
+
+-  For installing updates for Dom0 -- see instructions
+   `here </wiki/SoftwareUpdateDom0>`__.
+-  For installing updates for you domains (VMs) -- see instructions
+   `here </wiki/SoftwareUpdateVM>`__.
+
 Known Issues
 ------------
 
