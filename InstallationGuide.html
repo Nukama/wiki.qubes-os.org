@@ -28,6 +28,12 @@
 <p>If you have Qubes Alpha 3 currently installed on your system, you must reinstall from scratch, as we offer no direct upgrade option in the installer. However, we do offer tools for smooth migration of your AppVMs. In order to do that, please backup your AppVMs using the <code></code><code>qvm-backup</code><code></code> tool <a href="/wiki/wiki/BackupRestore">as usual</a> (under Qubes Alpha 3). Then, after you install Qubes Beta 1, you will need to restore them using a special argument that would tell the restore tool to replace the old template name, used on Alpha 3, with the new one that we use on Qubes Beta 1:</p>
 <pre class="wiki"><code>qvm-backup-restore /mnt/backup/&lt;backup_dir&gt; --replace-template=linux-x64:fedora-14-x64</code></pre>
 <p>As you can see we decided to name our default template in Beta 1 in a bit more descriptive way (<em>fedora-14-x64</em>), mostly because we might be providing more templates in the future (e.g. based on other Linux distros).</p>
+<h2 id="InstallingUpdates">Installing Updates</h2>
+<p>Currently the user must start the update process manually (in future versions we will make this automatic).</p>
+<ul>
+<li>For installing updates for Dom0 -- see instructions <a href="/wiki/wiki/SoftwareUpdateDom0">here</a>.</li>
+<li>For installing updates for you domains (VMs) -- see instructions <a href="/wiki/wiki/SoftwareUpdateVM">here</a>.</li>
+</ul>
 <h2 id="KnownIssues">Known Issues</h2>
 <ul>
 <li>NVIDIA GPU will likely cause problems, especially if you use suspend-to-RAM. This mostly results from the general poor support for NVIDIA GPUs under Linux, which in turn is caused by the lack of open documentation for those GPUs. You might try to use the NVIDIA's proprietary driver (see the instructions <a href="/wiki/wiki/InstallNvidiaDriver">here</a>), which apparently helps a lot.</li>
