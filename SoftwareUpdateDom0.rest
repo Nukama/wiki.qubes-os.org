@@ -34,7 +34,7 @@ to the netvm, and run yum update:
 .. code:: wiki
 
     $ sudo bash
-    # qvm-dom0-networking up
+    # qvm-dom0-network-via-netvm up
     # yum update
 
 Note that by default there is only one repository enabled:
@@ -47,7 +47,7 @@ not forget about detaching Dom0 from the network:
 
 .. code:: wiki
 
-    # qvm-dom0-networking down
+    # qvm-dom0-network-via-netvm down
 
 In the future we will modify this update procedure so that it won't
 require attaching networking to Dom0. Most likely we will use a
