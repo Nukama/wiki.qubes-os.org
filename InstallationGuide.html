@@ -73,6 +73,9 @@ chkconfig qubes_setupdvm on</code></pre></li>
 <ul>
 <li><del>If using a wired connection in netvm, it might not come up properly after suspend/resume. One may need to manually do <code> ifconfig eth0 down; ifconfig eth0 up</code> in netvm after resume.</del> (Solved after updating to qubes-core-dom0 1.5.26)</li>
 </ul>
+<ul>
+<li><del>An inter-domain file copy operation might corrupt your files!</del> (Solved after updating to qubes-core-vm 1.5.28, see also <a href="https://groups.google.com/group/qubes-devel/browse_thread/thread/ee627f9c0ecb4ec0">​this post for details</a>)</li>
+</ul>
 <h2 id="GettingHelp">Getting Help</h2>
 <ul>
 <li><strong>User manuals are <a href="/wiki/wiki/UserDoc">here</a>.</strong> (Strongly recommended!)</li>
