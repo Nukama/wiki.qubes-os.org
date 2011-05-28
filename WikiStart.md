@@ -42,17 +42,21 @@ To post to a group you don't need to subscribe, just send a message to the group
 qubes-devel+subscribe@googlegroups.com
 ```
 
-### Core developers
-
-(In the order of joining the project)
+### Architects & Core Developers
 
 -   Joanna Rutkowska \<joanna at invisiblethingslab dot com\> - architecture & project management
 
 -   Rafal Wojtczuk \<rafal at invisiblethingslab dot com\> - architecture & system-level stuff
 
--   Tomasz Sterna \<tomek at xiaoka dot com\> - installer & gui
+-   Marek Marczykowski \<marmarek at mimuw dot edu dot pl\> - core, and pretty much everything these days :)
 
--   Marek Marczykowski \<marmarek at mimuw dot edu dot pl\> - core
+### Contributors
+
+-   TBD
+
+### Past developers
+
+-   Tomasz Sterna \<tomek at xiaoka dot com\> - installer & gui
 
 ### Press contact
 
