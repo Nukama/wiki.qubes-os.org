@@ -1,6 +1,19 @@
 <h1 id="Nvidiaproprietarydriverinstallation">Nvidia proprietary driver installation</h1>
-<p>The NVIDIA proprietary driver works <strong>much</strong> more stable than nouveau, so it's good idea to install it. But this is somehow complicated: First - download it from nvidia.com site. Here &quot;NVIDIA-Linux-x86_64-260.19.44.run&quot; is used. Copy it to dom0. Every next step is done in dom0.</p>
-<p>See <a href="/wiki/wiki/CopyToDomZero">this page</a> for instruction on how to transfer files to Dom0 (where there is normallyno networking).</p>
+<p>The NVIDIA proprietary driver works <strong>much</strong> more stable than nouveau, so it's good idea to install it.</p>
+<h1 id="RpmForgepackages"><a href="/wiki/wiki/RpmForge">RpmForge?</a> packages</h1>
+<p>There are rpm packages with all necessary software on rpmforge. The only package you have to compile is kernel module (but there is ready src.rpm package).</p>
+<h2 id="Downloadpacakages">Download pacakages</h2>
+<p>You will need any Fedora 13 system to download and build packages. You can use Qubes Dom0 for it, but it isn't necessary. To download packages from rpmforge - add this repository to your yum configuration (instructions are on their website). After then download packages using yumdownloader:</p>
+<pre class="wiki"><code>yumdownloader --resolve xorg-x11-drv-nvidia livna-config-display
+yumdownloader --source nvidia-kmod</code></pre>
+<h2 id="Buildkernelpackage">Build kernel package</h2>
+<p>You will need at least rpmbuild tool, and then you can use it to build package:</p>
+<pre class="wiki"><code>yum install rpm-build
+rpmbuild --rebuild nvidia-kmod-260.19.36-1.fc13.3.src.rpm</code></pre>
+<p>Most likely it will complain about missing dependencies - install it and rerun rpmbuid. If everything went right, you have now complete packages with nvidia drivers for Qubes system. Transfer them to dom0 (eg using USB stick), install and reboot the system.</p>
+<h1 id="Manualinstallation">Manual installation</h1>
+<p>But this is somehow complicated: First - download it from nvidia.com site. Here &quot;NVIDIA-Linux-x86_64-260.19.44.run&quot; is used. Copy it to dom0. Every next step is done in dom0.</p>
+<p>See <a href="/wiki/wiki/CopyToDomZero">this page</a> for instruction on how to transfer files to Dom0 (where there is normally no networking).</p>
 <p><strong>WARNING</strong>: Nvidia doesn't sign their files. To make it worse, you are forced to download them over a plaintext connection. This means there are virtually dozens of possibilities for somebody to modify this file and provide you with a malicious/backdoored file. You should realize that installing untrusted files into your Dom0 is really a bad idea. Perhaps it might be a better idea to just get a new laptop with integrated Intel GPU? You have been warned, anyway.</p>
 <h2 id="Userspacecomponents">Userspace components</h2>
 <p>Install libraries, Xorg driver, configuration utilities. This can by done by nvidia-installer:</p>
