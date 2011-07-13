@@ -1,9 +1,9 @@
 <h1 id="Nvidiaproprietarydriverinstallation">Nvidia proprietary driver installation</h1>
 <p>The NVIDIA proprietary driver works <strong>much</strong> more stable than nouveau, so it's good idea to install it.</p>
-<h1 id="RpmForgepackages"><a href="/wiki/wiki/RpmForge">RpmForge?</a> packages</h1>
-<p>There are rpm packages with all necessary software on rpmforge. The only package you have to compile is kernel module (but there is ready src.rpm package).</p>
+<h1 id="RpmFusionpackages"><a href="/wiki/wiki/RpmFusion">RpmFusion?</a> packages</h1>
+<p>There are rpm packages with all necessary software on rpmfusion. The only package you have to compile is kernel module (but there is ready src.rpm package).</p>
 <h2 id="Downloadpacakages">Download pacakages</h2>
-<p>You will need any Fedora 13 system to download and build packages. You can use Qubes Dom0 for it, but it isn't necessary. To download packages from rpmforge - add this repository to your yum configuration (instructions are on their website). After then download packages using yumdownloader:</p>
+<p>You will need any Fedora 13 system to download and build packages. You can use Qubes Dom0 for it, but it isn't necessary. To download packages from rpmfusion - add this repository to your yum configuration (instructions are on their website). After then download packages using yumdownloader:</p>
 <pre class="wiki"><code>yumdownloader --resolve xorg-x11-drv-nvidia livna-config-display
 yumdownloader --source nvidia-kmod</code></pre>
 <h2 id="Buildkernelpackage">Build kernel package</h2>
