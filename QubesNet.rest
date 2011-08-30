@@ -93,3 +93,8 @@ use *qvm-dom0-network-via-netvm up* command. It will pause all running
 VMs (so that they can do no harm to dom0) and connect dom0 to netvm
 network just like another AppVM. Having completed package upgrade,
 execute *qvm-dom0-network-via-netvm down* to revert to the normal state.
+
+Firewall and Proxy VMs
+----------------------
+
+TODO
