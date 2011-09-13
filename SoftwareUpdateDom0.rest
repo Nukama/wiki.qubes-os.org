@@ -22,8 +22,13 @@ might be required:
    manager)
 -  Adding new features (e.g. GUI backup tool)
 
-How to do that?
----------------
+How to do that? (in Beta 2)
+---------------------------
+
+TODO
+
+How to do that? (in Beta 1)
+---------------------------
 
 Currently Dom0 update procedure requires command line -- in the future
 we will make it available from the GUI manager.
