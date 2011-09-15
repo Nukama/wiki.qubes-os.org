@@ -4,7 +4,7 @@
 <li>root.img can be modified while there are AppVMs running - without corrupting the filesystem</li>
 <li>multiple AppVMs that are using different versions of root.img (from various points in time) can be running concurrently</li>
 </ul>
-<p>There are two layers of the device-mapper snapshot device; the first one enables modifying root.img without stopping the AppVMs and the second one, which is contained in the AppVM, enables modifying its filesystem. These modifications will be discarded after a restart of the AppVM.</p>
+<p>There are two layers of the device-mapper snapshot device; the first one enables modifying root.img without stopping the AppVMs and the second one, which is contained in the AppVM, enables temporal modifications to its filesystem. These modifications will be discarded after a restart of the AppVM.</p>
 <p><a href="/wiki/chrome/site/../../../site/TemplateSharing2.png"><img src="/wiki/chrome/site/../../../site/TemplateSharing2.png" title="TemplateSharing2.png" alt="TemplateSharing2.png" /></a></p>
 <h2 id="SnapshotdeviceinDom0">Snapshot device in Dom0</h2>
 <p>This device consists of:</p>
