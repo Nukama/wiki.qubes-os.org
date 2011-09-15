@@ -160,5 +160,14 @@ first partition of volatile.img. Therefore, the AppVM can write anything
 to its filesystem - however, such changes will be discarded after a
 restart.
 
+StandaloneVM
+------------
+
+Standalone VM enables user to modify root filesystem persistently. It
+can be created using *--standalone* switch to *qvm-create*.
+
+It is implemented just like TemplateVM (has own root.img connected as
+R/W device), but no other VMs can be based on it.
+
 .. |TemplateSharing2.png| image:: /chrome/site/../../../site/TemplateSharing2.png
    :target: /chrome/site/../../../site/TemplateSharing2.png
