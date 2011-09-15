@@ -1,3 +1,27 @@
+<h1 id="OverviewofVMblockdevices">Overview of VM block devices</h1>
+<p>Every VM has 4 block devices connected:</p>
+<ul>
+<li><strong>xvda</strong> - base root device (/) - details described below</li>
+<li><strong>xvdb</strong> - private.img - place where VM always can write.</li>
+<li><strong>xvdc</strong> - volatile.img, discarded at each VM restart - here is placed swap and temporal &quot;/&quot; modifications (see below)</li>
+<li><strong>xvdd</strong> - modules.img - kernel modules and firmware</li>
+</ul>
+<h2 id="private.imgxvdb">private.img (xvdb)</h2>
+<p>This is mounted as /rw and here is placed all VM private data. This includes:</p>
+<ul>
+<li><em>/home</em> - which is symlink to /rw/home</li>
+<li><em>/usr/local</em> - which is symlink to /rw/usrlocal</li>
+<li>some config files (/rw/config) called by qubes core scripts (ex /rw/config/rc.local)</li>
+</ul>
+<h2 id="modules.imgxvdd">modules.img (xvdd)</h2>
+<p>As kernel is chosen in dom0, not VM there must be some way to provide matching kernel modules to VM OS. Qubes kernel dir consists of 3 files:</p>
+<ul>
+<li><em>vmlinuz</em> - actual kernel</li>
+<li><em>initramfs</em> - initial ramdisk containing script to setup snapshot devices (see below) and mount /lib/modules</li>
+<li><em>modules.img</em> - filesystem image of /lib/modules with matching kernel modules and firmware (/lib/firmware/updates is symlinked to /lib/modules/firmware)</li>
+</ul>
+<p>Normally kernel &quot;package&quot; is common for many VMs (can be set using qvm-prefs). One of them can be set as default (qvm-set-default-kernel) to simplify kernel updates (by default all VMs uses default kernel). All installed kernels are placed in /var/lib/qubes/vm-kernels as separate subdirs. In this case, modules.img is attached to VM as R/O device.</p>
+<p>There is special case when VM can have custom kernel - when it is updateable (StandaloneVM or TemplateVM) and kernel is set to &quot;none&quot; (by qvm-prefs). In this case VM uses kernel from &quot;kernels&quot; VM subdir and modules.img is attached as R/W device. FIXME: &quot;none&quot; should be renamed to &quot;custom&quot;.</p>
 <h1 id="QubesTemplateVMimplementation">Qubes TemplateVM implementation</h1>
 <p>TemplateVM has a shared root.img across all AppVMs that are based on it. This mechanism has some advantages over a simple common device connected to multiple VMs:</p>
 <ul>
