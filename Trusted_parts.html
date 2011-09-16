@@ -21,7 +21,7 @@
 <li>dom0-side libvchan library</li>
 <li>GUI virtualization code in dom0 (<em>qubes-guid</em>)</li>
 <li>sound virtualization code in dom0 (<em>pacat-simple-vchan</em>); note at the current state, it parses no data from VM (just passes raw audio frames to pulseaudio), so it should be safe</li>
-<li>qmemman</li>
+<li>VM memory manager (<em>qmemman</em>)</li>
 <li>qrexec-related code in dom0 (<em>qrexec_daemon</em>)</li>
 <li>some Qubes rpc servers. The servers implementing qubes.Filecopy, qubes.<a href="/wiki/wiki/ReceiveUpdates">ReceiveUpdates?</a> and qubes.<a href="/wiki/wiki/SyncAppMenus">SyncAppMenus?</a> must be bullet-proof. In case of qubes.OpenInVM and qubes.VMShell, their incarnation require explicit consent from the user, and such consent basically grants control over the target VM to the source VM, thus they are not critical.</li>
 </ul>
