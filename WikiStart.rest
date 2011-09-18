@@ -4,6 +4,7 @@ Welcome to the Qubes Wiki
 For Users
 ---------
 
+-  `Qubes Security Goals </wiki/SecurityGoals>`__
 -  `Installation guide </wiki/InstallationGuide>`__
 -  `On digital signatures and how to verify Qubes
    downloads </wiki/VerifyingSignatures>`__
