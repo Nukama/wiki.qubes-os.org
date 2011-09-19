@@ -1,4 +1,4 @@
-<h1 id="InstallationGuideforQubesBeta1">Installation Guide (for Qubes Beta 1)</h1>
+<h1 id="InstallationGuideforQubesBeta2">Installation Guide (for Qubes Beta 2)</h1>
 <h2 id="HardwareRequirements">Hardware Requirements</h2>
 <p>Minimum:</p>
 <ul>
@@ -6,28 +6,28 @@
 <li>64-bit Intel or AMD processor (x86_64 aka x64 aka AMD64)</li>
 <li>Intel GPU strongly preferred (if you have Nvidia GPU, prepare for some <a href="/wiki/wiki/InstallNvidiaDriver">troubleshooting</a>; we haven't tested ATI hardware)</li>
 <li>10GB of disk (Note that <strong>it is possible to install Qubes on an external USB disk</strong>, so that you can try it without sacrificing your current system. Mind, however, that USB disks are usually SLOW!)</li>
+<li>Fat SSD disk strongly recommended</li>
 </ul>
 <p>Additional requirements:</p>
 <ul>
 <li>Intel VT-d or AMD IOMMU technology (this is needed for effective isolation of your network VMs)</li>
 </ul>
 <p>If you don't meet the additional criteria, you can still install and use Qubes. It still offers significant security improvement over traditional OSes, because things such as GUI isolation, or kernel protection do not require special hardware.</p>
-<p><strong>Note:</strong> We don't recommend installing Qubes in a virtual machine!</p>
+<p><strong>Note:</strong> We don't recommend installing Qubes in a virtual machine! <strong>Note:</strong> There is a problem with supporting keyboard and mouse on Mac, and so Mac hardware is currently unsupported (patches welcomed!)</p>
 <h2 id="DownloadinstallerISO">Download installer ISO</h2>
 <p>You can download the ISO and the digital signature for the ISO from here:</p>
 <ul>
-<li><a href="http://s3-eu-west-1.amazonaws.com/qubes-os/iso/Qubes-R1-Beta1-x86_64-DVD.iso">​http://s3-eu-west-1.amazonaws.com/qubes-os/iso/Qubes-R1-Beta1-x86_64-DVD.iso</a></li>
-<li><a href="http://s3-eu-west-1.amazonaws.com/qubes-os/iso/Qubes-R1-Beta1-x86_64-DVD.iso.asc">​http://s3-eu-west-1.amazonaws.com/qubes-os/iso/Qubes-R1-Beta1-x86_64-DVD.iso.asc</a></li>
+<li><a href="http://s3-eu-west-1.amazonaws.com/qubes-os/iso/Qubes-R1-Beta2-x86_64-DVD.iso">​http://s3-eu-west-1.amazonaws.com/qubes-os/iso/Qubes-R1-Beta2-x86_64-DVD.iso</a></li>
+<li><a href="http://s3-eu-west-1.amazonaws.com/qubes-os/iso/Qubes-R1-Beta2-x86_64-DVD.iso.asc">​http://s3-eu-west-1.amazonaws.com/qubes-os/iso/Qubes-R1-Beta2-x86_64-DVD.iso.asc</a></li>
 </ul>
 <p>See this <a href="/wiki/wiki/VerifyingSignatures">page</a> for more info about how to download and verify our GPG keys. Then, verify the downloaded ISO:</p>
 <pre class="wiki"><code>gpg -v &lt;iso&gt;.asc</code></pre>
+<h2 id="BurningtheISOontoaDVDorUSBstick">Burning the ISO onto a DVD or USB stick</h2>
 <p>Once you verify this is an authentic ISO, you should burn it on a DVD. For instructions on how to &quot;burn&quot; it on a USB stick, see <a href="/wiki/wiki/UsbInstallation">this page</a>. Before proceeding with the installation, you are encouraged to first read all the information on this page, especially the <em>Known Issues</em> paragraph.</p>
 <p>Then, when finally ready, boot your system from the installer DVD and follow the instructions on screen. The installer is very simple and asks very few questions -- it's actually easier to install Qubes right now than most other Linux distributions!</p>
 <p>The installer loads Xen right at the beginning, so chances are high that if you can see the installer's graphical screen, Qubes will work on your system :)</p>
-<h2 id="MigratingfromQubesAlpha3">Migrating from Qubes Alpha 3</h2>
-<p>If you have Qubes Alpha 3 currently installed on your system, you must reinstall from scratch, as we offer no direct upgrade option in the installer. However, we do offer tools for smooth migration of your AppVMs. In order to do that, please backup your AppVMs using the <code></code><code>qvm-backup</code><code></code> tool <a href="/wiki/wiki/BackupRestore">as usual</a> (under Qubes Alpha 3). Then, after you install Qubes Beta 1, you will need to restore them using a special argument that would tell the restore tool to replace the old template name, used on Alpha 3, with the new one that we use on Qubes Beta 1:</p>
-<pre class="wiki"><code>qvm-backup-restore /mnt/backup/&lt;backup_dir&gt; --replace-template=linux-x64:fedora-14-x64</code></pre>
-<p>As you can see we decided to name our default template in Beta 1 in a bit more descriptive way (<em>fedora-14-x64</em>), mostly because we might be providing more templates in the future (e.g. based on other Linux distros).</p>
+<h2 id="MigratingfromQubesBeta1">Migrating from Qubes Beta 1</h2>
+<p>If you have Qubes Beta 1 currently installed on your system, you must reinstall from scratch, as we offer no direct upgrade option in the installer (sorry). However, we do offer tools for smooth migration of your AppVMs. In order to do that, please backup your AppVMs using the <code></code><code>qvm-backup</code><code></code> tool <a href="/wiki/wiki/BackupRestore">as usual</a>. Then, after you install Qubes Beta 2, you can restore them using <code></code><code>qvm-backup-restore</code><code></code> tool that.</p>
 <h2 id="InstallingUpdates">Installing Updates</h2>
 <p>Currently the user must start the update process manually (in future versions we will make this automatic).</p>
 <ul>
@@ -45,36 +45,7 @@
 <li>KDE taskbar might look ugly. This problem can be easily solved by turning composition on (it's called &quot;Desktop Effects&quot;, and can be found in System Settings/Desktop tab).</li>
 </ul>
 <ul>
-<li>Currently there is no support for delegating single USB devices to NetVMs, which likely mean that you will not be able to use your 3G modem. The only option is to delegate the whole USB controller to a NetVM, which, however, might not always be desirable, because of the other devices that are connected to this USB controller.</li>
-</ul>
-<ul>
-<li>KDE might break after resume from suspend-to-RAM -- this is a KDE-specific bug and applies to some GPUs only. The solution is to switch off composition (normally Alt-Shift-F12) before putting the computer into sleep.</li>
-</ul>
-<ul>
-<li>It might take up to 1 minute after you log in for the NetVM's network icon to appear in the tray -- be patient!</li>
-</ul>
-<ul>
-<li>Under some circumstances, when you choose &quot;Use All Space&quot; during installation, the installer will not replace your boot partition but will create another one.</li>
-</ul>
-<ul>
-<li>It might take up to 1 minute for some apps to start from a newly created AppVM. This happens only for the first time.</li>
-</ul>
-<ul>
-<li><p>Installer doesn't enable <code></code><code>qubes_setupdvm</code><code></code> service by default, which prevents Disposable VMs from working correctly. You should enable it manually from the console in Dom0:</p>
-<pre class="wiki"><code>sudo bash
-chkconfig qubes_setupdvm on</code></pre></li>
-</ul>
-<ul>
 <li>Installer might not support some USB keyboards (#230). This seems to include all the Mac Book keyboards (most PC laptops have PS2 keyboards and are not affected).</li>
-</ul>
-<ul>
-<li><del>Virtualized tray icons might look incorrectly directly for some apps. This problem seems to vanish whenever the app refreshes the icon.</del> (Solved after updating to qubes-gui-dom0 1.2.11)</li>
-</ul>
-<ul>
-<li><del>If using a wired connection in netvm, it might not come up properly after suspend/resume. One may need to manually do <code> ifconfig eth0 down; ifconfig eth0 up</code> in netvm after resume.</del> (Solved after updating to qubes-core-dom0 1.5.26)</li>
-</ul>
-<ul>
-<li><del>An inter-domain file copy operation might corrupt your files!</del> (Solved after updating to qubes-core-vm 1.5.28, see also <a href="https://groups.google.com/group/qubes-devel/browse_thread/thread/ee627f9c0ecb4ec0">​this post for details</a>)</li>
 </ul>
 <h2 id="GettingHelp">Getting Help</h2>
 <ul>
@@ -90,20 +61,3 @@ chkconfig qubes_setupdvm on</code></pre></li>
 <li><code></code><code>qubes-devel@googlegroups.com</code><code></code></li>
 </ul></li>
 </ul>
-<h2 id="EnablingVT-dIOMMUprotection">Enabling VT-d/IOMMU protection</h2>
-<p>In order to take advantage of NetVM isolation you should enable VT-d/IOMMU (if your system supports it) after you complete the installation. To do that you should add <code></code><code>iommu=1</code><code></code> boot option to Xen by editing your <code></code><code>grub.conf</code><code></code> file. This can be done in the following way:</p>
-<ol>
-<li>Open konsole in Dom0 (Start-&gt;Applications-&gt;System Tools-&gt;Terminal)</li>
-<li><p>Working now under console, switch to root first:</p>
-<pre class="wiki"><code>sudo bash</code></pre></li>
-<li><p>Use your favourite editor such as vi or joe to open the /boot/grub/grub.conf and add <strong><code></code><code>iommu=1</code><code></code></strong> just after the <code></code><code>/xen.gz</code><code></code> string as shown in the example below (some fragments of the file omitted for clarity):</p>
-<pre class="wiki"><code>title Qubes (2.6.34.1-14.xenlinux.qubes.x86_64)
-    root (hd0,0)
-    kernel /xen.gz iommu=1
-    module /vmlinuz-2.6.34.1-14.xenlinux.qubes.x86_64 (...)
-    module /initramfs-2.6.34.1-14.xenlinux.qubes.x86_64.img</code></pre></li>
-</ol>
-<p>You should now reboot your system and examine Xen logs to see if VT-d has indeed been enabled (Xen can fail to enable VT-d on your system for various of reasons, lack of proper BIOS support being the most common one). To do that just grep the Xen system log for iommu and vtd strings (you need to open konsole in Dom0 again):</p>
-<pre class="wiki"><code>xm dmesg | grep -i iommu
-xm dmesg | grep -i vtd</code></pre>
-<p>Yes, we will make this procedure more user friendly in the next Beta :)</p>
