@@ -6,7 +6,7 @@ This requires qubes-core-appvm-1.0.1 of higher.
 
 .. code:: wiki
 
-    xl block-attach <vmname> phy:/dev/sdb1 /dev/xvdi w
+    xl block-attach <vmname> phy:/dev/sdb1 xvdi w
 
 This assumes that your stick is seen by Dom0 kernel as **/dev/sdb** and
 you're mounting its first partition, so **/dev/sdb1** (the usual case).
@@ -22,7 +22,7 @@ you're mounting its first partition, so **/dev/sdb1** (the usual case).
 
 .. code:: wiki
 
-    xl block-detach <vmname> /dev/xvdi
+    xl block-detach <vmname> xvdi
 
 6. You can remove the device.
 
