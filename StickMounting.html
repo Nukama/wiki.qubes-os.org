@@ -5,7 +5,7 @@
 <ol start="2">
 <li>In Dom0 konsole (running as normal user) do:</li>
 </ol>
-<pre class="wiki"><code>xl block-attach &lt;vmname&gt; phy:/dev/sdb1 /dev/xvdi w</code></pre>
+<pre class="wiki"><code>xl block-attach &lt;vmname&gt; phy:/dev/sdb1 xvdi w</code></pre>
 <p>This assumes that your stick is seen by Dom0 kernel as <strong>/dev/sdb</strong> and you're mounting its first partition, so <strong>/dev/sdb1</strong> (the usual case).</p>
 <ol start="3">
 <li>Open Nautilus file manager in the AppVM. Your stick should be visible in the &quot;Places&quot; panel on the left. Just click on the device.</li>
@@ -16,7 +16,7 @@
 <ol start="5">
 <li>Back to Dom0 konsole -- in order to unmount the stick do the following:</li>
 </ol>
-<pre class="wiki"><code>xl block-detach &lt;vmname&gt; /dev/xvdi</code></pre>
+<pre class="wiki"><code>xl block-detach &lt;vmname&gt; xvdi</code></pre>
 <ol start="6">
 <li>You can remove the device.</li>
 </ol>
