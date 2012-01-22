@@ -36,3 +36,12 @@ Application-level security
    (We plan to implement some ideas from Matt's thesis in Qubes very
    soon -- stay tuned for details)
 
+VMM/Xen disagregation
+~~~~~~~~~~~~~~~~~~~~~
+
+-  [`​http://tjd.phlegethon.org/words/sosp11-xoar.pdf <http://tjd.phlegethon.org/words/sosp11-xoar.pdf>`__
+   "Breaking Up is Hard to Do: Security and Functionality in a Commodity
+   Hypervisor] by Patrick Colp at el.
+    (Also see `​this thread on
+   xen-devel <http://www.gossamer-threads.com/lists/xen/devel/230011>`__)
+
