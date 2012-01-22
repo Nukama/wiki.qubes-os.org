@@ -49,6 +49,11 @@ log into. This domain doesn't have any networking connectivity and is
 essentially only dedicated for running the Window and Desktop Manager,
 nothing else.
 
+Qubes Manager and command line tools
+------------------------------------
+
+TODO
+
 Starting apps in domains
 ------------------------
 
