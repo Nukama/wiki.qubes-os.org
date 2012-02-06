@@ -1,4 +1,4 @@
-Installation Guide (for Qubes Beta 2)
+Installation Guide (for Qubes Beta 3)
 =====================================
 
 Hardware Requirements
@@ -11,10 +11,10 @@ Minimum:
 -  Intel GPU strongly preferred (if you have Nvidia GPU, prepare for
    some `troubleshooting </wiki/InstallNvidiaDriver>`__; we haven't
    tested ATI hardware)
--  10GB of disk (Note that **it is possible to install Qubes on an
+-  20GB of disk (Note that **it is possible to install Qubes on an
    external USB disk**, so that you can try it without sacrificing your
    current system. Mind, however, that USB disks are usually SLOW!)
--  Fat SSD disk strongly recommended
+-  Fast SSD disk strongly recommended
 
 Additional requirements:
 
@@ -36,8 +36,8 @@ Download installer ISO
 You can download the ISO and the digital signature for the ISO from
 here:
 
--  `​http://s3-eu-west-1.amazonaws.com/qubes-os/iso/Qubes-R1-Beta2-x86\_64-DVD.iso <http://s3-eu-west-1.amazonaws.com/qubes-os/iso/Qubes-R1-Beta2-x86_64-DVD.iso>`__
--  `​http://s3-eu-west-1.amazonaws.com/qubes-os/iso/Qubes-R1-Beta2-x86\_64-DVD.iso.asc <http://s3-eu-west-1.amazonaws.com/qubes-os/iso/Qubes-R1-Beta2-x86_64-DVD.iso.asc>`__
+-  `​http://s3-eu-west-1.amazonaws.com/qubes-os/iso/Qubes-R1-Beta3-x86\_64-DVD.iso <http://s3-eu-west-1.amazonaws.com/qubes-os/iso/Qubes-R1-Beta3-x86_64-DVD.iso>`__
+-  `​http://s3-eu-west-1.amazonaws.com/qubes-os/iso/Qubes-R1-Beta3-x86\_64-DVD.iso.asc <http://s3-eu-west-1.amazonaws.com/qubes-os/iso/Qubes-R1-Beta3-x86_64-DVD.iso.asc>`__
 
 See this `page </wiki/VerifyingSignatures>`__ for more info about how to
 download and verify our GPG keys. Then, verify the downloaded ISO:
@@ -64,16 +64,22 @@ The installer loads Xen right at the beginning, so chances are high that
 if you can see the installer's graphical screen, Qubes will work on your
 system :)
 
-Migrating from Qubes Beta 1
+Migrating from Qubes Beta 2
 ---------------------------
 
-If you have Qubes Beta 1 currently installed on your system, you must
+If you have Qubes Beta 2 currently installed on your system, you must
 reinstall from scratch, as we offer no direct upgrade option in the
 installer (sorry). However, we do offer tools for smooth migration of
 your AppVMs. In order to do that, please backup your AppVMs using the
 ````\ ``qvm-backup``\ ```` tool `as usual </wiki/BackupRestore>`__.
-Then, after you install Qubes Beta 2, you can restore them using
-````\ ``qvm-backup-restore``\ ```` tool that.
+Then, after you install Qubes Beta 3, you can restore them using
+````\ ``qvm-backup-restore``\ ```` tool that. Because we have changed
+the default template in Beta 3, you should tell qvm-back-restore about
+that by passing ````\ ``--replace-template``\ ```` option:
+
+.. code:: wiki
+
+    qvm-backup-restore <backup_dir> --replace-template=fedora-14-x64:fedora-15-x64
 
 Installing Updates
 ------------------
@@ -100,10 +106,6 @@ Known Issues
    would be able to fully use this machine with Qubes (and generally
    with non-Windows systems). See this
    `page </wiki/SonyVaioTinkering>`__ for instructions.
-
--  KDE taskbar might look ugly. This problem can be easily solved by
-   turning composition on (it's called "Desktop Effects", and can be
-   found in System Settings/Desktop tab).
 
 -  Installer might not support some USB keyboards (#230). This seems to
    include all the Mac Book keyboards (most PC laptops have PS2
