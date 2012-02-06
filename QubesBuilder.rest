@@ -26,7 +26,7 @@ requires some 25GB of free space, so keep that in mind when deciding
 where to place this directory.
 
 The build system is configured via builder.conf file -- one should copy
-the attached builder.conf.template, and modify it as needed, e.g.:
+the attached builder.conf.default, and modify it as needed, e.g.:
 
 .. code:: wiki
 
