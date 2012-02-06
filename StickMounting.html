@@ -1,13 +1,22 @@
-<p>This requires qubes-core-appvm-1.0.1 of higher.</p>
+<p>In Qubes Beta 3 a new tool, <code></code><code>qvm-block</code><code></code> has been introduced that makes mounting USB devices to any user AppVM very easy, no matter which actual VM is handling the USB controller (those can be assigned using the <a href="/wiki/wiki/AssigningDevices">qvm-pci command</a>).</p>
+<p>In order to assign a USB disk to a VM, follow these steps:</p>
 <ol>
 <li>Insert your USB stick.</li>
 </ol>
 <ol start="2">
-<li>In Dom0 konsole (running as normal user) do:</li>
+<li><p>In Dom0 konsole (running as normal user) do:</p>
+<pre class="wiki"><code>qvm-block -l</code></pre></li>
 </ol>
-<pre class="wiki"><code>xl block-attach &lt;vmname&gt; phy:/dev/sdb1 xvdi w</code></pre>
-<p>This assumes that your stick is seen by Dom0 kernel as <strong>/dev/sdb</strong> and you're mounting its first partition, so <strong>/dev/sdb1</strong> (the usual case); &quot;w&quot; means read/write, if you not want that, use &quot;r&quot; for read only.</p>
-<p>This will attach the device as &quot;/dev/xvdi&quot; in VM. You can also choose different name (eg. xvdj) to connect multiple devices, but the others (not xvdi) will require mounting from cmdline in VM...</p>
+<blockquote>
+<p>This will list available block devices connected to any USB controller in your system, no matter in which VM this controller is hosted. The name of the VM hosting the USB controller is displayed before the colon in the device name. The string after the colon is the name of the device used within the VM.</p>
+</blockquote>
+<ol start="3">
+<li><p>Connect the device, e.g.:</p>
+<pre class="wiki"><code>qvm-block -a dom0:sda personal</code></pre></li>
+</ol>
+<blockquote>
+<p>This will attach the device as &quot;/dev/xvdi&quot; in VM.</p>
+</blockquote>
 <ol start="3">
 <li>Open Nautilus file manager in the AppVM. Your stick should be visible in the &quot;Places&quot; panel on the left. Just click on the device.</li>
 </ol>
@@ -17,8 +26,10 @@
 <ol start="5">
 <li>Back to Dom0 konsole -- in order to unmount the stick do the following:</li>
 </ol>
-<pre class="wiki"><code>xl block-detach &lt;vmname&gt; xvdi</code></pre>
+<pre class="wiki"><code>qvm-block -d &lt;device&gt; &lt;vmname&gt;</code></pre>
 <ol start="6">
 <li>You can remove the device.</li>
 </ol>
-<p>Needless to say, we will be adding support for USB mounting to our GUI Qubes Manager so that the user will not need to use console in Dom0 -- just click a button. Coming soon, stay tuned!</p>
+<blockquote>
+<p>In the next release this will get integrated into the Qubes GUI manager...</p>
+</blockquote>
