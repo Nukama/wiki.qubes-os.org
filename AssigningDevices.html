@@ -1,7 +1,7 @@
 <p>In order to assign a whole PCI/e device to a VM one should use <code></code><code>qvm-pci</code><code></code> tool. E.g.</p>
 <pre class="wiki"><code>lspci</code></pre>
 <p>Find the BDF address of the device you want to assign, and then:</p>
-<pre class="wiki"><code>qvm-pci -a &lt;bdf&gt; &lt;vmname&gt;</code></pre>
+<pre class="wiki"><code>qvm-pci -a &lt;vmname&gt; &lt;bdf&gt;</code></pre>
 <p>E.g. assuming 00:1a.0 is a BDF of the device I want to assign to &quot;personal&quot; domain:</p>
-<pre class="wiki"><code>qvm-pci -a 00:1a.0 personal</code></pre>
+<pre class="wiki"><code>qvm-pci -a personal 00:1a.0</code></pre>
 <p>Note that one can only assign full PCI or PCI Express devices. This means one cannot assign single USB devices -- only the whole USB controller with whatever USB devices connected to it. This limit is imposed by PC and VT-d architecture.</p>
