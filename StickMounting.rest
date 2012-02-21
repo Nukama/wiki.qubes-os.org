@@ -19,6 +19,13 @@ In order to assign a USB disk to a VM, follow these steps:
     before the colon in the device name. The string after the colon is
     the name of the device used within the VM.
 
+    NOTE: If your device is not listed here, you can refresh the list
+    calling (from VM to which device is connected):
+
+    .. code:: wiki
+
+        sudo udevadm trigger
+
 3. Connect the device, e.g.:
 
    .. code:: wiki
