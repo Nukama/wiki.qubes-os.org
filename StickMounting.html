@@ -10,6 +10,10 @@
 <blockquote>
 <p>This will list available block devices connected to any USB controller in your system, no matter in which VM this controller is hosted. The name of the VM hosting the USB controller is displayed before the colon in the device name. The string after the colon is the name of the device used within the VM.</p>
 </blockquote>
+<blockquote>
+<p>NOTE: If your device is not listed here, you can refresh the list calling (from VM to which device is connected):</p>
+<pre class="wiki"><code>sudo udevadm trigger</code></pre>
+</blockquote>
 <ol start="3">
 <li><p>Connect the device, e.g.:</p>
 <pre class="wiki"><code>qvm-block -a dom0:sda personal</code></pre></li>
