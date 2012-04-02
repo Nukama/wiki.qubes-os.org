@@ -25,7 +25,7 @@ Advanced topics:
 
 Command-line tools reference:
 
--   Dom0 tools
+-   [Dom0 tools](/wiki/DomZeroTools)
 -   VM tools
 
 Optional topics:
