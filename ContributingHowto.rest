@@ -14,7 +14,7 @@ Qubes project would welcome contributions in various areas:
    etc)
 
 Perhaps the best starting point is to have a look at the `​Open Tickets
-by Milestone page <https://www.qubes-os.org/trac/report/3>`__ to see
+by Milestone page <https://wiki.qubes-os.org/trac/report/3>`__ to see
 what are the most urgent tasks to do.
 
 Before you engage in some longer activity, e.g. implementing a new
