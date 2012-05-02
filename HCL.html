@@ -1,6 +1,22 @@
 <h1 id="HardwareCompatibilityListforQubesOS">Hardware Compatibility List for Qubes OS</h1>
 <p>The following is a list of systems that have been tested and seem to work fine with Qubes OS (or mostly fine). Unless otherwise noted, all the systems have support for Intel VT-d, which is needed to properly secure driver domains in Qubes OS (netvm, usbvm, etc). Systems without VT-d are still usable, but you don't get an extra protection from driver domain separation (you still get lots of security benefit from AppVM separation though).</p>
-<h2 id="SystemstestedbyQubescoredevelopers">Systems tested by Qubes core developers</h2>
+<h2 id="Generalsystemrequirements">General system requirements</h2>
+<p>Minimum:</p>
+<ul>
+<li>4GB of RAM</li>
+<li>64-bit Intel or AMD processor (x86_64 aka x64 aka AMD64)</li>
+<li>Intel GPU strongly preferred (if you have Nvidia GPU, prepare for some <a href="/wiki/wiki/InstallNvidiaDriver">troubleshooting</a>; we haven't tested ATI hardware)</li>
+<li>At least 20GB of disk (Note that <strong>it is possible to install Qubes on an external USB disk</strong>, so that you can try it without sacrificing your current system. Mind, however, that USB disks are usually SLOW!)</li>
+<li>Fast SSD disk strongly recommended</li>
+</ul>
+<p>Additional requirements:</p>
+<ul>
+<li>Intel VT-d or AMD IOMMU technology (this is needed for effective isolation of your network VMs)</li>
+<li>TPM with proper BIOS support if you want to use option <a href="http://theinvisiblethings.blogspot.com/2011/09/anti-evil-maid.html">​Anti Evil Maid</a></li>
+</ul>
+<p>If you don't meet the additional criteria, you can still install and use Qubes. It still offers significant security improvement over traditional OSes, because things such as GUI isolation, or kernel protection do not require special hardware.</p>
+<p><strong>Note:</strong> We don't recommend installing Qubes in a virtual machine! <strong>Note:</strong> There is a problem with supporting keyboard and mouse on Mac, and so Mac hardware is currently unsupported (patches welcomed!)</p>
+<h2 id="SpecificsystemstestedbyQubescoredevelopers">Specific systems tested by Qubes core developers</h2>
 <ul>
 <li>Lenovo Thinkpad T420 w/ Intel graphics</li>
 <li>Lenovo Thinkpad T420s w/ Intel graphics (requires 2.3.7 kernel to handle the panel screen correctly)</li>
@@ -8,4 +24,5 @@
 <ul>
 <li>Sony Vaio Z 12 -- works well, but some <a href="/wiki/wiki/SonyVaioTinkering">tinkering required</a></li>
 </ul>
-<h2 id="SystemstestedbyQubescommunity">Systems tested by Qubes community</h2>
+<h2 id="SpecificsystemstestedbytheQubescommunity">Specific systems tested by the Qubes community</h2>
+<p>TODO</p>
