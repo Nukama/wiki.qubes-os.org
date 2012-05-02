@@ -50,6 +50,7 @@ Specific systems tested by Qubes core developers
    (using xenlinux 2.6.38 kernel), better stability with `nvidia binary
    drivers </wiki/InstallNvidiaDriver>`__ - especially when using
    external monitor
+
 -  Samsung X460 - works well on both xenlinux 2.6.38 and pvops 3.2.7
    kernel; after resume ethernet driver (sky2) need to be reloaded in
    netvm to start working again
