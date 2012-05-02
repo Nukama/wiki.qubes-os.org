@@ -54,11 +54,9 @@ qubes-devel+subscribe@googlegroups.com
 
 ### Contributors
 
--   TBD
-
-### Past developers
-
 -   Tomasz Sterna \<tomek at xiaoka dot com\> - installer & gui
+
+-   Agnieszka Kostrzewa \<a.kostrzewa at alx dot pl\> - qubes-manager, docs
 
 ### Press contact
 
