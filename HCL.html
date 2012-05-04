@@ -20,10 +20,10 @@
 <ul>
 <li>Lenovo Thinkpad T420 w/ Intel graphics</li>
 <li>Lenovo Thinkpad T420s w/ Intel graphics (requires 2.3.7 kernel to handle the panel screen correctly)</li>
-<li>Lenovo Thinkpad T61 w/ Nvidia graphics (Quadro NVS 140M) - works well (using xenlinux 2.6.38 kernel), better stability with <a href="/wiki/wiki/InstallNvidiaDriver">nvidia binary drivers</a> - especially when using external monitor</li>
+<li>Lenovo Thinkpad T61 w/ Nvidia graphics (Quadro NVS 140M) - works well (using xenlinux 2.6.38 kernel), better stability with <a href="/wiki/wiki/InstallNvidiaDriver">nvidia binary drivers</a> - especially when using external monitor. This system doesn't support VT-d!</li>
 </ul>
 <ul>
-<li>Samsung X460 - works well on both xenlinux 2.6.38 and pvops 3.2.7 kernel; after resume ethernet driver (sky2) need to be reloaded in netvm to start working again</li>
+<li>Samsung X460 - works well on both xenlinux 2.6.38 and pvops 3.2.7 kernel; after resume ethernet driver (sky2) need to be reloaded in netvm to start working again. Even though the chipset suppors VT-d, the BIOS is broken, and so the VT-d is not picked up by Xen, so it effectively doesn't work.</li>
 </ul>
 <ul>
 <li>Sony Vaio Z 12 -- works well, but some <a href="/wiki/wiki/SonyVaioTinkering">tinkering required</a></li>
