@@ -7,6 +7,7 @@ Qubes User Guides
 -  `Updating and adding new software to
    domains </wiki/SoftwareUpdateVM>`__
 -  `Updating software in Dom0 </wiki/SoftwareUpdateDom0>`__
+-  `Dom0 and VM updates via Qubes Manager? </wiki/ManagerUpdates>`__
 -  `Backup/Restore/Migration </wiki/BackupRestore>`__
 -  Using Disposable VMs
 -  `Using Qubes firewall </wiki/QubesFirewall>`__
