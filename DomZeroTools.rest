@@ -1,6 +1,5 @@
 QVM-tools:
 
--  `qvm-ls? </wiki/QvmLs>`__
 -  `qubes-dom0-network-via-netvm </wiki/Dom0Tools/QubesDom0NetworkViaNetvm>`__
 -  `qubes-dom0-update </wiki/Dom0Tools/QubesDom0Update>`__
 -  `qubes-prefs </wiki/Dom0Tools/QubesPrefs>`__
@@ -14,6 +13,7 @@ QVM-tools:
 -  `qvm-create </wiki/Dom0Tools/QvmCreate>`__
 -  `qvm-firewall </wiki/Dom0Tools/QvmFirewall>`__
 -  `qvm-grow-private </wiki/Dom0Tools/QvmGrowPrivate>`__
+-  `qvm-ls </wiki/Dom0Tools/QvmLs>`__
 -  `qvm-kill </wiki/Dom0Tools/QvmKill>`__
 -  `qvm-pci </wiki/Dom0Tools/QvmPci>`__
 -  `qvm-prefs </wiki/Dom0Tools/QvmPrefs>`__
