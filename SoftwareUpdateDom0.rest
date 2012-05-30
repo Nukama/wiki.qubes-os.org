@@ -43,6 +43,24 @@ You can also pass --enablerepo= option in order to enable optional
 repositories (see yum configuration in Dom0). This is only for advanced
 users who really understand what they are doing.
 
+How to downgrade specific package?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+#. Download older version of package:
+
+   .. code:: wiki
+
+       sudo qubes-dom0-update package-version
+
+   Yum will say that there is no update, but package will be downloaded
+   to dom0.
+
+#. Downgrade packge:
+
+   .. code:: wiki
+
+       sudo yum downgrade package-version
+
 How to do that? (in Beta 1)
 ---------------------------
 
