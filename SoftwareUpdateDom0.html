@@ -14,6 +14,14 @@
 <p>2) To install additional packages in Dom0 (usually not recommended):</p>
 <pre class="wiki"><code>$ sudo qvm-dom0-updates anti-evil-maid</code></pre>
 <p>You can also pass --enablerepo= option in order to enable optional repositories (see yum configuration in Dom0). This is only for advanced users who really understand what they are doing.</p>
+<h3 id="Howtodowngradespecificpackage">How to downgrade specific package?</h3>
+<ol>
+<li><p>Download older version of package:</p>
+<pre class="wiki"><code>sudo qubes-dom0-update package-version</code></pre>
+<p>Yum will say that there is no update, but package will be downloaded to dom0.</p></li>
+<li><p>Downgrade packge:</p>
+<pre class="wiki"><code>sudo yum downgrade package-version</code></pre></li>
+</ol>
 <h2 id="HowtodothatinBeta1">How to do that? (in Beta 1)</h2>
 <p>Currently Dom0 update procedure requires command line -- in the future we will make it available from the GUI manager.</p>
 <p>First, start the console in Dom0, and switch to root. Then attach Dom0 to the netvm, and run yum update:</p>
