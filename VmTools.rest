@@ -1,0 +1,7 @@
+VM tools:
+
+-  `qvm-copy-to-vm </wiki/VmTools/QvmCopyToVm>`__
+-  `qvm-open-in-dvm </wiki/VmTools/QvmOpenInDvm>`__
+-  `qvm-open-in-vm </wiki/VmTools/QvmOpenInVm>`__
+-  `qvm-run </wiki/VmTools/QvmRun>`__
+
