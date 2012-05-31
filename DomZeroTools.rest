@@ -20,6 +20,7 @@ QVM-tools:
 -  `qvm-remove </wiki/Dom0Tools/QvmRemove>`__
 -  `qvm-revert-template-changes </wiki/Dom0Tools/QvmRevertTemplateChanges>`__
 -  `qvm-run </wiki/Dom0Tools/QvmRun>`__
+-  `qvm-service </wiki/Dom0Tools/QvmService>`__
 -  `qvm-shutdown </wiki/Dom0Tools/QvmShutdown>`__
 -  `qvm-start </wiki/Dom0Tools/QvmStart>`__
 -  `qvm-sync-appmenus </wiki/Dom0Tools/QvmSyncAppmenus>`__
