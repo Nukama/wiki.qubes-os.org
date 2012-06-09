@@ -49,10 +49,10 @@
 <ol>
 <li>Ensure that no other VMs uses this template.</li>
 <li>Prepare snapshot device with <strong><em>root-cow.img.old</em></strong> instead of <em>root-cow.img</em> (<em>/etc/xen/scripts/block-snapshot prepare</em>).</li>
-<li>Replace <em>snapshot</em> device-mapper target with <em>snapshot-merge</em>, other parameters (chunk size etc) remains untouched. Now kernel starts merging changes stored in <em>root-cow.img.old</em> into <em>root.img</em>, but d-m device can be used normally.</li>
+<li>Replace <em>snapshot</em> device-mapper target with <em>snapshot-merge</em>, other parameters (chunk size etc) remains untouched. Now kernel starts merging changes stored in <em>root-cow.img.old</em> into <em>root.img</em>. d-m device can be used normally (if needed).</li>
 <li>Waits for merge completed: <em>dmsetup status</em> shows used snapshot blocks - it should be equal to metadata size when completed.</li>
 <li>Replace <em>snapshot-merge</em> d-m target back to <em>snapshot</em>.</li>
-<li>Cleanup snapshot device (in nobody uses it it the moment).</li>
+<li>Cleanup snapshot device (if nobody uses it it the moment).</li>
 <li>Move <em>root-cow.img.old</em> to <em>root-cow.img</em> (overriding existing file).</li>
 </ol>
 <h2 id="SnapshotdeviceinAppVM">Snapshot device in AppVM</h2>
