@@ -131,12 +131,12 @@ Steps performed by **qvm-revert-template-changes**:
    *root-cow.img* (*/etc/xen/scripts/block-snapshot prepare*).
 #. Replace *snapshot* device-mapper target with *snapshot-merge*, other
    parameters (chunk size etc) remains untouched. Now kernel starts
-   merging changes stored in *root-cow.img.old* into *root.img*, but d-m
-   device can be used normally.
+   merging changes stored in *root-cow.img.old* into *root.img*. d-m
+   device can be used normally (if needed).
 #. Waits for merge completed: *dmsetup status* shows used snapshot
    blocks - it should be equal to metadata size when completed.
 #. Replace *snapshot-merge* d-m target back to *snapshot*.
-#. Cleanup snapshot device (in nobody uses it it the moment).
+#. Cleanup snapshot device (if nobody uses it it the moment).
 #. Move *root-cow.img.old* to *root-cow.img* (overriding existing file).
 
 Snapshot device in AppVM
