@@ -72,5 +72,5 @@ Specific systems tested by the Qubes community
    Fullerton <https://groups.google.com/d/msg/qubes-devel/xoyNCigBvFE/fkC6em-Wqd0J>`__.
 -  Lenovo Thinkpad W510 with core I7 Q820, with proprietary Nvidia
    driver works fine. Reported by `​Sebastian
-   Hültenschmidt <https://>`__.
+   Hültenschmidt <https://groups.google.com/group/qubes-devel/browse_thread/thread/4e00d6c01b37eb20>`__.
 
