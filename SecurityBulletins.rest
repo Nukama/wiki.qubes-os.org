@@ -14,5 +14,5 @@ Qubes Security Bulletins
 ----
 
 -  `​Qubes Security Bulletin
-   #1 <https://groups.google.com/d/topic/qubes-devel/JIpZoQUP6dQ/discussion>`__
+   #2 <https://groups.google.com/d/topic/qubes-devel/JIpZoQUP6dQ/discussion>`__
 
