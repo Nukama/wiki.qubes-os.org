@@ -108,9 +108,10 @@ On src VM, one should invoke the client via
 rpc\_client\_path client arguments*
 
 Note that only stdin/stdout is passed between rpc server and client -
-notably, the server cmdline argument list is fixed (it contains one
-argument, source VM name). By default, stderr of client and server is
-logged to respective /var/log/qubes/qrexec.XID files.
+notably, the no cmdline argument are passed. Source VM name is given by
+QREXEC\_REMOTE\_DOMAIN environment variable. By default, stderr of
+client and server is logged to respective /var/log/qubes/qrexec.XID
+files.
 
 Be very careful when coding and adding a new rpc service. Unless the
 offered functionality equals full control over the target (it is the
