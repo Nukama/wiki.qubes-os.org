@@ -75,4 +75,7 @@ Specific systems tested by the Qubes community
 -  Lenovo Thinkpad W510 with core I7 Q820, with proprietary Nvidia
    driver works fine. Reported by `​Sebastian
    Hültenschmidt <https://groups.google.com/forum/#!msg/qubes-devel/TgDWwBs36yA/IUFZPHs716cJ>`__.
+-  Lenovo x220 8GB RAM, Intel graphics (core i5), VT-d is working.
+   Reported by `​Stefan
+   Boresch <https://groups.google.com/group/qubes-devel/msg/f41578eef913446a>`__
 
