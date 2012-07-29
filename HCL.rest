@@ -84,4 +84,7 @@ Specific systems tested by the Qubes community
 -  Dell `PowerEdge? </wiki/PowerEdge>`__ T110 II, onboard Matrox
    graphics (Intel Xeon E3-1230), VT-d is working. Reported by
    `​Geoff <https://groups.google.com/group/qubes-devel/msg/8a894915909eeaee>`__
+-  Toshiba Tecra S11. Requires `​some
+   tinkering <https://groups.google.com/group/qubes-devel/browse_thread/thread/fdec0ec165a87726>`__
+   to enable 3G modem. Reported by Jan Beerden
 
