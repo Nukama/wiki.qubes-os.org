@@ -87,4 +87,8 @@ Specific systems tested by the Qubes community
 -  Toshiba Tecra S11. Requires `​some
    tinkering <https://groups.google.com/group/qubes-devel/browse_thread/thread/fdec0ec165a87726>`__
    to enable 3G modem. Reported by Jan Beerden
+-  Toshiba M780 S7240, requires latest BIOS to have VT-d working, `​some
+   problems <https://groups.google.com/group/qubes-devel/browse_thread/thread/2b89d2dc5f999ab7>`__
+   with card reader. Reported by
+   `​Franz <https://groups.google.com/group/qubes-devel/browse_thread/thread/66e97c990a08d8e2>`__
 
