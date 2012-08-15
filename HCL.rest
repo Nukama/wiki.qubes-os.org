@@ -45,12 +45,10 @@ Specific systems tested by Qubes core developers
 ------------------------------------------------
 
 -  Lenovo Thinkpad T420 w/ Intel graphics
--  Lenovo Thinkpad T420s w/ Intel graphics (requires 2.3.7 kernel to
+-  Lenovo Thinkpad T420s w/ Intel graphics (requires 3.2.7 kernel to
    handle the panel screen correctly)
--  Lenovo Thinkpad T61 w/ Nvidia graphics (Quadro NVS 140M) - works well
-   (using xenlinux 2.6.38 kernel), better stability with `nvidia binary
-   drivers </wiki/InstallNvidiaDriver>`__ - especially when using
-   external monitor. This system doesn't support VT-d!
+-  Lenovo Thinkpad T61 w/ Nvidia graphics (Quadro NVS 140M) - works
+   well. This system doesn't support VT-d!
 
 -  Samsung X460 - works well on both xenlinux 2.6.38 and pvops 3.2.7
    kernel; after resume ethernet driver (sky2) need to be reloaded in
@@ -73,8 +71,8 @@ Specific systems tested by the Qubes community
 -  Lenovo Thinkpad W510 with core I7 Q820, with proprietary Nvidia
    driver works fine. Reported by `​Sebastian
    Hültenschmidt <https://groups.google.com/forum/#!msg/qubes-devel/TgDWwBs36yA/IUFZPHs716cJ>`__.
--  Lenovo x220 8GB RAM, Intel graphics (core i5), VT-d is working.
-   Reported by `​Stefan
+-  Lenovo Thinkpad x220 8GB RAM, Intel graphics (core i5), VT-d is
+   working. Reported by `​Stefan
    Boresch <https://groups.google.com/group/qubes-devel/msg/f41578eef913446a>`__
 -  Dell Latitude E6520 with i7-2760QM CPU. VT-d works fine. nVidia
    graphics not working, but integrated Intel does. Reported by `​Steven
