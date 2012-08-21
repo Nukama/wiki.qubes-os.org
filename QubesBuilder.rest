@@ -109,7 +109,9 @@ Manual source modification
 If you want to somehow modify sources, you can also do it, here are some
 basic steps:
 
-#. Download qubes-builder as described above
+#. Download qubes-builder as described above (if you want to use
+   marmarek's branches, you should also download qubes-builder from his
+   repo - replace 'joanna' with 'marmarek' in above git clone command)
 #. Edit builder.conf (still the same as above), some useful additions:
 
    -  As time of writing this, the default is fc15, but latest supported
