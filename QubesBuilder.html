@@ -14,7 +14,10 @@
 <pre class="wiki"><code>cp builder.conf.default builder.conf 
 # edit the builder.conf file and set the following variables: 
 # (make sure to leave no spaces around &#39;=&#39; sign!) 
-# NO_SIGN=&quot;1&quot;</code></pre>
+# NO_SIGN=&quot;1&quot;
+
+# As time of writing this, the default is fc15, but latest supported is fc17, so switch to newer one
+DISTS_VM=&quot;fc17&quot;</code></pre>
 <p>One additional useful requirement is that 'sudo root' work without any prompt, which is default on most distros (e.g. 'sudo bash' brings you the root shell without asking for any password). This is important as the builder needs to switch to root and then back to user several times during the build process.</p>
 <p>Additionally, if building with signing enabled (so NO_SIGN is not set), one must adjust ~/.rpmmacro file so that it point to the GPG key used for package signing, e.g.:</p>
 <pre class="wiki"><code>%_signature gpg
@@ -52,12 +55,8 @@ make iso </code></pre>
 <pre class="wiki"><code>make gui</code></pre>
 <p>Full list you can get from make help.</p>
 <h2 id="Makingcustomizedbuild">Making customized build</h2>
-<p>You can use above tool to build Qubes with some components modified. Described here procedure will build Qubes with:</p>
-<ul>
-<li>non-default kernel</li>
-<li>newer Intel display driver</li>
-</ul>
-<p>The instruction:</p>
+<h3 id="Manualsourcemodification">Manual source modification</h3>
+<p>If you want to somehow modify sources, you can also do it, here are some basic steps:</p>
 <ol>
 <li>Download qubes-builder as described above</li>
 <li>Edit builder.conf (still the same as above), some useful additions:
@@ -72,30 +71,8 @@ make iso </code></pre>
 <pre class="wiki"><code>make get-sources</code></pre></li>
 </ol>
 <ol start="4">
-<li>Make your modifications here</li>
+<li><strong>Make your modifications here</strong></li>
 </ol>
-<ul>
-<li><p>The kernel</p>
-<pre class="wiki"><code>cd qubes-src/kernel
-git fetch git://git.qubes-os.org/marmarek/kernel.git devel-3.4:devel-3.4
-git checkout devel-3.4
-# need to download sources again, as the first time the default (older) kernel source was downloaded
-# note that this is run from kernel subdir, not main qubes-builder directory
-make BUILD_FLAVOR=pvops get-sources
-
-cd ../../</code></pre></li>
-</ul>
-<ul>
-<li><p>Xorg driver</p>
-<pre class="wiki"><code>cd qubes-src/dom0-updates
-rm xorg-x11-driver-intel*fc15.src.rpm
-yumdownloader --releasever=17 --source xorg-x11-driver-intel
-
-cd ../../</code></pre></li>
-</ul>
-<blockquote>
-<p>If you want to install any other package in newer version than in fc13 (on which dom0 is based), you can place it here. Remember to update also Makefile to include its build and add its build requires to <em>build-pkgs-dom0-updates.list</em> in qubes-builder dir.</p>
-</blockquote>
 <ol start="5">
 <li><p>Build the Qubes<br /> <code>make qubes</code> actually is just meta target which build all required components in correct order</p>
 <pre class="wiki"><code>grep ^qubes: Makefile
@@ -109,3 +86,18 @@ qubes: get-sources xen core kernel gui addons docs template kde-dom0 installer q
 <li><p>build iso installation image</p>
 <pre class="wiki"><code>make iso</code></pre></li>
 </ol>
+<h3 id="Non-defaultgitbranches">Non-default git branches</h3>
+<p>You can use above tool to build Qubes with some components modified. Besides manual source modification, it is possible to use non-default git repositories, or just another branches. For example to try (<strong>unofficial, not supported</strong>) configuration with newer kernel and xorg server, you can add to builder.conf:</p>
+<pre class="wiki"><code>GIT_SUBDIR=&quot;marmarek&quot;
+BRANCH_kernel=devel-3.4
+BRANCH_dom0_updates=devel/xserver-1.12
+
+# NO_SIGN=1 can also be useful</code></pre>
+<p>before doing &quot;make qubes&quot;. If you built anything before this modification, you should remove qubes-src directory first to fetch the sources again (this will also remove packages compiled before). Above devel/xserver-1.12 branch require some modification of Makefile in qubes-builder. Find dom0-updates target and replace it with:</p>
+<pre class="wiki"><code>dom0-updates:
+        MAKE_TARGET=&quot;stage0&quot; ./build.sh $(DIST_DOM0) dom0-updates
+        MAKE_TARGET=&quot;stage1&quot; ./build.sh $(DIST_DOM0) dom0-updates
+        MAKE_TARGET=&quot;stage2&quot; ./build.sh $(DIST_DOM0) dom0-updates
+        MAKE_TARGET=&quot;stage3&quot; ./build.sh $(DIST_DOM0) dom0-updates
+        MAKE_TARGET=&quot;stage4&quot; ./build.sh $(DIST_DOM0) dom0-updates</code></pre>
+<p>Then you can build qubes as usual.</p>
