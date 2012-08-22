@@ -101,3 +101,15 @@ BRANCH_dom0_updates=devel/xserver-1.12
         MAKE_TARGET=&quot;stage3&quot; ./build.sh $(DIST_DOM0) dom0-updates
         MAKE_TARGET=&quot;stage4&quot; ./build.sh $(DIST_DOM0) dom0-updates</code></pre>
 <p>Then you can build qubes as usual.</p>
+<p>There is one issue with above experimental version: new Xorg server have different cmdline options, so after installation one config file must be edited to reflect this change. At first system startup hit ESC while progress bar is displayed - to switch to detailed boot view. After you set up user account etc, you must fix KDM config file.</p>
+<ol>
+<li>Switch to tty2 (Alt-F2)</li>
+<li>Login as just created user</li>
+<li>Switch to root (sudo -s)</li>
+<li>Edit /etc/kde/kdm/kdmrc
+<ul>
+<li>locate &quot;<a href="/wiki/wiki/ServerArgsLocal">ServerArgsLocal?</a>=-nr -nolisten tcp&quot; line</li>
+<li>remove &quot;-nr&quot; from it</li>
+</ul></li>
+<li>Restart login manager (now it will start and allow you to login graphically): initctl restart prefdm</li>
+</ol>
