@@ -17,7 +17,7 @@
 <p>If you don't meet the additional criteria, you can still install and use Qubes. It still offers significant security improvement over traditional OSes, because things such as GUI isolation, or kernel protection do not require special hardware.</p>
 <p><strong>Note:</strong> We don't recommend installing Qubes in a virtual machine!</p>
 <p><strong>Note:</strong> There is a problem with supporting keyboard and mouse on Mac, and so Mac hardware is currently unsupported (patches welcomed!)</p>
-<h2 id="SpecificsystemstestedbyQubescoredevelopers">Specific systems tested by Qubes core developers</h2>
+<h2 id="SpecificsystemsknowntoworktestedbyQubescoredevelopers">Specific systems known to work tested by Qubes core developers</h2>
 <ul>
 <li>Lenovo Thinkpad T420 w/ Intel graphics</li>
 <li>Lenovo Thinkpad T420s w/ Intel graphics (requires 3.2.7 kernel to handle the panel screen correctly)</li>
@@ -29,7 +29,7 @@
 <ul>
 <li>Sony Vaio Z 12 (2010 edition) -- works well, but some <a href="/wiki/wiki/SonyVaioTinkering">tinkering required</a></li>
 </ul>
-<h2 id="SpecificsystemstestedbytheQubescommunity">Specific systems tested by the Qubes community</h2>
+<h2 id="SpecificsystemsknowntoworktestedbytheQubescommunity">Specific systems known to work tested by the Qubes community</h2>
 <ul>
 <li>Fujitsu S751 seems to work well, but requires BIOS update to get VT-d working. Reported by <a href="https://groups.google.com/forum/#!msg/qubes-devel/xoyNCigBvFE/ER61L6TbVpwJ">​Zrubecz Laszlo</a>.</li>
 <li>Sony Vaio Z2 (2011 edition) works fine but requires some BIOS mod to enable VT-d. Reported by <a href="https://groups.google.com/d/msg/qubes-devel/xoyNCigBvFE/fkC6em-Wqd0J">​Danny Fullerton</a>.</li>
@@ -39,4 +39,8 @@
 <li>Dell <a href="/wiki/wiki/PowerEdge">PowerEdge?</a> T110 II, onboard Matrox graphics (Intel Xeon E3-1230), VT-d is working. Reported by <a href="https://groups.google.com/group/qubes-devel/msg/8a894915909eeaee">​Geoff</a></li>
 <li>Toshiba Tecra S11. Requires <a href="https://groups.google.com/group/qubes-devel/browse_thread/thread/fdec0ec165a87726">​some tinkering</a> to enable 3G modem. Reported by Jan Beerden</li>
 <li>Toshiba M780 S7240, requires latest BIOS to have VT-d working, <a href="https://groups.google.com/group/qubes-devel/browse_thread/thread/2b89d2dc5f999ab7">​some problems</a> with card reader. Reported by <a href="https://groups.google.com/group/qubes-devel/browse_thread/thread/66e97c990a08d8e2">​Franz</a></li>
+</ul>
+<h2 id="SpecificsystemsknowntonotworkwellwithQubes">Specific systems known to not work well with Qubes</h2>
+<ul>
+<li>All systems based on Ivy Bridge processors with the Intel integrated GPU used as the primary display. Currently our Xorg drivers in Dom0 do not support the latest Intel integrated GPUs from Ivy Bridge line. For instructions on possible workarounds see <a href="https://groups.google.com/d/msg/qubes-devel/XN6JrEXVOVA/GMTjUM2J6QEJ">​this message</a>.</li>
 </ul>
