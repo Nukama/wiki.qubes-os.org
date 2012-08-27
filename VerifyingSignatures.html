@@ -16,7 +16,7 @@
 <pre class="wiki"><code>pub   4096R/36879494 2010-04-01
       Key fingerprint = 427F 11FD 0FAA 4B08 0123  F01C DDFA 1A3E 3687 9494
 uid   Qubes Master Signing Key</code></pre>
-<p>There should also be a copy of this key at the project's main website, as well as in the archives of the projects mailing list.</p>
+<p>There should also be a copy of this key at the project's main website, as well as in the <a href="https://groups.google.com/forum/#!msg/qubes-devel/RqR9WPxICwg/kaQwknZPDHkJ">​archives of the projects mailing list</a>.</p>
 <p>Once you download and verified the fingerprint of the Master Signing Key, you should import this key and set its trust level to 'ultimate' (oh, well), so that it could be used to automatically verify all the developer's keys:</p>
 <pre class="wiki"><code>gpg --edit-key 0x36879494
 and then: trust, 5, y, q</code></pre>
