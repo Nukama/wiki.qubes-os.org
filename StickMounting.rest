@@ -30,17 +30,19 @@ In order to assign a USB disk to a VM, follow these steps:
 
    .. code:: wiki
 
-       qvm-block -a dom0:sda personal
+       qvm-block -a personal dom0:sda
+
+   NOTE: We have changed order of parameters in 1.0-rc1
 
     This will attach the device as "/dev/xvdi" in VM.
 
-3. Open Nautilus file manager in the AppVM. Your stick should be visible
+4. Open Nautilus file manager in the AppVM. Your stick should be visible
    in the "Places" panel on the left. Just click on the device.
 
-4. When you finish using your USB stick, right-click its icon in Dolphin
+5. When you finish using your USB stick, right-click its icon in Dolphin
    and chose "Safely Remove <Your stick name>".
 
-5. Back to Dom0 konsole -- in order to unmount the stick do the
+6. Back to Dom0 konsole -- in order to unmount the stick do the
    following:
 
 .. code:: wiki
