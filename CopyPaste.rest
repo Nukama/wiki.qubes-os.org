@@ -42,7 +42,7 @@ untrusted domain, might turn out to be, in fact, a large buffer of junk
 that, when pasted into the destination VM's word processor could exploit
 a hypothetical bug in the undo buffer). This is a general problem and
 applies to any data transfer between *less trusted to more trusted*
-domain. It even applies to copying files between physically septate
+domain. It even applies to copying files between physically separate
 machines (air-gapped) systems. So, you should always copy clipboard and
 data only from *more trusted* to *less trusted* domains.
 
