@@ -16,18 +16,19 @@
 </blockquote>
 <ol start="3">
 <li><p>Connect the device, e.g.:</p>
-<pre class="wiki"><code>qvm-block -a dom0:sda personal</code></pre></li>
+<pre class="wiki"><code>qvm-block -a personal dom0:sda</code></pre>
+<p>NOTE: We have changed order of parameters in 1.0-rc1</p></li>
 </ol>
 <blockquote>
 <p>This will attach the device as &quot;/dev/xvdi&quot; in VM.</p>
 </blockquote>
-<ol start="3">
+<ol start="4">
 <li>Open Nautilus file manager in the AppVM. Your stick should be visible in the &quot;Places&quot; panel on the left. Just click on the device.</li>
 </ol>
-<ol start="4">
+<ol start="5">
 <li>When you finish using your USB stick, right-click its icon in Dolphin and chose &quot;Safely Remove &lt;Your stick name&gt;&quot;.</li>
 </ol>
-<ol start="5">
+<ol start="6">
 <li>Back to Dom0 konsole -- in order to unmount the stick do the following:</li>
 </ol>
 <pre class="wiki"><code>qvm-block -d &lt;device&gt; &lt;vmname&gt;</code></pre>
