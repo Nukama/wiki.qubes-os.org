@@ -43,6 +43,10 @@
 <ul>
 <li>Some keyboard layout set by KDE System Settings can cause <a href="https://groups.google.com/group/qubes-devel/browse_thread/thread/77d076b65dda7226">​keyboard not working at all</a>. If you hit this issue, you can switch to console (by console login option) and manually edit <code></code>/etc/X11/xorg.conf.d/00-system-setup-keyboard.conf<code></code> (and <code></code>/etc/sysconfig/keyboard<code></code>) and place correct keyboard layout settings (details in linked thread). You can check if specific keyboard layout settings are proper using <code></code>setxkbmap<code></code> tool.</li>
 </ul>
+<ul>
+<li><p>On systems with more than 8GB of RAM there is problem with Disposable VM. To fix it, limit maximum memory allocation for DispVM to 3GB</p>
+<pre class="wiki"><code>qvm-prefs -s fedora-17-x64-dvm maxmem 3072</code></pre></li>
+</ul>
 <h2 id="GettingHelp">Getting Help</h2>
 <ul>
 <li><strong>User manuals are <a href="/wiki/wiki/UserDoc">here</a>.</strong> (Strongly recommended!)</li>
