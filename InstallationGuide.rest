@@ -120,6 +120,13 @@ Known Issues
    settings (details in linked thread). You can check if specific
    keyboard layout settings are proper using ````\ setxkbmap\ ```` tool.
 
+-  On systems with more than 8GB of RAM there is problem with Disposable
+   VM. To fix it, limit maximum memory allocation for DispVM to 3GB
+
+   .. code:: wiki
+
+       qvm-prefs -s fedora-17-x64-dvm maxmem 3072
+
 Getting Help
 ------------
 
