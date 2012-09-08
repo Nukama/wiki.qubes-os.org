@@ -2,22 +2,20 @@
 <h2 id="HardwareRequirements">Hardware Requirements</h2>
 <p>Please see the <a href="/wiki/wiki/HCL">Hardware Compatibility List</a> page for more information on required and recommended hardware.</p>
 <h2 id="DownloadinstallerISO">Download installer ISO</h2>
-<p>You can download the ISO and the digital signature for the ISO from here:</p>
-<p><strong>Note:</strong> Be sure that you use a modern, non-handicapped browser to access the links below (e.g. disable the NoScript and the likes extensions that try to turn your Web Browser essentially into the 90's Mosaic).</p>
+<p>You can download the ISO and the digital signature from the SF.net:</p>
 <ul>
-<li><a href="http://qubes-os.s3.amazonaws.com/iso/Qubes-R1-x86_64-DVD.iso">​http://qubes-os.s3.amazonaws.com/iso/Qubes-R1-x86_64-DVD.iso</a></li>
-<li><a href="http://qubes-os.s3.amazonaws.com/iso/Qubes-R1-x86_64-DVD.iso.asc">​http://qubes-os.s3.amazonaws.com/iso/Qubes-R1-x86_64-DVD.iso.asc</a></li>
+<li><a href="https://sourceforge.net/projects/qubesos/files/">​https://sourceforge.net/projects/qubesos/files/</a></li>
 </ul>
-<p>... or you might try to download the ISO via bit torrent:</p>
+<p>... or you might try one of the following mirrors:</p>
 <ul>
-<li><a href="http://qubes-os.s3.amazonaws.com/iso/Qubes-R1-x86_64-DVD.iso?torrent">​http://qubes-os.s3.amazonaws.com/iso/Qubes-R1-x86_64-DVD.iso?torrent</a></li>
+<li><a href="http://ftp.fsn.hu/pub/linux/distributions/qubes/">​http://ftp.fsn.hu/pub/linux/distributions/qubes/</a></li>
 </ul>
-<p>See this <a href="/wiki/wiki/VerifyingSignatures">page</a> for more info about how to download and verify our GPG keys. Then, verify the downloaded ISO:</p>
+<p>Remember, we have absolutely no control over those servers, and so you should be assuming that they might be compromised, or just be serving a compromised ISOs because their operators decided so for whatever reason. Always verify the digital signature on the downloaded ISO. See this <a href="/wiki/wiki/VerifyingSignatures">page</a> for more info about how to download and verify our GPG keys, and then verify the downloaded ISO:</p>
 <pre class="wiki"><code>gpg -v &lt;iso&gt;.asc</code></pre>
 <h2 id="BurningtheISOontoaDVDorUSBstick">Burning the ISO onto a DVD or USB stick</h2>
 <p>Once you verify this is an authentic ISO, you should burn it on a DVD.</p>
 <p>If you prefer to use USB as a source for installation, then you just need to copy the ISO onto the USB device, e.g. using dd:</p>
-<pre class="wiki"><code>dd if=Qubes-R1-rc1-x86_64-DVD.iso of=/dev/sdX</code></pre>
+<pre class="wiki"><code>dd if=Qubes-R1-x86_64-DVD.iso of=/dev/sdX</code></pre>
 <p><strong>Be sure to use a correct device as the target in the dd command above (instead of sdX)'''</strong></p>
 <p>Before proceeding with the installation, you are encouraged to first read all the information on this page, especially the <em>Known Issues</em> paragraph.</p>
 <p>Then, when finally ready, boot your system from the installer DVD and follow the instructions on screen. The installer is very simple and asks very few questions -- it's actually easier to install Qubes right now than most other Linux distributions!</p>
