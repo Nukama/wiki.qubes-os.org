@@ -128,6 +128,7 @@ Known Issues
    .. code:: wiki
 
        qvm-prefs -s fedora-17-x64-dvm maxmem 3072
+       qvm-create-default-dvm --default-template --default-script
 
 -  On some systems the KDE Window Manager might freeze upon resuming
    from S3 sleep when compositing is enabled (and the only method to log
