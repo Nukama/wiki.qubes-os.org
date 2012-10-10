@@ -20,9 +20,8 @@ You can download the ISO and the digital signature from the SF.net:
 ... or you might try one of the following mirrors:
 
 -  `​http://ftp.fsn.hu/pub/linux/distributions/qubes/ <http://ftp.fsn.hu/pub/linux/distributions/qubes/>`__
--  [STRIKEOUT:`​http://linuxtracker.org/index.php?page=torrent-details&id=3bdf893771d63bdbe3d83f31e064360ee10f30ec <http://linuxtracker.org/index.php?page=torrent-details&id=3bdf893771d63bdbe3d83f31e064360ee10f30ec>`__
-   (torrent)] linuxtracker.org have some problems (php errors instead of
-   page, tracker is down)
+-  `​http://linuxtracker.org/index.php?page=torrent-details&id=3bdf893771d63bdbe3d83f31e064360ee10f30ec <http://linuxtracker.org/index.php?page=torrent-details&id=3bdf893771d63bdbe3d83f31e064360ee10f30ec>`__
+   (torrent)
 
 Remember, we have absolutely no control over those servers, and so you
 should be assuming that they might be compromised, or just be serving a
