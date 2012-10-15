@@ -22,6 +22,7 @@ Advanced topics:
 -  `​Extend root.img
    size <https://groups.google.com/group/qubes-devel/msg/9d1ac581236ca9b4>`__
 -  Installing `Anti Evil Maid </wiki/AntiEvilMaid>`__
+-  `Tor proxy VM </wiki/UserDoc/TorVM>`__ documentation
 
 Command-line tools reference:
 
