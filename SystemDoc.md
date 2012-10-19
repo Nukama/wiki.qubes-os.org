@@ -34,6 +34,8 @@ Build instructions:
 
 -   [Building Qubes](/wiki/QubesBuilder)
 
+-   [Workflow?](/wiki/Development)
+
 -   [KDE Dom0 packages for Qubes](/wiki/KdeDom0)
 
 -   [How to build Qubes installation ISO](/wiki/InstallationIsoBuilding)
