@@ -43,3 +43,14 @@ BAK=qvm-tools.bak$$
 mkdir -p $BAK
 cp -a /usr/bin/qvm-* /usr/bin/qubes-* $BAK/
 sudo cp qvm-tools/qvm-* qvm-tools/qubes-* /usr/bin/</code></pre>
+<h3 id="Copyfromdom0toanappvm">Copy from dom0 to an appvm</h3>
+<pre class="wiki"><code>#/bin/sh
+#
+# usage ./cp-domain &lt;vm_name&gt; &lt;file_to_copy&gt;
+#
+domain=$1
+file=$2
+fname=`basename $file`
+
+qvm-run $domain &#39;mkdir /home/user/incoming/dom0 -p&#39;
+cat $file| qvm-run --pass-io $domain &quot;cat &gt; /home/user/incoming/dom0/$fname&quot;</code></pre>
