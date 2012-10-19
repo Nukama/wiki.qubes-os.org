@@ -87,6 +87,7 @@ qubes: get-sources xen core kernel gui addons docs template kde-dom0 installer q
 <pre class="wiki"><code>make iso</code></pre></li>
 </ol>
 <h3 id="Non-defaultgitbranches">Non-default git branches</h3>
+<p><strong>Below example values (especially branch names) are outdated, but config options and steps are still valid</strong></p>
 <p>You can use above tool to build Qubes with some components modified. Besides manual source modification, it is possible to use non-default git repositories, or just another branches. For example to try (<strong>unofficial, not supported</strong>) configuration with newer kernel and xorg server, you can add to builder.conf:</p>
 <pre class="wiki"><code>GIT_SUBDIR=&quot;marmarek&quot;
 BRANCH_kernel=devel-3.4
