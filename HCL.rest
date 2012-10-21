@@ -93,6 +93,8 @@ Specific systems known to work tested by the Qubes community
 -  Dell Precision M4600 Intel Core i7-2860QM, 16GB ram, NVIDIA Quadro
    1000M, EMEA Intel Pro Wireless 6300. Reported by
    `​nqe <https://groups.google.com/group/qubes-devel/browse_thread/thread/ddf35d12a35f96a3>`__
+-  Tecra A11-15X: RAM 8GB CPU I7 M620 2.67 ghz. Reported by
+   `​PirBoazo <https://groups.google.com/group/qubes-devel/browse_thread/thread/c0d5f6a33d672b62>`__
 
 Specific systems known to not work well with Qubes
 --------------------------------------------------
