@@ -1,0 +1,41 @@
+<h1 id="XFCEinstalltionindom0">XFCE installtion in dom0</h1>
+<p><strong>Disclaimer: XFCE isn't fully integrated with Qubes environment, it still require notable amount of manual configuration after install</strong></p>
+<p>Requirements (as of 10/24/2012):</p>
+<ul>
+<li>qubes-core-dom0-2.0.37 (not released yet, possible to build from &quot;master&quot; branch of marmarek's repo)</li>
+</ul>
+<p>Installation:</p>
+<pre class="wiki"><code>qubes-dom0-update --enablerepo=qubes-dom0-unstable @XFCE</code></pre>
+<p>Then you need to create /etc/sysconfig/desktop to stay with KDM, as GDM still starts invalid Xorg startup script:</p>
+<pre class="wiki"><code>DISPLAYMANAGER=KDE</code></pre>
+<p>Reboot the system. At system startup, select &quot;Xfce session&quot; in login screen (menu on the right bottom corner of the screen).</p>
+<h2 id="Configuration">Configuration</h2>
+<p>Things needs/recommended to be done:</p>
+<ul>
+<li>remove some useless entries from menu and panel, especially file manager, web browser</li>
+<li>create own favorites menu (currently standard XFCE menu isn't modified to use per-VM subsections, which makes it very inconvenient):
+<ol>
+<li><p>create ~/.config/menus/favorites.menu, example content:</p>
+<pre class="wiki"><code>&lt;!DOCTYPE Menu PUBLIC &quot;-//freedesktop//DTD Menu 1.0//EN&quot;
+  &quot;http://www.freedesktop.org/standards/menu-spec/1.0/menu.dtd&quot;&gt;
+
+&lt;Menu&gt;
+    &lt;Name&gt;Favorites&lt;/Name&gt;
+    &lt;DefaultAppDirs/&gt;
+    &lt;DefaultDirectoryDirs/&gt;
+
+    &lt;Directory&gt;favorites.directory&lt;/Directory&gt;
+    &lt;Include&gt;
+        &lt;Filename&gt;personal-gnome-terminal.desktop&lt;/Filename&gt;
+        &lt;Filename&gt;personal-firefox.desktop&lt;/Filename&gt;
+        &lt;Filename&gt;work-gnome-terminal.desktop&lt;/Filename&gt;
+        &lt;Filename&gt;work-firefox.desktop&lt;/Filename&gt;
+        &lt;Filename&gt;mail-mozilla-thunderbird.desktop&lt;/Filename&gt;
+        &lt;Filename&gt;mail-gnome-terminal.desktop&lt;/Filename&gt;
+        &lt;Filename&gt;banking-mozilla-firefox.desktop&lt;/Filename&gt;
+        &lt;Filename&gt;untrusted-firefox.desktop&lt;/Filename&gt;
+    &lt;/Include&gt;
+&lt;/Menu&gt;</code></pre></li>
+<li>add it to the pannel: right click on panel, &quot;add new items&quot;, select &quot;XFCE menu&quot;, choose custom menu file - just created one</li>
+</ol></li>
+</ul>
