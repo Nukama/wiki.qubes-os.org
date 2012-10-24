@@ -61,7 +61,7 @@ Things needs/recommended to be done:
               </Include>
           </Menu>
 
-   #. add it to the pannel: right click on panel, "add new items",
-      select "XFCE menu", choose custom menu file - just created one
+   #. add it to the panel: right click on panel, "add new items", select
+      "XFCE menu", choose custom menu file - just created one
 
 
