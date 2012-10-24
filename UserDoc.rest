@@ -23,6 +23,7 @@ Advanced topics:
    size <https://groups.google.com/group/qubes-devel/msg/9d1ac581236ca9b4>`__
 -  Installing `Anti Evil Maid </wiki/AntiEvilMaid>`__
 -  `Tor proxy VM </wiki/UserDoc/TorVM>`__ documentation
+-  `XFCE </wiki/UserDoc/XFCE>`__ installation in dom0
 
 Command-line tools reference:
 
