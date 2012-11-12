@@ -24,6 +24,7 @@ Advanced topics:
 -  Installing `Anti Evil Maid </wiki/AntiEvilMaid>`__
 -  `Tor proxy VM </wiki/UserDoc/TorVM>`__ documentation
 -  `XFCE </wiki/UserDoc/XFCE>`__ installation in dom0
+-  `DispVM Customization </wiki/UserDoc/DispVMCustomization>`__
 
 Command-line tools reference:
 
