@@ -9,6 +9,13 @@
 $ git remote add abel git@github.com:abeluck/qubes-core.git</code></pre>
 <p>You can then proceed to easily develop in your own branches, pull in new commits from the dev branches, merge them, and eventually push to your own repo on github.</p>
 <p>When you are ready to submit your changes to Qubes to be merged, push your changes, then create a signed git tag (using <code>git tag -s</code>). Finally, send a letter to the Qubes listserv describing the changes and including the link to your repository. Don't forget to include your public PGP key you use to sign your tags.</p>
+<h3 id="UsefulQubesBuildercommands">Useful <a href="/wiki/wiki/QubesBuilder">QubesBuilder</a> commands</h3>
+<ol>
+<li><em>make check</em> - will check if all the code was commited into repository and if all repository are tagged with signed tag.</li>
+<li><em>make show-vtags</em> - show version of each component (based on git tags) - mostly useful just before building ISO. <strong>Note:</strong> this will not show version for components containing changes since last version tag</li>
+<li><em>make push</em> - push change from <strong>all</strong> repositories to git server. You must set proper remotes (see above) for all repositories first.</li>
+<li><em>make prepare-merge</em> - fetch changes from remote repositories (can be specified on commandline via GIT_SUBDIR or GIT_REMOTE vars), (optionally) verify tags and show the changes. This do not merge the changes - there are left for review as FETCH_HEAD ref. You can merge them using &quot;git merge FETCH_HEAD&quot; (in each repo directory).</li>
+</ol>
 <h2 id="CopyingCodetodom0">Copying Code to dom0</h2>
 <p>When developing it is convenient to be able to rapidly test changes. Assuming you're developing Qubes on Qubes, you should be working in a special VM for Qubes and occasionally you will want to transfer code or rpms back to dom0 for testing.</p>
 <p>Here are some handy scripts Marek has shared to facilitate this.</p>
