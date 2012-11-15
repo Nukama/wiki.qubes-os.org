@@ -35,7 +35,7 @@ Contacts
 Security Contact
 ~~~~~~~~~~~~~~~~
 
--  `Qubes Security Team? </wiki/SecurityTeam>`__
+-  `Reporting Security Issues in Qubes OS </wiki/SecurityPage>`__
 
 Mailing list
 ~~~~~~~~~~~~
