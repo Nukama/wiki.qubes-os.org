@@ -34,6 +34,10 @@ Contacts
 
 *Note: Please send all the questions regarding Qubes to the mailing list (see below)*
 
+### Security Contact
+
+-   [Qubes Security Team?](/wiki/SecurityTeam)
+
 ### Mailing list
 
 -   The group's email address: `qubes-devel@googlegroups.com`
