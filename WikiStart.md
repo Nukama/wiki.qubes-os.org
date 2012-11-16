@@ -63,6 +63,10 @@ qubes-devel+subscribe@googlegroups.com
 
 -   Agnieszka Kostrzewa \<a.kostrzewa at alx dot pl\> - qubes-manager, docs
 
+-   Abel Luck \<abel at outcomedubious dot im\> - torvm
+
+-   Alexandre Bezroutchko \<abb at gremwell dot com\> - pvusb support
+
 ### Press contact
 
 -   Joanna Rutkowska \<joanna at invisiblethingslab.com\>
