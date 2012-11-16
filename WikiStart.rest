@@ -24,6 +24,7 @@ Windows-based AppVMs.
 -  `Screenshots </wiki/QubesScreenshots>`__
 -  `Architecture Overview </wiki/QubesArchitecture>`__
 -  `Qubes Security Goals </wiki/SecurityGoals>`__
+-  `FAQ </wiki/UserFaq>`__
 -  How is Qubes OS different from...?
    `​article <http://theinvisiblethings.blogspot.com/2012/09/how-is-qubes-os-different-from.html>`__
 
@@ -61,7 +62,7 @@ For Developers
 -  `Qubes Developer Documentation </wiki/SystemDoc>`__
 -  `Ideas Incubator? </wiki/IdeasIncubator>`__
 -  `Source Code </wiki/SourceCode>`__
--  `FAQ </wiki/DevelFaq>`__
+-  `Developer's FAQ </wiki/DevelFaq>`__
 
 -  `How can I contribute to the Qubes
    Project? </wiki/ContributingHowto>`__
