@@ -2,7 +2,6 @@ Welcome to the Qubes OS Project
 ===============================
 
 #. `News <#News>`__
-#. `Download and Installation <#DownloadandInstallation>`__
 
    #. `Press contact <#Presscontact>`__
 
@@ -34,14 +33,6 @@ News
 -  Sep 12, 2012: How is Qubes OS different from other approaches to
    desktop security?
    `​article <http://theinvisiblethings.blogspot.com/2012/09/how-is-qubes-os-different-from.html>`__
-
-Download and Installation
--------------------------
-
--  `Hardware Compatibility List </wiki/HCL>`__
--  `ISO Download and Installation Guide </wiki/InstallationGuide>`__
--  `On digital signatures and how to verify Qubes
-   downloads </wiki/VerifyingSignatures>`__
 
 Press contact
 ~~~~~~~~~~~~~
