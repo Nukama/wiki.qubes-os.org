@@ -11,7 +11,6 @@ Welcome to the Qubes OS Project
 3.  [For Users](#ForUsers)
 4.  [For Developers](#ForDevelopers)
 5.  [Security](#Security)
-6.  [The Mailing list](#TheMailinglist)
     1.  [Press contact](#Presscontact)
 
 Qubes is an open source operating system designed to provide strong security for desktop computing. Qubes is based on Xen, X Window System, and Linux, and can run most Linux applications and utilize most of the Linux drivers. Qubes **Release 1** has been released in September 2012. Qubes **Release 2** is currently in the works, and the Beta 1 is scheduled to be released in the coming weeks. Qubes 2 will also support Windows-based AppVMs.
@@ -62,22 +61,6 @@ Security
 -   [Reporting Security Issues in Qubes OS](/wiki/SecurityPage)
 -   [Qubes Security Bulletins](/wiki/SecurityBulletins)
 -   [Qubes Security Goals](/wiki/SecurityGoals)
-
-The Mailing list
-----------------
-
-*Note: Please send all the questions regarding Qubes to the mailing list (see below)*
-
--   The group's email address: `qubes-devel@googlegroups.com`
--   The Web interface: [​http://groups.google.com/group/qubes-devel](http://groups.google.com/group/qubes-devel)
-
-To post to a group you don't need to subscribe, just send a message to the group's email address.
-
-You can subscribe either through the web interface (but then you need to create a google account), or by sending an empty message to:
-
-``` {.wiki}
-qubes-devel+subscribe@googlegroups.com
-```
 
 ### Press contact
 
