@@ -5,7 +5,6 @@ Welcome to the Qubes OS Project
 #. `Download and Installation <#DownloadandInstallation>`__
 #. `For Users <#ForUsers>`__
 #. `For Developers <#ForDevelopers>`__
-#. `Security <#Security>`__
 
    #. `Press contact <#Presscontact>`__
 
@@ -64,13 +63,6 @@ For Developers
    Project? </wiki/ContributingHowto>`__
 -  `Books for Developers </wiki/DevelBooks>`__
 -  `Research papers related to Qubes </wiki/QubesResearch>`__
-
-Security
---------
-
--  `Reporting Security Issues in Qubes OS </wiki/SecurityPage>`__
--  `Qubes Security Bulletins </wiki/SecurityBulletins>`__
--  `Qubes Security Goals </wiki/SecurityGoals>`__
 
 Press contact
 ~~~~~~~~~~~~~
