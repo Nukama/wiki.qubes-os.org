@@ -55,7 +55,7 @@ qubes-devel+subscribe@googlegroups.com
 
 -   Rafal Wojtczuk \<rafal at invisiblethingslab dot com\> - architecture & system-level stuff
 
--   Marek Marczykowski \<marmarek at mimuw dot edu dot pl\> - core, and pretty much everything these days :)
+-   Marek Marczykowski \<marmarek at invisiblethingslab dot com\> - core, and pretty much everything these days :)
 
 ### Contributors
 
