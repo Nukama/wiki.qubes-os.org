@@ -15,7 +15,7 @@ on the local machine, but at the same time they are well isolated from
 each other. Qubes supports secure copy-and-paste and file sharing
 between the AppVMs, of course.
 
-|http://www.qubes-os.org/Architecture\_files/droppedImage.png|
+|http://files.qubes-os.org/Architecture\_files/droppedImage.png|
 
 Key Architecture features
 -------------------------
@@ -32,5 +32,5 @@ Key Architecture features
 -  Qubes GUI provides isolation between apps sharing the same desktop
 -  Secure system boot based (optional)
 
-.. |http://www.qubes-os.org/Architecture\_files/droppedImage.png| image:: http://www.qubes-os.org/Architecture_files/droppedImage.png
-   :target: http://www.qubes-os.org/Architecture_files/droppedImage.png
+.. |http://files.qubes-os.org/Architecture\_files/droppedImage.png| image:: http://files.qubes-os.org/Architecture_files/droppedImage.png
+   :target: http://files.qubes-os.org/Architecture_files/droppedImage.png
