@@ -12,10 +12,7 @@ Welcome to the Qubes OS Project
 4.  [For Developers](#ForDevelopers)
 5.  [Security](#Security)
 6.  [The Mailing list](#TheMailinglist)
-7.  [Qubes Developers](#QubesDevelopers)
-    1.  [Architects & Core Developers](#ArchitectsCoreDevelopers)
-    2.  [Contributors](#Contributors)
-    3.  [Press contact](#Presscontact)
+    1.  [Press contact](#Presscontact)
 
 Qubes is an open source operating system designed to provide strong security for desktop computing. Qubes is based on Xen, X Window System, and Linux, and can run most Linux applications and utilize most of the Linux drivers. Qubes **Release 1** has been released in September 2012. Qubes **Release 2** is currently in the works, and the Beta 1 is scheduled to be released in the coming weeks. Qubes 2 will also support Windows-based AppVMs.
 
@@ -81,22 +78,6 @@ You can subscribe either through the web interface (but then you need to create 
 ``` {.wiki}
 qubes-devel+subscribe@googlegroups.com
 ```
-
-Qubes Developers
-----------------
-
-### Architects & Core Developers
-
--   Joanna Rutkowska `joanna at invisiblethingslab dot com` - architecture & project management
--   Marek Marczykowski `marmarek at invisiblethingslab dot com` - core, and pretty much everything these days :)
-
-### Contributors
-
--   Rafal Wojtczuk `rafal at invisiblethingslab dot com` - architecture & system-level stuff
--   Tomasz Sterna `tomek at xiaoka dot com` - installer & gui
--   Agnieszka Kostrzewa `a.kostrzewa at alx dot pl` - qubes-manager, docs
--   Abel Luck `abel at outcomedubious dot im` - torvm
--   Alexandre Bezroutchko `abb at gremwell dot com` - pvusb support
 
 ### Press contact
 
