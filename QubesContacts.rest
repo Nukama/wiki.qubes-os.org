@@ -1,8 +1,9 @@
-Contacting the Qubes Team
-=========================
+Contacting the Qubes OS Team
+============================
 
 **Note:** Please send all the questions regarding Qubes to the `mailing
-list </wiki/QubesLists>`__.
+list </wiki/QubesLists>`__. This way, your questions, as well as answers
+to those questions, could be also shared with other users.
 
 Press & business contact
 ------------------------
