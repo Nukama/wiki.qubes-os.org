@@ -87,23 +87,18 @@ Qubes Developers
 
 ### Architects & Core Developers
 
--   Joanna Rutkowska \<joanna at invisiblethingslab dot com\> - architecture & project management
-
--   Rafal Wojtczuk \<rafal at invisiblethingslab dot com\> - architecture & system-level stuff
-
--   Marek Marczykowski \<marmarek at invisiblethingslab dot com\> - core, and pretty much everything these days :)
+-   Joanna Rutkowska `joanna at invisiblethingslab dot com` - architecture & project management
+-   Rafal Wojtczuk `rafal at invisiblethingslab dot com` - architecture & system-level stuff
+-   Marek Marczykowski `marmarek at invisiblethingslab dot com` - core, and pretty much everything these days :)
 
 ### Contributors
 
--   Tomasz Sterna \<tomek at xiaoka dot com\> - installer & gui
-
--   Agnieszka Kostrzewa \<a.kostrzewa at alx dot pl\> - qubes-manager, docs
-
--   Abel Luck \<abel at outcomedubious dot im\> - torvm
-
--   Alexandre Bezroutchko \<abb at gremwell dot com\> - pvusb support
+-   Tomasz Sterna `tomek at xiaoka dot com` - installer & gui
+-   Agnieszka Kostrzewa `a.kostrzewa at alx dot pl` - qubes-manager, docs
+-   Abel Luck `abel at outcomedubious dot im` - torvm
+-   Alexandre Bezroutchko `abb at gremwell dot com` - pvusb support
 
 ### Press contact
 
--   Joanna Rutkowska \<joanna at invisiblethingslab.com\>
+-   Joanna Rutkowska `joanna at invisiblethingslab dot com`
 
