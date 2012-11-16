@@ -1,6 +1,18 @@
 Welcome to the Qubes OS Project
 ===============================
 
+#. `News <#News>`__
+#. `Download and Installation <#DownloadandInstallation>`__
+#. `For Users <#ForUsers>`__
+#. `For Developers <#ForDevelopers>`__
+#. `Security <#Security>`__
+#. `The Mailing list <#TheMailinglist>`__
+#. `Qubes Developers <#QubesDevelopers>`__
+
+   #. `Architects & Core Developers <#ArchitectsCoreDevelopers>`__
+   #. `Contributors <#Contributors>`__
+   #. `Press contact <#Presscontact>`__
+
 Qubes is an open source operating system designed to provide strong
 security for desktop computing. Qubes is based on Xen, X Window System,
 and Linux, and can run most Linux applications and utilize most of the
