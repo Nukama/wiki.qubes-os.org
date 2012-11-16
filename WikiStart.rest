@@ -3,8 +3,6 @@ Welcome to the Qubes OS Project
 
 #. `News <#News>`__
 #. `Download and Installation <#DownloadandInstallation>`__
-#. `For Users <#ForUsers>`__
-#. `For Developers <#ForDevelopers>`__
 
    #. `Press contact <#Presscontact>`__
 
@@ -44,25 +42,6 @@ Download and Installation
 -  `ISO Download and Installation Guide </wiki/InstallationGuide>`__
 -  `On digital signatures and how to verify Qubes
    downloads </wiki/VerifyingSignatures>`__
-
-For Users
----------
-
--  `User's Guide </wiki/UserDoc>`__
--  `FAQ </wiki/UserFaq>`__
-
-For Developers
---------------
-
--  `Qubes Developer Documentation </wiki/SystemDoc>`__
--  `Ideas Incubator? </wiki/IdeasIncubator>`__
--  `Source Code </wiki/SourceCode>`__
--  `Developer's FAQ </wiki/DevelFaq>`__
-
--  `How can I contribute to the Qubes
-   Project? </wiki/ContributingHowto>`__
--  `Books for Developers </wiki/DevelBooks>`__
--  `Research papers related to Qubes </wiki/QubesResearch>`__
 
 Press contact
 ~~~~~~~~~~~~~
