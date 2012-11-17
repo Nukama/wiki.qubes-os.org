@@ -22,4 +22,5 @@ News
 -   Mar 03, 2012: Windows support coming to Qubes! [​article](http://theinvisiblethings.blogspot.com/2012/03/windows-support-coming-to-qubes.html)
 -   Sep 03, 2012: Qubes 1.0 has been released! [​announcement](http://theinvisiblethings.blogspot.com/2012/09/introducing-qubes-10.html)
 -   Sep 12, 2012: How is Qubes OS different from other approaches to desktop security? [​article](http://theinvisiblethings.blogspot.com/2012/09/how-is-qubes-os-different-from.html)
+-   Nov 16, 2012: [Qubes Security Team](/wiki/SecurityPage) has joined the Xen Security Pre-disclousre list [​more](http://lists.xen.org/archives/html/xen-devel/2012-11/msg00821.html)
 
