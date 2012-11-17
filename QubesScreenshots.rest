@@ -68,7 +68,7 @@ is done by selecting the destination AppVM’s window and pressing
 Ctrl-Shift-V combination):
 
 |http://files.qubes-os.org/Screenshots\_files/copy-paste-1.png|
-|http://www.qubes-os.org/Screenshots\_files/copy-paste-2.png|
+|http://files.qubes-os.org/Screenshots\_files/copy-paste-2.png|
 
 Qubes also supports secure file copying between AppVMs:
 
@@ -93,8 +93,8 @@ FirewallVM:
    :target: http://files.qubes-os.org/Screenshots_files/snapshot1.png
 .. |http://files.qubes-os.org/Screenshots\_files/copy-paste-1.png| image:: http://files.qubes-os.org/Screenshots_files/copy-paste-1.png
    :target: http://files.qubes-os.org/Screenshots_files/copy-paste-1.png
-.. |http://www.qubes-os.org/Screenshots\_files/copy-paste-2.png| image:: http://www.qubes-os.org/Screenshots_files/copy-paste-2.png
-   :target: http://www.qubes-os.org/Screenshots_files/copy-paste-2.png
+.. |http://files.qubes-os.org/Screenshots\_files/copy-paste-2.png| image:: http://files.qubes-os.org/Screenshots_files/copy-paste-2.png
+   :target: http://files.qubes-os.org/Screenshots_files/copy-paste-2.png
 .. |http://files.qubes-os.org/Screenshots\_files/snapshot21.png| image:: http://files.qubes-os.org/Screenshots_files/snapshot21.png
    :target: http://files.qubes-os.org/Screenshots_files/snapshot21.png
 .. |http://files.qubes-os.org/Screenshots\_files/snapshot25.png| image:: http://files.qubes-os.org/Screenshots_files/snapshot25.png
