@@ -29,4 +29,7 @@ News
 -  Sep 12, 2012: How is Qubes OS different from other approaches to
    desktop security?
    `​article <http://theinvisiblethings.blogspot.com/2012/09/how-is-qubes-os-different-from.html>`__
+-  Nov 16, 2012: `Qubes Security Team </wiki/SecurityPage>`__ has joined
+   the Xen Security Pre-disclousre list
+   `​more <http://lists.xen.org/archives/html/xen-devel/2012-11/msg00821.html>`__
 
