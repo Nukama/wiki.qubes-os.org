@@ -65,9 +65,6 @@
 <p>Yes you can. You can even run a netvm but, of course, you will not benefit from DMA protection for driver domains. So, on a system without VT-d, everything should work the same, but there is no real security benefit of having a separate netvm, as the attacker can always use a simple DMA attack to go from netvm to Dom0.</p>
 <p><strong>But still, all the other Qubes security mechanisms, such as AppVM separation, work as usual, and you still end up with a significantly secure OS, much more secure then Windows, Mac, or Linux, even if you don't have VT-d'''</strong></p>
 <h3 id="CanIuseAMD-vinsteadofVT-x">Can I use AMD-v instead of VT-x?</h3>
-<p>See [<a href="http://groups.google.com/group/qubes-devel/msg/6412170cfbcb4cc5">​http://groups.google.com/group/qubes-devel/msg/6412170cfbcb4cc5</a></p>
-<blockquote>
-<p>this message].</p>
-</blockquote>
+<p>See <a href="http://groups.google.com/group/qubes-devel/msg/6412170cfbcb4cc5">​this message</a>.</p>
 <h3 id="CanIinstallQubesinaVirtualMachinee.g.onVMWare">Can I install Qubes in a Virtual Machine, e.g. on VMWare?</h3>
 <p>Most likely no. You should install it on bare-metal. Hey, it uses its own bare-metal hypervisor, after all...</p>
