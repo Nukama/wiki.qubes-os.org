@@ -16,6 +16,10 @@ running in Dom0 and apps running in domains cannot fake them:
 
 |http://files.qubes-os.org/Screenshots\_files/snapshot13.png|
 
+And here's just another example (click to zoom):
+
+|http://2.bp.blogspot.com/-zJFn81JdryI/UAqu7H9KSHI/AAAAAAAAAJ0/q\_vVqkoEDTY/s1600/snapshot9.png|
+
 It is always clearly visible to which domain a given window belongs.
 Here it’s immediately clear that the passphrase-prompting window belongs
 to some domain with “green” label. Then, when we look at the titlebar,
@@ -83,6 +87,8 @@ FirewallVM:
    :target: http://files.qubes-os.org/Screenshots_files/snapshot15.png
 .. |http://files.qubes-os.org/Screenshots\_files/snapshot13.png| image:: http://files.qubes-os.org/Screenshots_files/snapshot13.png
    :target: http://files.qubes-os.org/Screenshots_files/snapshot13.png
+.. |http://2.bp.blogspot.com/-zJFn81JdryI/UAqu7H9KSHI/AAAAAAAAAJ0/q\_vVqkoEDTY/s1600/snapshot9.png| image:: http://2.bp.blogspot.com/-zJFn81JdryI/UAqu7H9KSHI/AAAAAAAAAJ0/q_vVqkoEDTY/s1600/snapshot9.png
+   :target: http://2.bp.blogspot.com/-zJFn81JdryI/UAqu7H9KSHI/AAAAAAAAAJ0/q_vVqkoEDTY/s1600/snapshot9.png
 .. |http://files.qubes-os.org/Screenshots\_files/password-prompt.png| image:: http://files.qubes-os.org/Screenshots_files/password-prompt.png
    :target: http://files.qubes-os.org/Screenshots_files/password-prompt.png
 .. |http://files.qubes-os.org/Screenshots\_files/snapshot6.png| image:: http://files.qubes-os.org/Screenshots_files/snapshot6.png
