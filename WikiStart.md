@@ -3,6 +3,8 @@ title: WikiStart
 permalink: /wiki/WikiStart
 ---
 
+[![](http://files.qubes-os.org/Architecture_files/droppedImage.png "http://files.qubes-os.org/Architecture_files/droppedImage.png")](http://files.qubes-os.org/Architecture_files/droppedImage.png)
+
 Welcome to the Qubes OS Project
 ===============================
 
