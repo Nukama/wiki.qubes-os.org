@@ -1,5 +1,15 @@
-Installation Guide (for Qubes 1.0)
-==================================
+Installation Guide (for Qubes Release 1)
+========================================
+
+#. `Hardware Requirements <#HardwareRequirements>`__
+#. `Download installer ISO <#DownloadinstallerISO>`__
+#. `Burning the ISO onto a DVD or USB
+   stick <#BurningtheISOontoaDVDorUSBstick>`__
+#. `Upgrading from Qubes 1.0-rc1 <#UpgradingfromQubes1.0-rc1>`__
+#. `Migrating from Qubes Beta 3 <#MigratingfromQubesBeta3>`__
+#. `Installing Updates <#InstallingUpdates>`__
+#. `Known Issues <#KnownIssues>`__
+#. `Getting Help <#GettingHelp>`__
 
 Hardware Requirements
 ---------------------
@@ -13,18 +23,9 @@ likely not work. Don't send emails asking about it.
 Download installer ISO
 ----------------------
 
-You can download the ISO and the digital signature from the SF.net:
-
--  `​https://sourceforge.net/projects/qubesos/files/ <https://sourceforge.net/projects/qubesos/files/>`__
-
-... or you might try one of the following mirrors:
-
--  `​http://ftp.fsn.hu/pub/linux/distributions/qubes/ <http://ftp.fsn.hu/pub/linux/distributions/qubes/>`__
--  `​http://linuxtracker.org/index.php?page=torrent-details&id=3bdf893771d63bdbe3d83f31e064360ee10f30ec <http://linuxtracker.org/index.php?page=torrent-details&id=3bdf893771d63bdbe3d83f31e064360ee10f30ec>`__
-   (torrent)
-
-Remember, we have absolutely no control over those servers, and so you
-should be assuming that they might be compromised, or just be serving a
+See `this page </wiki/QubesDownloads>`__ for ISO downloads. Remember, we
+have absolutely no control over those servers, and so you should be
+assuming that they might be compromised, or just be serving a
 compromised ISOs because their operators decided so for whatever reason.
 Always verify the digital signature on the downloaded ISO. See this
 `page </wiki/VerifyingSignatures>`__ for more info about how to download
