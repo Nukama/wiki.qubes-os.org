@@ -1,8 +1,18 @@
 Qubes Downloads
 ===============
 
--  `Hardware Compatibility List </wiki/HCL>`__
--  `ISO Download and Installation Guide </wiki/InstallationGuide>`__
 -  `On digital signatures and how to verify Qubes
    downloads </wiki/VerifyingSignatures>`__
+
+Qubes Release 2 Beta 1
+----------------------
+
+-  `Hardware Compatibility List? </wiki/HCLR2>`__
+-  `ISO Download and Installation Guide </wiki/InstallationGuideR2>`__
+
+Qubes Release 1
+---------------
+
+-  `Hardware Compatibility List </wiki/HCL>`__
+-  `ISO Download and Installation Guide </wiki/InstallationGuide>`__
 
