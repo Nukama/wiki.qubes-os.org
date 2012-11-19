@@ -79,11 +79,11 @@ If you have Qubes Beta 3 currently installed on your system, you must
 reinstall from scratch, as we offer no direct upgrade option in the
 installer (sorry). However, we do offer tools for smooth migration of
 your AppVMs. In order to do that, please backup your AppVMs using the
-````\ ``qvm-backup``\ ```` tool `as usual </wiki/BackupRestore>`__.
-Then, after you install Qubes 1.0 rc1, you can restore them using
-````\ ``qvm-backup-restore``\ ```` tool. However, because we have
-changed the default template in RC1, you should tell qvm-back-restore
-about that by passing ````\ ``--replace-template``\ ```` option:
+``qvm-backup`` tool `as usual </wiki/BackupRestore>`__. Then, after you
+install Qubes 1.0 rc1, you can restore them using ``qvm-backup-restore``
+tool. However, because we have changed the default template in RC1, you
+should tell qvm-back-restore about that by passing
+``--replace-template`` option:
 
 .. code:: wiki
 
@@ -118,10 +118,10 @@ Known Issues
    all <https://groups.google.com/group/qubes-devel/browse_thread/thread/77d076b65dda7226>`__.
    If you hit this issue, you can switch to console (by console login
    option) and manually edit
-   ````/etc/X11/xorg.conf.d/00-system-setup-keyboard.conf\ ```` (and
-   ````/etc/sysconfig/keyboard````) and place correct keyboard layout
+   ``/etc/X11/xorg.conf.d/00-system-setup-keyboard.conf`` (and
+   ``/etc/sysconfig/keyboard``) and place correct keyboard layout
    settings (details in linked thread). You can check if specific
-   keyboard layout settings are proper using ````\ setxkbmap\ ```` tool.
+   keyboard layout settings are proper using ``setxkbmap`` tool.
 
 -  On systems with more than 8GB of RAM there is problem with Disposable
    VM. To fix it, limit maximum memory allocation for DispVM to 3GB
@@ -154,6 +154,6 @@ Getting Help
    *qubes-devel* mailing list:
 
    -  `​http://groups.google.com/group/qubes-devel <http://groups.google.com/group/qubes-devel>`__
-   -  ````\ ``qubes-devel@googlegroups.com``\ ````
+   -  ``qubes-devel@googlegroups.com``
 
 
