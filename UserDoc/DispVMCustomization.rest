@@ -17,7 +17,7 @@ can be done by customizin DispVM template:
 
    .. code:: wiki
 
-       touch /home/user/.qubes-dispvm-customized file
+       touch /home/user/.qubes-dispvm-customized
 
 #. Shutdown the VM (either by poweroff from VM terminal, or qvm-shutdown
    from dom0 terminal).
