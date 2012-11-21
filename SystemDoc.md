@@ -40,3 +40,5 @@ Build instructions:
 
 -   [How to build Qubes installation ISO](/wiki/InstallationIsoBuilding)
 
+-   [Building USB passthrough support (experimental)](/wiki/USBVM)
+
