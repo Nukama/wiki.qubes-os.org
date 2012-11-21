@@ -26,6 +26,7 @@ drwxr-xr-x  6 user user 4096 Nov 21 20:48 kernel-3.4.18/linux-obj</code></pre>
 make oldconfig</code></pre>
 <p>Now change the configuration. For example, in kernel-3.4.18/linux-3.4.18:</p>
 <pre class="wiki"><code>make menuconfig</code></pre>
+<p>Copy the modified config back into the kernel tree:</p>
 <pre class="wiki"><code>cp .config ../../../config-pvops</code></pre>
 <h4 id="Patchingthecode">Patching the code</h4>
 <p>TODO: describe the workflow for patching the code, below are some random notes, not working well</p>
