@@ -43,7 +43,7 @@ include blue, and black, which I interpret as indicating progressively
 more trusted domains than green, with black being something ultimately
 trusted.
 
-<screenshot of a window with decoration>
+|No image "snapshot12.png" attached to GettingStarted|
 
 There is, however, one special domain that is called *Dom0* which is
 where the Desktop Manager (currently KDE) runs, and this is where you
@@ -132,3 +132,6 @@ For more paranoid people, it might be worth checking `​this
 article <http://theinvisiblethings.blogspot.com/2011/03/partitioning-my-digital-life-into.html>`__
 that describes how one of the Qubes authors partitions her digital life
 into security domains.
+
+.. |No image "snapshot12.png" attached to GettingStarted| image:: /chrome/common/attachment.png
+   :target: /attachment/wiki/GettingStarted/snapshot12.png
