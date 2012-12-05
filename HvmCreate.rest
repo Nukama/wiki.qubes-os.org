@@ -45,3 +45,18 @@ start it), so several invocations of qvm-start command (as shown above)
 might be needed.
 
 <screenshot>
+
+Using Installation ISOs located in other VMs
+--------------------------------------------
+
+TODO
+
+Cloning HVM domains
+-------------------
+
+TODO
+
+Installing Qubes support tools in Windows 7 VMs
+-----------------------------------------------
+
+TODO
