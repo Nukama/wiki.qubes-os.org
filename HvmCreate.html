@@ -1,0 +1,12 @@
+<h1 id="CreatingandusingHVMfullyvirtualizeddomainsinQubes2">Creating and using HVM (fully virtualized) domains in Qubes 2</h1>
+<h2 id="WhatareHVMdomains">What are HVM domains?</h2>
+<p>HVM domains (Hardware VM), in contrast to PV domains (Paravirtualized domains), allow to create domains based on any OS, if one only has its installation ISO. E.g. this allows to have Windows-based VMs in Qubes.</p>
+<p>Interested readers might want to check <a href="http://theinvisiblethings.blogspot.com/2012/03/windows-support-coming-to-qubes.html">​this article</a> to learn why it took so long for Qubes OS to support HVM domains (Qubes 1 only supported Linuxed-based PV domains).</p>
+<h2 id="CreatinganHVMdomain">Creating an HVM domain</h2>
+<p>First, lets create a new HVM domain (use the --hvm switch to qvm-create, or choose HVM type in the Qubes Manager VM creation dialog box):</p>
+<pre class="wiki"><code>qvm-create win7 --hvm --label green</code></pre>
+<p>(Of course, the name of the domain (&quot;win7&quot;), as well as it's label (&quot;green&quot;), are just exemplary).</p>
+<p>Now, we need to install an OS inside this VM, this can done by attacking an installation ISO upon starting the VM (this currently can be done only from command line, but in the future we surely will added an option to do this also from the manager):</p>
+<pre class="wiki"><code>qvm-start win7 --cdrom=/usr/local/iso/win7_en.iso</code></pre>
+<p>Now, the VM will start booting from the attached CDROM device, which in the example above just happens to be the Windows 7 installation disk. Depending on the OS that is being installed in the VM, one might be required to start the VM several times (as is the case e.g. with Windows 7 installation), because whenever the installer wants to &quot;reboot the system&quot;, it actually shutdowns the VM (and Qubes won't automatically start it), so several invocations of qvm-start command (as shown above) might be needed.</p>
+<p>&lt;screenshot&gt;</p>
