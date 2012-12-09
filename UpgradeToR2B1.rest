@@ -6,7 +6,7 @@ instructions before R2 Beta is released**
 
 Existing users of Qubes R1 (but not R1 betas!) can upgrade their systems
 to the latest R2 beta release by following the procedure below. As
-usual, tt is advisable to backup the system before proceeding with the
+usual, it is advisable to backup the system before proceeding with the
 upgrade
 
 Upgrade all Template and Standalone VM(s)
@@ -21,8 +21,8 @@ and Standalone VMs.
 
 #. Open terminal in the template VM (or standalone VM). E.g. use the
    Qubes Manager's right-click menu and choose Run Command in VM and
-   type **gnome-terminal** there.
-#. Install **qubes-upgrade-vm** package (this package brings in R2 repo
+   type ``gnome-terminal`` there.
+#. Install ``qubes-upgrade-vm`` package (this package brings in R2 repo
    definitions and R2 keys)
 
    .. code:: wiki
@@ -48,15 +48,16 @@ The installer (yum) will prompt to accept the new Qubes R2 signing key:
     Is this ok [y/N]:
 
 If you see (as is the case on the "screenshot" above) that the new is
-was imported from a local filesystem (**/etc/pki/rpm-gpg/...**) you can
+was imported from a local filesystem (``/etc/pki/rpm-gpg/...``) you can
 safely accept the key, without checking its fingerprint. This is because
 there were only ways for such key to make it to your Template VM's
 filesystem:
 
 -  via a legitimate RPM package previously installed (in our case it was
-   the qubes-upgrade-vm RPM). Such an RPM must have been signed by one
-   of the keys you decided to trust previously, by default this would be
-   either via the Qubes R1 signing key, or Fedora 17 signing key.
+   the ``qubes-upgrade-vm`` RPM). Such an RPM must have been signed by
+   one of the keys you decided to trust previously, by default this
+   would be either via the Qubes R1 signing key, or Fedora 17 signing
+   key.
 -  via system compromise or via some illegal RPM package (e.g. Fedora
    released package pretending to bring new Firefox). In that case,
    however, your VM is already compromised, and it careful checking of
