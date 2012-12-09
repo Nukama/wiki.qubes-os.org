@@ -4,6 +4,7 @@ Qubes Documentation
 For Users
 ---------
 
+-  `Installation guides </wiki/QubesDownloads>`__
 -  `User's Guide </wiki/UserDoc>`__
 -  `FAQ </wiki/UserFaq>`__
 
