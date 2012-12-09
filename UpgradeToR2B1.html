@@ -25,3 +25,14 @@ Is this ok [y/N]:</code></pre>
 <ol start="4">
 <li>Shut down the VM.</li>
 </ol>
+<h2 id="UpgradeDom0">Upgrade Dom0</h2>
+<p>Be sure to do steps described in this section after <em>all</em> your template and standalone VMs got updated as described in the section above.</p>
+<ol>
+<li>Open terminal in Dom0. E.g. Start-&gt;System Settings-&gt;Konsole.</li>
+<li><p>Upgrade the <code>qubes-release</code> package to the latest version which brings in new repo definitions and R2 signing keys:</p>
+<pre class="wiki"><code>sudo qubes-dom0-update qubes-release</code></pre>
+<p>This should install <code>qubes-release-1-6</code> in your Dom0.</p></li>
+<li><p>Install R2 packages:</p>
+<pre class="wiki"><code>sudo qubes-dom0-update --releasever=2</code></pre></li>
+<li>Reboot your system. Please note that if you use Anti Evil Maid, then it won't be able to unseal the passphrase this time, because the Xen, kernel, and initramfs binaries have changed. Once the system boots up again, you could reseal your Anti Evil Maid's passphrase to the new configuration. Please consult Anti Evil Maid documentation for explanation on how to do that.</li>
+</ol>
