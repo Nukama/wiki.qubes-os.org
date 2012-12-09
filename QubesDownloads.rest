@@ -10,7 +10,7 @@ Qubes Release 2
 -  Qubes R2 Beta 1 coming soon...
 
 -  `Hardware Compatibility List? </wiki/HCLR2>`__
--  `ISO Download and Installation Guide </wiki/InstallationGuideR2>`__
+-  `Installation Guide </wiki/InstallationGuideR2>`__
 
 Qubes Release 1
 ---------------
@@ -22,7 +22,7 @@ Qubes Release 1
    (via sourceforge.net)
 
 -  `Hardware Compatibility List </wiki/HCL>`__
--  `ISO Download and Installation Guide </wiki/InstallationGuide>`__
+-  `Installation Guide </wiki/InstallationGuide>`__
 
 Mirrors
 -------
