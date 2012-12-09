@@ -5,8 +5,8 @@ For Users
 ---------
 
 -  `Installation guides </wiki/QubesDownloads>`__
--  `User's Guide </wiki/UserDoc>`__
--  `FAQ </wiki/UserFaq>`__
+-  `User guide </wiki/UserDoc>`__
+-  `User FAQ </wiki/UserFaq>`__
 
 For Developers
 --------------
