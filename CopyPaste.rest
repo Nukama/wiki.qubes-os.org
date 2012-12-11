@@ -50,3 +50,8 @@ See also `​this
 article <http://theinvisiblethings.blogspot.com/2011/03/partitioning-my-digital-life-into.html>`__
 for more information on this topic, and some ideas of how we might solve
 this problem in some future version of Qubes.
+
+Clipboard automatic policy enforcement
+--------------------------------------
+
+TODO
