@@ -2,19 +2,18 @@ Qubes User Guides
 =================
 
 -  `Getting started </wiki/GettingStarted>`__
--  `Creating and using HVM domains (in Qubes 2) </wiki/HvmCreate>`__
+-  `Creating and using HVM domains (Qubes R2 only) </wiki/HvmCreate>`__
 -  `Copy and paste between domains </wiki/CopyPaste>`__
 -  `Copying files between domains </wiki/CopyingFiles>`__
 -  `Updating and adding new software to
-   domains </wiki/SoftwareUpdateVM>`__
+   AppVMs </wiki/SoftwareUpdateVM>`__
 -  `Updating software in Dom0 </wiki/SoftwareUpdateDom0>`__
--  `Dom0 and VM updates via Qubes Manager? </wiki/ManagerUpdates>`__
--  `Backup/Restore/Migration </wiki/BackupRestore>`__
--  Using Disposable VMs
--  `Using Qubes firewall </wiki/QubesFirewall>`__
+-  `Using Disposable VMs </wiki/DisposableVms>`__
+-  `Understanding Qubes firewall </wiki/QubesFirewall>`__
 -  `How to mount USB stick to an AppVM? </wiki/StickMounting>`__
 -  `Key generation inside Qubes VMs? </wiki/KeyGen>`__
--  `How to assign full PCI/e device to a VM? </wiki/AssigningDevices>`__
+-  `How to assign PCI devices to a VM? </wiki/AssigningDevices>`__
+-  `Qubes Backup/Restore/Migration </wiki/BackupRestore>`__
 
 Advanced topics:
 
