@@ -11,14 +11,14 @@
 <p>The command above assumes the installation ISO was somehow transferred to Dom0, e.g. copied using <code>dd</code> command from an installation CDROM. If one wishes to use the actual physical media without copying it first to a file, then one can just pass <code>/dev/cdrom</code> as an argument to <code>--cdrom</code>:</p>
 <pre class="wiki"><code>qvm-start win7 --cdrom=/dev/cdrom</code></pre>
 <p>Now, the VM will start booting from the attached CDROM device, which in the example above just happens to be the Windows 7 installation disk. Depending on the OS that is being installed in the VM, one might be required to start the VM several times (as is the case e.g. with Windows 7 installation), because whenever the installer wants to &quot;reboot the system&quot;, it actually shutdowns the VM (and Qubes won't automatically start it), so several invocations of qvm-start command (as shown above) might be needed.</p>
-<p>&lt;screenshot&gt;</p>
+<p><a href="/wiki/attachment/wiki/HvmCreate/r2b1-win7-installing.png"><img src="/wiki/chrome/common/attachment.png" title="No image &quot;r2b1-win7-installing.png&quot; attached to HvmCreate" alt="No image &quot;r2b1-win7-installing.png&quot; attached to HvmCreate" /></a></p>
 <h2 id="UsingInstallationISOslocatedinotherVMs">Using Installation ISOs located in other VMs</h2>
 <p>Sometimes one wants to download the installation ISO from the Web and use it for HVM creation. However, for security reasons, networking is disabled for Qubes Dom0, which makes it not possible to download an ISO within Dom0. Also Qubes do not provide any (easy to use) mechanisms for copying files between AppVMs and Dom0, and generally tries to discourage such actions. So, it would be inconvenient to require that the installation ISO for an HVM domain be always located in Dom0. And the good news is that this is indeed not required -- one can use the following syntax when specifying the location of /usr/local/iso/win7_en.iso the installation ISO:</p>
 <pre class="wiki"><code>--cdrom=[appvm]:[/path/to/iso/within/appvm]</code></pre>
 <p>Assuming e.g. the an installation ISO named <code>ubuntu-12.10-desktop-i386.iso</code> has been downloaded in <code>work-web</code> AppVM, and located within <code>/home/user/Downloads</code> directory within this AppVM, one can immediately create a new HVM and use this ISO as an installation media with the following command (issued in Dom0, of course):</p>
 <pre class="wiki"><code>qvm-create --hvm ubuntu --label red
 qvm-start ubuntu --cdrom=work-web:/home/user/Downloads/ubuntu-12.10-desktop-i386.iso</code></pre>
-<p>&lt;screenshot&gt;</p>
+<p><a href="/wiki/attachment/wiki/HvmCreate/r2b1-installing-ubuntu-1.png"><img src="/wiki/chrome/common/attachment.png" title="No image &quot;r2b1-installing-ubuntu-1.png&quot; attached to HvmCreate" alt="No image &quot;r2b1-installing-ubuntu-1.png&quot; attached to HvmCreate" /></a></p>
 <h2 id="SettingupnetworkingforHVMdomains">Setting up networking for HVM domains</h2>
 <p>TODO</p>
 <h2 id="CloningHVMdomains">Cloning HVM domains</h2>
