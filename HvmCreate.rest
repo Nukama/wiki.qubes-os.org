@@ -301,7 +301,8 @@ VM with the ISO attached:
 Once the Windows VM boots, a CDROM should appear in the 'My Computer'
 menu (typically as ``D:``) with a setup program in its main directory:
 
-<screeenshot>
+|No image "r2b1-win7-installing-qubes-tools-1.png" attached to
+HvmCreate|
 
 Before proceeding with the installation we need to disable Windows
 mechanism that allows only signed drivers to be installed, because
@@ -321,7 +322,10 @@ must disable the signature enforcement policy before installing the
 tools, and also to accept a few scary looking warning windows during the
 installation process, as shown below.
 
-<screenshot>
+|No image "r2b1-win7-installing-qubes-tools-2.png" attached to
+HvmCreate| |No image "r2b1-win7-installing-qubes-tools-4.png" attached
+to HvmCreate| |No image "r2b1-win7-installing-qubes-tools-5.png"
+attached to HvmCreate|
 
 After successful installation, the Windows VM must be shut down.
 
@@ -391,3 +395,11 @@ TODO
    :target: /attachment/wiki/HvmCreate/r2b1-win7-installing.png
 .. |No image "r2b1-installing-ubuntu-1.png" attached to HvmCreate| image:: /chrome/common/attachment.png
    :target: /attachment/wiki/HvmCreate/r2b1-installing-ubuntu-1.png
+.. |No image "r2b1-win7-installing-qubes-tools-1.png" attached to HvmCreate| image:: /chrome/common/attachment.png
+   :target: /attachment/wiki/HvmCreate/r2b1-win7-installing-qubes-tools-1.png
+.. |No image "r2b1-win7-installing-qubes-tools-2.png" attached to HvmCreate| image:: /chrome/common/attachment.png
+   :target: /attachment/wiki/HvmCreate/r2b1-win7-installing-qubes-tools-2.png
+.. |No image "r2b1-win7-installing-qubes-tools-4.png" attached to HvmCreate| image:: /chrome/common/attachment.png
+   :target: /attachment/wiki/HvmCreate/r2b1-win7-installing-qubes-tools-4.png
+.. |No image "r2b1-win7-installing-qubes-tools-5.png" attached to HvmCreate| image:: /chrome/common/attachment.png
+   :target: /attachment/wiki/HvmCreate/r2b1-win7-installing-qubes-tools-5.png
