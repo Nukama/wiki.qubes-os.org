@@ -5,7 +5,10 @@
 <p>E.g. assuming 00:1a.0 is a BDF of the device I want to assign to &quot;personal&quot; domain:</p>
 <pre class="wiki"><code>qvm-pci -a personal 00:1a.0</code></pre>
 <p>Note that one can only assign full PCI or PCI Express devices. This means one cannot assign single USB devices -- only the whole USB controller with whatever USB devices connected to it. This limit is imposed by PC and VT-d architecture.</p>
-<h3 id="Possibleissues">Possible issues</h3>
+<h2 id="UsingQubesManager">Using Qubes Manager</h2>
+<p>TODO</p>
+<p>&lt;screenshot&gt;</p>
+<h2 id="Possibleissues">Possible issues</h2>
 <p>VM with PCI device in Qubes have allocated small buffer for DMA operations (called swiotlb). By default it is 2MB, but some devices needs a larger space. To change this allocation, edit VM kernel parameters (this is expressed in 512B chunks):</p>
 <pre class="wiki"><code># qvm-prefs netvm |grep kernelopts
 kernelopts       : iommu=soft swiotlb=2048 (default)
