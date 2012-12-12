@@ -23,8 +23,15 @@ means one cannot assign single USB devices -- only the whole USB
 controller with whatever USB devices connected to it. This limit is
 imposed by PC and VT-d architecture.
 
+Using Qubes Manager
+-------------------
+
+TODO
+
+<screenshot>
+
 Possible issues
-~~~~~~~~~~~~~~~
+---------------
 
 VM with PCI device in Qubes have allocated small buffer for DMA
 operations (called swiotlb). By default it is 2MB, but some devices
