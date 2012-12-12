@@ -54,7 +54,7 @@ system", it actually shutdowns the VM (and Qubes won't automatically
 start it), so several invocations of qvm-start command (as shown above)
 might be needed.
 
-<screenshot>
+|No image "r2b1-win7-installing.png" attached to HvmCreate|
 
 Using Installation ISOs located in other VMs
 --------------------------------------------
@@ -86,7 +86,7 @@ course):
     qvm-create --hvm ubuntu --label red
     qvm-start ubuntu --cdrom=work-web:/home/user/Downloads/ubuntu-12.10-desktop-i386.iso
 
-<screenshot>
+|No image "r2b1-installing-ubuntu-1.png" attached to HvmCreate|
 
 Setting up networking for HVM domains
 -------------------------------------
@@ -110,3 +110,7 @@ TODO
 
 -  Manually disable/enable on resume from S3
 
+.. |No image "r2b1-win7-installing.png" attached to HvmCreate| image:: /chrome/common/attachment.png
+   :target: /attachment/wiki/HvmCreate/r2b1-win7-installing.png
+.. |No image "r2b1-installing-ubuntu-1.png" attached to HvmCreate| image:: /chrome/common/attachment.png
+   :target: /attachment/wiki/HvmCreate/r2b1-installing-ubuntu-1.png
