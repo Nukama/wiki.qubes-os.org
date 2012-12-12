@@ -115,7 +115,26 @@ timezone          : localtime</code></pre>
 <p>Please note that as of now Qubes does not support shared templates for HVM domains. This means that HVM domains cloned this way will have two separate copies of the whole filesystems. This has consequences in taking much more disk space compared to standard AppVMs that share the root fs with the Template VM. Another consequence is that it's probably not legal to clone a proprietary OS, such as Windows this way, unless your license specifically allows for that (even though Windows Activation won't complain when one sets identical MAC address for the cloned VMs, it's doubtful practice at best).</p>
 <p>In the near future we plan on introducing shared template also for HVM domains, hopefully solving the problems described above.</p>
 <h2 id="InstallingQubessupporttoolsinWindows7VMs">Installing Qubes support tools in Windows 7 VMs</h2>
-<p>TODO</p>
+<p>Qubes support tools for Windows VMs is a set of programs and drivers that provide integration of Windows VMs with the rest of the Qubes system. Currently the following features become available for Windows VMs after installation of those tools:</p>
+<ul>
+<li>Support for <a href="/wiki/wiki/CopyPaste">secure clipboard copy/paste</a> between the Windows VM and other AppVMs</li>
+<li>Support for <a href="/wiki/wiki/CopyingFiles">secure file exchange</a> between the Windows VM and other AppVMs</li>
+<li>Support for qvm-run and generic qrexec for the Windows VM (e.g. ability to run custom service within/from the Windows VM)</li>
+<li>Xen PV drivers for Windows that increase performance compared to qemu emulated devices</li>
+</ul>
+<p>Features that are currently not supported, but are planned for future releases (as soon as R2 Beta 2):</p>
+<ul>
+<li>Video driver for Windows allowing custom resolutions (arbitrary HVM window resizing) and VM's mouse cursor hiding</li>
+<li>Seamless app window mode, in which application windows are extracted and composed onto a common desktop just like it's currently done for Linux AppVMs. Currently Windows HVMs run in a window that contains the whole desktop of the VM.</li>
+</ul>
+<p>Qubes Windows Support Tools are not open source and are distributed under a commercial license and their source code is not publicly available.</p>
+<p>Because the Windows Support Tools are not licensed under a GPL license they are not distributed with Qubes installation ISO. Instead, one can download them when needed using the standard Qubes command for installing software in Dom0:</p>
+<pre class="wiki"><code>sudo qubes-dom0-update qubes-windows-tools</code></pre>
+<p>This should install <code>qubes-windows-tools-*.rpm</code> in your system, a package that brings an ISO with Windows Support Tools:</p>
+<pre class="wiki"><code>[joanna@dom0 ~]$ rpm -ql qubes-windows-tools-1-201211301354.noarch
+/usr/lib/qubes/qubes-windows-tools-201211301354.iso</code></pre>
+<p>Now, in order to install the tools in a Windows VM one should start the VM with the ISO attached:</p>
+<pre class="wiki"><code>qvm-start lab-win7 --cdrom=/usr/lib/qubes/qubes-windows-tools-201211301354.iso</code></pre>
 <h2 id="AssigningPCIdevicestoHVMdomains">Assigning PCI devices to HVM domains</h2>
 <p>TODO</p>
 <ul>
