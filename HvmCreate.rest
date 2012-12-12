@@ -387,9 +387,21 @@ fine with this VM.
 Assigning PCI devices to HVM domains
 ------------------------------------
 
-TODO
+HVM domains (including Windows VMs) can be `assigned PCI
+devices </wiki/AssigningDevices>`__ just like normal AppVMs. E.g. one
+can assign one of the USB controllers to the Windows VM and should be
+able to use various devices that require Windows software, such as
+phones, electronic devices that are configured via FTDI, etc.
 
--  Manually disable/enable on resume from S3
+Once problem, however, at the moment, is that after the whole system
+gets suspend into S3 sleep, and subsequently resumed, such attached
+devices stop working and should be restarted within the VM. Under
+Windows this can be achieved by opening the Device Manager, selecting
+the actual device, such as a USB controller, and then first 'Disabling',
+and then 'Enabling' the device again. This is illustrated on the
+screenshot below:
+
+|No image "r2b1-win7-usb-disable.png" attached to HvmCreate|
 
 .. |No image "r2b1-win7-installing.png" attached to HvmCreate| image:: /chrome/common/attachment.png
    :target: /attachment/wiki/HvmCreate/r2b1-win7-installing.png
@@ -403,3 +415,5 @@ TODO
    :target: /attachment/wiki/HvmCreate/r2b1-win7-installing-qubes-tools-4.png
 .. |No image "r2b1-win7-installing-qubes-tools-5.png" attached to HvmCreate| image:: /chrome/common/attachment.png
    :target: /attachment/wiki/HvmCreate/r2b1-win7-installing-qubes-tools-5.png
+.. |No image "r2b1-win7-usb-disable.png" attached to HvmCreate| image:: /chrome/common/attachment.png
+   :target: /attachment/wiki/HvmCreate/r2b1-win7-usb-disable.png
