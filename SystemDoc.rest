@@ -5,42 +5,27 @@ System Documentation for Developers
    `​(pdf) <http://www.qubes-os.org/files/doc/arch-spec-0.3.pdf>`__ (A
    bit outdated, but it was the original document that started this
    all...)
-
 -  `Security-critical elements of Qubes
    OS </wiki/SecurityCriticalCode>`__
-
 -  `Qubes GUI virtualization protocol </wiki/GUIdocs>`__
-
 -  `Networking in Qubes </wiki/QubesNet>`__
-
 -  `Inter-domain file coping </wiki/Qfilecopy>`__
-
 -  `Command execution in VM (and Qubes RPC) </wiki/Qrexec>`__
-
 -  `Dynamic memory management in Qubes </wiki/Qmemman>`__
-
 -  `Implementation of DisposableVMs </wiki/DVMimpl>`__
-
 -  `​Article about disposable
    VMs <http://theinvisiblethings.blogspot.com/2010/06/disposable-vms.html>`__
-
 -  `Implementation of template sharing and
    updating </wiki/TemplateImplementation>`__
-
 -  `Dom0 secure update mechanism </wiki/Dom0SecureUpdates>`__
-
 -  `VM secure update mechanism? </wiki/VMSecureUpdates>`__
 
 Build instructions:
 
 -  `Building Qubes </wiki/QubesBuilder>`__
-
 -  `Development Workflow </wiki/DevelopmentWorkflow>`__
-
 -  `KDE Dom0 packages for Qubes </wiki/KdeDom0>`__
-
 -  `How to build Qubes installation
    ISO </wiki/InstallationIsoBuilding>`__
-
 -  `Building USB passthrough support (experimental) </wiki/USBVM>`__
 
