@@ -33,7 +33,7 @@ News
 -  Nov 16, 2012: `Qubes Security Team </wiki/SecurityPage>`__ has joined
    the Xen Security Pre-disclousre list
    `​more <http://lists.xen.org/archives/html/xen-devel/2012-11/msg00821.html>`__
--  Dec 14, 2012: **Qubes 2 Beta 1 has been released'''
+-  Dec 14, 2012: **Qubes 2 Beta 1 has been released!
    `​announcement <http://theinvisiblethings.blogspot.com/2012/12/qubes-2-beta-1-with-initial-windows.html>`__**
 
 .. |http://files.qubes-os.org/Architecture\_files/droppedImage.png| image:: http://files.qubes-os.org/Architecture_files/droppedImage.png
