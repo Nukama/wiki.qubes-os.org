@@ -27,15 +27,15 @@
 <pre class="wiki"><code>qvm-run -a &lt;domain&gt; &quot;&lt;app name&gt; [arguments]&quot;</code></pre>
 <p>e.g.:</p>
 <pre class="wiki"><code>qvm-run -a red firefox</code></pre>
-<h2 id="AddingRemovingdomains">Adding/Removing domains</h2>
-<p>You can easily add/remove domains by clicking buttons in the Qubes Manager (you can find it in the tray -- it's the colourful icon with three little cubes: red, green and blue).</p>
-<p>&lt;screenshot of creating a domain&gt;</p>
-<p>You can also create/remove domains from command line (console under Dom0) using the following tools:</p>
+<h2 id="AddingRemovingLisingdomains">Adding/Removing/Lising domains</h2>
+<p>You can easily add/remove domains by clicking buttons in the Qubes Manager.</p>
+<p>You can also create/remove/list domains from command line (console under Dom0) using the following tools:</p>
 <ul>
-<li><code></code><code>qvm-create</code><code></code></li>
-<li><code></code><code>qvm-remove</code><code></code></li>
+<li><code>qvm-create</code></li>
+<li><code>qvm-remove</code></li>
+<li><code>qvm-ls</code></li>
 </ul>
-<p>The <code></code><code>qvm-create</code><code></code> is more powerful way of creating domains than the &quot;Add&quot; button in the manager, because it allows you to pass a few special options that allow to create special types of domains, such as <strong>Standalone VM</strong> (that is not based on a Template) or <strong>NetVMs</strong> or <strong>ProxyVMs</strong> -- you can read more on this in other chapters of this guide.</p>
+<p>The <code>qvm-create</code> is a more powerful way of creating domains than the &quot;Add&quot; button in the Qubes Manager, because it allows you to pass a few special options that allow to create special types of domains, such as e.g. a <strong>Standalone VM</strong> (that is not based on a Template) or <strong>NetVMs</strong> or <strong>ProxyVMs</strong> -- you can read more on this in other chapters of this guide.</p>
 <h2 id="HowmanydomainsdoIneed">How many domains do I need?</h2>
 <p>So, how many and what domains do I need? That's a great question, but there is no good answer that would fit all. This all depends on how does your digital life look like, what type of job you do, etc.</p>
 <p>For start it's reasonable to try the three domains created automatically by the installer (work, personal, red). Then, when you start feeling that some things/activities just don't fit, you can easily create a new domain for them. You will be able to easily copy files to the newly created domains, as it is covered in one of the <a href="/wiki/wiki/CopyingFiles">next chapters</a> of this guide.</p>
