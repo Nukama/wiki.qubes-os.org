@@ -55,7 +55,7 @@ never in Dom0.
 Qubes Manager and command line tools
 ------------------------------------
 
-TODO
+|No image "r2b1-qubes-manager-2.png" attached to GettingStarted|
 
 Starting apps in domains
 ------------------------
@@ -69,7 +69,8 @@ menu directory called *Domain: <name>*, that is reachable via
 Start->Applications menu. When you enter into this directory, you can
 select a specific application that you would like to start:
 
-<screenshot of apps menu>
+|No image "r2b1-appsmenu-1.png" attached to GettingStarted| |No image
+"r2b1-appsmenu-3.png" attached to GettingStarted|
 
 Note that the menus contain only a few short-cuts, if you would like to
 be able to start more apps via menu (e.g. if you install new app), you
@@ -135,3 +136,9 @@ into security domains.
 
 .. |No image "snapshot12.png" attached to GettingStarted| image:: /chrome/common/attachment.png
    :target: /attachment/wiki/GettingStarted/snapshot12.png
+.. |No image "r2b1-qubes-manager-2.png" attached to GettingStarted| image:: /chrome/common/attachment.png
+   :target: /attachment/wiki/GettingStarted/r2b1-qubes-manager-2.png
+.. |No image "r2b1-appsmenu-1.png" attached to GettingStarted| image:: /chrome/common/attachment.png
+   :target: /attachment/wiki/GettingStarted/r2b1-appsmenu-1.png
+.. |No image "r2b1-appsmenu-3.png" attached to GettingStarted| image:: /chrome/common/attachment.png
+   :target: /attachment/wiki/GettingStarted/r2b1-appsmenu-3.png
