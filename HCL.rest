@@ -1,5 +1,5 @@
-Hardware Compatibility List for Qubes OS
-========================================
+Hardware Compatibility List for Qubes OS R1
+===========================================
 
 The following is a list of systems that have been tested and seem to
 work fine with Qubes OS (or mostly fine). Unless otherwise noted, all
