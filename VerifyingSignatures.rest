@@ -104,7 +104,7 @@ a copy of the Master Key) in the keys directory on our server:
 `​http://keys.qubes-os.org/keys/ <http://keys.qubes-os.org/keys/>`__
 
 The developer keys are set to be valid for 1 year only, while the Qubes
-Master Singing Key has no expiration date. This key has been generated
+Master Signing Key has no expiration date. This key has been generated
 and is kept only within a special 'vault' machine that has no
 networking, and the private portion (hopefully) is never to leave this
 isolated machine.
