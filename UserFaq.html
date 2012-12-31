@@ -37,13 +37,13 @@
 <h3 id="Whataboutotherapproachestosecurity">What about other approaches to security?</h3>
 <p>The other two popular <a href="http://theinvisiblethings.blogspot.com/2008/09/three-approaches-to-computer-security.html">​approaches</a> are: “Security by Correctness”, and “Security by Obscurity”. We don’t believe any of those two can bring reasonable security today and in the foreseeable future.</p>
 <h3 id="Butwhataboutsafelanguagesandformallyverifiedmicrokernels">But what about safe languages and formally verified microkernels?</h3>
-<p>In short: these are non-realistic solutions today. We discuss this more in-depth in our <a href="http://qubes-os.org/files/doc/arch-spec-0.3.pdf">​Architecture Specification document</a>.</p>
+<p>In short: these are non-realistic solutions today. We discuss this more in-depth in our <a href="http://files.qubes-os.org/files/doc/arch-spec-0.3.pdf">​Architecture Specification document</a>.</p>
 <h3 id="WhyQubesusesvirtualization">Why Qubes uses virtualization?</h3>
 <p>We believe that today this is the only practically viable approach to implement strong isolation, and, at the same time, provide compatibility with existing applications and drivers.</p>
 <h3 id="DoesQubesruneveryappinaseparateVM">Does Qubes run every app in a separate VM?</h3>
 <p>No! This would not make much sense. Qubes uses lightweight VMs to create security domains, such as e.g. ‘work’, ‘personal’, ‘banking’, etc. Typical user would likely need around 5 domains. Very paranoid users, who are high-profile targets. might use around a dozen or more domains.</p>
 <h3 id="WhyQubesusesXenandnote.g.KVMorsomeotherhypervisor">Why Qubes uses Xen, and not e.g. KVM or some other hypervisor?</h3>
-<p>In short: we believe the Xen architecture allows to create more secure systems, i.e. with much smaller TCB, which translates to smaller attack surface. We discuss this much more in-depth in our <a href="http://qubes-os.org/files/doc/arch-spec-0.3.pdf">​Architecture Specification document</a>.</p>
+<p>In short: we believe the Xen architecture allows to create more secure systems, i.e. with much smaller TCB, which translates to smaller attack surface. We discuss this much more in-depth in our <a href="http://files.qubes-os.org/files/doc/arch-spec-0.3.pdf">​Architecture Specification document</a>.</p>
 <h3 id="WhatissospecialaboutQubesGUIvirtualization">What is so special about Qubes GUI virtualization?</h3>
 <p>We have designed the GUI virtualization subsystem with two primary goals: security and performance. Our GUI infrastructure introduces only about 2,500 lines of C code (LOC) into the privileged domain (Dom0), which is very little, and thus leaves not much space for bugs and potential attacks. At the same time, due to smart use of Xen shared memory our GUI implementation is very efficient, so most virtualized applications really feel like if they were executed natively.</p>
 <h3 id="CanIwatchmoviesinAppVMse.g.YouTubemovies">Can I watch movies in AppVMs, e.g. <a href="/wiki/wiki/YouTube">YouTube?</a> movies?</h3>
