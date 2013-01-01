@@ -1,10 +1,13 @@
-<h1 id="UsingQuebesFirewall">Using Quebes Firewall</h1>
-<h2 id="Howtoeditrules">How to edit rules</h2>
-<p>In order to edit rules for a given domain, select this domain in the Qubes Manager and press the &quot;policeman's helmet&quot; button.</p>
-<p>See the screenshot <a href="http://www.qubes-os.org/files/screenshots/release-1-beta-1/snapshot25.png">​here</a>.</p>
-<p>Note that if you specify a rule by DNS name it will be resolved to IP(s) <em>at the moment of applying the rules</em>, and not on the fly for each new connection. This means it will not work for serves using load balancing. More on this in the message quoted below.</p>
+<h1 id="UnderstandingQubesnetworkingandfirewall">Understanding Qubes networking and firewall</h1>
 <h2 id="UnderstandingfirewallinginQubes">Understanding firewalling in Qubes</h2>
-<p>For now, see this message:</p>
+<p>Every AppVM in Qubes is connected to the network via a FirewallVM, which is used to enforce network-level policies. By default there is one default Firewall VM, but the user is free to create more, if needed.</p>
+<p>For more information, see the following:</p>
 <ul>
 <li><a href="https://groups.google.com/group/qubes-devel/browse_thread/thread/9e231b0e14bf9d62">​https://groups.google.com/group/qubes-devel/browse_thread/thread/9e231b0e14bf9d62</a></li>
+<li><a href="http://theinvisiblethings.blogspot.com/2011/09/playing-with-qubes-networking-for-fun.html">​http://theinvisiblethings.blogspot.com/2011/09/playing-with-qubes-networking-for-fun.html</a></li>
 </ul>
+<h2 id="Howtoeditrules">How to edit rules</h2>
+<p>In order to edit rules for a given domain, select this domain in the Qubes Manager and press the &quot;firewall&quot; button:</p>
+<p>[Screenshot]</p>
+<p>Note that if you specify a rule by DNS name it will be resolved to IP(s) <em>at the moment of applying the rules</em>, and not on the fly for each new connection. This means it will not work for serves using load balancing. More on this in the message quoted below.</p>
+<p>Alternatively, one can use the <code>qvm-firewall</code> command from Dom0 to edit the firewall rules by hand:</p>
