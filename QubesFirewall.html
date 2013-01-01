@@ -11,3 +11,17 @@
 <p><a href="/wiki/attachment/wiki/QubesFirewall/r2b1-manager-firewall.png"><img src="/wiki/chrome/common/attachment.png" title="No image &quot;r2b1-manager-firewall.png&quot; attached to QubesFirewall" alt="No image &quot;r2b1-manager-firewall.png&quot; attached to QubesFirewall" /></a></p>
 <p>Note that if you specify a rule by DNS name it will be resolved to IP(s) <em>at the moment of applying the rules</em>, and not on the fly for each new connection. This means it will not work for serves using load balancing. More on this in the message quoted below.</p>
 <p>Alternatively, one can use the <code>qvm-firewall</code> command from Dom0 to edit the firewall rules by hand:</p>
+<h2 id="EnablingnetworkingbetweentwoAppVMs">Enabling networking between two AppVMs</h2>
+<p>Normally any networking traffic between VMs is prohibited for security reasons. However, in special situations, one might one to selectively allow specific AppVMs to be able to establish networking connectivity between each other. For example, this might come useful in some development work, when one wants to test networking code, or to allow file exchange between HVM domains (which do not have Qubes tools installed) via SMB/scp/NFS protocols.</p>
+<p>In order to allow networking between AppVM A and B follow those steps:</p>
+<ul>
+<li>Make sure both A and B are connected to the same firewall vm (by default all AppVMs use the same firewall VM).</li>
+<li>Note the Qubes IP addresses assigned to both AppVMs. This can be done using the <code>qvm-ls -n</code> command, or via the Qubes Manager preferences pane for each AppVM.</li>
+<li>Start both AppVMs, and also open a terminal in the firewall VM</li>
+<li><p>In the firewall VM's terminal enter the following iptables rule:</p>
+<pre class="wiki"><code>sudo iptables -I FORWARD 2 -s &lt;IP address of A&gt; -d &lt;IP address of B&gt; -j ACCEPT</code></pre></li>
+<li>Now you should be able to reach the AppVM B from A -- test it using e.g. ping issues from AppVM A. Note however, that this doesn't allow you to reach A from B -- for this you would need another rule, with A and B addresses swapped.</li>
+<li><p>If everything works as expected, then the above iptables rule(s) should be written into firewall VM's <code>qubes_firewall_user_script</code> script which is run on every firewall update. This is necessary, because Qubes orders every firewall VM to update all the rules whenever new VM is started in the system. If we didn't enter our rules into this &quot;hook&quot; script, then shortly our custom rules would disappear and inter-VM networking would stop working. Here's an example how to update the script (note that, by default, there is no script file present, so we likely will be creating it, unless we had some other custom rules defines earlier in this firewallvm):</p>
+<pre class="wiki"><code>[user@firewallvm ~]$ sudo bash
+[root@firewallvm user]# echo &quot;iptables -I FORWARD 2 -s 10.137.2.25 -d 10.137.2.6 -j ACCEPT&quot; &gt;&gt; /rw/config/qubes_firewall_user_script</code></pre></li>
+</ul>
