@@ -36,6 +36,10 @@ Specific systems Hardware Compatibility List
 
 Device
 
+Qubes R1
+
+Qubes R2
+
 Kernel
 
 Xorg
@@ -44,21 +48,36 @@ VT-d
 
 PCI
 
-<table>
-<col width="20%" />
-<col width="20%" />
-<col width="20%" />
-<col width="20%" />
-<col width="20%" />
-<tbody>
-<tr class="odd">
-<td align="left"><p>Fujitsu S751 [BR] (i5-2520M; HD3000; QM67; BIOS: 1.18)</p></td>
-<td align="left">OK</td>
-<td align="left">OK</td>
-<td align="left">OK</td>
-<td align="left">OK</td>
-</tr>
-</tbody>
-</table>
+Kernel
 
+Xorg
 
+VT-x
+
+VT-d
+
+PCI
+
+USB
+
+> Fujitsu S751 (i5-2520M; HD3000; QM67; BIOS: 1.18)
+
+OK
+
+OK
+
+OK
+
+OK
+
+OK
+
+OK
+
+OK
+
+OK
+
+OK
+
+not tested
