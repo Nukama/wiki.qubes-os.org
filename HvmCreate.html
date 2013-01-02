@@ -18,6 +18,7 @@
 <p>Assuming e.g. the an installation ISO named <code>ubuntu-12.10-desktop-i386.iso</code> has been downloaded in <code>work-web</code> AppVM, and located within <code>/home/user/Downloads</code> directory within this AppVM, one can immediately create a new HVM and use this ISO as an installation media with the following command (issued in Dom0, of course):</p>
 <pre class="wiki"><code>qvm-create --hvm ubuntu --label red
 qvm-start ubuntu --cdrom=work-web:/home/user/Downloads/ubuntu-12.10-desktop-i386.iso</code></pre>
+<p>Of course the AppVM where the ISO is kept must also be running for this to work (this VM is now serving the ISO and acting as a disk backend).</p>
 <p><a href="/wiki/attachment/wiki/HvmCreate/r2b1-installing-ubuntu-1.png"><img src="/wiki/chrome/common/attachment.png" title="No image &quot;r2b1-installing-ubuntu-1.png&quot; attached to HvmCreate" alt="No image &quot;r2b1-installing-ubuntu-1.png&quot; attached to HvmCreate" /></a></p>
 <h2 id="SettingupnetworkingforHVMdomains">Setting up networking for HVM domains</h2>
 <p>Just like standard (paravirtualized) AppVMs, the HVM domains got fixed IP addresses centrally assigned by Qubes. Normally Qubes agent scripts, running within each AppVM, are responsible for setting up networking within the VM according the configuration created by Qubes. Such centrally managed networking infrastructure allows for <a href="http://theinvisiblethings.blogspot.com/2011/09/playing-with-qubes-networking-for-fun.html">​advanced networking configuration</a>.</p>
