@@ -1,0 +1,55 @@
+<h1 id="HardwareCompatibilityListforQubesOSR1">Hardware Compatibility List for Qubes OS R1</h1>
+<p>The following is a list of systems that have been tested and seem to work fine with Qubes OS (or mostly fine). Unless otherwise noted, all the systems have support for Intel VT-d, which is needed to properly secure driver domains in Qubes OS (netvm, usbvm, etc). Systems without VT-d are still usable, but you don't get an extra protection from driver domain separation (you still get lots of security benefit from AppVM separation though).</p>
+<h2 id="Generalsystemrequirements">General system requirements</h2>
+<p>Minimum:</p>
+<ul>
+<li>4GB of RAM</li>
+<li>64-bit Intel or AMD processor (x86_64 aka x64 aka AMD64)</li>
+<li>Intel GPU strongly preferred (if you have Nvidia GPU, prepare for some <a href="/wiki/wiki/InstallNvidiaDriver">troubleshooting</a>; we haven't tested ATI hardware)</li>
+<li>At least 20GB of disk (Note that <strong>it is possible to install Qubes on an external USB disk</strong>, so that you can try it without sacrificing your current system. Mind, however, that USB disks are usually SLOW!)</li>
+<li>Fast SSD disk strongly recommended</li>
+</ul>
+<p>Additional requirements:</p>
+<ul>
+<li>Intel VT-d or AMD IOMMU technology (this is needed for effective isolation of your network VMs)</li>
+<li>TPM with proper BIOS support if you want to use option <a href="http://theinvisiblethings.blogspot.com/2011/09/anti-evil-maid.html">​Anti Evil Maid</a></li>
+</ul>
+<p>If you don't meet the additional criteria, you can still install and use Qubes. It still offers significant security improvement over traditional OSes, because things such as GUI isolation, or kernel protection do not require special hardware.</p>
+<p><strong>Note:</strong> We don't recommend installing Qubes in a virtual machine!</p>
+<p><strong>Note:</strong> There is a problem with supporting keyboard and mouse on Mac, and so Mac hardware is currently unsupported (patches welcomed!)</p>
+<h2 id="SpecificsystemsknowntoworktestedbyQubescoredevelopers">Specific systems known to work tested by Qubes core developers</h2>
+<ul>
+<li>Lenovo Thinkpad T420 w/ Intel graphics</li>
+<li>Lenovo Thinkpad T420s w/ Intel graphics (requires 3.2.7 kernel to handle the panel screen correctly)</li>
+<li>Lenovo Thinkpad T61 w/ Nvidia graphics (Quadro NVS 140M) - works well. This system doesn't support VT-d!</li>
+</ul>
+<ul>
+<li>Samsung X460 - works well on both xenlinux 2.6.38 and pvops 3.2.7 kernel; after resume ethernet driver (sky2) need to be reloaded in netvm to start working again. Even though the chipset suppors VT-d, the BIOS is broken, and so the VT-d is not picked up by Xen, so it effectively doesn't work.</li>
+</ul>
+<ul>
+<li>Sony Vaio Z 12 (2010 edition) -- works well, but some <a href="/wiki/wiki/SonyVaioTinkering">tinkering required</a></li>
+</ul>
+<ul>
+<li>Dell Latitude E6420 w/ Intel graphics (Sandy Bridge), i5-2520M CPU - works well on 3.4.18 (haven't tested default 3.2.30 kernel)</li>
+</ul>
+<h2 id="SpecificsystemsknowntoworktestedbytheQubescommunity">Specific systems known to work tested by the Qubes community</h2>
+<ul>
+<li>Fujitsu S751 seems to work well, but requires BIOS update to get VT-d working. Reported by <a href="https://groups.google.com/forum/#!msg/qubes-devel/xoyNCigBvFE/ER61L6TbVpwJ">​Zrubecz Laszlo</a>.</li>
+<li>Sony Vaio Z2 (2011 edition) works fine but requires some BIOS mod to enable VT-d. Reported by <a href="https://groups.google.com/d/msg/qubes-devel/xoyNCigBvFE/fkC6em-Wqd0J">​Danny Fullerton</a>.</li>
+<li>Lenovo Thinkpad W510 with core I7 Q820, with proprietary Nvidia driver works fine. Reported by <a href="https://groups.google.com/forum/#!msg/qubes-devel/TgDWwBs36yA/IUFZPHs716cJ">​Sebastian Hültenschmidt</a>.</li>
+<li>Lenovo Thinkpad x220 8GB RAM, Intel graphics (core i5), VT-d is working. Reported by <a href="https://groups.google.com/group/qubes-devel/msg/f41578eef913446a">​Stefan Boresch</a></li>
+<li>Dell Latitude 5520, requires some minor fixes for networking to work. Reported by <a href="https://groups.google.com/group/qubes-devel/msg/7418e7084c2de99f?hl=en">​Erik Edin</a>.</li>
+<li>Dell Latitude E6520 with i7-2760QM CPU. VT-d works fine. nVidia graphics not working, but integrated Intel does. Reported by <a href="https://groups.google.com/group/qubes-devel/msg/340afc6fc2d06d0e">​Steven Collins</a></li>
+<li>Dell <a href="/wiki/wiki/PowerEdge">PowerEdge?</a> T110 II, onboard Matrox graphics (Intel Xeon E3-1230), VT-d is working. Reported by <a href="https://groups.google.com/group/qubes-devel/msg/8a894915909eeaee">​Geoff</a></li>
+<li>Toshiba Tecra S11. Requires <a href="https://groups.google.com/group/qubes-devel/browse_thread/thread/fdec0ec165a87726">​some tinkering</a> to enable 3G modem. Reported by Jan Beerden</li>
+<li>Toshiba M780 S7240, requires latest BIOS to have VT-d working, <a href="https://groups.google.com/group/qubes-devel/browse_thread/thread/2b89d2dc5f999ab7">​some problems</a> with card reader. Reported by <a href="https://groups.google.com/group/qubes-devel/browse_thread/thread/66e97c990a08d8e2">​Franz</a></li>
+<li>Dell Precision M4600 Intel Core i7-2860QM, 16GB ram, NVIDIA Quadro 1000M, EMEA Intel Pro Wireless 6300. Reported by <a href="https://groups.google.com/group/qubes-devel/browse_thread/thread/ddf35d12a35f96a3">​nqe</a></li>
+<li>Tecra A11-15X: RAM 8GB CPU I7 M620 2.67 ghz. Reported by <a href="https://groups.google.com/group/qubes-devel/browse_thread/thread/c0d5f6a33d672b62">​PirBoazo</a></li>
+</ul>
+<h2 id="SpecificsystemsknowntonotworkwellwithQubes">Specific systems known to not work well with Qubes</h2>
+<ul>
+<li>All systems based on Ivy Bridge processors with the Intel integrated GPU used as the primary display. Currently our Xorg drivers in Dom0 do not support the latest Intel integrated GPUs from Ivy Bridge line. For instructions on possible workarounds see <a href="https://groups.google.com/d/msg/qubes-devel/XN6JrEXVOVA/GMTjUM2J6QEJ">​this message</a>.
+<ul>
+<li>Specific system in above category: Lenovo x230 reported by <a href="https://groups.google.com/d/msg/qubes-devel/XN6JrEXVOVA/lkxGRA00EqgJ">​Chris</a> - with detailed list of working and not working components</li>
+</ul></li>
+</ul>
