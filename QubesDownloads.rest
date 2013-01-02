@@ -26,7 +26,7 @@ Qubes Release 1
    Signature <http://sourceforge.net/projects/qubesos/files/Qubes-R1-x86_64-DVD.iso.asc/download>`__
    (via sourceforge.net)
 
--  `Hardware Compatibility List </wiki/HCL>`__
+-  `Hardware Compatibility List </wiki/HCLR1>`__
 -  `Installation Guide </wiki/InstallationGuide>`__
 
 Mirrors
