@@ -414,6 +414,13 @@ screenshot below:
 
 |No image "r2b1-win7-usb-disable.png" attached to HvmCreate|
 
+Further reading
+---------------
+
+Other documents related to HVM:
+
+-  `LinuxHVMTips </wiki/LinuxHVMTips>`__
+
 .. |No image "r2b1-win7-installing.png" attached to HvmCreate| image:: /chrome/common/attachment.png
    :target: /attachment/wiki/HvmCreate/r2b1-win7-installing.png
 .. |No image "r2b1-installing-ubuntu-1.png" attached to HvmCreate| image:: /chrome/common/attachment.png
