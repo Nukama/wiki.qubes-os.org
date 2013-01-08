@@ -176,3 +176,8 @@ exit</code></pre>
 <p>HVM domains (including Windows VMs) can be <a href="/wiki/wiki/AssigningDevices">assigned PCI devices</a> just like normal AppVMs. E.g. one can assign one of the USB controllers to the Windows VM and should be able to use various devices that require Windows software, such as phones, electronic devices that are configured via FTDI, etc.</p>
 <p>Once problem, however, at the moment, is that after the whole system gets suspend into S3 sleep, and subsequently resumed, such attached devices stop working and should be restarted within the VM. Under Windows this can be achieved by opening the Device Manager, selecting the actual device, such as a USB controller, and then first 'Disabling', and then 'Enabling' the device again. This is illustrated on the screenshot below:</p>
 <p><a href="/wiki/attachment/wiki/HvmCreate/r2b1-win7-usb-disable.png"><img src="/wiki/chrome/common/attachment.png" title="No image &quot;r2b1-win7-usb-disable.png&quot; attached to HvmCreate" alt="No image &quot;r2b1-win7-usb-disable.png&quot; attached to HvmCreate" /></a></p>
+<h2 id="Furtherreading">Further reading</h2>
+<p>Other documents related to HVM:</p>
+<ul>
+<li><a href="/wiki/wiki/LinuxHVMTips">LinuxHVMTips</a></li>
+</ul>
