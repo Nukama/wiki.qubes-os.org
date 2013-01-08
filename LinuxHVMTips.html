@@ -1,0 +1,31 @@
+<h1 id="TipsforLinuxinHVMdomain">Tips for Linux in HVM domain</h1>
+<h2 id="Screenresolution">Screen resolution</h2>
+<p>Some kernel/Xorg combination use only 640x480 in HVM, which is quite small. To enable maximum resolution, some changes in Xorg configuration are needed:</p>
+<ol>
+<li>Force &quot;vesa&quot; video driver</li>
+<li>Provide wide horizontal synchronization range</li>
+</ol>
+<p>To achieve it (all commands run as root):</p>
+<ol>
+<li><p>Generate XOrg configuratio (if you don't have it):</p>
+<pre class="wiki"><code>X -configure :1 &amp;&amp; mv ~/xorg.conf.new /etc/X11/xorg.conf</code></pre></li>
+<li><p>Add <a href="/wiki/wiki/HorizSync">HorizSync?</a> line to Monitor section, it should look something like:</p>
+<pre class="wiki"><code>Section &quot;Monitor&quot;
+        Identifier   &quot;Monitor0&quot;
+        VendorName   &quot;Monitor Vendor&quot;
+        ModelName    &quot;Monitor Model&quot;
+        HorizSync    30.0 - 60.0
+EndSection</code></pre></li>
+<li><p>Change driver to &quot;vesa&quot; in Device section:</p>
+<pre class="wiki"><code>Section &quot;Device&quot;
+        # (...)
+        Identifier  &quot;Card0&quot;
+        Driver      &quot;vesa&quot;
+        VendorName  &quot;Technical Corp.&quot;
+        BoardName   &quot;Unknown Board&quot;
+        BusID       &quot;PCI:0:2:0&quot;
+EndSection</code></pre></li>
+</ol>
+<p>Now you should get at least 1280x1024 and be able to choose other modes.</p>
+<h2 id="Qubesagents">Qubes agents</h2>
+<p>Linux Qubes agents are written with PV domain in mind, but it looks to be possible to run them also in HVM domain. However some work is required to achieve it. Check <a href="https://groups.google.com/group/qubes-devel/browse_thread/thread/081df4a43e49e7a5">​this thread</a>.</p>
