@@ -398,6 +398,8 @@ fine with this VM.
 And the screenshot below illustrates the Send To entries in a Windows VM
 that can be used to copy/send files to other Qubes domains:
 
+|No image "win7-sendto-another-vm.png" attached to HvmCreate|
+
 Assigning PCI devices to HVM domains
 ------------------------------------
 
@@ -438,5 +440,7 @@ Other documents related to HVM:
    :target: /attachment/wiki/HvmCreate/r2b1-win7-installing-qubes-tools-4.png
 .. |No image "r2b1-win7-installing-qubes-tools-5.png" attached to HvmCreate| image:: /chrome/common/attachment.png
    :target: /attachment/wiki/HvmCreate/r2b1-win7-installing-qubes-tools-5.png
+.. |No image "win7-sendto-another-vm.png" attached to HvmCreate| image:: /chrome/common/attachment.png
+   :target: /attachment/wiki/HvmCreate/win7-sendto-another-vm.png
 .. |No image "r2b1-win7-usb-disable.png" attached to HvmCreate| image:: /chrome/common/attachment.png
    :target: /attachment/wiki/HvmCreate/r2b1-win7-usb-disable.png
