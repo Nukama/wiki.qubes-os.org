@@ -191,7 +191,7 @@ OK
 
 ?
 
-[link](https://groups.google.com/d/msg/qubes-devel/xoyNCigBvFE/fkC6em-Wqd0J)
+[​link](https://groups.google.com/d/msg/qubes-devel/xoyNCigBvFE/fkC6em-Wqd0J)
 
 ?
 
@@ -210,7 +210,7 @@ OK
 
 ?
 
-[link](https://groups.google.com/forum/#!msg/qubes-devel/TgDWwBs36yA/IUFZPHs716cJ)
+[​link](https://groups.google.com/forum/#!msg/qubes-devel/TgDWwBs36yA/IUFZPHs716cJ)
 
 ?
 
@@ -245,7 +245,7 @@ OK
 
 ?
 
-[link](https://groups.google.com/d/msg/qubes-devel/XN6JrEXVOVA/lkxGRA00EqgJ)
+[​link](https://groups.google.com/d/msg/qubes-devel/XN6JrEXVOVA/lkxGRA00EqgJ)
 
 ?
 
@@ -263,7 +263,7 @@ OK
 
 ?
 
-[link](https://groups.google.com/group/qubes-devel/msg/7418e7084c2de99f?hl=en)
+[​link](https://groups.google.com/group/qubes-devel/msg/7418e7084c2de99f?hl=en)
 
 ?
 
@@ -281,7 +281,7 @@ OK
 
 ?
 
-[link](https://groups.google.com/group/qubes-devel/msg/340afc6fc2d06d0e)
+[​link](https://groups.google.com/group/qubes-devel/msg/340afc6fc2d06d0e)
 
 ?
 
@@ -333,7 +333,7 @@ OK
 
 ?
 
-[link](https://groups.google.com/group/qubes-devel/browse_thread/thread/fdec0ec165a87726)
+[​link](https://groups.google.com/group/qubes-devel/browse_thread/thread/fdec0ec165a87726)
 
 ?
 
