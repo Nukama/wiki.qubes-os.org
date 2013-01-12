@@ -40,6 +40,8 @@ Qubes R1
 
 Qubes R2 Beta1
 
+Reported by
+
 Standard feautures
 
 VT-d
