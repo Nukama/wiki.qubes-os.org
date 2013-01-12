@@ -203,8 +203,7 @@ OK
 
 ?
 
-`​Laszlo
-Zrubecz <https://groups.google.com/forum/#!msg/qubes-devel/xoyNCigBvFE/ER61L6TbVpwJ>`__
+`​Zrubi <https://groups.google.com/forum/#!msg/qubes-devel/xoyNCigBvFE/ER61L6TbVpwJ>`__
 
 | Sony Vaio Z2
 |  (2011 edition)
