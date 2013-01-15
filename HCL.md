@@ -66,15 +66,15 @@ OK
 
 OK
 
-?
-
 OK
 
 OK
 
 OK
 
-?
+OK
+
+OK
 
 Qubes core developers
 
@@ -84,15 +84,15 @@ OK
 
 OK
 
-?
-
 OK
 
 OK
 
 OK
 
-?
+OK
+
+OK
 
 Qubes core developers
 
