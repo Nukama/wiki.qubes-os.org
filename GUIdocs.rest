@@ -268,76 +268,76 @@ Each message starts with the following header
 |  `` KEYPRESS, BUTTON, MOTION, FOCUS `` messages pass information
 extracted from dom0 XEvent; see appropriate event documentation.
 
-+------------------------+----------------------------------------+--------------------------------------------------------------------+
-| Message name           | Structure after header                 | Action                                                             |
-+========================+========================================+====================================================================+
-| MSG\_KEYPRESS          | `` struct msg_keypress {  ``           | Tell *qubes\_drv* driver to generate a keypress                    |
-|                        |  `` uint32_t type;  ``                 |                                                                    |
-|                        |  `` uint32_t x;  ``                    |                                                                    |
-|                        |  `` uint32_t y;  ``                    |                                                                    |
-|                        |  `` uint32_t state;  ``                |                                                                    |
-|                        |  `` uint32_t keycode;  ``              |                                                                    |
-|                        |  `` }; ``                              |                                                                    |
-+------------------------+----------------------------------------+--------------------------------------------------------------------+
-| MSG\_BUTTON            | `` struct msg_button {  ``             | Tell *qubes\_drv* driver to generate mouseclick                    |
-|                        |  `` uint32_t type;  ``                 |                                                                    |
-|                        |  `` uint32_t x;  ``                    |                                                                    |
-|                        |  `` uint32_t y;  ``                    |                                                                    |
-|                        |  `` uint32_t state;  ``                |                                                                    |
-|                        |  `` uint32_t button;  ``               |                                                                    |
-|                        |  `` }; ``                              |                                                                    |
-+------------------------+----------------------------------------+--------------------------------------------------------------------+
-| MSG\_MOTION            | `` struct msg_motion {  ``             | Tell *qubes\_drv* driver to generate motion event                  |
-|                        |  `` uint32_t x;  ``                    |                                                                    |
-|                        |  `` uint32_t y;  ``                    |                                                                    |
-|                        |  `` uint32_t state;  ``                |                                                                    |
-|                        |  `` uint32_t is_hint;  ``              |                                                                    |
-|                        |  `` }; ``                              |                                                                    |
-+------------------------+----------------------------------------+--------------------------------------------------------------------+
-| MSG\_CONFIGURE         | `` struct msg_configure { ``           | Change window position/size/type                                   |
-|                        |  `` uint32_t x; ``                     |                                                                    |
-|                        |  `` uint32_t y; ``                     |                                                                    |
-|                        |  `` uint32_t width; ``                 |                                                                    |
-|                        |  `` uint32_t height; ``                |                                                                    |
-|                        |  `` uint32_t override_redirect; ``     |                                                                    |
-|                        |  `` }; ``                              |                                                                    |
-+------------------------+----------------------------------------+--------------------------------------------------------------------+
-| MSG\_MAP               | `` struct msg_map_info { ``            | Map a window with given parameters                                 |
-|                        |  `` uint32_t transient_for; ``         |                                                                    |
-|                        |  `` uint32_t override_redirect; ``     |                                                                    |
-|                        |  `` }; ``                              |                                                                    |
-+------------------------+----------------------------------------+--------------------------------------------------------------------+
-| MSG\_CLOSE             | None                                   | send wmDeleteMessage to the window                                 |
-+------------------------+----------------------------------------+--------------------------------------------------------------------+
-| MSG\_CROSSING          | `` struct msg_crossing { ``            | Notify window about enter/leave event                              |
-|                        |  `` uint32_t type; ``                  |                                                                    |
-|                        |  `` uint32_t x; ``                     |                                                                    |
-|                        |  `` uint32_t y; ``                     |                                                                    |
-|                        |  `` uint32_t state; ``                 |                                                                    |
-|                        |  `` uint32_t mode; ``                  |                                                                    |
-|                        |  `` uint32_t detail; ``                |                                                                    |
-|                        |  `` uint32_t focus; ``                 |                                                                    |
-|                        |  `` }; ``                              |                                                                    |
-+------------------------+----------------------------------------+--------------------------------------------------------------------+
-| MSG\_FOCUS             | `` struct msg_focus {  ``              | Raise a window, XSetInputFocus                                     |
-|                        |  `` uint32_t type;  ``                 |                                                                    |
-|                        |  `` uint32_t mode;  ``                 |                                                                    |
-|                        |  `` uint32_t detail;  ``               |                                                                    |
-|                        |  ``  }; ``                             |                                                                    |
-+------------------------+----------------------------------------+--------------------------------------------------------------------+
-| MSG\_CLIPBOARD\_REQ    | None                                   | Retrieve the local clipboard, pass contents to gui-daemon          |
-+------------------------+----------------------------------------+--------------------------------------------------------------------+
-| MSG\_CLIPBOARD\_DATA   | amorphic blob                          | Insert the received data into local clipboard                      |
-+------------------------+----------------------------------------+--------------------------------------------------------------------+
-| MSG\_EXECUTE           | Obsolete                               | Obsolete, unused                                                   |
-+------------------------+----------------------------------------+--------------------------------------------------------------------+
-| MSG\_KEYMAP\_NOTIFY    | `` unsigned char remote_keys[32]; ``   | Synchronize the keyboard state (key pressed/depressed) with dom0   |
-+------------------------+----------------------------------------+--------------------------------------------------------------------+
-| MSG\_WINDOW\_FLAGS     | `` struct msg_window_flags { ``        | Window state change confirmation                                   |
-|                        |  ``     uint32_t flags_set; ``         |                                                                    |
-|                        |  ``    uint32_t flags_unset;``         |                                                                    |
-|                        |  `` }; ``                              |                                                                    |
-+------------------------+----------------------------------------+--------------------------------------------------------------------+
++------------------------+----------------------------------------+-------------------------------------------------------------------+
+| Message name           | Structure after header                 | Action                                                            |
++========================+========================================+===================================================================+
+| MSG\_KEYPRESS          | `` struct msg_keypress {  ``           | Tell *qubes\_drv* driver to generate a keypress                   |
+|                        |  `` uint32_t type;  ``                 |                                                                   |
+|                        |  `` uint32_t x;  ``                    |                                                                   |
+|                        |  `` uint32_t y;  ``                    |                                                                   |
+|                        |  `` uint32_t state;  ``                |                                                                   |
+|                        |  `` uint32_t keycode;  ``              |                                                                   |
+|                        |  `` }; ``                              |                                                                   |
++------------------------+----------------------------------------+-------------------------------------------------------------------+
+| MSG\_BUTTON            | `` struct msg_button {  ``             | Tell *qubes\_drv* driver to generate mouseclick                   |
+|                        |  `` uint32_t type;  ``                 |                                                                   |
+|                        |  `` uint32_t x;  ``                    |                                                                   |
+|                        |  `` uint32_t y;  ``                    |                                                                   |
+|                        |  `` uint32_t state;  ``                |                                                                   |
+|                        |  `` uint32_t button;  ``               |                                                                   |
+|                        |  `` }; ``                              |                                                                   |
++------------------------+----------------------------------------+-------------------------------------------------------------------+
+| MSG\_MOTION            | `` struct msg_motion {  ``             | Tell *qubes\_drv* driver to generate motion event                 |
+|                        |  `` uint32_t x;  ``                    |                                                                   |
+|                        |  `` uint32_t y;  ``                    |                                                                   |
+|                        |  `` uint32_t state;  ``                |                                                                   |
+|                        |  `` uint32_t is_hint;  ``              |                                                                   |
+|                        |  `` }; ``                              |                                                                   |
++------------------------+----------------------------------------+-------------------------------------------------------------------+
+| MSG\_CONFIGURE         | `` struct msg_configure { ``           | Change window position/size/type                                  |
+|                        |  `` uint32_t x; ``                     |                                                                   |
+|                        |  `` uint32_t y; ``                     |                                                                   |
+|                        |  `` uint32_t width; ``                 |                                                                   |
+|                        |  `` uint32_t height; ``                |                                                                   |
+|                        |  `` uint32_t override_redirect; ``     |                                                                   |
+|                        |  `` }; ``                              |                                                                   |
++------------------------+----------------------------------------+-------------------------------------------------------------------+
+| MSG\_MAP               | `` struct msg_map_info { ``            | Map a window with given parameters                                |
+|                        |  `` uint32_t transient_for; ``         |                                                                   |
+|                        |  `` uint32_t override_redirect; ``     |                                                                   |
+|                        |  `` }; ``                              |                                                                   |
++------------------------+----------------------------------------+-------------------------------------------------------------------+
+| MSG\_CLOSE             | None                                   | send wmDeleteMessage to the window                                |
++------------------------+----------------------------------------+-------------------------------------------------------------------+
+| MSG\_CROSSING          | `` struct msg_crossing { ``            | Notify window about enter/leave event                             |
+|                        |  `` uint32_t type; ``                  |                                                                   |
+|                        |  `` uint32_t x; ``                     |                                                                   |
+|                        |  `` uint32_t y; ``                     |                                                                   |
+|                        |  `` uint32_t state; ``                 |                                                                   |
+|                        |  `` uint32_t mode; ``                  |                                                                   |
+|                        |  `` uint32_t detail; ``                |                                                                   |
+|                        |  `` uint32_t focus; ``                 |                                                                   |
+|                        |  `` }; ``                              |                                                                   |
++------------------------+----------------------------------------+-------------------------------------------------------------------+
+| MSG\_FOCUS             | `` struct msg_focus {  ``              | Raise a window, XSetInputFocus                                    |
+|                        |  `` uint32_t type;  ``                 |                                                                   |
+|                        |  `` uint32_t mode;  ``                 |                                                                   |
+|                        |  `` uint32_t detail;  ``               |                                                                   |
+|                        |  ``  }; ``                             |                                                                   |
++------------------------+----------------------------------------+-------------------------------------------------------------------+
+| MSG\_CLIPBOARD\_REQ    | None                                   | Retrieve the local clipboard, pass contents to gui-daemon         |
++------------------------+----------------------------------------+-------------------------------------------------------------------+
+| MSG\_CLIPBOARD\_DATA   | amorphic blob                          | Insert the received data into local clipboard                     |
++------------------------+----------------------------------------+-------------------------------------------------------------------+
+| MSG\_EXECUTE           | Obsolete                               | Obsolete, unused                                                  |
++------------------------+----------------------------------------+-------------------------------------------------------------------+
+| MSG\_KEYMAP\_NOTIFY    | `` unsigned char remote_keys[32]; ``   | Synchronize the keyboard state (key pressed/released) with dom0   |
++------------------------+----------------------------------------+-------------------------------------------------------------------+
+| MSG\_WINDOW\_FLAGS     | `` struct msg_window_flags { ``        | Window state change confirmation                                  |
+|                        |  ``     uint32_t flags_set; ``         |                                                                   |
+|                        |  ``    uint32_t flags_unset;``         |                                                                   |
+|                        |  `` }; ``                              |                                                                   |
++------------------------+----------------------------------------+-------------------------------------------------------------------+
 
 .. |gui.png| image:: /chrome/site/../../../site/gui.png
    :target: /chrome/site/../../../site/gui.png
