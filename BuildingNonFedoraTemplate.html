@@ -14,3 +14,15 @@
 <p>Don't be afraid with the complexity of the PKGBUILD, most of the code is almost a copy/paste of required sources and patches found in the .spec file provided in the git repository.</p>
 <p>Note once the package has been successfully compiled and installed, you need to setup XEN filesystem. Add the folowing line to your fstab (you can create this line in your package install script): <code>xen                     /proc/xen               xenfs   defaults        0 0</code></p>
 <p>Now install the package you built and mount /proc/xen. Verify that xenstore-read works by running: <code>xenstore-read qubes_vm_type</code> That should give you the current VM type such as HVM or AppVM.</p>
+<h3 id="Qubes-OScoreagentsqrexec...">Qubes-OS core agents (qrexec...)</h3>
+<h3 id="Qubes-OSkernelmodules">Qubes-OS kernel modules</h3>
+<h3 id="Qubes-OSguiagents">Qubes-OS gui agents</h3>
+<h2 id="Creatingatemplatebuilder">Creating a template builder</h2>
+<h3 id="a01_prepare">01_prepare</h3>
+<h3 id="a02_install_core">02_install_core</h3>
+<h3 id="a03_install_groups">03_install_groups</h3>
+<h3 id="a05_install_qubes">05_install_qubes</h3>
+<h3 id="a09_cleanup">09_cleanup</h3>
+<h2 id="Buildingatemplate">Building a template</h2>
+<h2 id="Testingatemplate">Testing a template</h2>
+<h2 id="Extractingakernel">Extracting a kernel</h2>
