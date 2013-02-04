@@ -9,7 +9,7 @@ order to copy a clipboard from domain A to domain B, follow those steps:
    menu option) to copy this into domain's local clipboard (in other
    words: do the copy operation as usual, in most cases by pressing
    Ctrl-C).
-#. Then (when the app in domain A is still in focus) press Ctrl-Shit-C
+#. Then (when the app in domain A is still in focus) press Ctrl-Shift-C
    magic hot-key. This will tell Qubes that we want to select this
    domain's clipboard for *global copy* between domains.
 #. Now select the destination app, running in domain B, and press
