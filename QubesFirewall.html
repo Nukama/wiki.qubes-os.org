@@ -58,9 +58,9 @@
 /sbin/iptables -I FORWARD 2 -s 192.168.0.0/24 -d 10.137.1.x -p tcp --dport 443 -m state --state NEW -j ACCEPT</code></pre>
 <p>Make this file executable:</p>
 <pre class="wiki"><code>sudo chmod +x /rw/config/rc.local </code></pre>
-<p><strong>2. Allow packets to be routed from the netVM to the appVM</strong></p>
+<p><strong>2. Allow packets to be routed from the firewallVM to the appVM</strong></p>
 <p>In System Tools (Dom0) / Terminal, take note of the appVM (on which the service is exposed) IPAddress using the command <code> qvm-ls -n </code></p>
-<p>In FirewallVM Terminal, take note of the IPAddress for interface eth0 using the command {{{ ifconfig | grep -i cast }}}</p>
+<p>In FirewallVM Terminal, take note of the IPAddress for interface eth0 using the command <code> ifconfig | grep -i cast </code></p>
 <p>Still in FirewallVM terminal, code the appropriate natting firewall rule to intercept traffic on the inbound interface for the service and nat the destination IP address to the one of the AppVM for the traffic to be routed there:</p>
 <pre class="wiki"><code>iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 443 -d 10.137.1.x -j DNAT --to-destination 10.137.2.y</code></pre>
 <p>Code the appropriate new filtering firewall rule to allow new connections for the service:</p>
