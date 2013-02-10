@@ -80,5 +80,7 @@
 <pre class="wiki"><code>sudo chmod +x /rw/config/qubes_firewall_user_script</code></pre>
 <p><strong>3. Allow packets into the AppVM to reach the service</strong></p>
 <p>Here no routing is required, only filtering. Proceed in the same way as above but store the filtering rule in the <code>/rw/config/rc.local</code> script.</p>
-<pre class="wiki"><code>/sbin/iptables -I INPUT 5 -p tcp --dport 443 -m state --state NEW -j ACCEPT</code></pre>
+<pre class="wiki"><code>#!/bin/sh
+
+/sbin/iptables -I INPUT 5 -p tcp --dport 443 -m state --state NEW -j ACCEPT</code></pre>
 <p>This time testing should allow connectivity to the service.</p>
