@@ -7,6 +7,10 @@ Please send all the questions regarding Qubes to the mailing list:
 -  The Web interface:
    `​http://groups.google.com/group/qubes-devel <http://groups.google.com/group/qubes-devel>`__
 
+**RTFM**: Before posting to the list, please make sure you read the
+`documentation section </wiki/QubesDocs>`__, especially the `User
+Guides </wiki/UserDoc>`__!
+
 To post to a group you don't need to subscribe, just send a message to
 the group's email address.
 
