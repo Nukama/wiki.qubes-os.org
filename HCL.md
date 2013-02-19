@@ -338,7 +338,7 @@ OK
 
 [​Stephen Boyd](https://groups.google.com/d/msg/qubes-devel/ZC_SQJhXVOM/4aLjEc7GIsUJ)
 
-Lenovo T430
+Lenovo Thinkpad T430
  (i5-3320)
 
 ?
@@ -356,6 +356,27 @@ OK
 ?
 
 [​Tunguuz](https://groups.google.com/d/msg/qubes-devel/S_VG_jgtpBo/VngCPK2W5FcJ)
+
+Lenovo Thinkpad T430s
+ (i5-3320M; HD4000; QM77; BIOS 2.05)
+
+?
+
+?
+
+?
+
+OK
+
+OK
+
+OK
+
+?
+
+[​read more](https://groups.google.com/d/topic/qubes-devel/Z9seyOT46Ro/discussion)
+
+[​cprise](https://groups.google.com/d/msg/qubes-devel/Z9seyOT46Ro/wX6tsrxE84sJ)
 
 Lenovo Thinkpad W510
  (nVidia; i7-Q820)
