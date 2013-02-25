@@ -7,12 +7,12 @@
 <li>Correcting non-security related bugs (e.g. new buttons for qubes manager)</li>
 <li>Adding new features (e.g. GUI backup tool)</li>
 </ul>
-<h2 id="HowtodothatinBeta2">How to do that? (in Beta 2)</h2>
+<h2 id="HowtodothatinR1Beta2andlater">How to do that? (in R1 Beta 2 and later)</h2>
 <p>Start a console in Dom0 and then run one of the following command:</p>
 <p>1) To check and install updates for Dom0 software:</p>
-<pre class="wiki"><code>$ sudo qvm-dom0-updates</code></pre>
+<pre class="wiki"><code>$ sudo qubes-dom0-update</code></pre>
 <p>2) To install additional packages in Dom0 (usually not recommended):</p>
-<pre class="wiki"><code>$ sudo qvm-dom0-updates anti-evil-maid</code></pre>
+<pre class="wiki"><code>$ sudo qubes-dom0-update anti-evil-maid</code></pre>
 <p>You can also pass --enablerepo= option in order to enable optional repositories (see yum configuration in Dom0). This is only for advanced users who really understand what they are doing.</p>
 <h3 id="Howtodowngradespecificpackage">How to downgrade specific package?</h3>
 <ol>
@@ -22,7 +22,7 @@
 <li><p>Downgrade packge:</p>
 <pre class="wiki"><code>sudo yum downgrade package-version</code></pre></li>
 </ol>
-<h2 id="HowtodothatinBeta1">How to do that? (in Beta 1)</h2>
+<h2 id="HowtodothatinR1Beta1">How to do that? (in R1 Beta 1)</h2>
 <p>Currently Dom0 update procedure requires command line -- in the future we will make it available from the GUI manager.</p>
 <p>First, start the console in Dom0, and switch to root. Then attach Dom0 to the netvm, and run yum update:</p>
 <pre class="wiki"><code>$ sudo bash
