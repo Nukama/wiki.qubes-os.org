@@ -29,6 +29,8 @@ Contributors to the open source code
    cleanups
 -  Radoslaw Szkodzinski ``astralstorm at gmail.com`` - minor gui build
    fixes
+-  Zrubecz Laszlo ``mail at zrubi.hu`` -- HCL wiki page maintenance, HCL
+   scritps
 
 Proprietary code developers
 ---------------------------
