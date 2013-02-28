@@ -59,7 +59,8 @@ Remarks
 
 Standard features
 
-VT-x
+| VT-x
+| (HVM)
 
 VT-d
 
