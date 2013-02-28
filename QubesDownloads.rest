@@ -22,9 +22,11 @@ Qubes Release 2
    Signature <http://sourceforge.net/projects/qubesos/files/Qubes-R2-Beta1-x86_64-DVD.iso.asc/download>`__
    (via sourceforge.net)
 
--  **`Installation Guide for R2 Beta
-   1 </wiki/InstallationGuideR2B1>`__**
--  `Upgrading from Qubes R1 to Qubes R2 Beta 1? </wiki/UpgradeToR2>`__
+-  `Installation Guide for R2 Beta 1 </wiki/InstallationGuideR2B1>`__
+   (R2B1 is no longer supported, we encourage to install R2B2 instead)
+-  [STRIKEOUT:Upgrading from Qubes R1 to Qubes R2 Beta] (We no longer
+   support upgrading to R2B1 -- please install or upgrade to R2B2
+   instead!)
 
 Qubes Release 1
 ---------------
