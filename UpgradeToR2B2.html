@@ -1,5 +1,4 @@
 <h1 id="UpgradingQubesR1toR2beta2">Upgrading Qubes R1 to R2 (beta2)</h1>
-<p><strong>Note: Qubes R2 Beta2 has not been release yet, DO NOT follow those instructions before R2 Beta2 is released</strong></p>
 <p>Existing users of Qubes R1 (but not R1 betas!) can upgrade their systems to the latest R2 beta release by following the procedure below. As usual, it is advisable to backup the system before proceeding with the upgrade. While it is possible to upgrade the system <strong>it is strongly recommended to reinstall it</strong>. You will preserve all your data and settings thanks to <a href="/wiki/wiki/BackupRestore">backup and restore tools</a>.</p>
 <h2 id="UpgradeallTemplateandStandaloneVMs">Upgrade all Template and Standalone VM(s)</h2>
 <p><strong>If you have already R2 Beta1 installed, follow standard template update procedure (e.g. &quot;Update VM&quot; buttom in Qubes Manager) and skip the rest of this section</strong></p>
@@ -42,14 +41,14 @@ Is this ok [y/N]:</code></pre>
 <pre class="wiki"><code>sudo qubes-dom0-update qubes-release</code></pre>
 <p>This should install <code>qubes-release-1-6</code> in your Dom0.</p></li>
 <li><p>Install R2 upgrade package:</p>
-<pre class="wiki"><code>sudo qubes-dom0-update qubes-dist-upgrade</code></pre></li>
+<pre class="wiki"><code>sudo qubes-dom0-update --releasever=1 qubes-dist-upgrade</code></pre></li>
 <li><p>Start upgrade process:</p>
 <pre class="wiki"><code>sudo qubes-dist-upgrade</code></pre></li>
 <li>Follow instructions on screen, first stage of upgrade should end up with reboot request.</li>
 <li>Reboot your system, ensure that you choose &quot;Qubes Upgrade&quot; boot option.</li>
 <li><p>When system starts up, login and start start</p>
 <pre class="wiki"><code>sudo qubes-dist-upgrade</code></pre>
-<p>again. This will start second stage of upgrade, here most packages will be upgraded, so this will take a while. Some KDE components can become unresponsive (like tray icons or taskbar) and windows border can disappear. Don't panic, this is normal part of upgrade process.</p></li>
+<p>again. This will start second stage of upgrade, here most packages will be upgraded, so this will take a while.</p></li>
 <li>You will be prompted to install new bootloader. If you haven't changed anything in this matter from initial installation, just accept the default.</li>
 <li>Reboot your system. System shutdown may hung because some running system components no longer match that installed on disk; just wait a few minutes and hard reset the system in such case.</li>
 <li>This is end of upgrade process, you should now have Qubes R2 system.</li>
