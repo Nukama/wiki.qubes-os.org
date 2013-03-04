@@ -6,9 +6,11 @@
 <li>createrepo</li>
 <li>rpm-build</li>
 <li>make</li>
+<li>wget</li>
+<li>rpmdevtools</li>
 </ul>
 <p>Unusually one can install those packages by just issuing:</p>
-<pre class="wiki"><code>sudo yum install git createrepo rpm-build make wget</code></pre>
+<pre class="wiki"><code>sudo yum install git createrepo rpm-build make wget rpmdevtools</code></pre>
 <p>The build system creates build environments in chroots and so no other packages are needed on the host. All files created by the build system are contained within the qubes-builder directory. The full build requires some 25GB of free space, so keep that in mind when deciding where to place this directory.</p>
 <p>The build system is configured via builder.conf file -- one should copy the attached builder.conf.default, and modify it as needed, e.g.:</p>
 <pre class="wiki"><code>cp builder.conf.default builder.conf 
@@ -16,8 +18,13 @@
 # (make sure to leave no spaces around &#39;=&#39; sign!) 
 # NO_SIGN=&quot;1&quot;
 
-# As time of writing this, the default is fc15, but latest supported is fc17, so switch to newer one
-DISTS_VM=&quot;fc17&quot;</code></pre>
+# As time of writing this, the default for Qubes 1 VMs is fc15, but latest supported is fc17, so switch to newer one
+DISTS_VM=&quot;fc17&quot;
+
+# As time of writing this, the default for Qubes 2 Dom0 is fc18 and VMs is fc18 so if you want to build Qubes 2
+DIST_DOM0=&quot;fc18&quot;
+DIST_VM=&quot;fc18&quot;
+</code></pre>
 <p>One additional useful requirement is that 'sudo root' work without any prompt, which is default on most distros (e.g. 'sudo bash' brings you the root shell without asking for any password). This is important as the builder needs to switch to root and then back to user several times during the build process.</p>
 <p>Additionally, if building with signing enabled (so NO_SIGN is not set), one must adjust ~/.rpmmacro file so that it point to the GPG key used for package signing, e.g.:</p>
 <pre class="wiki"><code>%_signature gpg
