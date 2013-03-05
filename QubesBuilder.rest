@@ -14,12 +14,13 @@ and should ensure the following packages are installed:
 -  make
 -  wget
 -  rpmdevtools
+-  pandoc
 
 Unusually one can install those packages by just issuing:
 
 .. code:: wiki
 
-    sudo yum install git createrepo rpm-build make wget rpmdevtools
+    sudo yum install git createrepo rpm-build make wget rpmdevtools pandoc
 
 The build system creates build environments in chroots and so no other
 packages are needed on the host. All files created by the build system
