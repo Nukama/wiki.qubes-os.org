@@ -1,0 +1,17 @@
+<h2 id="ResizingDiskImage">Resizing Disk Image</h2>
+<p>There are several disk images which can be easily extended. <br /> But pay attention to the overall consumed space of your sparse disk images.</p>
+<h3 id="Privatediskimage">Private disk image</h3>
+<p>The private disk image of a AppVM can be grown with <a href="/wiki/wiki/Dom0Tools/QvmGrowPrivate">qubes-grow-private</a>:</p>
+<pre class="wiki"><code>qvm-grow-private &lt;vm-name&gt; &lt;size&gt;</code></pre>
+<h3 id="HVMdiskimage">HVM disk image</h3>
+<p>A disk image for a HVM for can be grown using following command:</p>
+<pre class="wiki"><code>truncate -s &lt;size&gt; root.img</code></pre>
+<p>The root.img is found in /var/lib/qubes/appvm/hvmname.</p>
+<p>Be aware, that the HVM should be stopped during this operation. The partition table and file-system must be adjusted after this change.</p>
+<h4 id="Windows">Windows</h4>
+<p>Go to Storage management and click on &quot;Extend Volume&quot;</p>
+<h4 id="FreeBSD">FreeBSD</h4>
+<pre class="wiki"><code>gpart recover ada0
+sysctl kern.geom.debugflags=0x10
+gpart resize -i index ada0
+zpool online -e poolname ada0</code></pre>
