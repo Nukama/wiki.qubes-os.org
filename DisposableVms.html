@@ -13,7 +13,7 @@
 <p>The qvm-open-in-dvm will not exit until you close the application in the Disposable VM.</p>
 <h2 id="StartinganarbitraryapplicationinadisposableVMviacommandlinefromDom0">Starting an arbitrary application in a disposable VM via command line (from Dom0)</h2>
 <p><strong>Note:</strong> Normally there should be no need for doing this -- this is just for Qubes hackers ;)</p>
-<pre class="wiki"><code>[joanna@dom0 applications]$ echo gnome-terminal | /usr/lib/qubes/qfile-daemon-dvm qubes.VMShell dom0 DEFAULT red</code></pre>
+<pre class="wiki"><code>[joanna@dom0 ~]$ echo gnome-terminal | /usr/lib/qubes/qfile-daemon-dvm qubes.VMShell dom0 DEFAULT red</code></pre>
 <p>In fact the Disposable VM appmenu used for starting Firefox contains a very similar command to the above. Please note, however, that it generally makes little sense to start any other application other than a Web Browser this way...</p>
 <h2 id="Usinganon-defaulttemplateasabasisforDisposableVM">Using a non-default template as a basis for Disposable VM</h2>
 <p>In some situations it might be beneficial to use a non-default template as a basis for Disposable VM. One example is to use a less-trusted template with some less trusted, 3rd party, often unsigned, applications installed, such as e.g. 3rd part printer drivers.</p>
