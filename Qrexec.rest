@@ -83,6 +83,10 @@ is the rpc access policy database. Currently defined actions are:
 -  qubes.\ `ReceiveUpdates? </wiki/ReceiveUpdates>`__
 -  qubes.\ `SyncAppMenus? </wiki/SyncAppMenus>`__
 -  qubes.VMShell
+-  qubes.\ `ClipboardPaste? </wiki/ClipboardPaste>`__
+-  qubes.Gpg
+-  qubes.\ `NotifyUpdates? </wiki/NotifyUpdates>`__
+-  qubes.\ `PdfConvert? </wiki/PdfConvert>`__
 
 These files contain lines with the following format:
 
