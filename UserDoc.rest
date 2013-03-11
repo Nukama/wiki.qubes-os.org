@@ -16,6 +16,7 @@ Qubes User Guides
 -  `How to assign PCI devices to a VM? </wiki/AssigningDevices>`__
 -  `Qubes Backup/Restore/Migration </wiki/BackupRestore>`__
 -  `Central policies for inter-VM services? </wiki/QubesPolicies>`__
+-  `Configuring a network printer </wiki/NetworkPrinter>`__
 
 Advanced topics:
 
