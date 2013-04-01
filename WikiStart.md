@@ -27,4 +27,5 @@ News
 -   Nov 16, 2012: [Qubes Security Team](/wiki/SecurityPage) has joined the Xen Security Pre-disclousre list [​more](http://lists.xen.org/archives/html/xen-devel/2012-11/msg00821.html)
 -   Dec 14, 2012: Qubes 2 Beta 1 has been released! [​announcement](http://theinvisiblethings.blogspot.com/2012/12/qubes-2-beta-1-with-initial-windows.html)
 -   Feb 28, 2013: Qubes 2 Beta 2 has been released! [​announcement](http://theinvisiblethings.blogspot.com/2013/02/qubes-2-beta-2-has-been-released.html)
+-   Mar 21, 2013: Introducing Qubes Odyssey Framework [​article](http://theinvisiblethings.blogspot.com/2013/03/introducing-qubes-odyssey-framework.html)
 
