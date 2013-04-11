@@ -31,8 +31,7 @@ Please consult the basic documentation before posting to the list:
 -  `Qubes User Guides </wiki/UserDoc>`__ <-- for question on how to use
    Qubes OS
 
-Posting, Subscribing, etc
-~~~~~~~~~~~~~~~~~~~~~~~~~
+Posting, Subscribing, etc:
 
 -  To post a message to the list, just send an email to (you don't need
    to be subscribed): ``qubes-users@googlegroups.com``
@@ -62,8 +61,7 @@ Example of topics and questions suitable for this list:
 
 You need to be subscribed in order to post to this list.
 
-Posting, Subscribing, etc
-~~~~~~~~~~~~~~~~~~~~~~~~~
+Posting, Subscribing, etc:
 
 -  To post a message to the list, send an email to (you need to be
    subscribed first!): ``qubes-devel@googlegroups.com``
