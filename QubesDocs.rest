@@ -19,6 +19,7 @@ For Developers
 
 -  `How can I contribute to the Qubes
    Project? </wiki/ContributingHowto>`__
+-  `Qubes Coding Guidelines </wiki/CodingStyle>`__
 -  `Books for Developers </wiki/DevelBooks>`__
 -  `Research papers related to Qubes </wiki/QubesResearch>`__
 
