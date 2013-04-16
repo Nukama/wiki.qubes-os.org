@@ -40,19 +40,15 @@ int get_window_id (...) {
     }</code></pre></li>
 </ul>
 <ul>
-<li>Do <strong>not</strong> use comments to disable code fragments. In a production code there should really be no commented or disabled code fragments. If you really, really have a good reason to retain some fragment of unused code, use #if or #ifdef to disable it, e.g.:</li>
+<li><p>Do <strong>not</strong> use comments to disable code fragments. In a production code there should really be no commented or disabled code fragments. If you really, really have a good reason to retain some fragment of unused code, use #if or #ifdef to disable it, e.g.:</p>
+<pre class="wiki"><code>#if 0
+    (...)   // Some unused code here
+#endif</code></pre></li>
 </ul>
-<p>#if 0</p>
-<blockquote>
-<p>(...) <em>Some unused code here</em></p>
-</blockquote>
-<p>#endif</p>
 <p>... and preferably use some descriptive macro instead of just <code>0</code>, e.g.:</p>
-<p>#if USE_OLD_WINDOW_TRAVERSING</p>
-<blockquote>
-<p>(...) <em>Some unused code here</em></p>
-</blockquote>
-<p>#endif</p>
+<pre class="wiki"><code>#if USE_OLD_WINDOW_TRAVERSING
+    (...)   // Some unused code here
+#endif</code></pre>
 <p>Not sure how to do similar thing in Python... Anyone?</p>
 <p>But generally, there is little excuse to keep old, unused code fragments in the code. One should really use the functionality provided by the source code management system, such as git, instead. E.g. create a special branch for storing the old, unused code -- this way you will always be able to merge this code into upstream in the future.</p>
 <h2 id="SourceCodemanagementGitguidelines">Source Code management (Git) guidelines</h2>
@@ -63,20 +59,14 @@ int get_window_id (...) {
 <li>Before you start using git, make sure you understand that git is a decentralized Source Code Management system, and that it doesn't behave like traditional, centralized source code management systems, such as SVN. Here's a good <a href="http://git-scm.com/book">​introductory book on git</a>. Read it.</li>
 </ul>
 <ul>
-<li>Qubes code is divided into many git repositories. There are several reasons for that:</li>
+<li>Qubes code is divided into many git repositories. There are several reasons for that:
+<ul>
+<li>This creates natural boundaries between different code blocks, enforcing proper interfaces, and easing independent development to be conducted on various code parts at the same time, without the fear of running into conflicts.</li>
+<li>By maintaining relatively small git repositories, it is easy for new developers to understand the code and contribute new patches, without the need to understand all the other code.</li>
+<li>Code repositories represent also licensing boundaries. So, e.g. because <code>core-agent-linux</code> and <code>core-agent-windows</code> are maintained in two different repositories, it is possible to have the latter under a proprietary, non-GPL license, while keeping the former fully open source.</li>
+<li>We have drastically changes the layout and naming of the code repositories shortly after Qubes OS R2 Beta 2 release. For details on the current code layout, please read <a href="http://theinvisiblethings.blogspot.com/2013/03/introducing-qubes-odyssey-framework.html">​this article</a>.</li>
+</ul></li>
 </ul>
-<blockquote>
-<p><strong>This creates natural boundaries between different code blocks, enforcing proper interfaces, and easing independent development to be conducted on various code parts at the same time, without the fear of running into conflicts.</strong></p>
-</blockquote>
-<blockquote>
-<p><strong>By maintaining relatively small git repositories, it is easy for new developers to understand the code and contribute new patches, without the need to understand all the other code.</strong></p>
-</blockquote>
-<blockquote>
-<p><strong>Code repositories represent also licensing boundaries. So, e.g. because <code>core-agent-linux</code> and <code>core-agent-windows</code> are maintained in two different repositories, it is possible to have the latter under a proprietary, non-GPL license, while keeping the former fully open source.</strong></p>
-</blockquote>
-<blockquote>
-<p><strong>We have drastically changes the layout and naming of the code repositories shortly after Qubes OS R2 Beta 2 release. For details on the current code layout, please read <a href="http://theinvisiblethings.blogspot.com/2013/03/introducing-qubes-odyssey-framework.html">​this article</a>.</strong></p>
-</blockquote>
 <h2 id="Securitycodingguidelines">Security coding guidelines</h2>
 <ul>
 <li>As a general rule: <strong>untrusted input</strong> is our #1 enemy!</li>
