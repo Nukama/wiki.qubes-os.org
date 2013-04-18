@@ -28,7 +28,44 @@
 <li><strong>Use descriptive names for variables and functions</strong>! Really, these days, when most editors have auto-completion feature, there is no excuse for using short variable names.</li>
 </ul>
 <h2 id="Filenamingconventions">File naming conventions</h2>
-<p>TODO</p>
+<ul>
+<li>All file names written with small letters, use dash to separate words, rather than underscores, e.g. <code>qubes-dom0-update</code>. Never use spaces!</li>
+</ul>
+<h3 id="FilenaminginLinuxUnix-likesystems">File naming in Linux/Unix-like systems</h3>
+<ul>
+<li>User commands that operate on particular VMs (also those accessible in VMs): <code>/usr/bin/qvm-*</code></li>
+</ul>
+<ul>
+<li>User commands that apply to the whole system (Dom0 only): <code>/usr/bin/qubes-*</code></li>
+</ul>
+<ul>
+<li>Auxilary executables and scripts in <code>/usr/libexec/qubes/</code> (Note: previously we used <code>/usr/lib/qubes</code> but decided to change that)</li>
+</ul>
+<ul>
+<li>Helper, non-exeutable files in <code>/usr/share/qubes/</code></li>
+</ul>
+<ul>
+<li>Various config files in <code>/etc/qubes</code></li>
+</ul>
+<ul>
+<li>Qubes RPC services in <code>/etc/qubes-rpc</code>. Qubes RPC Policy definitions (only in Dom0) in <code>/etc/qubes-rpc/policy/</code></li>
+</ul>
+<ul>
+<li>All VM-related configs, images, and other files in <code>/var/lib/qubes/</code></li>
+</ul>
+<ul>
+<li>System-wide temporary files the reflect the current state of system in <code>/var/run/qubes</code></li>
+</ul>
+<ul>
+<li>Logs: either log to the system-wide messages, or to <code>/var/log/qubes/</code></li>
+</ul>
+<h3 id="FilenaminginWindowssystems">File naming in Windows systems</h3>
+<ul>
+<li>All base qubes-related files in <code>C:\Program Files\Invisible Things Lab\Qubes\</code> (Exceptionally spaces are allowed here to adhere to Windows naming conventions)</li>
+</ul>
+<ul>
+<li>Other, 3rd party files, not Qubes-specific, such as e.g. Xen PV drivers might be in different vendor subdirs, e.g. <code>C:\Program Files\Xen PV Drivers</code></li>
+</ul>
 <h2 id="Generalprogrammingstyleguidelines">General programming style guidelines</h2>
 <ul>
 <li>Use comments to explain non-trivial code fragments, or expected behavior of more complex functions, if it is not clear from their name.</li>
