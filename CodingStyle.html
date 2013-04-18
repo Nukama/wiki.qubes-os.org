@@ -110,8 +110,17 @@ int get_window_id (...) {
 <li>Use another variables, without the <code>untrusted_</code> prefix to hold the sanitized values, as seen above.</li>
 </ul>
 <h2 id="Python-specificguidelines">Python-specific guidelines</h2>
-<p>TODO</p>
-<h2 id="C-specificguidelines">C-specific guidelines</h2>
-<p>TODO</p>
-<h2 id="C-specificguideline">C++-specific guideline</h2>
-<p>TODO</p>
+<ul>
+<li>Please follow the guidlines <a href="http://www.python.org/dev/peps/pep-0008/">​here</a>, unless they were in conflict with what is written on this page.</li>
+</ul>
+<h2 id="CandCspecificguidelines">C and C++ specific guidelines</h2>
+<ul>
+<li>Do not place code in <code>*.h</code> files.</li>
+<li>Use <code>const</code> whenever possible, e.g. in function arguments passed via pointers.</li>
+<li>Do not mix procedural and objective code together -- if you write in C++, use classes and objects.</li>
+<li>Think about classes hierarchy, before start implementing specific methods.</li>
+</ul>
+<h2 id="Bash-specificguidelines">Bash-specific guidelines</h2>
+<ul>
+<li>Avoid writing scripts in bash whenever possible. Use python instead. Bash-scripts are Unix-specific and will not work under Windows VMs, or in Windows admin domain, or Windows gui domain.</li>
+</ul>
