@@ -172,6 +172,11 @@ General programming style guidelines
     this way you will always be able to merge this code into upstream in
     the future.
 
+-  Do not hardcode values in the code! The only three numbers that are
+   an exception here and for which it is acceptable to hardcode them
+   are: ``0``, ``1`` and ``-1``, and frankly the last two are still
+   controversial...
+
 Source Code management (Git) guidelines
 ---------------------------------------
 
