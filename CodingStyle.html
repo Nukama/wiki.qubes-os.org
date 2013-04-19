@@ -38,6 +38,15 @@
 <ul>
 <li><strong>Use descriptive names for variables and functions</strong>! Really, these days, when most editors have auto-completion feature, there is no excuse for using short variable names.</li>
 </ul>
+<ul>
+<li><p>Comments should be indent together with the code, e.g. like this:</p>
+<pre class="wiki"><code>for (...) {
+    // The following code finds PGP private key matching the given public key in O(1)
+    while (key_found) {
+        (...)
+    }
+}</code></pre></li>
+</ul>
 <h2 id="Filenamingconventions">File naming conventions</h2>
 <ul>
 <li>All file names written with small letters, use dash to separate words, rather than underscores, e.g. <code>qubes-dom0-update</code>. Never use spaces!</li>
