@@ -16,7 +16,18 @@
 <li><strong>Maintain max. line length of 80 characters</strong>. Even though today's monitors often are very wide and it's often not a problem to have 120 characters displayed in an editor, still maintaining shorter line lengths improves readability. It also allows to have two parallel windows open, side by side, each with different parts of the source code.</li>
 </ul>
 <ul>
-<li>Class, functions, variables, and arguments naming convention -- let's keep that simple: <strong><code>ClassName</code> -- for all class names,</strong> <code>some_variable</code>, <code>some_function</code>, <code>some_argument</code> -- for everything else (including instances of classes, AKA objects).</li>
+<li>Class, functions, variables, and arguments naming convention for any OS other than Windows:
+<ul>
+<li><code>ClassName</code></li>
+<li><code>some_variable</code>, <code>some_function</code>, <code>some_argument</code></li>
+</ul></li>
+</ul>
+<ul>
+<li>Class, functions, variables, and arguments naming convention for <strong>Windows OS</strong> -- exceptionally to preserve Windows conventions please use the following:
+<ul>
+<li><code>ClassName</code>, <code>FunctionName</code></li>
+<li><code>pszArgumentOne</code>, <code>hPipe</code> -- use hungerian notation for argument and variables</li>
+</ul></li>
 </ul>
 <ul>
 <li>Horizontal spacing -- maintain at least decent amount of horizontal spacing, such as e.g. add obligatory space after <code>if</code> or before <code>{</code> in C, and similar in other languages. Whether to also use spaces within expressions, such as (x*2+5) vs. (x * 2 + 5) is left to the developer's judgment.</li>
