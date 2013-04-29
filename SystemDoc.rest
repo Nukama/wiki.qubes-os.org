@@ -28,6 +28,7 @@ Build instructions:
 -  `How to build Qubes installation
    ISO </wiki/InstallationIsoBuilding>`__
 -  `Building USB passthrough support (experimental) </wiki/USBVM>`__
--  `Building a TemplateVM based on
-   ArchLinux </wiki/BuildingNonFedoraTemplate>`__
+-  `Building a TemplateVM based on a new OS (ArchLinux
+   example) </wiki/BuildingNonFedoraTemplate>`__
+-  `Building the Archlinux Template </wiki/BuildingArchlinuxTemplate>`__
 
