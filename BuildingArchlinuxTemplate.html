@@ -25,6 +25,11 @@ make gui-agent-linux-vm</code></pre>
 <p>Commenting out &quot;#define HAVE_ATTRIBUTE_FORMAT_PARSETUPLE&quot; from chroot_archlinux/usr/include/python2.7/pyconfig.h fixes the problem, but it isn't the right solution [1]...</p>
 <p>A better fix is planned for the next python release (the bug is considered release blocking), and will be updated in archlinux chroot as soon as available.</p>
 <p>[1] <a href="http://bugs.python.org/issue17547">​http://bugs.python.org/issue17547</a></p>
+<h2 id="Thebootprocessfailswithoutvisibleerrorsinthelogsbutspawnarecoveryshell">The boot process fails without visible errors in the logs, but spawn a recovery shell</h2>
+<p>The problem is a new conflict between systemd and the old sysvinit style. To fix this, you can change the master xen template in dom0 to remove sysvinit remains: Edit /usr/share/qubes/vm-template.conf, and change the variable 'extra' that contains the kernel variables: from:</p>
+<pre class="wiki"><code>extra=&quot;ro nomodeset 3 console=hvc0 rd_NO_PLYMOUTH {kernelopts}&quot;</code></pre>
+<p>to:</p>
+<pre class="wiki"><code>extra=&quot;ro nomodeset console=hvc0 rd_NO_PLYMOUTH {kernelopts}&quot;</code></pre>
 <h2 id="Qubes-OSisnowusingdifferentxenstorevariablenameswhichmakestoarchlinuxVMfailingtoboot">Qubes-OS is now using different xenstore variable names, which makes to archlinux VM failing to boot</h2>
 <p>Apply the following fix in the template to revert the variable name to the old Qubes version.</p>
 <p>You can edit the template the following way:</p>
