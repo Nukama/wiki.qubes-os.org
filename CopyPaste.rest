@@ -55,6 +55,10 @@ article <http://theinvisiblethings.blogspot.com/2011/03/partitioning-my-digital-
 for more information on this topic, and some ideas of how we might solve
 this problem in some future version of Qubes.
 
+And `​this
+message <https://groups.google.com/group/qubes-devel/msg/48b4b532cee06e01>`__
+from qubes-devel.
+
 Clipboard automatic policy enforcement
 --------------------------------------
 
