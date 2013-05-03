@@ -26,7 +26,7 @@ make gui-agent-linux-vm</code></pre>
 <p>A better fix is planned for the next python release (the bug is considered release blocking), and will be updated in archlinux chroot as soon as available.</p>
 <p>[1] <a href="http://bugs.python.org/issue17547">​http://bugs.python.org/issue17547</a></p>
 <h2 id="Thebootprocessfailswithoutvisibleerrorsinthelogsbutspawnarecoveryshell">The boot process fails without visible errors in the logs, but spawn a recovery shell</h2>
-<p>The problem is a new conflict between systemd and the old sysvinit style. To fix this, you can change the master xen template in dom0 to remove sysvinit remains: Edit /usr/share/qubes/vm-template.conf, and change the variable 'extra' that contains the kernel variables: from:</p>
+<p>The problem is a new conflict between systemd and the old sysvinit style. To fix this, you can change the master xen template in dom0 to remove sysvinit remains: Edit <strong>INSIDE DOM0</strong> /usr/share/qubes/vm-template.conf, and change the variable 'extra' that contains the kernel variables: from:</p>
 <pre class="wiki"><code>extra=&quot;ro nomodeset 3 console=hvc0 rd_NO_PLYMOUTH {kernelopts}&quot;</code></pre>
 <p>to:</p>
 <pre class="wiki"><code>extra=&quot;ro nomodeset console=hvc0 rd_NO_PLYMOUTH {kernelopts}&quot;</code></pre>
@@ -73,5 +73,8 @@ sudo sed &#39;s:qubes-netvm-external-ip:qubes_netvm_external_ip:g&#39; -i /usr/s
 <p>to</p>
 <pre class="wiki"><code>&lt;allow send_destination=&quot;org.freedesktop.NetworkManager&quot;/&gt;</code></pre>
 <h2 id="DispVMYumproxyandmostQubesaddonsthunderbird...havenotbeentestedatall.">DispVM, Yum proxy and most Qubes addons (thunderbird ...) have not been tested at all.</h2>
+<h2 id="Installingthetemplateindom0failsbecauseofamissingdependencyqubes-core-dom0-linux">Installing the template in dom0 fails because of a missing dependency (qubes-core-dom0-linux)</h2>
+<p>Again you built a template based on a recent Qubes API which has not been released yet. So skip the dependency for now:</p>
+<pre class="wiki"><code>sudo rpm -U --nodeps yourpackage.rpm</code></pre>
 <h2 id="chroot-archlinuxdevptshasnotbeenunmounted">chroot-archlinux/dev/pts has not been unmounted</h2>
 <p>This is a known problem when there are errors during building. Just unmount what you can (or reboot your vm if you are too lazy :) )</p>
