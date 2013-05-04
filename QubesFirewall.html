@@ -23,7 +23,8 @@
 <li>Now you should be able to reach the AppVM B from A -- test it using e.g. ping issues from AppVM A. Note however, that this doesn't allow you to reach A from B -- for this you would need another rule, with A and B addresses swapped.</li>
 <li><p>If everything works as expected, then the above iptables rule(s) should be written into firewall VM's <code>qubes_firewall_user_script</code> script which is run on every firewall update. This is necessary, because Qubes orders every firewall VM to update all the rules whenever new VM is started in the system. If we didn't enter our rules into this &quot;hook&quot; script, then shortly our custom rules would disappear and inter-VM networking would stop working. Here's an example how to update the script (note that, by default, there is no script file present, so we likely will be creating it, unless we had some other custom rules defines earlier in this firewallvm):</p>
 <pre class="wiki"><code>[user@firewallvm ~]$ sudo bash
-[root@firewallvm user]# echo &quot;iptables -I FORWARD 2 -s 10.137.2.25 -d 10.137.2.6 -j ACCEPT&quot; &gt;&gt; /rw/config/qubes_firewall_user_script</code></pre></li>
+[root@firewallvm user]# echo &quot;iptables -I FORWARD 2 -s 10.137.2.25 -d 10.137.2.6 -j ACCEPT&quot; &gt;&gt; /rw/config/qubes_firewall_user_script
+[root@firewallvm user]# chmod +x /rw/config/qubes_firewall_user_script</code></pre></li>
 </ul>
 <h2 id="PortforwardingtoanAppVMfromtheoutsideworld">Port forwarding to an AppVM from the outside world</h2>
 <p>In order to allow a service present in an AppVM to be exposed to the outside world in the default setup (where the AppVM has the FirewallVM as network VM, which in turn has the NetVM as network VM) the following needs to be done:</p>
