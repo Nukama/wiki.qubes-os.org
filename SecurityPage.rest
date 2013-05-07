@@ -35,8 +35,8 @@ used by the Qubes project, this key is signed with the Qubes Master key.
 Please see `this page </wiki/VerifyingSignatures>`__ for more
 information on how to verify the keys.
 
-Member of the Security Team
----------------------------
+Members of the Security Team
+----------------------------
 
 -  Joanna Rutkowska <joanna at invisiblethingslab dot com>
 -  Marek Marczykowski <marmarek at invisiblethingslab dot com>
