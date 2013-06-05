@@ -59,6 +59,20 @@ take care as it will replace your current archlinux-x64 template)
 Known problems during building or when running the VM
 =====================================================
 
+Can't open file archlinux-2013.02.01-dual.iso
+---------------------------------------------
+
+Archlinux ISO files are sometimes removed from mirrors. Check the last
+version available on the archlinux mirror (eg:
+`​http://mir.archlinux.fr/iso/ <http://mir.archlinux.fr/iso/>`__), and
+update
+qubes-src/linux-template-builder/scripts\_archlinux/00\_prepare.sh
+accordingly:
+
+.. code:: wiki
+
+    ISO_VERSION=2013.06.01
+
 xen-vmm-vm fail to build with a PARSETUPLE related error:
 ---------------------------------------------------------
 
