@@ -26,7 +26,7 @@ make gui-agent-linux-vm</code></pre>
 <pre class="wiki"><code>ISO_VERSION=2013.06.01</code></pre>
 <p>You will also need to download the signature matching this ISO version inside qubes-src/linux-template-builder/scripts_archlinux/:</p>
 <pre class="wiki"><code>wget http://mir.archlinux.fr/iso/2013.06.01/archlinux-2013.06.01-dual.iso.sig</code></pre>
-<h2 id="xen-vmm-vmfailtobuildwithaPARSETUPLErelatederror:">xen-vmm-vm fail to build with a PARSETUPLE related error:</h2>
+<h2 id="xen-vmm-vmfailtobuildwithaPARSETUPLErelatederrorFIXED:">xen-vmm-vm fail to build with a PARSETUPLE related error (FIXED):</h2>
 <p>Commenting out &quot;#define HAVE_ATTRIBUTE_FORMAT_PARSETUPLE&quot; from chroot_archlinux/usr/include/python2.7/pyconfig.h fixes the problem, but it isn't the right solution [1]...</p>
 <p>A better fix is planned for the next python release (the bug is considered release blocking), and will be updated in archlinux chroot as soon as available.</p>
 <p>[1] <a href="http://bugs.python.org/issue17547">​http://bugs.python.org/issue17547</a></p>
