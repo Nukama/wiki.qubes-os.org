@@ -24,6 +24,8 @@ make gui-agent-linux-vm</code></pre>
 <h2 id="Cantopenfilearchlinux-2013.02.01-dual.iso">Can't open file archlinux-2013.02.01-dual.iso</h2>
 <p>Archlinux ISO files are sometimes removed from mirrors. Check the last version available on the archlinux mirror (eg: <a href="http://mir.archlinux.fr/iso/">​http://mir.archlinux.fr/iso/</a>), and update qubes-src/linux-template-builder/scripts_archlinux/00_prepare.sh accordingly:</p>
 <pre class="wiki"><code>ISO_VERSION=2013.06.01</code></pre>
+<p>You will also need to download the signature matching this ISO version inside qubes-src/linux-template-builder/scripts_archlinux/:</p>
+<pre class="wiki"><code>wget http://mir.archlinux.fr/iso/2013.06.01/archlinux-2013.06.01-dual.iso.sig</code></pre>
 <h2 id="xen-vmm-vmfailtobuildwithaPARSETUPLErelatederror:">xen-vmm-vm fail to build with a PARSETUPLE related error:</h2>
 <p>Commenting out &quot;#define HAVE_ATTRIBUTE_FORMAT_PARSETUPLE&quot; from chroot_archlinux/usr/include/python2.7/pyconfig.h fixes the problem, but it isn't the right solution [1]...</p>
 <p>A better fix is planned for the next python release (the bug is considered release blocking), and will be updated in archlinux chroot as soon as available.</p>
