@@ -80,8 +80,8 @@ inside qubes-src/linux-template-builder/scripts\_archlinux/:
 
     wget http://mir.archlinux.fr/iso/2013.06.01/archlinux-2013.06.01-dual.iso.sig
 
-xen-vmm-vm fail to build with a PARSETUPLE related error:
----------------------------------------------------------
+xen-vmm-vm fail to build with a PARSETUPLE related error (FIXED):
+-----------------------------------------------------------------
 
 Commenting out "#define HAVE\_ATTRIBUTE\_FORMAT\_PARSETUPLE" from
 chroot\_archlinux/usr/include/python2.7/pyconfig.h fixes the problem,
