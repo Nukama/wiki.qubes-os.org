@@ -26,18 +26,18 @@ guide lines:
    is already discussed - if so, add your comments to the existing
    thread.
 
-3. If your problem seems to be a new one report it:
+3. If your problem seems to be a new one, report it:
 
-   -  as a mail - with a clear specific subject like "bug report:
+   -  as a mail, with a clear specific subject like "bug report:
       <specific description>"
    -  include steps to reproduce the problem if possible, and relevant
-      log files (if you know);
+      log files (if you know)
    -  if its a hardware related issue include your `HCL </wiki/HCL>`__
       Support files as well.
 
-5. Qubes core `developers </wiki/QubesDevelopers>`__ may ask you
-   additional questions - please do follow up.
+5. Qubes `developers </wiki/QubesDevelopers>`__ may ask you additional
+   questions - please do follow up.
 
-6. If the issue can be validated as a definite bug then he enters it
+6. If the issue can be validated as a definite bug then they enters it
    into the `​issue tracker <https://qubes-os.org/trac/report/3>`__.
 
