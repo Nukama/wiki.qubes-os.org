@@ -63,13 +63,13 @@ sudo sed &#39;s:qubes-netvm-gateway:qubes_netvm_gateway:g&#39; -i /usr/lib/qubes
 sudo sed &#39;s:qubes-netvm-netmask:qubes_netvm_netmask:g&#39; -i /usr/lib/qubes/setup-ip
 sudo sed &#39;s:qubes-netvm-secondary-dns:qubes_netvm_secondary_dns:g&#39; -i /usr/lib/qubes/setup-ip
 
-sudo sed &#39;s:qubes-iptables-domainrules:qubes_iptables_domainrules:g&#39; -i /usr/sbin/qubes-firewall
-sudo sed &#39;s:qubes-iptables-header:qubes_iptables_header:g&#39; -i /usr/sbin/qubes-firewall
-sudo sed &#39;s:qubes-iptables-error:qubes_iptables_error:g&#39; -i /usr/sbin/qubes-firewall
-sudo sed &#39;s:qubes-iptables:qubes_iptables:g&#39; -i /usr/sbin/qubes-firewall
+sudo sed &#39;s:qubes-iptables-domainrules:qubes_iptables_domainrules:g&#39; -i /usr/bin/qubes-firewall
+sudo sed &#39;s:qubes-iptables-header:qubes_iptables_header:g&#39; -i /usr/bin/qubes-firewall
+sudo sed &#39;s:qubes-iptables-error:qubes_iptables_error:g&#39; -i /usr/bin/qubes-firewall
+sudo sed &#39;s:qubes-iptables:qubes_iptables:g&#39; -i /usr/bin/qubes-firewall
 
-sudo sed &#39;s:qubes-netvm-domid:qubes_netvm_domid:g&#39; -i /usr/sbin/qubes-netwatcher
-sudo sed &#39;s:qubes-netvm-external-ip:qubes_netvm_external_ip:g&#39; -i /usr/sbin/qubes-netwatcher</code></pre>
+sudo sed &#39;s:qubes-netvm-domid:qubes_netvm_domid:g&#39; -i /usr/bin/qubes-netwatcher
+sudo sed &#39;s:qubes-netvm-external-ip:qubes_netvm_external_ip:g&#39; -i /usr/bin/qubes-netwatcher</code></pre>
 <p>Do not forgot to:</p>
 <pre class="wiki"><code>umount /mnt/vm</code></pre>
 <h2 id="Thenm-appletnetworkmanagericonfailstostartwhenarchlinuxisdefinedasatemplate-vm:">The nm-applet (network manager icon) fails to start when archlinux is defined as a template-vm:</h2>
