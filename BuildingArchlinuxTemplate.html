@@ -83,3 +83,13 @@ sudo sed &#39;s:qubes-netvm-external-ip:qubes_netvm_external_ip:g&#39; -i /usr/s
 <pre class="wiki"><code>sudo rpm -U --nodeps yourpackage.rpm</code></pre>
 <h2 id="chroot-archlinuxdevptshasnotbeenunmounted">chroot-archlinux/dev/pts has not been unmounted</h2>
 <p>This is a known problem when there are errors during building. Just unmount what you can (or reboot your vm if you are too lazy :) )</p>
+<h2 id="Errorwhenbuildingthegui-agent-linux">Error when building the gui-agent-linux</h2>
+<pre class="wiki"><code>module-vchan-sink.c:62:34: fatal error: pulsecore/core-error.h: No such file or directory
+ #include &lt;pulsecore/core-error.h&gt;</code></pre>
+<p>This error is because Archlinux update package too quickly. Probably, a new version of pulseaudio has been released, but the qubes team has not imported the new development headers yet.</p>
+<p>You can create fake new headers just by copying the old headers:</p>
+<pre class="wiki"><code>cd qubes-builder/qubes-src/gui-agent-linux/pulse
+ls
+cp -r pulsecore-#lastversion pulsecore-#archlinuxversion</code></pre>
+<p>You can check the current archlinux pulseaudio version like this:</p>
+<pre class="wiki"><code>sudo chroot chroot-archlinux/ pacman -Qi pulseaudio</code></pre>
