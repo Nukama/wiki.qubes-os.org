@@ -12,10 +12,32 @@
 <pre class="wiki"><code># qubes-dom-update qubes-core-dom0 qubes-manager
 # yum reinstall qubes-core-dom0
 # yum reinstall qubes-manager</code></pre>
-<p>First, retrieve the attachment of this Wifi article in dom0. Then apply the three patches the following way:</p>
-<pre class="wiki"><code># patch /usr/lib64/python2.7/site-package/qubes/qubes.py &lt; qubes.py-bridge.diff
+<p>First, retrieve the attachment of this Wifi article in dom0. Then apply the three patches the following way after installing the patch tool :</p>
+<pre class="wiki"><code># qubes-dom0-update patch
+# patch /usr/lib64/python2.7/site-package/qubes/qubes.py &lt; qubes.py-bridge.diff
 # patch /usr/lib64/python2.7/site-package/qubesmanager/settings.py &lt; settings.py-bridge.diff
 # patch /usr/lib64/python2.7/site-package/qubesmanager/ui_settingsdlg.py &lt; ui_settingsdlg.py-bridge.diff</code></pre>
 <p>Finally restart the qubes manager GUI.</p>
 <p>A new option is now available in the AppVM Settings to enable set the NetVM in bridge mode. For a bridged AppVM, you should the select a netvm instead of a firewall vm, enabled the Bridge option and restart your AppVM.</p>
 <h2 id="NetVMpatchQubesR2B3">NetVM patch (Qubes R2B3)</h2>
+<p>You need to modify manually the NetVM iptable script inside the NetVM. The reason is that by default the NetVM only accept traffic coming from network interfaces called vif* (in our case, we will use an additional interface called bridge0. The second reason is that all trafic is NATed by default. In our case, we want to forward traffic from the bridge interface without modifying it, while NATing traffic coming from vif* interfaces.</p>
+<p>Modify manually the Template you use for your NetVM (not the NetVM itself). This is by default fedora-x86_64. Edit the file /etc/sysconfig/iptables. You need to modify two parts of the file.</p>
+<ul>
+<li><p>Starting from the line -A POSTROUTING -j MASQUERADE that you need to comment :</p>
+<pre class="wiki"><code># Bridge support
+# Comment the following line
+#-A POSTROUTING -j MASQUERADE
+# Ensure packets coming from firewallVMs or AppVMs use NAT
+-A POSTROUTING -m iprange --src-range 10.137.1.0-10.137.2.255 -j MASQUERADE
+# Allow redirection of bridge packets (optional as POSTROUTING default is ACCEPT)
+#-A POSTROUTING -o bridge+ -j ACCEPT
+# End Bridge support</code></pre></li>
+<li><p>Starting from the line -A FORWARD -i vif+ -j ACCEPT:</p>
+<pre class="wiki"><code>-A FORWARD -i vif+ -o vif+ -j DROP
+-A FORWARD -i vif+ -j ACCEPT
+# Bridge Support
+-A FORWARD -i bridge+ -j ACCEPT
+# End Bridge Support
+-A FORWARD -j DROP</code></pre></li>
+</ul>
+<p>Ensure that the IP addresses used by default in qubes are in the form 10.137.1.* or 10.137.2.* by running ifconfig. Of course, this setup won't work with IPv6.</p>
