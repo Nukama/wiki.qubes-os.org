@@ -43,4 +43,50 @@
 <p>Ensure that the IP addresses used by default in qubes are in the form 10.137.1.* or 10.137.2.* by running ifconfig. Of course, this setup won't work with IPv6.</p>
 <p>Now you need to restart the NetVM and FirewallVM or only iptables in both VMs if you prefer:</p>
 <pre class="wiki"><code># systemctl restart iptables</code></pre>
-<h2 id="CreatetheBridgeVMinsidethecurrentNetVM">Create the Bridge VM inside the current NetVM</h2>
+<h2 id="CreateaBridgeinsidetheNetVM">Create a Bridge inside the NetVM</h2>
+<p>A bridge can be created inside the standard network manager (the network icon in the taskbar).</p>
+<p>This requires:</p>
+<ul>
+<li>creating a bridge that will be your main IP (ex: setup the bridge with DHCP)</li>
+<li>attach eth0 to your bridge</li>
+</ul>
+<p>Note: A wireless interface cannot be bridged.</p>
+<p>The bridge edition GUI is somehow buggy as it does not remember all the parameter you setup. You can fix it by editing manually the files in /etc/NetworkManager/system-connections/. Here is one example for these files:</p>
+<ul>
+<li><p>Bridge-DHCP</p>
+<pre class="wiki"><code>[connection]
+id=Bridge-DHCP
+uuid=fd68198b-313a-47cb-9155-52e95cdc67f3
+type=bridge
+autoconnect=false
+timestamp=1363938302
+
+[ipv6]
+method=auto
+
+[ipv4]
+method=auto
+
+[bridge]
+interface-name=bridge0
+stp=false</code></pre></li>
+</ul>
+<p>Note: Do not forget to put stp=false if you bridge only eth0 because sending BPDUs could make your admins angry :)</p>
+<ul>
+<li><p>bridge0-eth0</p>
+<pre class="wiki"><code>[802-3-ethernet]
+duplex=full
+mac-address=88:AE:1D:AE:30:31
+
+[connection]
+id=bridge0-eth0
+uuid=38320e5b-226c-409e-9fd6-0fbf4d0460a0
+type=802-3-ethernet
+autoconnect=false
+timestamp=1363601650
+master=fd68198b-313a-47cb-9155-52e95cdc67f3
+slave-type=bridge</code></pre></li>
+</ul>
+<p>If you do not manager to start your bridge, you can start it manually from a NetVM terminal:</p>
+<pre class="wiki"><code>$ nmcli con up id bridge0-eth0</code></pre>
+<p>Now that the bridge is ready, the bridged AppVM can be started...</p>
