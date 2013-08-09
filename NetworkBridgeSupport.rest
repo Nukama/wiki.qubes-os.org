@@ -21,7 +21,7 @@ don't have a secondary network card, or that you want to completely
 expose services of a given AppVM (at your own risk), a bridged setup may
 help you.
 
-Qubes manager patch (Qubes R2B3)
+Qubes manager patch (Qubes R2B2)
 --------------------------------
 
 The following patches can be applied to the Qubes Manager GUI in order
@@ -52,7 +52,7 @@ NetVM in bridge mode. For a bridged AppVM, you should the select a netvm
 instead of a firewall vm, enabled the Bridge option and restart your
 AppVM.
 
-NetVM patch (Qubes R2B3)
+NetVM patch (Qubes R2B2)
 ------------------------
 
 You need to modify manually the NetVM iptable script inside the NetVM.
