@@ -69,7 +69,8 @@ sudo sed &#39;s:qubes-iptables-error:qubes_iptables_error:g&#39; -i /usr/bin/qub
 sudo sed &#39;s:qubes-iptables:qubes_iptables:g&#39; -i /usr/bin/qubes-firewall
 
 sudo sed &#39;s:qubes-netvm-domid:qubes_netvm_domid:g&#39; -i /usr/bin/qubes-netwatcher
-sudo sed &#39;s:qubes-netvm-external-ip:qubes_netvm_external_ip:g&#39; -i /usr/bin/qubes-netwatcher</code></pre>
+sudo sed &#39;s:qubes-netvm-external-ip:qubes_netvm_external_ip:g&#39; -i /usr/bin/qubes-netwatcher
+sudo sed &#39;s:qubes-vm-updateable:qubes_vm_updateable:g&#39; -i /usr/lib/qubes/qubes_trigger_sync_appmenus.sh</code></pre>
 <p>Do not forgot to:</p>
 <pre class="wiki"><code>umount /mnt/vm</code></pre>
 <h2 id="Thenm-appletnetworkmanagericonfailstostartwhenarchlinuxisdefinedasatemplate-vm:">The nm-applet (network manager icon) fails to start when archlinux is defined as a template-vm:</h2>
