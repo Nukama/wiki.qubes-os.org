@@ -8,6 +8,7 @@
 <p>However, it is possible to deal with full screen mode in a secure way assuming there are mechanisms that can be used at any time to show the full desktop, and which cannot be intercepted by the VM. An example of such q mechanism is the KDE's &quot;Present Windows&quot; and &quot;Desktop Grid&quot; effects, which are similar to Mac's &quot;Expose&quot; effect, and which can be used to immediately detect potential &quot;GUI forgery&quot;, as they cannot be intercepted by any of the VM (as the GUID never passes down the key combinations that got consumed by KDE Window Manager), and so the VM cannot emulate those. Those effects are enabled by default in KDE once Compositing gets enabled in KDE (System Settings -&gt; Desktop -&gt; Enable Desktop Effects), which is recommended anyway. By default they are triggered by Ctrl-F8 and Ctrl-F9 key combinations, but can also be reassigned to other shortcuts.</p>
 <h2 id="EnablingfullscreenmodeforselectVMs">Enabling full screen mode for select VMs</h2>
 <p>If you want to enable full screen mode for select VMs, you can do that by creating the following entry in the /etc/qubes/guid.conf file in Dom0:</p>
+<p><strong>Note:</strong> There should be only one <code>VM: {}</code> block in the file (or you will <a href="https://groups.google.com/d/msg/qubes-users/-Yf9yNvTsVI/xXsEm8y2lrYJ">​get into problems</a>)</p>
 <pre class="wiki"><code>VM: {
   personal: {
     allow_fullscreen = true;
