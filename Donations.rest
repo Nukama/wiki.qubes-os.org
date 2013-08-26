@@ -11,9 +11,10 @@ want to read the short FAQ below first):
 
 This address can also be found in a message posted to Qubes mailing
 list, which can be viewed via Google Groups Web interface over SSL
-`​here <http://>`__, for double verification. For additional
-verification, you can verify the digital signature on the message, which
-should come from Joanna Rutkowska.
+`​here <https://groups.google.com/d/msg/qubes-devel/u3wAzm1dB5Y/s5CiUGDebL4J>`__,
+for double verification. For additional verification, you can verify the
+digital signature on the message, which should come from Joanna
+Rutkowska.
 
 FAQ
 ---
