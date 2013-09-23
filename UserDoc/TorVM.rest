@@ -12,4 +12,4 @@ Known issues:
    torrc <https://groups.google.com/d/msg/qubes-users/fyBVmxIpbSs/R5mxUcIEZAQJ>`__
 
 Source of this document:
-`​http://git.qubes-os.org/gitweb/?p=marmarek/addons.git;a=blob;f=qubes-tor/README.md <http://git.qubes-os.org/gitweb/?p=marmarek/addons.git;a=blob;f=qubes-tor/README.md>`__
+`​http://git.qubes-os.org/gitweb/?p=marmarek/qubes-app-linux-tor.git;a=blob;f=README.md <http://git.qubes-os.org/gitweb/?p=marmarek/qubes-app-linux-tor.git;a=blob;f=README.md>`__
