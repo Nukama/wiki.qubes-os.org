@@ -8,7 +8,7 @@ permalink: /wiki/WikiStart
 Welcome to the Qubes OS Project
 ===============================
 
-Qubes is an open source operating system designed to provide strong security for desktop computing. Qubes is based on Xen, X Window System, and Linux, and can run most Linux applications and utilize most of the Linux drivers. Qubes **Release 1** has been released in September 2012. Qubes **Release 2** is currently in the works, and Beta 1 has already been released. Qubes 2 supports Windows-based AppVMs.
+Qubes is an open-source operating system designed to provide strong security for desktop computing. Qubes is based on Xen, the X Window System, and Linux, and can run most Linux applications and utilize most of the Linux drivers. Qubes **Release 1** was released in September 2012. Qubes **Release 2** is currently in the works, with Beta 2 having been released in February 2013. Qubes supports Windows-based AppVMs beginning with Release 2.
 
 -   [Screenshots](/wiki/QubesScreenshots)
 -   [Architecture Overview](/wiki/QubesArchitecture)
