@@ -1,23 +1,23 @@
 <h1 id="OnDigitalSignaturesandKeyVerification">On Digital Signatures and Key Verification</h1>
-<h2 id="WhatdotheDigitalSignaturesProveandWhatTheyDONOTProve">What do the Digital Signatures Prove and What They DO NOT Prove</h2>
-<p>Most people, even programmers, often confuse the basic ideas behind digital signatures. Most people should read this section, even if it looks trivial at first sight.</p>
-<p>Digital Signatures can prove that a given file is authentic, i.e. that is has been indeed created by a person that signed it, and that its contents has not been tampered (so, integrity is preserved).</p>
-<p>Digital Signatures do *not* prove any other property, e.g. that the file is not malicious. In fact there is nothing that could stop people from signing a malicious program (and it happens from time to time in realty).</p>
-<p>The point is, of course, that people need to choose to trust some people, e.g. Linus Torvalds, Microsoft, etc. and assume that if a file(s) was indeed signed by those individuals, then indeed it should not be malicious and buggy in some horrible way. But the decision of whether to trust certain people (e.g. those behind the Qubes Project) is beyond the scope of digital signatures. It's more of a sociological and political decision.</p>
-<p>However, once we make a decision to trust somebody (e.g. The Qubes Project and the files released by them), then the digital signatures are useful, because they make it possible to limit our trust only to those few people we chose, and not to worry about all the Bad Things That Can Happen In The Middle between us and the them (i.e. the vendor), like e.g.: server compromises (qubes-os.org will surely get compromised one day), dishonest IT stuff at the hosting company, dishonest stuff at the ISPs, WiFi attacks, etc.</p>
-<p>If we verify all the files we download from the vendor, we don't need to worry about all the above bad things, because we would easily be able to detect when the file(s) has been tampered (and not execute/install/open them).</p>
-<p>However, for the digital signatures to make any sense, one should ensure that the public keys we use for signature verification are indeed the original ones. Anybody can generate a GPG key pair that would pretend to be for &quot;Qubes Project&quot;, but only the key pair that we generated is the legitimate one. The next paragraph describes how to verify the validity of the Qubes signing keys.</p>
+<h2 id="WhatDigitalSignaturesCanandCannotProve">What Digital Signatures Can and Cannot Prove</h2>
+<p>Most people--even programmers--”are confused about the basic concepts underlying digital signatures. Therefore, most people should read this section, even if it looks trivial at first sight.</p>
+<p>Digital signatures can prove both <strong>authenticity</strong> and <strong>integrity</strong> to a reasonable degree of certainty. <strong>Authenticity</strong> ensures that a given file was indeed created by the person who signed it (i.e., that it was not forged by a third party). <strong>Integrity</strong> ensures that the contents of the file have not been tampered with (i.e., that a third party has not undetectably altered its contents <em>en route</em>).</p>
+<p>Digital signatures <strong>cannot</strong> prove any other property, e.g., that the signed file is not malicious. In fact, there is nothing that could stop someone from signing a malicious program (and it happens from time to time in reality).</p>
+<p>The point is, of course, that people must choose who they will trust (e.g., Linus Torvalds, Microsoft, the Qubes Project, etc.) and assume that if a given file was signed by a trusted party, then it should not be malicious or buggy in some horrible way. But the decision of whether to trust any given party is beyond the scope of digital signatures. It's more of a sociological and political decision.</p>
+<p>Once we make the decision to trust certain parties, digital signatures are useful, because they make it possible for us to limit our trust only to those few parties we choose and not to worry about all the &quot;Bad Things That Can Happen In The Middle&quot; between us and the them, e.g., server compromises (qubes-os.org will surely be compromised one day), dishonest IT stuff at the hosting company, dishonest stuff at the ISPs, Wi-Fi attacks, etc.</p>
+<p>By verifying all the files we download which purport to be authored by a party we've chosen to trust, we eliminate concerns about the bad things discussed above, since we can easily detect whether any files have been tampered with (and subsequently choose to refrain from executing, installing, or opening them).</p>
+<p>However, for digital signatures to make any sense, we must ensure that the public keys we use for signature verification are indeed the original ones. Anybody can generate a GPG key pair that purports to belong to &quot;The Qubes Project,&quot; but of course only the key pair that we (i.e., the Qubes developers) generated is the legitimate one. The next section explains how to verify the validity of the Qubes signing keys.</p>
 <h2 id="ImportingQubesSigningKeys">Importing Qubes Signing Keys</h2>
 <p>Every file published by the Qubes Project (rpm, tgz, git repositories) is digitally signed by one of the developer or release keys. Each such key is signed by the Qubes Master Signing Key (<code>0x36879494</code>).</p>
-<p>The public portion of the Master Key can be download from a keyserver, e.g.:</p>
+<p>The public portion of the Master Key can be downloaded from a keyserver, e.g.:</p>
 <pre class="wiki"><code>gpg --recv-keys 0x36879494</code></pre>
 <p>(You can use other key server than <code>pgp.mit.edu</code>, which is just an example)</p>
-<p>For additional security we also publish the The Master Key's fingerprint here in this document:</p>
+<p>For additional security we also publish the the Master Key's fingerprint here in this document:</p>
 <pre class="wiki"><code>pub   4096R/36879494 2010-04-01
       Key fingerprint = 427F 11FD 0FAA 4B08 0123  F01C DDFA 1A3E 3687 9494
 uid   Qubes Master Signing Key</code></pre>
-<p>There should also be a copy of this key at the project's main website, as well as in the <a href="https://groups.google.com/forum/#!msg/qubes-devel/RqR9WPxICwg/kaQwknZPDHkJ">​archives of the projects mailing list</a>.</p>
-<p>Once you download and verified the fingerprint of the Master Signing Key, you should import this key and set its trust level to 'ultimate' (oh, well), so that it could be used to automatically verify all the developer's keys:</p>
+<p>There should also be a copy of this key at the project's main website, as well as in the <a href="https://groups.google.com/forum/#!msg/qubes-devel/RqR9WPxICwg/kaQwknZPDHkJ">​archives of the project's mailing list</a>.</p>
+<p>Once you have downloaded and verified the fingerprint of the Master Signing Key, you should import this key and set its trust level to &quot;ultimate&quot; (oh, well), so that it can be used to automatically verify all the developers' keys:</p>
 <pre class="wiki"><code>gpg --edit-key 0x36879494
 and then: trust, 5, y, q</code></pre>
 <p>Now you can easily download any of the developer or release keys that happen to be used to sign particular rpm, tgz, or git tags. E.g.:</p>
@@ -27,12 +27,12 @@ gpg: key AC1BF9B3: public key &quot;Qubes OS Release 1 Signing Key&quot; importe
 gpg: no ultimately trusted keys found
 gpg: Total number processed: 1
 gpg:               imported: 1  (RSA: 1)</code></pre>
-<p>You can also download all the currently used developer's keys (and also a copy of the Master Key) in the keys directory on our server:</p>
+<p>You can also download all the currently used developers' keys (and also a copy of the Master Key) in the keys directory on our server:</p>
 <p><a href="http://keys.qubes-os.org/keys/">​http://keys.qubes-os.org/keys/</a></p>
-<p>The developer keys are set to be valid for 1 year only, while the Qubes Master Signing Key has no expiration date. This key has been generated and is kept only within a special 'vault' machine that has no networking, and the private portion (hopefully) is never to leave this isolated machine.</p>
+<p>The developer keys are set to be valid for 1 year only, while the Qubes Master Signing Key has no expiration date. This latter key was generated and is kept only within a dedicated, air-gapped &quot;vault&quot; machine, and the private portion will (hopefully) never leave this isolated machine.</p>
 <p>Having problems verifying the ISO? See this thread:</p>
 <p><a href="https://groups.google.com/group/qubes-devel/browse_thread/thread/4bdec1cd19509b38/9f8e219c41e1b232">​https://groups.google.com/group/qubes-devel/browse_thread/thread/4bdec1cd19509b38/9f8e219c41e1b232</a></p>
-<h2 id="VerifyingQubescode">Verifying Qubes code</h2>
+<h2 id="VerifyingQubesCode">Verifying Qubes Code</h2>
 <p>Developers who fetch code from our Git server should always verify tags on the latest commit. Any commits that are not followed by a signed tag should not be trusted!</p>
 <p>To verify a signature on a git tag, you can use:</p>
 <pre class="wiki"><code>$ git tag -v &lt;tag name&gt;</code></pre>
