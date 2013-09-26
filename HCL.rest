@@ -602,4 +602,4 @@ Files** ``.cpio.gz`` file as well.
 **Please note:** The **HCL Support Files** may contain numerous hardware
 details, including serial numbers. If, for privacy or security reasons,
 you do not wish to make this information public, please **do not** send
-them to the public mailing list.
+the ``.cpio.gz`` file to the public mailing list.
