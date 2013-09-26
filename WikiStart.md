@@ -28,4 +28,5 @@ News
 -   Dec 14, 2012: Qubes 2 Beta 1 has been released! [​announcement](http://theinvisiblethings.blogspot.com/2012/12/qubes-2-beta-1-with-initial-windows.html)
 -   Feb 28, 2013: Qubes 2 Beta 2 has been released! [​announcement](http://theinvisiblethings.blogspot.com/2013/02/qubes-2-beta-2-has-been-released.html)
 -   Mar 21, 2013: Introducing Qubes Odyssey Framework [​article](http://theinvisiblethings.blogspot.com/2013/03/introducing-qubes-odyssey-framework.html)
+-   Jun 21, 2013: Qubes OS R3 Alpha preview: Odyssey HAL in action! [​announcement](http://theinvisiblethings.blogspot.com/2013/06/qubes-os-r3-alpha-preview-odyssey-hal.html)
 
