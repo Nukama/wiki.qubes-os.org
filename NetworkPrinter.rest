@@ -71,4 +71,9 @@ Steps to configure a network printer in a default template
    case adjust the firewall settings for that AppVM in Qubes Manager.
    Also, make sure that the AppVM gets restarted after the template was
    shutdown.
+#. Alternatively if you do not want to modify the firewall rules of the
+   template VM (that have security scope) you can simply shut down the
+   template VM without trying to print the test page (which will not
+   work), start or restart an AppVM based on the template and test
+   printing there.
 
