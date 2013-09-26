@@ -45,8 +45,9 @@ Important Notes
    to the convenience of having a portable copy of Qubes, this allows
    users to test for hardware compatibility on multiple machines (e.g.,
    at a brick-and-mortar computer store) before deciding on which
-   computer to purchase. (For more on hardware compatibility testing,
-   see below.)
+   computer to purchase. (See
+   `here </wiki/HCL#GeneratingandSubmittingNewReports>`__ for advice on
+   hardware compatibility testing.)
 -  Installing Qubes in a virtual machine is not recommended, as it uses
    its own bare-metal hypervisor (Xen).
 -  Macintosh PCs are not currently supported due to keyboard and mouse
