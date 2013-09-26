@@ -41,7 +41,7 @@ Important Notes
    booting into the Qubes installer, choose the flash drive as the
    target installation disk, and proceed with the installation normally.
    After Qubes has been installed on the flash drive, it can then be
-   plugged into other computers in order to boot from Qubes. In addition
+   plugged into other computers in order to boot into Qubes. In addition
    to the convenience of having a portable copy of Qubes, this allows
    users to test for hardware compatibility on multiple machines (e.g.,
    at a brick-and-mortar computer store) before deciding on which
