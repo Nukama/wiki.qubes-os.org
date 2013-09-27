@@ -4,22 +4,25 @@ Qubes Documentation
 For Users
 ---------
 
--  **`User guides </wiki/UserDoc>`__** <--- You probably want to start
-   here!
--  `Installation guides </wiki/QubesDownloads>`__
--  `User FAQ </wiki/UserFaq>`__
+-  **`User Guides </wiki/UserDoc>`__**\ ``   ``\ **(New to Qubes? Start
+   here!)**
+-  `Users' FAQ </wiki/UserFaq>`__
+-  `System Requirements </wiki/SystemRequirements>`__
+-  `Hardware Compatibility List </wiki/HCL>`__
+-  `On Digital Signatures and How to Verify Qubes
+   Downloads </wiki/VerifyingSignatures>`__
+-  `Installation Guides </wiki/QubesDownloads>`__
 
 For Developers
 --------------
 
--  `Qubes Developer Documentation </wiki/SystemDoc>`__
--  `Ideas Incubator? </wiki/IdeasIncubator>`__
--  `Source Code </wiki/SourceCode>`__
--  `Developer's FAQ </wiki/DevelFaq>`__
-
+-  `Developer Documentation </wiki/SystemDoc>`__
+-  `Developers' FAQ </wiki/DevelFaq>`__
 -  `How can I contribute to the Qubes
-   Project? </wiki/ContributingHowto>`__
--  `Qubes Coding Guidelines </wiki/CodingStyle>`__
+   project? </wiki/ContributingHowto>`__
+-  `Source Code </wiki/SourceCode>`__
+-  `Coding Guidelines </wiki/CodingStyle>`__
+-  `Idea Incubator? </wiki/IdeasIncubator>`__
 -  `Books for Developers </wiki/DevelBooks>`__
--  `Research papers related to Qubes </wiki/QubesResearch>`__
+-  `Research Papers </wiki/QubesResearch>`__
 
