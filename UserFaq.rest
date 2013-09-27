@@ -134,7 +134,7 @@ accelerated graphics (OpenGL) in Dom0’s Window Manager, so all the fancy
 desktop effects should still work.
 
 For further discussion about the potential for GPU passthorugh on
-`Xen/Qubes? </wiki/Xen/Qubes>`__, please see the following threads:
+Xen/Qubes, please see the following threads:
 
 -  `​GPU passing to
    HVM <https://groups.google.com/group/qubes-devel/browse_frm/thread/31f1f2da39978573?scoring=d&q=GPU&>`__
