@@ -1,4 +1,4 @@
-Qubes User's FAQ
+Qubes Users' FAQ
 ================
 
 #. `General Questions <#GeneralQuestions>`__
