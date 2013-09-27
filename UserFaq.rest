@@ -21,7 +21,7 @@ Qubes User's FAQ
       hypervisor? <#WhydoesQubesuseXeninsteadofKVMorsomeotherhypervisor>`__
    #. `What's so special about Qubes' GUI
       virtualization? <#WhatssospecialaboutQubesGUIvirtualization>`__
-   #. `Can I watch YouTube? videos in
+   #. `Can I watch YouTube videos in
       AppVMs? <#CanIwatchYouTubevideosinAppVMs>`__
    #. `Can I run applications, like games, which require 3D
       support? <#CanIrunapplicationslikegameswhichrequire3Dsupport>`__
@@ -118,8 +118,8 @@ potential attacks. At the same time, due to the smart use of Xen shared
 memory, our GUI implementation is very efficient, so most virtualized
 applications really feel as if they were executed natively.
 
-Can I watch `YouTube? </wiki/YouTube>`__ videos in AppVMs?
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Can I watch YouTube videos in AppVMs?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Absolutely.
 
