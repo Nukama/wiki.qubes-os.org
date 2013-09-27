@@ -12,7 +12,7 @@
 <li><a href="#DoesQubesruneveryappinaseparateVM">Does Qubes run every app in a separate VM?</a></li>
 <li><a href="#WhydoesQubesuseXeninsteadofKVMorsomeotherhypervisor">Why does Qubes use Xen instead of KVM or some other hypervisor?</a></li>
 <li><a href="#WhatssospecialaboutQubesGUIvirtualization">What's so special about Qubes' GUI virtualization?</a></li>
-<li><a href="#CanIwatchYouTubevideosinAppVMs">Can I watch YouTube? videos in AppVMs?</a></li>
+<li><a href="#CanIwatchYouTubevideosinAppVMs">Can I watch YouTube videos in AppVMs?</a></li>
 <li><a href="#CanIrunapplicationslikegameswhichrequire3Dsupport">Can I run applications, like games, which require 3D support?</a></li>
 <li><a href="#IsQubesamulti-usersystem">Is Qubes a multi-user system?</a></li>
 </ol></li>
@@ -46,7 +46,7 @@
 <p>In short: we believe the Xen architecture allows for the creation of more secure systems (i.e. with a much smaller TCB, which translates to a smaller attack surface). We discuss this in much greater depth in our <a href="http://files.qubes-os.org/files/doc/arch-spec-0.3.pdf">​Architecture Specification document</a>.</p>
 <h3 id="WhatssospecialaboutQubesGUIvirtualization">What's so special about Qubes' GUI virtualization?</h3>
 <p>We have designed the GUI virtualization subsystem with two primary goals: security and performance. Our GUI infrastructure introduces only about 2,500 lines of C code (LOC) into the privileged domain (Dom0), which is very little, and thus leaves little space for bugs and potential attacks. At the same time, due to the smart use of Xen shared memory, our GUI implementation is very efficient, so most virtualized applications really feel as if they were executed natively.</p>
-<h3 id="CanIwatchYouTubevideosinAppVMs">Can I watch <a href="/wiki/wiki/YouTube">YouTube?</a> videos in AppVMs?</h3>
+<h3 id="CanIwatchYouTubevideosinAppVMs">Can I watch YouTube videos in AppVMs?</h3>
 <p>Absolutely.</p>
 <h3 id="CanIrunapplicationslikegameswhichrequire3Dsupport">Can I run applications, like games, which require 3D support?</h3>
 <p>Those won’t fly. We do not provide OpenGL virtualization for AppVMs. This is mostly a security decision, as implementing such a feature would most likely introduce a great deal of complexity into the GUI virtualization infrastructure. However, Qubes does allow for the use of accelerated graphics (OpenGL) in Dom0’s Window Manager, so all the fancy desktop effects should still work.</p>
