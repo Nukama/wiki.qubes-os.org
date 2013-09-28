@@ -11,6 +11,7 @@ of the Linux drivers. Qubes **Release 1** was released in September
 been released in February 2013. Qubes supports Windows-based AppVMs
 beginning with Release 2.
 
+-  `Getting Started </wiki/GettingStarted>`__
 -  `Screenshots </wiki/QubesScreenshots>`__
 -  `Architecture Overview </wiki/QubesArchitecture>`__
 -  `Qubes Security Goals </wiki/SecurityGoals>`__
