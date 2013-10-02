@@ -51,7 +51,7 @@ Important Notes
 -  Installing Qubes in a virtual machine is not recommended, as it uses
    its own bare-metal hypervisor (Xen).
 -  Macintosh PCs are not currently supported due to keyboard and mouse
-   problems. (Patches welcome!)
+   problems - details in #230. (Patches welcome!)
 -  `​Advice on finding a VT-d capable
    notebook <https://groups.google.com/d/msg/qubes-users/Sz0Nuhi4N0o/ZtpJdoc0OY8J>`__.
 
