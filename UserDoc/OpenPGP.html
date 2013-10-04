@@ -1,0 +1,45 @@
+<h1 id="UsingOpenPGPinQubes">Using OpenPGP in Qubes</h1>
+<p>One of the main advantages of Qubes is that it allows the user to isolate sensitive data in network-disconnected VMs. This is particularly useful in the case of securing secret keys. Work on split GPG is currently ongoing (#474), but it's still possible to set up a very secure system right now.</p>
+<h2 id="BasicInstructions">Basic Instructions</h2>
+<p>The basic procedure is to create a master keypair and any number of signing/encryption subkeys in your ultimately trusted &quot;vault&quot; domain. The secret portion of the master keypair should never leave your vault. The public portion of the master key, along with the subkeys, can then be <a href="/wiki/wiki/VmTools/QvmCopyToVm">copied</a> to any number of less trusted domains, e.g. &quot;work,&quot; where they will be used normally. If your work domain is ever compromised (and your subkeys along with it), your master key will still be safe, and you can issue new subkeys. For detailed instructions, see the tutorials and discussions below.</p>
+<h2 id="SecurityRecommendations">Security Recommendations</h2>
+<p>(Note: Here &quot;vault&quot; refers to whichever domain you have chosen to house the secret portion of your master keypair.)</p>
+<ol>
+<li>Key Isolation</li>
+</ol>
+<blockquote>
+<blockquote>
+<p>All keys should be created in the vault, and the secret portion of the master keypair should never leave it.</p>
+</blockquote>
+</blockquote>
+<ol start="2">
+<li>No Vault Networking</li>
+</ol>
+<p></p>
+<blockquote>
+<blockquote>
+<p>The vault should not be connected to a network (NetVM: none).</p>
+</blockquote>
+</blockquote>
+<ol start="3">
+<li>No Vault Importing</li>
+</ol>
+<blockquote>
+<blockquote>
+<p>Untrusted files should never be imported into the vault. In addition to the networking restriction in point 2, this means not <a href="/wiki/wiki/VmTools/QvmCopyToVm">copying</a> untrusted files to the vault. Whether any given file is &quot;untrusted&quot; is an individual user decision, but we recommend that users never copy from a less trusted domain to a more trusted domain. At present, this means that there is no secure way to sign other people's keys with the master key.</p>
+</blockquote>
+</blockquote>
+<h2 id="TutorialsandDiscussions">Tutorials and Discussions</h2>
+<p>(Note: Although some of the tutorials below were not written with Qubes in mind, they can be adapted to Qubes with a few adjustments. As always, exercise caution and use your good judgment.)</p>
+<ul>
+<li><a href="https://groups.google.com/d/topic/qubes-users/Kwfuern-R2U/discussion">​&quot;OpenPGP in Qubes OS&quot; on the qubes-users mailing list</a></li>
+<li><a href="https://alexcabal.com/creating-the-perfect-gpg-keypair/">​&quot;Creating the Perfect GPG Keypair&quot; by Alex Cabal</a></li>
+<li><a href="https://gist.github.com/abeluck/3383449">​&quot;GPG Offline Master Key w/ smartcard&quot; maintained by Abel Luck</a>
+<ul>
+<li>Author's note: &quot;It is not Qubes OS specific, and in fact assumes you want to use a smartcard, which might not be the case, so skip those bits. Also, use your vault vm instead of booting into an offline livecd as described.&quot;</li>
+</ul></li>
+<li><a href="https://apapadop.wordpress.com/2013/08/21/using-gnupg-with-qubesos/">​&quot;Using GnuPG with QubesOS&quot; by Alex</a>
+<ul>
+<li><strong>Caution:</strong> This tutorial currently performs the initial key creation outside the vault, which is not recommended. (See <a href="https://groups.google.com/d/msg/qubes-users/Kwfuern-R2U/x88pXDRQo0sJ">​author's email</a>.)</li>
+</ul></li>
+</ul>
