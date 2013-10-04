@@ -33,7 +33,7 @@ Advanced topics:
 -  `DispVM Customization </wiki/UserDoc/DispVMCustomization>`__
 -  `Tips for using Linux in HVM </wiki/LinuxHVMTips>`__
 -  `Enabling Fullscreen mode for AppVMs </wiki/FullScreenMode>`__
--  `OpenPGP in Qubes? </wiki/Using>`__
+-  `Using OpenPGP in Qubes </wiki/UserDoc/OpenPGP>`__
 
 Command-line tools reference:
 
