@@ -25,6 +25,10 @@
 <li><a href="#CanIuseAMD-vinsteadofVT-x">Can I use AMD-v instead of VT-x?</a></li>
 <li><a href="#CanIinstallQubesinavirtualmachinee.g.onVMWare">Can I install Qubes in a virtual machine (e.g., on VMWare)?</a></li>
 </ol></li>
+<li><a href="#CommonProblems">Common Problems</a>
+<ol>
+<li><a href="#MyAppVMslostInternetaccessafteraTemplateVMupdate.WhatshouldIdo">My AppVMs lost Internet access after a TemplateVM update. What should I do?</a></li>
+</ol></li>
 </ol>
 <p></p>
 <h2 id="GeneralQuestions">General Questions</h2>
@@ -71,3 +75,6 @@
 <p>See <a href="http://groups.google.com/group/qubes-devel/msg/6412170cfbcb4cc5">​this message</a>.</p>
 <h3 id="CanIinstallQubesinavirtualmachinee.g.onVMWare">Can I install Qubes in a virtual machine (e.g., on VMWare)?</h3>
 <p>Some users have been able to do this, but it is neither recommended nor supported. Qubes should be installed bare-metal. (After all, it uses its own bare-metal hypervisor!)</p>
+<h2 id="CommonProblems">Common Problems</h2>
+<h3 id="MyAppVMslostInternetaccessafteraTemplateVMupdate.WhatshouldIdo">My AppVMs lost Internet access after a TemplateVM update. What should I do?</h3>
+<p>Run <code>systemctl enable NetworkManager-dispatcher.service</code> in the TemplateVM upon which your NetVM is based. You may have to reboot afterward for the change to take effect. (Note: This is an upstream problem. See <a href="https://bugzilla.redhat.com/show_bug.cgi?id=974811">​here</a>. For details, see the qubes-users mailing list threads <a href="https://groups.google.com/d/topic/qubes-users/xPLGsAJiDW4/discussion">​here</a> and <a href="https://groups.google.com/d/topic/qubes-users/uN9G8hjKrGI/discussion">​here</a>.)</p>
