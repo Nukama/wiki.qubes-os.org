@@ -69,9 +69,3 @@ exercise caution and use your good judgment.)
 -  `​"Using GnuPG with QubesOS" by
    Alex <https://apapadop.wordpress.com/2013/08/21/using-gnupg-with-qubesos/>`__
 
-   -  **Caution:** This tutorial currently performs the initial key
-      creation outside the vault, which is not recommended. (See
-      `​author's
-      email <https://groups.google.com/d/msg/qubes-users/Kwfuern-R2U/x88pXDRQo0sJ>`__.)
-
-
