@@ -18,7 +18,8 @@ be `copied </wiki/VmTools/QvmCopyToVm>`__ to any number of less trusted
 domains, e.g. "work," where they will be used normally. If your work
 domain is ever compromised (and your subkeys along with it), your master
 key will still be safe, and you can issue new subkeys. For detailed
-instructions, see the tutorials and discussions below.
+instructions, see the `tutorials and
+discussions </wiki/UserDoc/OpenPGP#TutorialsandDiscussions>`__ below.
 
 Security Recommendations
 ------------------------
