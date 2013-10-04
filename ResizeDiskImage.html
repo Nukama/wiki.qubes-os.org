@@ -4,12 +4,22 @@
 <p>The private disk image of a AppVM can be grown with <a href="/wiki/wiki/Dom0Tools/QvmGrowPrivate">qubes-grow-private</a>:</p>
 <pre class="wiki"><code>qvm-grow-private &lt;vm-name&gt; &lt;size&gt;</code></pre>
 <h3 id="HVMdiskimage">HVM disk image</h3>
-<p>A disk image for a HVM for can be grown using following command:</p>
-<pre class="wiki"><code>truncate -s &lt;size&gt; root.img</code></pre>
-<p>The root.img is found in /var/lib/qubes/appvm/hvmname.</p>
-<p>Be aware, that the HVM should be stopped during this operation. The partition table and file-system must be adjusted after this change.</p>
-<h4 id="Windows">Windows</h4>
-<p>Go to Storage management and click on &quot;Extend Volume&quot;</p>
+<p>In this example we will grow the disk image of an HVM to 30GB.</p>
+<p>First, stop/shutdown the HVM.</p>
+<p>Then, from a Dom0 terminal (in KDE: System Tools -&gt; Terminal Emulator) do the following:</p>
+<pre class="wiki"><code>cd /var/lib/qubes/appvms/&lt;yourHVM&gt;/
+ls -lh root.img  (&lt;--verify current size of disk image)
+truncate -s 30GB root.img
+ls -lh root.img  (&lt;--verify new size of disk image)</code></pre>
+<p>The partition table and file-system must be adjusted after this change:</p>
+<h4 id="Windows7">Windows 7</h4>
+<ol>
+<li>Click Start</li>
+<li>type &quot;diskmgmt.msc&quot; - this takes you to Disk Management</li>
+<li>Right-click on your existing volume, select &quot;Extend Volume...&quot;</li>
+<li>Click through the wizard.</li>
+</ol>
+<p>No reboot required.</p>
 <h4 id="FreeBSD">FreeBSD</h4>
 <pre class="wiki"><code>gpart recover ada0
 sysctl kern.geom.debugflags=0x10
