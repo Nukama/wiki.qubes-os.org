@@ -47,6 +47,12 @@ Qubes Users' FAQ
    #. `My AppVMs lost Internet access after a TemplateVM update. What
       should I
       do? <#MyAppVMslostInternetaccessafteraTemplateVMupdate.WhatshouldIdo>`__
+   #. `My keyboard layout settings are not behaving correctly. What
+      should I
+      do? <#Mykeyboardlayoutsettingsarenotbehavingcorrectly.WhatshouldIdo>`__
+   #. `My dom0 and/or TemplateVM update stalls when attempting to update
+      via
+      … <#Mydom0andorTemplateVMupdatestallswhenattemptingtoupdateviatheGUItool.WhatshouldIdo>`__
 
 General Questions
 -----------------
@@ -229,3 +235,18 @@ details, see the qubes-users mailing list threads
 `​here <https://groups.google.com/d/topic/qubes-users/xPLGsAJiDW4/discussion>`__
 and
 `​here <https://groups.google.com/d/topic/qubes-users/uN9G8hjKrGI/discussion>`__.)
+
+My keyboard layout settings are not behaving correctly. What should I do?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Please read `​this
+disccusion <https://groups.google.com/d/topic/qubes-devel/d8ZQ_62asKI/discussion>`__.
+
+My dom0 and/or TemplateVM update stalls when attempting to update via the GUI tool. What should I do?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This can usually be fixed by updating via the command line.
+
+In dom0, open a terminal and run ``sudo qubes-dom0-update``.
+
+In your TemplateVMs, open a terminal and run ``sudo yum upgrade``.
