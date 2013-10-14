@@ -1,4 +1,11 @@
 <h1 id="HardwareCompatibilityListHCLforAllQubesOSReleases">Hardware Compatibility List (HCL) for All Qubes OS Releases</h1>
+<p><strong>Legend</strong></p>
+<ul>
+<li>Green: The reporter has clearly stated that <strong>all</strong> components and features are working correctly.</li>
+<li>White: The reporter has sent an HCL Info output which indicates everything is OK without any comments.</li>
+<li>Yellow: Some non-required feature is missing (e.g., VT-d), or manual tweaking is required in order to get some components to work.</li>
+<li>Red: Some primary feature is not working. These are usually machines with poor or nonexistent Linux support in general.</li>
+</ul>
 <p><strong>Device</strong></p>
 <p><strong>Qubes R1</strong></p>
 <p><strong>Qubes R2 Beta2</strong></p>
@@ -267,5 +274,5 @@
 <p><a href="https://groups.google.com/d/msg/qubes-users/UCuF41rq758/BRhc7lTecsMJ">Ulrich Pfeifer</a></p>
 <h2 id="GeneratingandSubmittingNewReports">Generating and Submitting New Reports</h2>
 <p>In order to generate an HCL report in Qubes, simply open a terminal in dom0 and run <code>qubes-hcl-report &lt;vm-name&gt;</code>, where <code>&lt;vm-name&gt;</code> is the name of the VM to which the generated HCL files will be saved. (Note: If you are working with a new Qubes installation, you may need to update your system in order to download this script.)</p>
-<p>Users are encouraged to submit their HCL reports for the benefit of further Qubes development and other users. If you would like to submit your HCL report, please send the <strong>HCL Info</strong> <code>.txt</code> file to <code>qubes-users@googlegroups.com</code> (see <a href="/wiki/wiki/QubesLists">here</a> information about the mailing lists) with the subject <code>HCL - &lt;your machine model name&gt;</code>. Please feel free to include any useful information about any Qubes features you may have tested, as well as general machine compatibility (video, networking, sleep, etc.). If you have problems with your hardware, please send the <strong>HCL Support Files</strong> <code>.cpio.gz</code> file as well.</p>
+<p>Users are encouraged to submit their HCL reports for the benefit of further Qubes development and other users. If you would like to submit your HCL report, please send the <strong>HCL Info</strong> <code>.txt</code> file to <code>qubes-users@googlegroups.com</code> (see <a href="/wiki/wiki/QubesLists">here</a> information about the mailing lists) with the subject <code>HCL - &lt;your machine model name&gt;</code>. Please include any useful information about any Qubes features you may have tested (see the legend above), as well as general machine compatibility (video, networking, sleep, etc.). If you have problems with your hardware, please send the <strong>HCL Support Files</strong> <code>.cpio.gz</code> file as well.</p>
 <p><strong>Please note:</strong> The <strong>HCL Support Files</strong> may contain numerous hardware details, including serial numbers. If, for privacy or security reasons, you do not wish to make this information public, please <strong>do not</strong> send the <code>.cpio.gz</code> file to the public mailing list.</p>
