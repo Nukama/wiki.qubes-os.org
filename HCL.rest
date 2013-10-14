@@ -593,6 +593,21 @@ more <https://groups.google.com/d/topic/qubes-users/V4PQYEBuoSg/discussion>`__
 
 `cprise <https://groups.google.com/d/msg/qubes-users/V4PQYEBuoSg/udLCHyR6RUUJ>`__
 
+| Lenovo X1 Carbon (LENOVO 3444CTO)
+|  (i5-3427U)
+
+OK
+
+OK
+
+OK
+
+`read
+more <https://groups.google.com/d/topic/qubes-users/UCuF41rq758/discussion>`__
+
+`Ulrich
+Pfeifer <https://groups.google.com/d/msg/qubes-users/UCuF41rq758/BRhc7lTecsMJ>`__
+
 Generating and Submitting New Reports
 -------------------------------------
 
