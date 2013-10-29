@@ -10,17 +10,17 @@
 <p><strong>WARNING</strong>: Everything on your external USB drive will be deleted with this process!</p>
 <pre class="wiki"><code>$ sudo wipefs -a /dev/sdb
 $ sudo cryptsetup luksFormat /dev/sdb
-$ sudo blkid /dev/sdb
-$ sudo cryptsetup open --type luks UUID=the-long-UUID-you-just-got-from-blkid backup
+$ sudo blkid /dev/sdb (this is your device UUID)
+$ sudo cryptsetup open --type luks UUID=the-long-UUID-of-your-DEVICE backup
 $ sudo mkfs.ext4 -m 0 /dev/mapper/backup</code></pre>
 <ol start="2">
 <li>Mount the encrypted medium on which the backup will be stored</li>
 </ol>
 <pre class="wiki"><code>$ sudo mkdir /backup
-$ sudo blkid /dev/mapper/backup
+$ sudo blkid /dev/mapper/backup (this is your volume UUID)
 $ sudo vi /etc/fstab
 (add a line similar to this:
-UUID=the-SECOND-long-UUID-you-just-got-for-the-mapper-device /mnt/backup ext4 defaults 1 2
+UUID=the-long-UUID-of-your-VOLUME /mnt/backup ext4 defaults 1 2
 )
 $ sudo mount /mnt/backup</code></pre>
 <p>Now anything we store in /mnt/backup is stored on the encrypted LUKS volume of our external USB drive.</p>
@@ -36,12 +36,19 @@ $ sudo mount /mnt/backup</code></pre>
 $ sudo cryptsetup close backup</code></pre>
 <h2 id="RestoringVMsfromabackup">Restoring VMs from a backup</h2>
 <ol>
-<li>Mount the media with your backups</li>
+<li>Mount the medium containing your VM backups</li>
 </ol>
-<pre class="wiki"><code>$ sudo mount /mnt/backup</code></pre>
+<p>(It is advisable to script this to ensure the right UUID is always attached to the right volume)</p>
+<pre class="wiki"><code>$ sudo cryptsetup open --type luks UUID=the-long-UUID-of-your-DEVICE backup
+$ sudo mount /mnt/backup</code></pre>
 <ol start="2">
 <li>Restore VMs</li>
 </ol>
 <pre class="wiki"><code>$ sudo qvm-backup-restore /mnt/backup/&lt;specific_backup_dir&gt;</code></pre>
 <p>The <code>qvm-backup-restore</code> tool will restore all the VMs (and any backed up custom template VMs), update the Qubes database and add appmenus for the restored VMs. Your existing VMs will not be removed.</p>
 <p>If there is a name conflict, i.e. you try restoring a VM with the same name as a VM already on the host, <code>qvm-backup-restore</code> will refuse to continue and will ask you to remove (or rename) the conflicting VM from the host first.</p>
+<ol start="3">
+<li>Unmount your backup medium</li>
+</ol>
+<pre class="wiki"><code>$ sudo umount /mnt/backup
+$ sudo cryptsetup close backup</code></pre>
