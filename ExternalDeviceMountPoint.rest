@@ -5,3 +5,4 @@ template can be found under
 
     /run/media/user/
 
+...of that AppVM's filesystem.
