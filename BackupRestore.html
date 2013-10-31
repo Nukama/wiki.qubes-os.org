@@ -16,13 +16,8 @@ $ sudo mkfs.ext4 -m 0 /dev/mapper/backup</code></pre>
 <ol start="2">
 <li>Mount the encrypted medium on which the backup will be stored</li>
 </ol>
-<pre class="wiki"><code>$ sudo mkdir /backup
-$ sudo blkid /dev/mapper/backup (this is your volume UUID)
-$ sudo vi /etc/fstab
-(add a line similar to this:
-UUID=the-long-UUID-of-your-VOLUME /mnt/backup ext4 defaults 1 2
-)
-$ sudo mount /mnt/backup</code></pre>
+<pre class="wiki"><code>$ sudo mkdir /mnt/backup
+$ sudo mount /dev/mapper/backup /mnt/backup</code></pre>
 <p>Now anything we store in /mnt/backup is stored on the encrypted LUKS volume of our external USB drive.</p>
 <ol start="3">
 <li>Backup your VMs</li>
@@ -40,7 +35,7 @@ $ sudo cryptsetup close backup</code></pre>
 </ol>
 <p>(It is advisable to script this to ensure the right UUID is always attached to the right volume)</p>
 <pre class="wiki"><code>$ sudo cryptsetup open --type luks UUID=the-long-UUID-of-your-DEVICE backup
-$ sudo mount /mnt/backup</code></pre>
+$ sudo mount /dev/mapper/backup /mnt/backup</code></pre>
 <ol start="2">
 <li>Restore VMs</li>
 </ol>
