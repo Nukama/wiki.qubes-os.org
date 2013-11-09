@@ -1,4 +1,4 @@
-<h1 id="UsingDisposableVMs">Using Disposable VMs</h1>
+<h1 id="DisposableVMsDispVMs">Disposable VMs (DispVMs)</h1>
 <h2 id="Background">Background</h2>
 <p>See <a href="http://theinvisiblethings.blogspot.com/2010/06/disposable-vms.html">​this article</a> for a background on why would one want to use a Disposable VM and what it is.</p>
 <h2 id="OpeningafileinaDisposableVMviaGUI">Opening a file in a Disposable VM (via GUI)</h2>
@@ -30,3 +30,5 @@ total 0
 lrwxrwxrwx 1 joanna joanna 45 Mar 11 13:59 default_dvm.conf -&gt; /var/lib/qubes/appvms/f17-yellow-dvm/dvm.conf
 lrwxrwxrwx 1 joanna joanna 49 Mar 11 13:59 default_savefile -&gt; /var/lib/qubes/appvms/f17-yellow-dvm/dvm-savefile
 lrwxrwxrwx 1 joanna joanna 47 Mar 11 13:59 savefile_root -&gt; /var/lib/qubes/vm-templates/f17-yellow/root.img</code></pre>
+<h2 id="DisposableVMsandLocalForensics">Disposable VMs and Local Forensics</h2>
+<p>At this time, DispVMs should not be relied upon to circumvent local forensics, as they do not run entirely in RAM. For details, see <a href="https://groups.google.com/d/topic/qubes-devel/QwL5PjqPs-4/discussion">​this thread</a>.</p>
