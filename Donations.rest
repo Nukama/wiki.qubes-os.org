@@ -19,7 +19,8 @@ Rutkowska.
 You can check how much others have donated already (over the entire
 time) via
 `​blockexplorer <https://blockexplorer.com/address/14zockMSKKp5MK6X2cHJ3mQwm9MwYsJ39j>`__
-and `​blockchain <https://blockchain.info/fb/14zock>`__.
+and
+`​blockchain <https://blockchain.info/address/14zockMSKKp5MK6X2cHJ3mQwm9MwYsJ39j>`__.
 
 FAQ
 ---
