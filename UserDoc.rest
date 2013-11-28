@@ -4,6 +4,8 @@ Qubes User Guides
 -  `Getting started </wiki/GettingStarted>`__
 -  `Creating and using HVM and Windows domains (Qubes R2
    only) </wiki/HvmCreate>`__
+-  `Installing and using Windows-based AppVMs (Qubes R2 Beta 3 and
+   later) </wiki/WindowsAppVms>`__
 -  `Copy and paste between domains </wiki/CopyPaste>`__
 -  `Copying files between domains </wiki/CopyingFiles>`__
 -  `Updating and adding new software to
