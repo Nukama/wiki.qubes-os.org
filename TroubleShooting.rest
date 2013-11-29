@@ -1,2 +1,2 @@
--  `Out of memory error </wiki/OutOfmemory>`__
+-  `Home directory is out of disk space error </wiki/OutOfmemory>`__
 
