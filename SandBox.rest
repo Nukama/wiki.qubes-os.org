@@ -1,0 +1,10 @@
+The Sandbox
+===========
+
+This is just a `ProvaPagina? </wiki/ProvaPagina>`__
+
+-  `Troubleshooting? </wiki/Troubleshooting>`__
+
+    to practice and learn `WikiFormatting </wiki/WikiFormatting>`__.
+
+Go ahead, edit it freely.
