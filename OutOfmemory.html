@@ -5,21 +5,22 @@
 <p>A system in out of space condition should be able to boot, but may be unable to load a desktop manager. In this case it is possible to login to dom0 terminal with Alt + Ctrl + F2. To recover disk space it may be possible to delete files in a userVM connecting to the userVM terminal:</p>
 <pre class="wiki"><code>qvm-start &lt;VMname&gt;
 sudo xl console &lt;VMname&gt;</code></pre>
-<p>If this does not work, check the size of /var/lib/qubes/qubes.xml. If it is zero, you'll need to use one of the file backup (stored in /var/lib/qubes/backup), hopefully you have the current data there. Find the most recent one and place in /var/lib/qubes/qubes.xml instead of empty file.</p>
+<p>If this does not work, check the size of /var/lib/qubes/qubes.xml. If it is zero, you'll need to use one of the file backup (stored in /var/lib/qubes/backup), hopefully you have the current data there. Find the most recent one and place in /var/lib/qubes/qubes.xml instead of the empty file.</p>
 <p>In any case you'll need some disk space to start the VM. Check &quot;df&quot; output if you have some. If not, some hints how to free some disk space:</p>
 <ol>
 <li>Clean yum cache:</li>
 </ol>
 <pre class="wiki"><code>sudo yum clean all</code></pre>
 <ol start="2">
-<li>Delete .img files of a less important VM (that will be lost), that can be found in</li>
+<li>Delete .img files of a less important VM, that can be found in</li>
 </ol>
 <p>/var/lib/qubes/appvms/. Then, when the system is working again, cleanup the rest with:</p>
 <pre class="wiki"><code>qvm-remove &lt;VMname&gt;</code></pre>
+<p>With this method you lose one VM data, but it'll more securely work.</p>
 <ol start="3">
 <li>Decrease filesystem safety margin (5% by default):</li>
 </ol>
-<p>sudo tune2fs -m 4 /dev/mapper/vg_dom0-lv_root</p>
+<pre class="wiki"><code>sudo tune2fs -m 4 /dev/mapper/vg_dom0-lv_root</code></pre>
 <ol start="4">
 <li>Remove some unneeded files in dom0 home (if you have one, most likely no).</li>
 </ol>
