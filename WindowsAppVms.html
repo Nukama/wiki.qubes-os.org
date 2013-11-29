@@ -21,7 +21,15 @@
 <p>Qubes (R2 Beta 3 and later releases) will automatically detect the tools has been installed in the VM and will set appropriate properties for the VM, such as <code>qrexec_installed</code>, <code>guiagent_installed</code>, and <code>default_user</code>. This can be verified (but is not required) using qvm-prefs command:</p>
 <pre class="wiki"><code>qvm-prefs &lt;your-appvm-name&gt;</code></pre>
 <h2 id="UsingWindowsAppVMsinseamlessmodeQubesR2Beta3andlater">Using Windows AppVMs in seamless mode (Qubes R2 Beta 3 and later)</h2>
-<p>TODO</p>
+<p>Once you start a Windows-based AppVM with Qubes Tools installed, you can easily start individual applications from the VM (note the <code>-a</code> switch used here, which will auto-start the VM if it is not running):</p>
+<pre class="wiki"><code>qvm-run -a my-win7-appvm explorer.exe</code></pre>
+<p>&lt;SCREEN&gt;</p>
+<p>Also, the inter-VM services work as usual -- e.g. to request opening a document or URL in the Windows AppVM from another VM:</p>
+<pre class="wiki"><code>[user@work ~]$ qvm-open-in-vm work-win7 roadmap.pptx</code></pre>
+<pre class="wiki"><code>[user@work ~]$ qvm-open-in-vm work-win7 http://www.invisiblethingslab.com</code></pre>
+<p>... just like in case of Linux AppVMs. Of course all those operations are governed by central policy engine running in Dom0 -- if the policy</p>
+<p>Inter-VM file copy and clipboard works for Windows AppVMs the same way as for Linux AppVM (except that we don't provide a command line wrapper, <code>qvm-copy-to-vm</code> in Windows VMs) -- to copy files from Windows AppVMs just right-click on the file in Explorer, and choose: Send To-&gt; Other AppVM.</p>
+<p>&lt;SCREEN&gt;</p>
 <h2 id="ForcingWindowsAppVMintofulldesktopmode">Forcing Windows AppVM into full desktop mode</h2>
 <p>TODO</p>
 <h2 id="Usingtemplate-basedWindowsAppVMsQubesR2Beta3andlater">Using template-based Windows AppVMs (Qubes R2 Beta 3 and later)</h2>
