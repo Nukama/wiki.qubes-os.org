@@ -11,6 +11,7 @@ For Users
 -  `On Digital Signatures and How to Verify Qubes
    Downloads </wiki/VerifyingSignatures>`__
 -  `Installation Guides </wiki/QubesDownloads>`__
+-  `Troubleshooting </wiki/TroubleShooting>`__
 
 For Developers
 --------------
