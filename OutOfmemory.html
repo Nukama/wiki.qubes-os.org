@@ -1,6 +1,25 @@
-<p>This is about disk memory, not RAM.</p>
-<p>VMs specially templates use disk space. Also default private storage max size is 2 GB, but it is very easy to increase it as required. In case you use all disk memory you get the Out of memory error that may crash your system because also Dom0 does not have enough disk space to work.</p>
-<p>So it is a good practice to regularly check disk memory usage with command</p>
+<p>VMs specially templates use disk space. Also default private storage max size is 2 GB, but it is very easy to increase it as required. In case you use all disk space you get the Out of disk space error that may crash your system because also Dom0 does not have enough disk space to work.</p>
+<p>So it is a good practice to regularly check disk space usage with command</p>
 <pre class="wiki"><code>df</code></pre>
 <p>in dom0 terminal.</p>
-<p>A system in out of memory condition should be able to boot, but may be unable to load a desktop manager. In this case it is possible to login to dom0 terminal with Alt + Ctrl + F2. To recover disk space</p>
+<p>A system in out of space condition should be able to boot, but may be unable to load a desktop manager. In this case it is possible to login to dom0 terminal with Alt + Ctrl + F2. To recover disk space it may be possible to delete files in a userVM connecting to the userVM terminal:</p>
+<pre class="wiki"><code>qvm-start &lt;VMname&gt;
+sudo xl console &lt;VMname&gt;</code></pre>
+<p>If this does not work, check the size of /var/lib/qubes/qubes.xml. If it is zero, you'll need to use one of the file backup (stored in /var/lib/qubes/backup), hopefully you have the current data there. Find the most recent one and place in /var/lib/qubes/qubes.xml instead of empty file.</p>
+<p>In any case you'll need some disk space to start the VM. Check &quot;df&quot; output if you have some. If not, some hints how to free some disk space:</p>
+<ol>
+<li>Clean yum cache:</li>
+</ol>
+<pre class="wiki"><code>sudo yum clean all</code></pre>
+<ol start="2">
+<li>Delete .img files of a less important VM (that will be lost), that can be found in</li>
+</ol>
+<p>/var/lib/qubes/appvms/. Then, when the system is working again, cleanup the rest with:</p>
+<pre class="wiki"><code>qvm-remove &lt;VMname&gt;</code></pre>
+<ol start="3">
+<li>Decrease filesystem safety margin (5% by default):</li>
+</ol>
+<p>sudo tune2fs -m 4 /dev/mapper/vg_dom0-lv_root</p>
+<ol start="4">
+<li>Remove some unneeded files in dom0 home (if you have one, most likely no).</li>
+</ol>
