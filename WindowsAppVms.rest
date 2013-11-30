@@ -90,7 +90,8 @@ used here, which will auto-start the VM if it is not running):
 
     qvm-run -a my-win7-appvm explorer.exe
 
-<SCREEN>
+|No image "windows-seamless-4.png" attached to WindowsAppVms| |No image
+"windows-seamless-1.png" attached to WindowsAppVms|
 
 Also, the inter-VM services work as usual -- e.g. to request opening a
 document or URL in the Windows AppVM from another VM:
@@ -112,7 +113,7 @@ as for Linux AppVM (except that we don't provide a command line wrapper,
 just right-click on the file in Explorer, and choose: Send To-> Other
 AppVM.
 
-<SCREEN>
+|No image "windows-seamless-7.png" attached to WindowsAppVms|
 
 Forcing Windows AppVM into full desktop mode
 --------------------------------------------
@@ -156,3 +157,9 @@ AppVMs based on:
 
 .. |No image "r2b1-win7-installing-qubes-tools-5.png" attached to HvmCreate| image:: /chrome/common/attachment.png
    :target: /attachment/wiki/HvmCreate/r2b1-win7-installing-qubes-tools-5.png
+.. |No image "windows-seamless-4.png" attached to WindowsAppVms| image:: /chrome/common/attachment.png
+   :target: /attachment/wiki/WindowsAppVms/windows-seamless-4.png
+.. |No image "windows-seamless-1.png" attached to WindowsAppVms| image:: /chrome/common/attachment.png
+   :target: /attachment/wiki/WindowsAppVms/windows-seamless-1.png
+.. |No image "windows-seamless-7.png" attached to WindowsAppVms| image:: /chrome/common/attachment.png
+   :target: /attachment/wiki/WindowsAppVms/windows-seamless-7.png
