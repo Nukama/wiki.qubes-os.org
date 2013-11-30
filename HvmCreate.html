@@ -116,7 +116,8 @@ drive             : None
 timezone          : localtime</code></pre>
 <p>Please note that as of now Qubes does not support shared templates for HVM domains. This means that HVM domains cloned this way will have two separate copies of the whole filesystems. This has consequences in taking much more disk space compared to standard AppVMs that share the root fs with the Template VM. Another consequence is that it's probably not legal to clone a proprietary OS, such as Windows this way, unless your license specifically allows for that (even though Windows Activation won't complain when one sets identical MAC address for the cloned VMs, it's doubtful practice at best).</p>
 <p>In the near future we plan on introducing shared template also for HVM domains, hopefully solving the problems described above.</p>
-<h2 id="InstallingQubessupporttoolsinWindows7VMs">Installing Qubes support tools in Windows 7 VMs</h2>
+<h2 id="InstallingQubessupporttoolsinWindows7VMsonlyforR2Beta2"><del>Installing Qubes support tools in Windows 7 VMs</del> (only for R2 Beta 2)</h2>
+<p>Note: the R2 Beta 3 (which is coming soon) has automated most of the actions described below -- please see <a href="/wiki/wiki/WindowsAppVms">this page instead</a>.</p>
 <p>Qubes support tools for Windows VMs is a set of programs and drivers that provide integration of Windows VMs with the rest of the Qubes system. Currently the following features become available for Windows VMs after installation of those tools:</p>
 <ul>
 <li>Support for <a href="/wiki/wiki/CopyPaste">secure clipboard copy/paste</a> between the Windows VM and other AppVMs</li>
