@@ -133,6 +133,11 @@ below) it is 'not' necessary to configure networking manually as
 described in this section, because the tools will take care of setting
 the networking automatically for such Windows domains.
 
+Using Template-based HVM domains
+--------------------------------
+
+TODO (Coming in Qubes R2 beta 3).
+
 Cloning HVM domains
 -------------------
 
