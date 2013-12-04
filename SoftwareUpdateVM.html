@@ -56,3 +56,6 @@
 <p>It's also possible to have more than one template VM in the system. E.g. one could clone the default template using the <code>qvm-clone-template</code> command in Dom0. This allows to have a customized template, e.g. with devel packages, or less trusted apps, shared by some subset of domains.</p>
 <p>When you create a new domain you can choose which template this VM should be based on. If you use command line, you should use the <code>--template</code> switch:</p>
 <pre class="wiki"><code>qvm-create &lt;vmname&gt; --template &lt;templatename&gt; --label &lt;label&gt;</code></pre>
+<h2 id="Temporarilyallowingnetworkingforsoftwareinstallation">Temporarily allowing networking for software installation</h2>
+<p>Some applications cannot be installed using the standard yum repositories, and need to be manually downloaded and installed. These applications are less secure. So it is recommended to install them only in a Standalone VM.</p>
+<p>When the installation requires internet connection to access repositories, it will not complete because Standalone VM firewall rules only allow connection to standard yum repositories. So it is necessary to modify firewall rules to allow internet access. Of course, as soon as software installation is completed, firewall rules should be returned to the default state.</p>
