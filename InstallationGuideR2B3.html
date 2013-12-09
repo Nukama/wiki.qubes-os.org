@@ -34,7 +34,9 @@
 <li>For installing updates for you domains (VMs) -- see instructions <a href="/wiki/wiki/SoftwareUpdateVM">here</a>.</li>
 </ul>
 <h2 id="Troubleshootingproblemswiththeinstaller">Troubleshooting problems with the installer</h2>
-<p>TODO</p>
+<p>If the installer fails for some reason, typically because of the graphics card not being correctly supported, it is possible to try booting the installer with a different kernel -- to do that, choose Troubleshooting menu in the Installer Welcome screen, and later choose an option to proceed with a different kernel:</p>
+<p>[SCREEN]</p>
+<p>The installer ships with 3 different kernels (3.11, 3.9 and 3.7) and those same kernels are also installed so it is later always possible to boot the Qubes OS using the select Dom0 kernel via simply selecting proper GRUB entry.</p>
 <h2 id="KnownIssues">Known Issues</h2>
 <ul>
 <li>On some graphics cards the Xfce4 Window Manager (one of the two supported Dom0 Windows Managers in Qubes R2 B2, the other being KDE) might behave &quot;strangely&quot;, e.g. decorations might not be drawn sometimes. Also the accompanying lightdm login manager might incorrectly display the wallpaper. If you're facing those problems, it's advisable to use the KDE Window Manager and kdm instead of Xfce4 and lightdm (this is default if one chooses the KDE only installation option in the installer).</li>
