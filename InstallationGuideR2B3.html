@@ -1,0 +1,67 @@
+<h1 id="InstallationGuideforQubesRelease2Beta3">Installation Guide for Qubes Release 2 Beta 3</h1>
+<p></p>
+<ol>
+<li><a href="#HardwareRequirements">Hardware Requirements</a></li>
+<li><a href="#DownloadinstallerISO">Download installer ISO</a></li>
+<li><a href="#BurningtheISOontoaDVDorUSBstick">Burning the ISO onto a DVD or USB stick</a></li>
+<li><a href="#UpgradingfromQubesR1orR2Beta2">Upgrading from Qubes R1 or R2 Beta 2</a></li>
+<li><a href="#InstallingUpdates">Installing Updates</a></li>
+<li><a href="#Troubleshootingproblemswiththeinstaller">Troubleshooting problems with the installer</a></li>
+<li><a href="#KnownIssues">Known Issues</a></li>
+<li><a href="#GettingHelp">Getting Help</a></li>
+</ol>
+<p></p>
+<h2 id="HardwareRequirements">Hardware Requirements</h2>
+<p>Please see the <a href="/wiki/wiki/HCL">Hardware Compatibility List</a> page for more information on required and recommended hardware.</p>
+<p>Note: We don't recommend installing Qubes in a virtual machine! It will likely not work. Don't send emails asking about it. However, you can install it on an external USB hard drive and run from it, at least for testing (normally such disks are <em>orders</em> of magnitude slower than even the slowest internal hard drives).</p>
+<h2 id="DownloadinstallerISO">Download installer ISO</h2>
+<p>See <a href="/wiki/wiki/QubesDownloads">this page</a> for ISO downloads. Remember, we have absolutely no control over those servers, and so you should be assuming that they might be compromised, or just be serving a compromised ISOs because their operators decided so, for whatever reason. Always verify the digital signature on the downloaded ISO. See this <a href="/wiki/wiki/VerifyingSignatures">page</a> for more info about how to download and verify our GPG keys, and then verify the downloaded ISO:</p>
+<pre class="wiki"><code>gpg -v &lt;iso&gt;.asc</code></pre>
+<h2 id="BurningtheISOontoaDVDorUSBstick">Burning the ISO onto a DVD or USB stick</h2>
+<p>Once you verify this is an authentic ISO, you should burn it on a DVD.</p>
+<p>If you prefer to use USB as a source for installation, then you just need to copy the ISO onto the USB device, e.g. using dd:</p>
+<pre class="wiki"><code>dd if=Qubes-R2-Beta3-x86_64-DVD.iso of=/dev/sdX</code></pre>
+<p><strong>Be sure to use a correct device as the target in the dd command above (instead of sdX)</strong></p>
+<p>Before proceeding with the installation, you are encouraged to first read all the information on this page, especially the <em>Known Issues</em> paragraph.</p>
+<p>Then, when finally ready, boot your system from the installer DVD and follow the instructions on screen. The installer is very simple and asks very few questions -- it's actually easier to install Qubes right now than most other Linux distributions!</p>
+<p>The installer loads Xen right at the beginning, so chances are high that if you can see the installer's graphical screen, Qubes will work on your system :)</p>
+<h2 id="UpgradingfromQubesR1orR2Beta2">Upgrading from Qubes R1 or R2 Beta 2</h2>
+<p>TODO</p>
+<h2 id="InstallingUpdates">Installing Updates</h2>
+<p>Installing updates is very easy and can be done using the &quot;Update&quot; button in the Qubes Manager. Alternatively it can also be done from command prompt -- see the following for more details:</p>
+<ul>
+<li>For installing updates for Dom0 -- see instructions <a href="/wiki/wiki/SoftwareUpdateDom0">here</a>.</li>
+<li>For installing updates for you domains (VMs) -- see instructions <a href="/wiki/wiki/SoftwareUpdateVM">here</a>.</li>
+</ul>
+<h2 id="Troubleshootingproblemswiththeinstaller">Troubleshooting problems with the installer</h2>
+<p>TODO</p>
+<h2 id="KnownIssues">Known Issues</h2>
+<ul>
+<li>On some graphics cards the Xfce4 Window Manager (one of the two supported Dom0 Windows Managers in Qubes R2 B2, the other being KDE) might behave &quot;strangely&quot;, e.g. decorations might not be drawn sometimes. Also the accompanying lightdm login manager might incorrectly display the wallpaper. If you're facing those problems, it's advisable to use the KDE Window Manager and kdm instead of Xfce4 and lightdm (this is default if one chooses the KDE only installation option in the installer).</li>
+</ul>
+<ul>
+<li>Some icons in the Qubes Manager application might not be drawn correctly when using the Xfce4 environment in Dom0. If this bothers you, please use the KDE environment instead.</li>
+</ul>
+<ul>
+<li>When restoring service VMs from a backup (such as custom netvms, firewallvms, etc) their icons might not be preserved in the &quot;Start Menu&quot;.</li>
+</ul>
+<ul>
+<li>If you're GPU is not correctly supported by the Dom0 kernel (e.g. the 3D desktop effects do not run smoothly) then you might experience &quot;heaviness&quot; with Windows 7-based AppVMs. In that case, please solve the problem with your GPU support in Dom0 in the first place (by using a different kernel), or install Qubes OS on a different system.</li>
+</ul>
+<h2 id="GettingHelp">Getting Help</h2>
+<ul>
+<li><strong>User manuals are <a href="/wiki/wiki/UserDoc">here</a>.</strong> (Strongly recommended!)</li>
+</ul>
+<ul>
+<li>Developers documentation (normally not needed by users) is <a href="/wiki/wiki/SystemDoc">here</a></li>
+</ul>
+<ul>
+<li>If you don't find answer in the sources given above, write to the <em>qubes-users</em> mailing list (you don't need to be subscribed to the list, just send email to the address given below):
+<ul>
+<li><a href="http://groups.google.com/group/qubes-users">​http://groups.google.com/group/qubes-users</a></li>
+<li><code>qubes-users@googlegroups.com</code></li>
+</ul></li>
+</ul>
+<ul>
+<li>Please do not write email to individual developers (Marek, Joanna, etc) asking questions about installation or other problems. Please send all such questions to the mailing list.</li>
+</ul>
