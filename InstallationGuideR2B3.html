@@ -31,6 +31,7 @@
 <p>Users can also try a manual upgrade procedure that has been described <a href="/wiki/wiki/UpgradeToR2B3">here</a>.</p>
 <p>Note: if the user has custom Template VMs (i.e. other than the default template, e.g. created from it by cloning), or Standalone VMs, then the user should perform manual upgrade from R2B2 to R2B3, as described under the link given above.</p>
 <h2 id="InstallingUpdates">Installing Updates</h2>
+<p>NOTE: Updates has been released after R2B3 ISO has been built -- it is recommended to install Dom0 updates shortly after installation to resolve some of the issues mentioned in the section below (Known Issues).</p>
 <p>Installing updates is very easy and can be done using the &quot;Update&quot; button in the Qubes Manager. Alternatively it can also be done from command prompt -- see the following for more details:</p>
 <ul>
 <li>For installing updates for Dom0 -- see instructions <a href="/wiki/wiki/SoftwareUpdateDom0">here</a>.</li>
@@ -52,6 +53,12 @@
 </ul>
 <ul>
 <li>If you're GPU is not correctly supported by the Dom0 kernel (e.g. the 3D desktop effects do not run smoothly) then you might experience &quot;heaviness&quot; with Windows 7-based AppVMs. In that case, please solve the problem with your GPU support in Dom0 in the first place (by using a different kernel), or install Qubes OS on a different system.</li>
+</ul>
+<ul>
+<li>For HVMs without Qubes Tools installed the GUI window will not be shown unless 'debug' flag is enabled for the VM. This has been fixed in <code>qubes-core-dom0</code> package &gt;= 2.1.35 -- please ensure you install updates after installation to resolve this issue.</li>
+</ul>
+<ul>
+<li>Clocks might not get syncs in the VMs for up to several minutes after resume from sleep. This has been fixed in <code>qubes-core-dom0-linux</code> package &gt;= 2.0.4 -- please ensure you install updates after installation to resolve this issue.</li>
 </ul>
 <h2 id="GettingHelp">Getting Help</h2>
 <ul>
