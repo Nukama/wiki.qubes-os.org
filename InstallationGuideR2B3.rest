@@ -68,6 +68,9 @@ The installer loads Xen right at the beginning, so chances are high that
 if you can see the installer's graphical screen, Qubes will work on your
 system :)
 
+|No image "r2b3-installer-welcome.png" attached to
+InstallationGuideR2B3|
+
 Upgrading from Qubes R1 or R2 Beta 2
 ------------------------------------
 
@@ -148,5 +151,7 @@ Getting Help
    etc) asking questions about installation or other problems. Please
    send all such questions to the mailing list.
 
+.. |No image "r2b3-installer-welcome.png" attached to InstallationGuideR2B3| image:: /chrome/common/attachment.png
+   :target: /attachment/wiki/InstallationGuideR2B3/r2b3-installer-welcome.png
 .. |No image "r2b3-installer-troubleshooting.png" attached to InstallationGuideR2B3| image:: /chrome/common/attachment.png
    :target: /attachment/wiki/InstallationGuideR2B3/r2b3-installer-troubleshooting.png
