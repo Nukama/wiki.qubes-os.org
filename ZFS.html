@@ -1,0 +1,93 @@
+<h1 id="ZFSinQubes">ZFS in Qubes</h1>
+<p><strong>Use at your own risk</strong>!</p>
+<p>Beware: Dragons might eat your precious data!</p>
+<h1 id="InstallZFSinDom0">Install ZFS in Dom0</h1>
+<h2 id="InstallDKMSstylepackagesforFedoradefunctin0.6.2duetosplissues284">Install DKMS style packages for Fedora <sup>(defunct in 0.6.2 due to spl/issues/284)</sup></h2>
+<p>Fetch and install repository for DKMS style packages for your Dom0 Fedora version <a href="http://zfsonlinux.org/fedora.html">​http://zfsonlinux.org/fedora.html</a>:</p>
+<pre class="wiki"><code>disp1# wget http://archive.zfsonlinux.org/fedora/zfs-release-1-1$(rpm -E %dist).noarch.rpm
+dom0# qvm-run --pass-io disp1 &#39;cat /home/user/zfs-release-1-1.fc18.noarch.rpm&#39; &gt; /home/user/zfs-release-1-1.fc18.noarch.rpm
+dom0# sudo yum localinstall /home/user/zfs-release-1-1.fc18.noarch.rpm
+dom0# sudo sed -i &#39;s/$releasever/18/g&#39; /etc/yum.repo.d/zfs.repo
+dom0# sudo qubes-dom0-update @development-tools
+dom0# sudo qubes-dom0-update zfs</code></pre>
+<h2 id="InstallDKMSstylepackagesfromgit-repository">Install DKMS style packages from git-repository</h2>
+<p>Build and install your DKMS or KMOD packages as described in <a href="http://zfsonlinux.org/generic-rpm.html">​http://zfsonlinux.org/generic-rpm.html</a>.</p>
+<h3 id="PrerequisitesstepsinAppVMi.e.disp1">Prerequisites steps in AppVM <sup>(i.e. disp1)</sup></h3>
+<p>Checkout repositories for SPL and ZFS:</p>
+<pre class="wiki"><code>mkdir ~/repositories &amp;&amp; cd ~/repositories
+git clone https://github.com/zfsonlinux/spl.git
+git clone https://github.com/zfsonlinux/zfs.git</code></pre>
+<p>Revert changes in SPL repository due to this bug: <a href="https://github.com/zfsonlinux/spl/issues/284">​https://github.com/zfsonlinux/spl/issues/284</a></p>
+<pre class="wiki"><code>cd ~/repositories/spl
+git config --global user.email &quot;user@example.com&quot;
+git config --global user.name &quot;user&quot;
+git revert e3c4d44886a8564e84aa697477b0e37211d634cd</code></pre>
+<h3 id="InstallationstepsinDom0">Installation steps in Dom0</h3>
+<p>Copy repositories over to Dom0:</p>
+<pre class="wiki"><code>mkdir ~/repositories
+qvm-run --pass-io disp1 &#39;tar -cf - -C ~/repositories/ {spl,zfs}&#39; | tar -xpf - -C ~/repositories/</code></pre>
+<p>Installing build requirements for SPL and ZFS DKMS modules:</p>
+<pre class="wiki"><code>sudo qubes-dom0-update dkms kernel-devel zlib-devel libuuid-devel libblkid-devel lsscsi bc autoconf automake binutils bison flex gcc gcc-c++ gdb gettext libtool make pkgconfig redhat-rpm-config rpm-build strace </code></pre>
+<p>Configure and build SPL DKMS packages:</p>
+<pre class="wiki"><code>cd ~/repositories/spl
+./autogen.sh
+./configure --with-config=user
+make rpm-utils rpm-dkms</code></pre>
+<p>Configure and build ZFS DKMS packages:</p>
+<pre class="wiki"><code>cd ~/repositories/zfs
+./autogen.sh
+./configure --with-config=user
+make rpm-utils rpm-dkms</code></pre>
+<p>Install SPL and ZFS packages (i.e. version 0.6.2):</p>
+<pre class="wiki"><code>sudo yum localinstall \
+    ~/repositories/spl/spl-0.6.2-1.qbs2.x86_64.rpm \
+    ~/repositories/spl/spl-dkms-0.6.2-1.qbs2.noarch.rpm \
+    ~/repositories/zfs/zfs-0.6.2-1.qbs2.x86_64.rpm \
+    ~/repositories/zfs/zfs-dkms-0.6.2-1.qbs2.noarch.rpm \
+    ~/repositories/zfs/zfs-dracut-0.6.2-1.qbs2.x86_64.rpm \
+    ~/repositories/zfs/zfs-test-0.6.2-1.qbs2.x86_64.rpm</code></pre>
+<h1 id="ConfigureZFS">Configure ZFS</h1>
+<h2 id="Automaticallyloadmodules">Automatically load modules</h2>
+<p>/etc/sysconfig/modules/zfs.modules</p>
+<pre class="wiki"><code>#!/bin/sh
+
+for module in spl zfs; do
+    modprobe ${module} &gt;/dev/null 2&gt;&amp;1
+done</code></pre>
+<p>Make this file executable.</p>
+<h2 id="Tuning">Tuning</h2>
+<p>Tame the memory-eating dragon (i.e. 512 Mb zfs_arc_max):</p>
+<p>/etc/modprobe.d/zfs.conf</p>
+<pre class="wiki"><code>options zfs zfs_arc_max=536870912</code></pre>
+<h2 id="SetupazpoolwithZFSdatasets">Setup a zpool with ZFS datasets</h2>
+<p>You can create a ZFS dataset for each AppVM, ServiceVM, HVM or TemplateVM or just use a pool as your backup location.</p>
+<p>Move your existing directory to a temporary location, or the ZFS mount will overlay your directory.</p>
+<p>Beware: VMs on a ZFS dataset aren't working, if your ZFS installation deserts you.</p>
+<p>So keep netvm, firewallvm and your templates on your root file-system (preferably on a SSD).</p>
+<pre class="wiki"><code>zpool create -m none -o ashift=12 -O atime=off -O compression=lz4 qubes mirror /dev/mapper/&lt;cryptname1&gt; /dev/mapper/&lt;cryptname2&gt;
+zfs create -p qubes/appvms
+zfs create -m /var/lib/qubes/backup-zfs qubes/backup
+zfs create -m /var/lib/qubes/appvms/banking qubes/appvms/banking
+zfs create -m /var/lib/qubes/appvms/personal qubes/appvms/personal
+zfs create -m /var/lib/qubes/appvms/untrusted qubes/appvms/untrusted
+zfs create -m /var/lib/qubes/appvms/work qubes/appvms/work</code></pre>
+<p>Have fun with zpool and zfs.</p>
+<h1 id="TipsandHints">Tips and Hints</h1>
+<h2 id="Backupyourdata">Backup your data</h2>
+<p>You're depending on an huge amount of code for this file system, keep this in mind and backup your precious data.</p>
+<h2 id="Encryptunderlyingdevices">Encrypt underlying devices</h2>
+<pre class="wiki"><code>dom0# cryptsetup -c aes-xts-plain64 luksFormat &lt;device1&gt;
+dom0# cryptsetup luksOpen &lt;device1&gt; &lt;cryptname1&gt;</code></pre>
+<p>With the use of cryptsetup a keyfile can be specified to decrypt devices.</p>
+<pre class="wiki"><code>dom0# head -c 256 /dev/random &gt; /root/keyfile1
+dom0# chmod 0400 /root/keyfile1
+dom0# cryptsetup luksAddKey &lt;device1&gt; /root/keyfile1</code></pre>
+<h2 id="Decryptdevicesonboot">Decrypt devices on boot</h2>
+<p>Add your devices to /etc/crypttab.</p>
+<pre class="wiki"><code>&lt;cryptname1&gt; &lt;device1&gt; none|&lt;keyfile1&gt;</code></pre>
+<p>Specifying a keyfile is especially useful, if ZFS should be ready during boot.</p>
+<h2 id="FurtherReading">Further Reading</h2>
+<ul>
+<li><a href="http://www.open-zfs.org">​http://www.open-zfs.org</a></li>
+<li><a href="http://zfsonlinux.org">​http://zfsonlinux.org</a></li>
+</ul>
