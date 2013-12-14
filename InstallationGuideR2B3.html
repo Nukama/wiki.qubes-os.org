@@ -21,7 +21,9 @@
 <p>Once you verify this is an authentic ISO, you should burn it on a DVD.</p>
 <p>If you prefer to use USB as a source for installation, then you just need to copy the ISO onto the USB device, e.g. using dd:</p>
 <pre class="wiki"><code>dd if=Qubes-R2-Beta3-x86_64-DVD.iso of=/dev/sdX</code></pre>
-<p><strong>Be sure to use a correct device as the target in the dd command above (instead of sdX)</strong></p>
+<p>On windows you can use <a href="http://www.chrysocome.net/dd">​this</a> tool. Example command would be (as Administrator):</p>
+<pre class="wiki"><code>dd if=Qubes-R2-Beta3-x86_64-DVD.iso of=\\?\Device\Harddisk1\Partition0 bs=1M --size --progress</code></pre>
+<p><strong>Be sure to use a correct device as the target in the dd command above (instead of sdX or Harddisk1)</strong></p>
 <p>Before proceeding with the installation, you are encouraged to first read all the information on this page, especially the <em>Known Issues</em> paragraph.</p>
 <p>Then, when finally ready, boot your system from the installer DVD and follow the instructions on screen. The installer is very simple and asks very few questions -- it's actually easier to install Qubes right now than most other Linux distributions!</p>
 <p>The installer loads Xen right at the beginning, so chances are high that if you can see the installer's graphical screen, Qubes will work on your system :)</p>
