@@ -103,9 +103,21 @@ OK
 
 X
 
+OK
+
+OK
+
+X
+
 Qubes core developers
 
 Samsung X460
+
+OK
+
+X
+
+OK
 
 OK
 
@@ -138,6 +150,12 @@ OK
 OK
 
 needs kernel 3.4.17+
+
+OK
+
+OK
+
+OK
 
 Qubes core developers
 
