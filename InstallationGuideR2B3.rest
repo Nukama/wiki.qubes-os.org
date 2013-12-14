@@ -52,8 +52,15 @@ need to copy the ISO onto the USB device, e.g. using dd:
 
     dd if=Qubes-R2-Beta3-x86_64-DVD.iso of=/dev/sdX
 
+On windows you can use `​this <http://www.chrysocome.net/dd>`__ tool.
+Example command would be (as Administrator):
+
+.. code:: wiki
+
+    dd if=Qubes-R2-Beta3-x86_64-DVD.iso of=\\?\Device\Harddisk1\Partition0 bs=1M --size --progress
+
 **Be sure to use a correct device as the target in the dd command above
-(instead of sdX)**
+(instead of sdX or Harddisk1)**
 
 Before proceeding with the installation, you are encouraged to first
 read all the information on this page, especially the *Known Issues*
