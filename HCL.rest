@@ -6,7 +6,7 @@ release <http://wiki.qubes-os.org/trac/wiki/HCL#LatestStableRelease>`__
 (**R1**) and the `​latest development
 release <http://wiki.qubes-os.org/trac/wiki/HCL#LatestDevelopmentRelease>`__
 (**R2B3**). You can find also find information about the `​previous
-releases <http://wiki.qubes-os.org/trac/wiki/HCL#PreviousRelease>`__
+releases <http://wiki.qubes-os.org/trac/wiki/HCL#PreviousReleases>`__
 here.
 
 Generating and Submitting New Reports
