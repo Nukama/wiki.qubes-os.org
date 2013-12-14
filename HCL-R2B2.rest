@@ -1,4 +1,4 @@
-Hardware Compatibility List (HCL) for All Qubes OS Releases
+Hardware Compatibility List (HCL) for R2B2 Qubes OS Release
 ===========================================================
 
 **Note:** The HCL is a compilation of reports generated and submitted by
