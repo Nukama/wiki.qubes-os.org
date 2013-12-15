@@ -150,6 +150,10 @@ Yes
 
 Yes
 
+Yes
+
+Yes
+
 No
 
 `marmarek (Qubes core
@@ -170,6 +174,10 @@ Qubes core developers
 
 | Dell Latitude E6420
 |  (i5-2520M; Sandy Bridge; Intel HD graphics; BIOS A17)
+
+Yes
+
+Yes
 
 Yes
 
