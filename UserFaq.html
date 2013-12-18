@@ -30,6 +30,7 @@
 <li><a href="#MyAppVMslostInternetaccessafteraTemplateVMupdate.WhatshouldIdo">My AppVMs lost Internet access after a TemplateVM update. What should I do?</a></li>
 <li><a href="#Mykeyboardlayoutsettingsarenotbehavingcorrectly.WhatshouldIdo">My keyboard layout settings are not behaving correctly. What should I do?</a></li>
 <li><a href="#Mydom0andorTemplateVMupdatestallswhenattemptingtoupdateviatheGUItool.WhatshouldIdo">My dom0 and/or TemplateVM update stalls when attempting to update via …</a></li>
+<li><a href="#HowdoIrunaWindowsHVMinnon-seamlessmodei.e.asasinglewindow">How do I run a Windows HVM in non-seamless mode (i.e., as a single window)?</a></li>
 </ol></li>
 </ol>
 <p></p>
@@ -86,3 +87,5 @@
 <p>This can usually be fixed by updating via the command line.</p>
 <p>In dom0, open a terminal and run <code>sudo qubes-dom0-update</code>.</p>
 <p>In your TemplateVMs, open a terminal and run <code>sudo yum upgrade</code>.</p>
+<h3 id="HowdoIrunaWindowsHVMinnon-seamlessmodei.e.asasinglewindow">How do I run a Windows HVM in non-seamless mode (i.e., as a single window)?</h3>
+<p>Enable &quot;debug mode&quot; in the AppVM's settings, either by checking the box labelled &quot;Run in debug mode&quot; in the Qubes VM Manager AppVM settings menu or by running the <a href="/wiki/wiki/Dom0Tools/QvmPrefs">qvm-prefs command</a>.)</p>
