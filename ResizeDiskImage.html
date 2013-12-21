@@ -4,6 +4,9 @@
 <p>1048576 MB is the maximum size which can be assigned to a private storage through qubes-manager. <br /></p>
 <p>To grow the private disk image of a AppVM beyond this limit <a href="/wiki/wiki/Dom0Tools/QvmGrowPrivate">qubes-grow-private</a> can be used:</p>
 <pre class="wiki"><code>qvm-grow-private &lt;vm-name&gt; &lt;size&gt;</code></pre>
+<p>Note: Size is the target size (i.e. 4096MB or 16GB, ...), not the size to add to the existing disk.</p>
+<p>Note2: If once the VM is started, the disk is has not been increased, you can issue in the VM's terminal:</p>
+<pre class="wiki"><code>sudo resize2fs /dev/xvdb</code></pre>
 <h3 id="HVMdiskimage">HVM disk image</h3>
 <p>In this example we will grow the disk image of an HVM to 30GB.</p>
 <p>First, stop/shutdown the HVM.</p>
