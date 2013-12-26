@@ -16,7 +16,7 @@ Qubes User Guides
 -  `How to mount USB stick to an AppVM? </wiki/StickMounting>`__
 -  `Key generation inside Qubes VMs? </wiki/KeyGen>`__
 -  `How to assign PCI devices to a VM? </wiki/AssigningDevices>`__
--  `Qubes Backup/Restore/Migration </wiki/BackupRestore>`__
+-  `Qubes Backup, Restoration, and Migration </wiki/BackupRestore>`__
 -  `Central policies for inter-VM services? </wiki/QubesPolicies>`__
 -  `Configuring a network printer </wiki/NetworkPrinter>`__
 -  `Resizing AppVMs and HVMs virtual disks </wiki/ResizeDiskImage>`__
