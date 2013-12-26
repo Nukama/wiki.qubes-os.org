@@ -1,49 +1,164 @@
-<h1 id="BackupRestoreMigrationTools">Backup, Restore, Migration Tools</h1>
-<p>Qubes supports easy backups and restores of your VMs, and specifically very easy migration between two systems.</p>
-<p>There are currently two command-line tools for this: <code>qvm-backup</code> and <code>qvm-backup-restore</code>, both of which are available in Qubes Alpha 2 (qubes-core-dom0 &gt;= 1.1.8). Users of Qubes Alpha 1 can still download the <code>qvm-backup</code> too <a href="http://qubes-os.org/yum/misc/qvm-backup">​here</a> and use it to make a full backup of their system, and later restore it on Qubes Alpha 2, using qvm-backup-restore (the latter is not available on Alpha 1).</p>
-<h2 id="MakingafullbackupofyourVMs">Making a full backup of your VMs</h2>
+<h1 id="QubesBackupRestorationandMigration">Qubes Backup, Restoration, and Migration</h1>
+<p></p>
 <ol>
-<li>Prepare an encrypted external medium to store the backup</li>
+<li><a href="#QubesBackupRestorationandMigration">Qubes Backup, Restoration, and Migration</a>
+<ol>
+<li><a href="#CreatingaBackup">Creating a Backup</a></li>
+<li><a href="#RestoringfromaBackup">Restoring from a Backup</a></li>
+<li><a href="#EmergencyBackupRecoverywithoutQubes">Emergency Backup Recovery without Qubes</a></li>
+<li><a href="#MigratingBetweenTwoPhysicalMachines">Migrating Between Two Physical Machines</a></li>
+<li><a href="#TroubleshootingandTechnicalDetails">Troubleshooting and Technical Details</a></li>
+</ol></li>
 </ol>
-<p>It is strongly recommended to use encrypted media for the backup. <code>qvm-backup</code> will not encrypt the backup!</p>
-<p>Steps to create a fully encrypted LUKS volume on the external USB hard drive /dev/sdb:</p>
-<p><strong>WARNING</strong>: Everything on your external USB drive will be deleted with this process!</p>
-<pre class="wiki"><code>$ sudo wipefs -a /dev/sdb
-$ sudo cryptsetup luksFormat /dev/sdb
-$ sudo blkid /dev/sdb (this is your device UUID)
-$ sudo cryptsetup open --type luks UUID=the-long-UUID-of-your-DEVICE backup
-$ sudo mkfs.ext4 -m 0 /dev/mapper/backup</code></pre>
+<p></p>
+<p>With Qubes, it's easy to back up and restore your whole system, as well as to migrate between two physical machines.</p>
+<p>As of Qubes R2B3, these functions are integrated into the Qubes VM Manager GUI. There are also two command-line tools available which perform the same functions: <a href="/wiki/wiki/Dom0Tools/QvmBackup">qvm-backup</a> and <a href="/wiki/wiki/Dom0Tools/QvmBackupRestore">qvm-backup-restore</a>.</p>
+<h2 id="CreatingaBackup">Creating a Backup</h2>
+<ol>
+<li>In <strong>Qubes VM Manager</strong>, click <strong>System</strong> on the menu bar, then click <strong>Backup VMs</strong> in the dropdown list. This brings up the <strong>Qubes Backup VMs</strong> window.</li>
+</ol>
 <ol start="2">
-<li>Mount the encrypted medium on which the backup will be stored</li>
+<li>Move the AppVMs which you desire to back up to the right-hand <strong>Selected</strong> column. AppVMs in the left-hand <strong>Available</strong> column will not be backed up.</li>
 </ol>
-<pre class="wiki"><code>$ sudo mkdir /mnt/backup
-$ sudo mount /dev/mapper/backup /mnt/backup</code></pre>
-<p>Now anything we store in /mnt/backup is stored on the encrypted LUKS volume of our external USB drive.</p>
+<blockquote>
+<p><strong>Note:</strong> An AppVM must be shut down in order to be backed up. Currently running AppVMs appear in red.</p>
+</blockquote>
+<blockquote>
+<p>Once you have selected all desired AppVMs, click <strong>Next</strong>.</p>
+</blockquote>
 <ol start="3">
-<li>Backup your VMs</li>
+<li>Select the destination for the backup:</li>
 </ol>
-<pre class="wiki"><code>$ sudo qvm-backup /mnt/backup</code></pre>
-<p>The <code>qvm-backup</code> tool will take care about backing up the VMs configuration, and all your AppVMs private storages, and, if necessary, will also backup any custom templates or netvms that any of your AppVMs might be using.</p>
+<ul>
+<li>If you wish to send your backup to a <a href="/wiki/wiki/StickMounting">USB mass storage device</a>, select the device in the dropdown box next to <strong>Device</strong>.</li>
+<li>If you wish to send your backup to a (currently running) AppVM, select the AppVM in the dropdown box next to <strong>Target AppVM</strong>.</li>
+</ul>
+<blockquote>
+<p>You must also specify a directory on the device or in the AppVM as a destination for your backup. For example, if you wish to send your backup to a the <code>~/backups</code> folder in the target AppVM, you would simply type <code>backups</code> in this field. This destination directory must already exist. If it does not exist, you must create it manually prior to backing up.</p>
+</blockquote>
+<blockquote>
+<p>At this point, you must also choose whether to encrypt your backup by checking or unchecking the <strong>Encrypt backup</strong> box.</p>
+</blockquote>
+<blockquote>
+<p><strong>Note:</strong> It is strongly recommended that you encrypt all backups which will be sent to untrusted destinations!</p>
+</blockquote>
+<blockquote>
+<p><strong>Note:</strong> The supplied passphrase is used for <strong>both</strong> encryption/decryption and integrity verification. If you decide not to encrypt your backup (by unchecking the <strong>Encrypt backup</strong> box), the passphrase you supply will be used <strong>only</strong> for integrity verification. If you supply a passphrase but do not check the <strong>Encrypt backup</strong> box, your backup will <strong>not</strong> be encrypted!</p>
+</blockquote>
 <ol start="4">
-<li>Lock the encrypted volume</li>
+<li>When you are ready, click <strong>Next</strong>. Qubes will proceed to create your backup. Once the progress bar has completed, you may click <strong>Finish</strong>.</li>
 </ol>
-<pre class="wiki"><code>$ sudo umount /mnt/backup
-$ sudo cryptsetup close backup</code></pre>
-<h2 id="RestoringVMsfromabackup">Restoring VMs from a backup</h2>
+<h2 id="RestoringfromaBackup">Restoring from a Backup</h2>
 <ol>
-<li>Mount the medium containing your VM backups</li>
+<li>In <strong>Qubes VM Manager</strong>, click <strong>System</strong> on the menu bar, then click <strong>Restore VMs from backup</strong> in the dropdown list. This brings up the <strong>Qubes Restore VMs</strong> window.</li>
 </ol>
-<p>(It is advisable to script this to ensure the right UUID is always attached to the right volume)</p>
-<pre class="wiki"><code>$ sudo cryptsetup open --type luks UUID=the-long-UUID-of-your-DEVICE backup
-$ sudo mount /dev/mapper/backup /mnt/backup</code></pre>
 <ol start="2">
-<li>Restore VMs</li>
+<li>Select the source location of the backup to be restored:</li>
 </ol>
-<pre class="wiki"><code>$ sudo qvm-backup-restore /mnt/backup/&lt;specific_backup_dir&gt;</code></pre>
-<p>The <code>qvm-backup-restore</code> tool will restore all the VMs (and any backed up custom template VMs), update the Qubes database and add appmenus for the restored VMs. Your existing VMs will not be removed.</p>
-<p>If there is a name conflict, i.e. you try restoring a VM with the same name as a VM already on the host, <code>qvm-backup-restore</code> will refuse to continue and will ask you to remove (or rename) the conflicting VM from the host first.</p>
+<ul>
+<li>If your backup is located on a <a href="/wiki/wiki/StickMounting">USB mass storage device</a>, select the device in the dropdown box next to <strong>Device</strong>.</li>
+<li>If your backup is located on a (currently running) AppVM, select the AppVM in the dropdown box next to <strong>AppVM</strong>.</li>
+</ul>
+<blockquote>
+<p>You must also specify the directory in which the backup resides. If you followed the instructions in the previous section, &quot;Creating a Backup,&quot; then your backup is most likely in the location you chose as the destination in step 3. For example, if you had chosen the <code>~/backups</code> directory of an AppVM as your destination in step 3, you would now select the same AppVM and again type <code>backups</code> into the <strong>Backup directory</strong> field.</p>
+</blockquote>
+<blockquote>
+<p><strong>Note:</strong> After you have typed the directory location of the backup in the <strong>Backup directory</strong> field, click the elipsis button (...) to the right of the field.</p>
+</blockquote>
 <ol start="3">
-<li>Unmount your backup medium</li>
+<li>There are three options you may select when restoring from a backup:
+<ol>
+<li><strong>ignore missing</strong>: If any of the AppVMs in your backup depended upon a NetVM, ProxyVM, or TemplateVM which is not present in (i.e., &quot;missing from&quot;) the current system, checking this box will ignore the fact that they are missing and restore the AppVMs anyway.</li>
+<li><strong>ignore username mismatch</strong>: This option applies only to the restoration of dom0's home directory. If your backup was created on a Qubes system which had a different dom0 username than the dom0 username of the current system, then checking this box will ignore the mismatch between the two usernames and proceed to restore the home directory anyway.</li>
+<li><strong>skip dom0</strong>: If this box is checked, dom0's home directory will not be restored from your backup.</li>
+</ol></li>
 </ol>
-<pre class="wiki"><code>$ sudo umount /mnt/backup
-$ sudo cryptsetup close backup</code></pre>
+<ol start="4">
+<li>If your backup is encrypted, you must check the <strong>Encrypted backup</strong> box. If a passphrase was supplied during the creation of your backup (regardless of whether it is encrypted), then you must supply it here.</li>
+</ol>
+<blockquote>
+<p><strong>Note:</strong> The passphrase which was supplied when the backup was created was used for <strong>both</strong> encryption/decryption and integrity verification. If the backup was not encrypted, the supplied passphrase is used only for integrity verification.</p>
+</blockquote>
+<blockquote>
+<p><strong>Note:</strong> An AppVM cannot be restored from a backup if an AppVM with the same name already exists on the current system. You must first remove or change the name of any AppVM with the same name in order to restore such an AppVM.</p>
+</blockquote>
+<ol start="5">
+<li>When you are ready, click <strong>Next</strong>. Qubes will proceed to restore from your backup. Once the progress bar has completed, you may click <strong>Finish</strong>.</li>
+</ol>
+<h2 id="EmergencyBackupRecoverywithoutQubes">Emergency Backup Recovery without Qubes</h2>
+<p>The Qubes backup system was been designed with emergency disaster recovery in mind. No special Qubes-specific tools are required to access data backed up by Qubes. In the event a Qubes system is unavailable, you can access your data on any GNU/Linux system with the following procedure.</p>
+<ol>
+<li><p>Untar the main backup file.</p>
+<pre class="wiki"><code>[user@restore ~]$ cd backups
+[user@restore backups]$ tar -i -xvf qubes-backup-2013-12-26-123456
+qubes.xml.000
+qubes.xml.000.hmac
+vm1/private.img.000
+vm1/private.img.000.hmac
+vm1/icon.png.000
+vm1/icon.png.000.hmac
+vm1/firewall.xml.000
+vm1/firewall.xml.000.hmac
+vm1/whitelisted-appmenus.list.000
+vm1/whitelisted-appmenus.list.000.hmac
+dom0-home/dom0user.000
+dom0-home/dom0user.000.hmac</code></pre></li>
+</ol>
+<ol start="2">
+<li><p>Verify the integrity of the <code>private.img</code> file which houses your data.</p>
+<pre class="wiki"><code>[user@restore backups]$ openssl dgst -hmac &quot;your_passphrase&quot; vm1/private.img.000
+HMAC-SHA1(vm1/private.img.000)= 0d5855222a697d0568cf97792318fe53fe963a05
+[user@restore backups]$ cat vm1/private.img.000.hmac 
+(stdin)= 0d5855222a697d0568cf97792318fe53fe963a05</code></pre></li>
+</ol>
+<blockquote>
+<p><strong>Note:</strong> The hash values should match. If they do not match, then the backup file may have been tampered with, or there may have been a storage error.</p>
+</blockquote>
+<ol start="3">
+<li><p>Decrypt the <code>private.img</code> file.</p>
+<pre class="wiki"><code>[user@restore ~]$ cd vm1
+[user@restore vm1]$ openssl enc -d -pass pass:your_passphrase -aes-256-cbc -in private.img.000 -out private.img.dec.000</code></pre></li>
+</ol>
+<blockquote>
+<p><strong>Note:</strong> For multi-part files, a loop can be used:</p>
+<pre class="wiki"><code>for f in private.img.*; do
+  openssl enc -d -pass pass:your_passphrase -aes-256-cbc -in $f -out
+${f/.img/.img.dec}
+done</code></pre>
+</blockquote>
+<blockquote>
+<p><strong>Note:</strong> If your backup was encrypted with a cipher other than <code>aes-256-cbc</code>, you must replace it with the correct cipher command. Available ciphers commands can be found with <code>openssl --help</code>.</p>
+</blockquote>
+<ol start="4">
+<li><p>Untar the decrypted <code>private.img</code> file.</p>
+<pre class="wiki"><code>[user@restore vm1]$ tar -M -xvf private.img.dec.000
+vm1/private.img</code></pre>
+<p><strong>Note:</strong> For multi-part files, a script is required:</p>
+<ol>
+<li><p>Create a <code>new-volume-script</code>:</p>
+<pre class="wiki"><code>#!/bin/sh
+name=`expr $TAR_ARCHIVE : &#39;\(.*\)\..*&#39;`
+suffix=`printf %03d $[ $TAR_VOLUME - 1 ]`
+echo $name.$suffix &gt;&amp;$TAR_FD</code></pre></li>
+<li><code>chmod +x new-volume-script</code>.</li>
+<li><code>tar --new-volume-script=./new-volume-script -xvf private.img.dec.000</code>. (The <code>--new-volume-script</code> option enables multi-volume untaring.)</li>
+</ol></li>
+</ol>
+<ol start="5">
+<li><p>Mount the private.img file and access your data.</p>
+<pre class="wiki"><code>[user@restore vm1]$ cd vm1
+[user@restore vm1]$ sudo mkdir /mnt/recovered-image
+[user@restore vm1]$ sudo mount -o loop private.img /mnt/recovered-image
+[user@restore vm1]$ cd
+[user@restore ~]$ cat /mnt/recovered-image/home/user/recovered-data.txt
+This data has been recovered successfully!</code></pre></li>
+</ol>
+<h2 id="MigratingBetweenTwoPhysicalMachines">Migrating Between Two Physical Machines</h2>
+<p>In order to migrate your Qubes system from one physical machine to another, simply follow the backup procedure on the old machine, <a href="/wiki/wiki/QubesDownloads">install Qubes</a> on the new machine, and follow the restoration procedure on the new machine. All of your settings and data will be preserved!</p>
+<h2 id="TroubleshootingandTechnicalDetails">Troubleshooting and Technical Details</h2>
+<ul>
+<li>For troubleshooting (especially if you encounter a bug or error message during the backup or restore process), please refer to <a href="https://groups.google.com/d/topic/qubes-users/XfyJHSCD4_U/discussion">​this thread</a>.</li>
+</ul>
+<ul>
+<li>For the technical details of the backup system, please refer to <a href="https://groups.google.com/d/topic/qubes-devel/TQr_QcXIVww/discussion">​this thread</a>.</li>
+</ul>
