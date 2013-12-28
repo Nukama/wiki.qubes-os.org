@@ -163,6 +163,10 @@ Known Issues
    package >= 2.0.4 -- please ensure you install updates after
    installation to resolve this issue.
 
+-  Gnome terminal window sometimes shrinks to minimal size (especially
+   when opening new tab). The workaround is to disable its menubar and
+   scrollbar.
+
 Getting Help
 ------------
 
