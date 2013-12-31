@@ -1,51 +1,55 @@
 Qubes User Guides
 =================
 
--  `Getting started </wiki/GettingStarted>`__
--  `Creating and using HVM and Windows domains (Qubes R2
-   only) </wiki/HvmCreate>`__
--  `Installing and using Windows-based AppVMs (Qubes R2 Beta 3 and
-   later) </wiki/WindowsAppVms>`__
--  `Copy and paste between domains </wiki/CopyPaste>`__
--  `Copying files between domains </wiki/CopyingFiles>`__
--  `Updating and adding new software to
+Standard Topics
+---------------
+
+-  `Getting Started </wiki/GettingStarted>`__
+-  `Creating and Using HVM and Windows Domains (Qubes R2
+   Only) </wiki/HvmCreate>`__
+-  `Installing and Using Windows-based AppVMs (Qubes R2 Beta 3 and
+   Later) </wiki/WindowsAppVms>`__
+-  `Copying and Pasting Between Domains </wiki/CopyPaste>`__
+-  `Copying Files Between Domains </wiki/CopyingFiles>`__
+-  `Updating and Adding New Software to
    AppVMs </wiki/SoftwareUpdateVM>`__
--  `Updating software in Dom0 </wiki/SoftwareUpdateDom0>`__
--  `Using Disposable VMs </wiki/DisposableVms>`__
--  `Understanding Qubes firewall </wiki/QubesFirewall>`__
--  `How to mount USB stick to an AppVM? </wiki/StickMounting>`__
--  `Key generation inside Qubes VMs? </wiki/KeyGen>`__
--  `How to assign PCI devices to a VM? </wiki/AssigningDevices>`__
+-  `Updating Software in dom0 </wiki/SoftwareUpdateDom0>`__
+-  `Disposable VMs </wiki/DisposableVms>`__
+-  `Understanding Qubes Firewall </wiki/QubesFirewall>`__
+-  `How to Mount USB Sticks to AppVMs </wiki/StickMounting>`__
+-  `Assigning PCI Devices to AppVMs </wiki/AssigningDevices>`__
 -  `Qubes Backup, Restoration, and Migration </wiki/BackupRestore>`__
--  `Central policies for inter-VM services? </wiki/QubesPolicies>`__
--  `Configuring a network printer </wiki/NetworkPrinter>`__
--  `Resizing AppVMs and HVMs virtual disks </wiki/ResizeDiskImage>`__
+-  `Configuring a Network Printer </wiki/NetworkPrinter>`__
+-  `Resizing AppVM and HVM Disk Images </wiki/ResizeDiskImage>`__
 
-Advanced topics:
+Advanced Topics
+---------------
 
--  Creating custom NetVMs and ProxyVMs -- see `​this
-   article <http://theinvisiblethings.blogspot.com/2011/09/playing-with-qubes-networking-for-fun.html>`__
--  Remotely executing programs in VMs (qvm-run and qrexec)
--  `How to copy files to Dom0? </wiki/CopyToDomZero>`__
--  `​Extend root.img
-   size <https://groups.google.com/group/qubes-devel/msg/9d1ac581236ca9b4>`__
--  Installing `Anti Evil Maid </wiki/AntiEvilMaid>`__
--  `Tor proxy VM </wiki/UserDoc/TorVM>`__ documentation
--  `XFCE </wiki/UserDoc/XFCE>`__ installation in dom0
+-  `​Creating Custom NetVMs and
+   ProxyVMs <http://theinvisiblethings.blogspot.com/2011/09/playing-with-qubes-networking-for-fun.html>`__
+-  `How to Copy Files to dom0 </wiki/CopyToDomZero>`__
+-  `​Extending root.img
+   Size <https://groups.google.com/group/qubes-devel/msg/9d1ac581236ca9b4>`__
+-  `Installing Anti Evil Maid </wiki/AntiEvilMaid>`__
+-  `How to Install a Transparent Tor ProxyVM </wiki/UserDoc/TorVM>`__
+-  `XFCE Installation in dom0 </wiki/UserDoc/XFCE>`__
 -  `DispVM Customization </wiki/UserDoc/DispVMCustomization>`__
--  `Tips for using Linux in HVM </wiki/LinuxHVMTips>`__
--  `Enabling Fullscreen mode for AppVMs </wiki/FullScreenMode>`__
+-  `Tips for Using Linux in an HVM </wiki/LinuxHVMTips>`__
+-  `Enabling Fullscreen Mode for AppVMs </wiki/FullScreenMode>`__
 -  `Using OpenPGP in Qubes </wiki/UserDoc/OpenPGP>`__
--  Installing `ZFS </wiki/ZFS>`__ in Qubes
+-  `Installing ZFS in Qubes </wiki/ZFS>`__
 
-Command-line tools reference:
+Command-Line Tool References
+----------------------------
 
--  `Dom0 tools </wiki/DomZeroTools>`__
--  `VM tools </wiki/VmTools>`__
+-  `Dom0 Tools </wiki/DomZeroTools>`__
+-  `VM Tools </wiki/VmTools>`__
 
-Optional topics:
+Additional Topics
+-----------------
 
--  `How to install Nvidia driver in dom0 </wiki/InstallNvidiaDriver>`__
+-  `How to install an Nvidia driver in
+   dom0 </wiki/InstallNvidiaDriver>`__
 -  `Getting Sony Vaio Z laptop to work with
    Qubes </wiki/SonyVaioTinkering>`__
 -  `​Installing on system with new AMD GPU (missing firmware
