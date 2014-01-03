@@ -9,6 +9,7 @@ Standard Topics
    Only) </wiki/HvmCreate>`__
 -  `Installing and Using Windows-based AppVMs (Qubes R2 Beta 3 and
    Later) </wiki/WindowsAppVms>`__
+-  `Security Guidelines </wiki/SecurityGuidelines>`__
 -  `Copying and Pasting Between Domains </wiki/CopyPaste>`__
 -  `Copying Files Between Domains </wiki/CopyingFiles>`__
 -  `Updating and Adding New Software to
