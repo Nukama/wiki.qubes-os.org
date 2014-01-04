@@ -8,23 +8,28 @@ are not only giving others a chance to help you, but you may also be
 helping others by starting a public discussion about a shared problem or
 interest.
 
-General Posting Advice
-----------------------
+Mailing List Rules
+------------------
+
+-  Send your message to the correct list. Read the sections below to
+   determine which list is correct for your message.
+
+-  Do not `​top-post <https://en.wikipedia.org/wiki/Posting_style>`__.
 
 -  Include a precise and informative subject line. This will allow
    others to easily find your thread in the future and use it as a
    reference.
 
-   -  Example of a bad subject: "Help! Qubes problems!"
-   -  Example of a good subject: "R2B2 Installation problem: Apple
-      keyboard not working in installer."
+   -  Bad: "Help! Qubes problems!"
+   -  Good: "R2B2 Installation problem: Apple keyboard not working in
+      installer."
 
--  Be concise. Do not write an essay. Include only the essential
-   information. Please think how many messages come to the list every
-   day and whether people will want to read through your lengthy message
-   (hint: they won't!)
+-  Be concise. Do not write an essay. Include only essential
+   information. Please think about how many messages come to the list
+   every day and whether people will want to read through your lengthy
+   message (hint: they won't!).
 
--  Do not apologize for your English. This is a waste of everyone's
+-  Do not apologize for your poor English. This is a waste of everyone's
    time, including your own. If we can't understand you, we will ask you
    to clarify (or ignore your message if it's a total mess ;).
 
