@@ -34,6 +34,12 @@ wrote nasty code, and this always back fired at us, sometime months,
 sometime years later, the net result being we had to spend time fixing
 code, rather than implementing new functionality.
 
+And here's a `​link to the real
+case <https://groups.google.com/forum/#!msg/qubes-devel/XgTo6L8-5XA/JLOadvBqnqMJ>`__
+(one Qubes Security Bulletin) demonstrating how the above described
+problem lead to a real security bug. Never assume you're smart enough
+that you can disregard clean and rigorous coding!
+
 General typographic conventions
 -------------------------------
 
