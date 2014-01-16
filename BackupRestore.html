@@ -34,7 +34,10 @@
 <li>If you wish to send your backup to a (currently running) AppVM, select the AppVM in the dropdown box next to <strong>Target AppVM</strong>.</li>
 </ul>
 <blockquote>
-<p>You must also specify a directory on the device or in the AppVM (or a command to be executed in the AppVM) as a destination for your backup. For example, if you wish to send your backup to the <code>~/backups</code> folder in the target AppVM, you would simply type <code>backups</code> in this field. This destination directory must already exist. If it does not exist, you must create it manually prior to backing up.</p>
+<p>You must also specify a directory on the device or in the AppVM, or a command to be executed in the AppVM as a destination for your backup. For example, if you wish to send your backup to the <code>~/backups</code> folder in the target AppVM, you would simply type <code>backups</code> in this field. This destination directory must already exist. If it does not exist, you must create it manually prior to backing up.</p>
+</blockquote>
+<blockquote>
+<p>By specifying the appropriate directory as the destination in an AppVM, it is possible to send the backup directly to, e.g., a USB mass storage device attached to the AppVM. Likewise, it is possible to enter any command as a backup target by specifying the command as the destination in the AppVM. This can be used to send your backup directly to, e.g., a remote server using SSH.</p>
 </blockquote>
 <blockquote>
 <p>At this point, you must also choose whether to encrypt your backup by checking or unchecking the <strong>Encrypt backup</strong> box.</p>
@@ -127,7 +130,7 @@ ${f/.img/.img.dec}
 done</code></pre>
 </blockquote>
 <blockquote>
-<p><strong>Note:</strong> If your backup was encrypted with a cipher other than <code>aes-256-cbc</code>, you must replace it with the correct cipher command. Available ciphers commands can be found with <code>openssl --help</code>.</p>
+<p><strong>Note:</strong> If your backup was encrypted with a cipher algorithm other than <code>aes-256-cbc</code>, you must replace it with the correct cipher command. Available ciphers algorithms can be found with <code>openssl list-cipher-algorithms</code>.</p>
 </blockquote>
 <ol start="4">
 <li><p>Untar the decrypted <code>private.img</code> file.</p>
