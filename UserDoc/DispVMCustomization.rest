@@ -14,7 +14,7 @@ It is possible to change the settings of each new Disposable VM
        qvm-run -a fedora-18-x64-dvm gnome-terminal
 
 #. Change the VM's settings and/or applications, as desired. Note that
-   currently Qubes supports exactly on DispVM template, so any changes
+   currently Qubes supports exactly one DispVM template, so any changes
    you make here will affect all DispVMs. Some examples of changes you
    may want to make include:
 
