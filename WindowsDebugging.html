@@ -1,0 +1,186 @@
+<h1 id="DebuggingWindowsHVMs">Debugging Windows HVMs</h1>
+<p>Debugging Windows code can be tricky in a virtualized environment. The guide below assumes Xen hypervisor and Windows 7 VMs.</p>
+<p>User-mode debugging is usually straightforward if it can be done on one machine. Just duplicate your normal debugging environment in the VM.</p>
+<p>Things get complicated if you need to perform kernel debugging or troubleshoot problems that only manifest on system boot, user logoff or similar. For that you need two Windows VMs: the <em>host</em> and the <em>target</em>. The <em>host</em> will contain <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff551063(v=vs.85).aspx">​WinDbg</a> installation, your source code and private symbols. The <em>target</em> will run the code being debugged. Both will be linked by virtual serial ports.</p>
+<ul>
+<li>First, you need to prepare separate copies of both <em>target</em> and <em>host</em> VM configuration files with some changes. Copy the files from <strong>/var/lib/qubes/appvms/vmname/vmname.conf</strong> to some convenient location, let's call them <strong>host.conf</strong> and <strong>target.conf</strong>.</li>
+<li>In both copied files add the following line at the end: <code>serial = 'pty'</code>. This will make Xen connect VM's serial ports to dom0's ptys.</li>
+<li>From now on you need to start both VMs like this: <code>qvm-start --custom-config=/your/edited/host.conf host</code></li>
+<li>To connect both VM serial ports together you will either need <a href="http://www.dest-unreach.org/socat/">​socat</a> or a custom utility described later.</li>
+<li><p>To determine which dom0 pty corresponds to VM's serial port you need to read xenstore, example script below:</p>
+<pre><code>#!/bin/sh
+
+id1=$(xl domid &quot;$1-dm&quot;)
+tty1=$(xenstore-read /local/domain/${id1}/device/console/3/tty)
+echo $tty1</code></pre>
+<p>Pass it a running VM name and it will output the corresponding pty name.</p></li>
+<li><p>To connect both ptys you can use <a href="http://www.dest-unreach.org/socat/">​socat</a> like that:</p>
+<pre><code>#!/bin/sh
+
+id1=$(xl domid &quot;$1-dm&quot;)
+id2=$(xl domid &quot;$2-dm&quot;)
+tty1=$(xenstore-read /local/domain/${id1}/device/console/3/tty)
+tty2=$(xenstore-read /local/domain/${id2}/device/console/3/tty)
+socat $tty1,raw $tty2,raw</code></pre>
+<p>...but there is a catch. Xen seems to process the traffic that goes through serial ports and changes all <strong>0x0a</strong> bytes into <strong>0x0d, 0x0a</strong> pairs (newline conversion). I didn't find a way to turn that off (setting ptys to raw mode didn't change anything) and it's not mentioned anywhere on the Internet, so maybe it's something on my system. If the above script works for you then you don't need anything more in dom0.</p></li>
+<li>On the <em>target</em> system, run <code>bcdedit /set debug on</code> on the console to turn on kernel debugging. It defaults to the first serial port.</li>
+<li>On the <em>host</em> system, install <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff551063(v=vs.85).aspx">​WinDbg</a> and start the kernel debug (Ctrl-K), choose <strong>com1</strong> as the debug port.</li>
+<li>Reboot the <em>target</em> VM.</li>
+<li>Run the above shell script in dom0.</li>
+<li><p>If everything is fine you should see the proper kernel debugging output in <a href="/wiki/wiki/WinDbg">WinDbg?</a>. However, if you see something like that:</p>
+<pre class="wiki"><code>Opened \\.\com1
+Waiting to reconnect...
+Connected to Windows 7 7601 x64 target at (Wed Mar 19 20:35:43.262 2014 (UTC + 1:00)), ptr64 TRUE
+Kernel Debugger connection established.
+Symbol search path is: srv*c:\symbols*http://msdl.microsoft.com/download/symbols
+Executable search path is: 
+... Retry sending the same data packet for 64 times.
+The transport connection between host kernel debugger and target Windows seems lost.
+please try resync with target, recycle the host debugger, or reboot the target Windows.
+Unable to read KTHREAD address fffff8000281ccc0
+**************************************************************************
+Unable to read debugger data block header
+**************************************************************************
+Unable to read KTHREAD address fffff8000281ccc0
+Unable to read PsLoadedModuleList
+Unable to read KTHREAD address fffff8000281ccc0
+**************************************************************************
+Unable to read debugger data block header
+**************************************************************************</code></pre>
+<p>...then you're most likely a victim of the CRLF issue mentioned above. To get around it I wrote a small utility that basically does what socat would do and additionally corrects those replaced bytes in the stream. It's not pretty but it works:</p>
+<pre><code>#include &lt;errno.h&gt;
+#include &lt;stdio.h&gt;
+#include &lt;fcntl.h&gt;
+#include &lt;termios.h&gt;
+
+int fd1, fd2;
+char mark = &#39; &#39;;
+
+void out(unsigned char c)
+{
+    static int count = 0;
+    static unsigned char buf[17] = {0};
+    
+    // relay to ouptput port
+    write(fd2, &amp;c, 1);
+    fprintf(stderr, &quot;%c&quot;, mark);
+    
+    /* dump all data going over the line
+    if (count == 0)
+        fprintf(stderr, &quot;%c&quot;, mark);
+    fprintf(stderr, &quot;%02x &quot;, c);
+    if (c &gt;= 0x20 &amp;&amp; c &lt; 0x80)
+        buf[count] = c;
+    else
+        buf[count] = &#39;.&#39;;
+    count++;
+    if (count == 0x10)
+    {
+        count = 0;
+        fprintf(stderr, &quot; %s\n&quot;, buf);
+    }
+    */
+}
+
+int main(int argc, char* argv[])
+{
+    unsigned char c = 0;
+    struct termios tio;
+    ssize_t size;
+    
+    if (argc &lt; 3)
+    {
+        fprintf(stderr, &quot;Usage: %s pty1 pty2 [mark character]\n&quot;, argv[0]);
+        return EINVAL;
+    }
+    
+    fd1 = open(argv[1], O_RDONLY | O_NOCTTY);
+    if (fd1 &lt;= 0)
+    {
+        perror(&quot;open fd1&quot;);
+        return errno;
+    }
+    fd2 = open(argv[2], O_WRONLY | O_NOCTTY);
+    if (fd2 &lt;= 0)
+    {
+        perror(&quot;open fd2&quot;);
+        return errno;
+    }
+/*
+    // This doesn&#39;t make any difference which supports the theory
+    // that it&#39;s Xen who corrupts the byte stream.
+    cfmakeraw(&amp;tio);
+    if (tcsetattr(fd1, TCSANOW, &amp;tio) &lt; 0)
+    {
+        perror(&quot;tcsetattr 1&quot;);
+        return errno;
+    }
+    if (tcsetattr(fd2, TCSANOW, &amp;tio) &lt; 0)
+    {
+        perror(&quot;tcsetattr 2&quot;);
+        return errno;
+    }
+*/
+    if (argc == 4)
+        mark = argv[3][0];
+
+    while (1)
+    {
+        size = read(fd1, &amp;c, 1);
+        if (size &lt;= 0)
+            break;
+
+parse:
+        if (c == 0x0d)
+        {
+            size = read(fd1, &amp;c, 1);
+            if (size &lt;= 0)
+            {
+                out(0x0d);
+                break;
+            }
+            if (c == 0x0a)
+            {
+                out(0x0a);
+            }
+            else
+            {
+                out(0x0d);
+                goto parse;
+            }
+        }
+        else
+            out(c);
+    }
+
+    close(fd1);
+    close(fd2);
+    return 0;
+}</code></pre></li>
+</ul>
+<blockquote>
+<p>This utility is a unidirectional relay so you need to run two instances to get duplex communication, like:</p>
+<pre><code>#!/bin/sh
+
+id1=$(xl domid &quot;$1-dm&quot;)
+id2=$(xl domid &quot;$2-dm&quot;)
+tty1=$(xenstore-read /local/domain/${id1}/device/console/3/tty)
+tty2=$(xenstore-read /local/domain/${id2}/device/console/3/tty)
+./ptycrlf ${tty1} ${tty2} - &amp;
+./ptycrlf ${tty2} ${tty1} + &amp;</code></pre>
+</blockquote>
+<blockquote>
+<p>With this everything should be good:</p>
+<pre class="wiki"><code>Opened \\.\com1
+Waiting to reconnect...
+Connected to Windows 7 7601 x64 target at (Wed Mar 19 20:56:31.371 2014 (UTC + 1:00)), ptr64 TRUE
+Kernel Debugger connection established.
+Symbol search path is: srv*c:\symbols*http://msdl.microsoft.com/download/symbols
+Executable search path is: 
+Windows 7 Kernel Version 7601 MP (1 procs) Free x64
+Built by: 7601.18247.amd64fre.win7sp1_gdr.130828-1532
+Machine Name:
+Kernel base = 0xfffff800`0261a000 PsLoadedModuleList = 0xfffff800`0285d6d0
+System Uptime: not available</code></pre>
+</blockquote>
+<p>Happy debugging!</p>
