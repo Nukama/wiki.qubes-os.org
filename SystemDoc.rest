@@ -18,6 +18,7 @@ System Documentation for Developers
 -  `Implementation of template sharing and
    updating </wiki/TemplateImplementation>`__
 -  `Dom0 secure update mechanism </wiki/Dom0SecureUpdates>`__
+-  `Debugging Windows VMs </wiki/WindowsDebugging>`__
 -  `VM secure update mechanism? </wiki/VMSecureUpdates>`__
 
 Build instructions:
