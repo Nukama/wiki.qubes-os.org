@@ -1,0 +1,11 @@
+<h1 id="ManagingshortcutstoapplicationsinAppVms">Managing shortcuts to applications in AppVms</h1>
+<p>For ease of use Qubes aggregates shortcuts to applications that are installed in AppVms and shows them in one &quot;start menu&quot; in dom0. Clicking on such shortcut runs the assigned application in its AppVm.</p>
+<p>To make newly installed applications show up in the menu, use the <strong>qvm-sync-appmenus</strong> command:</p>
+<p><code>qvm-sync-appmenus vmname</code></p>
+<p>After that, select the <em>Add more shortcuts</em> entry in VM's submenu to customize which applications are shown:</p>
+<p>The above image shows that Windows HVMs are also supported (provided that Qubes Tools are installed).</p>
+<h2 id="Behindthescenes">Behind the scenes</h2>
+<p>List of installed applications for each AppVm is stored in <code>/var/lib/qubes/appvms/vmname/apps.templates</code>. Each menu entry is a file that follows the <a href="http://standards.freedesktop.org/desktop-entry-spec/desktop-entry-spec-latest.html">​.desktop file format</a> with some wildcards (<em>%VMNAME%</em>, <em>%VMDIR%</em>). Applications selected to appear in the menu are stored in <code>/var/lib/qubes/appvms/vmname/apps</code>.</p>
+<p>Actual command lines for the menu shortcuts involve <code>qvm-run</code> command which starts a process in another domain. Example: <code>qvm-run -q --tray -a w7s 'cmd.exe /c &quot;C:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs\\Accessories\\Calculator.lnk&quot;'</code></p>
+<p><code>qvm-sync-appmenus</code> works by invoking <em>GetAppMenus</em> <a href="/wiki/wiki/Qrexec">Qubes service</a> in the target domain. This service enumerates installed applications and sends formatted info back to the dom0 script which creates .desktop files in the AppVm directory.</p>
+<p>For Linux VMs the service script is in <code>/etc/qubes-rpc/qubes.GetAppMenus</code>. In Windows it's a PowerShell script located in <code>c:\Program Files\Invisible Things Lab\Qubes OS Windows Tools\qubes-rpc-services\get-appmenus.ps1</code> by default.</p>
