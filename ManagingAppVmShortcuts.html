@@ -1,8 +1,10 @@
 <h1 id="ManagingshortcutstoapplicationsinAppVms">Managing shortcuts to applications in AppVms</h1>
 <p>For ease of use Qubes aggregates shortcuts to applications that are installed in AppVms and shows them in one &quot;start menu&quot; in dom0. Clicking on such shortcut runs the assigned application in its AppVm.</p>
+<p><a href="/wiki/attachment/wiki/ManagingAppVmShortcuts/dom0-menu.png"><img src="/wiki/chrome/common/attachment.png" title="No image &quot;dom0-menu.png&quot; attached to ManagingAppVmShortcuts" alt="No image &quot;dom0-menu.png&quot; attached to ManagingAppVmShortcuts" /></a></p>
 <p>To make newly installed applications show up in the menu, use the <strong>qvm-sync-appmenus</strong> command:</p>
 <p><code>qvm-sync-appmenus vmname</code></p>
 <p>After that, select the <em>Add more shortcuts</em> entry in VM's submenu to customize which applications are shown:</p>
+<p><a href="/wiki/attachment/wiki/ManagingAppVmShortcuts/dom0-appmenu-select.png"><img src="/wiki/chrome/common/attachment.png" title="No image &quot;dom0-appmenu-select.png&quot; attached to ManagingAppVmShortcuts" alt="No image &quot;dom0-appmenu-select.png&quot; attached to ManagingAppVmShortcuts" /></a></p>
 <p>The above image shows that Windows HVMs are also supported (provided that Qubes Tools are installed).</p>
 <h2 id="Behindthescenes">Behind the scenes</h2>
 <p>List of installed applications for each AppVm is stored in <code>/var/lib/qubes/appvms/vmname/apps.templates</code>. Each menu entry is a file that follows the <a href="http://standards.freedesktop.org/desktop-entry-spec/desktop-entry-spec-latest.html">​.desktop file format</a> with some wildcards (<em>%VMNAME%</em>, <em>%VMDIR%</em>). Applications selected to appear in the menu are stored in <code>/var/lib/qubes/appvms/vmname/apps</code>.</p>
