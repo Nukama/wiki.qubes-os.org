@@ -1,9 +1,9 @@
-Managing shortcuts to applications in !AppVMs
-=============================================
+Managing shortcuts to applications in AppVMs
+============================================
 
 For ease of use Qubes aggregates shortcuts to applications that are
-installed in !AppVMs and shows them in one "start menu" in dom0.
-Clicking on such shortcut runs the assigned application in its !AppVM.
+installed in AppVMs and shows them in one "start menu" in dom0. Clicking
+on such shortcut runs the assigned application in its AppVM.
 
 |No image "dom0-menu.png" attached to ManagingAppVmShortcuts|
 
@@ -23,7 +23,7 @@ that Qubes Tools are installed).
 Behind the scenes
 -----------------
 
-List of installed applications for each !AppVM is stored in
+List of installed applications for each AppVM is stored in
 ``/var/lib/qubes/appvms/vmname/apps.templates``. Each menu entry is a
 file that follows the `​.desktop file
 format <http://standards.freedesktop.org/desktop-entry-spec/desktop-entry-spec-latest.html>`__
@@ -37,7 +37,7 @@ which starts a process in another domain. Example:
 ``qvm-sync-appmenus`` works by invoking *GetAppMenus* `Qubes
 service </wiki/Qrexec>`__ in the target domain. This service enumerates
 installed applications and sends formatted info back to the dom0 script
-which creates .desktop files in the !AppVM directory.
+which creates .desktop files in the AppVM directory.
 
 For Linux VMs the service script is in
 ``/etc/qubes-rpc/qubes.GetAppMenus``. In Windows it's a PowerShell
