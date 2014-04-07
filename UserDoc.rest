@@ -23,7 +23,7 @@ Standard Topics
 -  `Configuring a Network Printer </wiki/NetworkPrinter>`__
 -  `Resizing AppVM and HVM Disk Images </wiki/ResizeDiskImage>`__
 -  `Managing Shortcuts to Applications Installed in
-   AppVms </wiki/ManagingAppVmShortcuts>`__
+   AppVMs </wiki/ManagingAppVmShortcuts>`__
 
 Advanced Topics
 ---------------
