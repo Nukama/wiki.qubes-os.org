@@ -40,7 +40,7 @@ in previous release, so this operation will upgrade a lot of packages.
 
        sudo qubes-dom0-update qubes-release
 
-   This should install ``qubes-release-2-5`` in your Dom0.
+   This should install ``qubes-release-2-6`` in your Dom0.
 
 #. Upgrade dom0 to R2 rc1:
 
