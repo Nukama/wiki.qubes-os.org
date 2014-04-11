@@ -38,6 +38,10 @@ Recent News
 -  Mar 28, 2014: `​Article about Qubes
    OS <http://www.economist.com/blogs/babbage/2014/03/computer-security>`__
    in The Economist
+-  Apr 12, 2014: `​Article about Qubes
+   OS <https://pressfreedomfoundation.org/blog/2014/04/operating-system-can-protect-you-even-if-you-get-hacked>`__
+   by the `​Freedom of the Press
+   Foundation <https://pressfreedomfoundation.org/about/board>`__
 
 .. |http://files.qubes-os.org/Architecture\_files/droppedImage.png| image:: http://files.qubes-os.org/Architecture_files/droppedImage.png
    :target: /wiki/QubesArchitecture
