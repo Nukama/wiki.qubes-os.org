@@ -9,13 +9,22 @@
 <p>Note that dom0 in R2rc1 is based on Fedora 20, in contrast to Fedora 18 in previous release, so this operation will upgrade a lot of packages.</p>
 <ol>
 <li>Open terminal in Dom0. E.g. Start-&gt;System Settings-&gt;Konsole.</li>
-<li><p>Upgrade the <code>qubes-release</code> package to the latest version which brings in new repo definitions and R2 signing keys:</p>
-<pre class="wiki"><code>sudo qubes-dom0-update qubes-release</code></pre>
-<p>This should install <code>qubes-release-2-6</code> in your Dom0.</p></li>
-<li><p>Upgrade dom0 to R2 rc1:</p>
+</ol>
+<ol start="2">
+<li><p>Install all the updates for Dom0:</p>
+<pre class="wiki"><code>sudo qubes-dom0-update</code></pre></li>
+</ol>
+<p>After this step you should have <code>qubes-release-2-5</code> in your Dom0. Important: if you happen to have <code>qubes-release-2-6*</code> then you should downgrade to <code>qubes-release-2-5</code>! The <code>qubes-release-2-6*</code> packages have been uploaded to the testing repos and were kept there for a few hours, until we realized they bring incorrect repo definitions and so we removed them and also have changed the update procedure a bit (simplifying it).</p>
+<ol start="3">
+<li>Upgrade dom0 to R2 rc1:</li>
+</ol>
+<p>Note: be sure that the VM used as a update-downloading-vm (by default its the firewallvm based on the default template) has been updated to the latest qubes packages, specifically <code>qubes-core-vm</code> version &gt;= 2.1.31.</p>
 <pre class="wiki"><code>sudo qubes-dom0-update qubes-dom0-dist-upgrade
-sudo qubes-dom0-update</code></pre></li>
-<li>If above step completed successfully you should have <code>qubes-release</code> at least 2-7. If not, repeat above step with additional <code>--clean</code> option.</li>
+sudo qubes-dom0-update</code></pre>
+<ol start="4">
+<li>If above step completed successfully you should have <code>qubes-release-2-8</code> or later. If not, repeat above step with additional <code>--clean</code> option.</li>
+</ol>
+<ol start="5">
 <li>Reboot the system.</li>
 </ol>
 <p>Please note that if you use Anti Evil Maid, then it won't be able to unseal the passphrase this time, because the Xen, kernel, and initramfs binaries have changed. Once the system boots up again, you could reseal your Anti Evil Maid's passphrase to the new configuration. Please consult Anti Evil Maid documentation for explanation on how to do that.</p>
