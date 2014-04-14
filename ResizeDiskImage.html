@@ -7,6 +7,33 @@
 <p>Note: Size is the target size (i.e. 4096MB or 16GB, ...), not the size to add to the existing disk.</p>
 <p>Note2: If once the VM is started, the disk is has not been increased, you can issue in the VM's terminal:</p>
 <pre class="wiki"><code>sudo resize2fs /dev/xvdb</code></pre>
+<h3 id="ShrinkingprivatediskimageLinuxVM">Shrinking private disk image (Linux VM)</h3>
+<p><strong>This operation is dangerous and this is why it isn't available in standard Qubes tools. If you have enough disk space, it is safer to create new VM with smaller disk and move the data.</strong></p>
+<p>The basic idea is to:</p>
+<ol>
+<li>Shrink filesystem on the private disk image.</li>
+<li>Then shrink the image.</li>
+</ol>
+<p>Ext4 does not support online shrinking, so can't be done as convenient as image grown. Note that we don't want to touch the VM filesystem directly in dom0 for security reasons. First you need to start VM without <code>/rw</code> mounted. One of the possibility is to interrupt its normal startup by adding <code>rd.break</code> kernel option:</p>
+<pre class="wiki"><code>qvm-prefs -s &lt;vm-name&gt; kernelopts rd.break
+qvm-start --no-guid &lt;vm-name&gt;</code></pre>
+<p>And wait for qrexec connect timeout (or simply press Ctrl-C). Then you can connect to VM console and shrink the filesystem:</p>
+<pre class="wiki"><code>sudo xl console &lt;vm-name&gt;
+# you should get dracut emergency shell here
+mount --bind /dev /sysroot/dev
+chroot /sysroot
+mount /proc
+e2fsck -f /dev/xvdb
+resize2fs /dev/xvdb &lt;new-desired-size&gt;
+umount /proc
+exit
+umount /sysroot/dev
+poweroff</code></pre>
+<p>Now you can resize the image:</p>
+<pre class="wiki"><code>truncate -s &lt;new-desired-size&gt; /var/lib/qubes/appvms/&lt;vm-name&gt;/private.img</code></pre>
+<p><strong>It is critical to use the same (or bigger for some safety margin) size in truncate call compared to resize2fs call. Otherwise you will loose your data!</strong> Then reset kernel options back to default:</p>
+<pre class="wiki"><code>qvm-prefs -s &lt;vm-name&gt; kernelopts default</code></pre>
+<p>Done.</p>
 <h3 id="HVMdiskimage">HVM disk image</h3>
 <p>In this example we will grow the disk image of an HVM to 30GB.</p>
 <p>First, stop/shutdown the HVM.</p>
