@@ -30,7 +30,7 @@ Contributors to the open source code
 -  Radoslaw Szkodzinski ``astralstorm at gmail.com`` - minor gui build
    fixes
 -  Zrubecz Laszlo ``mail at zrubi.hu`` -- HCL wiki page maintenance, HCL
-   scritps
+   scripts
 
 Proprietary code developers
 ---------------------------
@@ -43,5 +43,6 @@ Proprietary code developers
 Wiki/documentation editors
 --------------------------
 
--  TODO
+-  Hakisho Nukama ``nukama at gmail dot com`` - various wiki
+   contributions (ZFS, HCL)
 
