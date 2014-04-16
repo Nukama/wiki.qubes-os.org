@@ -31,6 +31,8 @@ Contributors to the open source code
    fixes
 -  Zrubecz Laszlo ``mail at zrubi.hu`` -- HCL wiki page maintenance, HCL
    scripts
+-  Vincent Penquerc'h ``vincent.penquerch@collabora.co.uk`` -- code
+   review, misc fixes
 
 Proprietary code developers
 ---------------------------
