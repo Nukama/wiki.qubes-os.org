@@ -22,7 +22,6 @@ For Developers
    project? </wiki/ContributingHowto>`__
 -  `Source Code </wiki/SourceCode>`__
 -  `Coding Guidelines </wiki/CodingStyle>`__
--  `Idea Incubator? </wiki/IdeasIncubator>`__
 -  `Books for Developers </wiki/DevelBooks>`__
 -  `Research Papers </wiki/QubesResearch>`__
 
