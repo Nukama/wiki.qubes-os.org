@@ -22,6 +22,9 @@ Qubes Release 2
 Qubes Release 1
 ---------------
 
+(This is mainly for historical reference, we strongly recommend Qubes
+R2rc1 above)
+
 -  `​Qubes-R1-x86\_64-DVD.iso <http://sourceforge.net/projects/qubesos/files/Qubes-R1-x86_64-DVD.iso/download>`__
    (via sourceforge.net)
 -  `​Digital
