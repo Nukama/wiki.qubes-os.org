@@ -56,7 +56,7 @@ removed them and also have changed the update procedure a bit
 
 Note: be sure that the VM used as a update-downloading-vm (by default
 its the firewallvm based on the default template) has been updated to
-the latest qubes packages, specifically ``qubes-core-vm-2.1.31`` or
+the latest qubes packages, specifically ``qubes-core-vm-2.1.33`` or
 later. This doesn't imply that the VM must already be upgraded to fc20
 -- for Dom0 upgrade we could still use an fc18-based VM (updatevm) it is
 only important to install the latest Qubes packages there.
