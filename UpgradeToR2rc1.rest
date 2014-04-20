@@ -13,9 +13,7 @@ Upgrade Template and Standalone VM(s)
 
 -  Qubes R2 rc1 comes with new template based on Fedora 20. You can
    upgrade existing template according to procedure described
-   `here </wiki/FedoraTemplateUpgrade>`__. (**Note to qubes-testers**:
-   please enable ``qubes-vm-r2b3-current-testing`` for the template
-   upgrade)
+   `here </wiki/FedoraTemplateUpgrade>`__.
 
 -  **It also possible to download a new Fedora 20-based template from
    our repositories**. To do this please first upgrade the Dom0 distro
@@ -46,13 +44,6 @@ in previous release, so this operation will upgrade a lot of packages.
 
        sudo qubes-dom0-update
 
-**NOTE to qubes-testers**: for the time being please use the
-current-testing repo for this step:
-
-.. code:: wiki
-
-    sudo qubes-dom0-update --enablerepo=qubes-dom0-r2b3-current-testing
-
 After this step you should have ``qubes-release-2-5`` in your Dom0.
 Important: if you happen to have ``qubes-release-2-6*`` then you should
 downgrade to ``qubes-release-2-5``! The ``qubes-release-2-6*`` packages
@@ -68,9 +59,7 @@ its the firewallvm based on the default template) has been updated to
 the latest qubes packages, specifically ``qubes-core-vm-2.1.31`` or
 later. This doesn't imply that the VM must already be upgraded to fc20
 -- for Dom0 upgrade we could still use an fc18-based VM (updatevm) it is
-only important to install the latest Qubes packages there. (**Note to
-qubes-testers**: please enable ``qubes-vm-r2b3-current-testing`` for the
-template upgrade)
+only important to install the latest Qubes packages there.
 
 .. code:: wiki
 
