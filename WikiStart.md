@@ -24,8 +24,9 @@ Recent News
 -   Mar 21, 2013: Introducing Qubes Odyssey Framework [​article](http://theinvisiblethings.blogspot.com/2013/03/introducing-qubes-odyssey-framework.html)
 -   Jun 21, 2013: Qubes OS R3 Alpha preview: Odyssey HAL in action! [​announcement](http://theinvisiblethings.blogspot.com/2013/06/qubes-os-r3-alpha-preview-odyssey-hal.html)
 -   Nov 26, 2013: Windows 7 seamless GUI integration coming to Qubes OS! [​article](http://theinvisiblethings.blogspot.com/2013/11/windows-7-seamless-gui-integration.html)
--   Dec 11, 2013: Qubes R2 Beta 3 has been released! [​announcement](http://theinvisiblethings.blogspot.com/2013/12/qubes-r2-beta-3-has-been-released.html)
+-   Dec 11, 2013: Qubes OS R2 Beta 3 has been released! [​announcement](http://theinvisiblethings.blogspot.com/2013/12/qubes-r2-beta-3-has-been-released.html)
 -   Feb 16, 2014: Qubes OS selected as a finalist of Access Innovation Prize 2014 for Endpoint Security Solution [​announcement](https://www.accessnow.org/blog/2014/02/13/endpoint-security-prize-finalists-announced?utm_content=buffere803e&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer)
 -   Mar 28, 2014: [​Article about Qubes OS](http://www.economist.com/blogs/babbage/2014/03/computer-security) in The Economist
 -   Apr 12, 2014: [​Article about Qubes OS](https://pressfreedomfoundation.org/blog/2014/04/operating-system-can-protect-you-even-if-you-get-hacked) by the [​Freedom of the Press Foundation](https://pressfreedomfoundation.org/about/board)
+-   Apr 21, 2014: Qubes OS R2 rc1 has been released! [​announcement](http://theinvisiblethings.blogspot.com/2014/04/qubes-os-r2-rc1-has-been-released.html)
 
