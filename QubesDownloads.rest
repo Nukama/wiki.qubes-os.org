@@ -13,7 +13,7 @@ Qubes Release 2
 -  `​Digital Signature <http://>`__ (coming soon)
 
 -  **`Installation Guide for Qubes R2
-   rc1? </wiki/InstallationGuideR2RC1>`__**
+   rc1 </wiki/InstallationGuideR2rc1>`__**
 -  Upgrading to Qubes R2 rc1
 
 -  `​Qubes-R2-Beta3-x86\_64-DVD.iso <http://sourceforge.net/projects/qubesos/files/Qubes-R2-Beta3-x86_64-DVD.iso/download>`__
