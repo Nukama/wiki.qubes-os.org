@@ -133,7 +133,10 @@ Known Issues
 
 -  HVMs with Qubes Tools installed will not have access to the network
    if firewallvm uses 3.12 kernel (the default). The workaround is to
-   set older (3.11) kernel for firewallvm (for example using Qubes
+   use older (3.11) kernel for firewallvm. You need to `​install
+   kernel-qubes-vm-3.11.10
+   package <http://wiki.qubes-os.org/trac/wiki/SoftwareUpdateDom0#Howtodowngradeaspecificpackage>`__,
+   then ensure that it is used for firewallvm (for example using Qubes
    Manager - advanced tab of VM settings).
 
 -  Just after installation, applications menu will not contain colorful
