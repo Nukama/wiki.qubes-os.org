@@ -125,7 +125,7 @@ Known Issues
    correctly when using the Xfce4 environment in Dom0. If this bothers
    you, please use the KDE environment instead.
 
--  If you're GPU is not correctly supported by the Dom0 kernel (e.g. the
+-  If your GPU is not correctly supported by the Dom0 kernel (e.g. the
    3D desktop effects do not run smoothly) then you might experience
    "heaviness" with Windows 7-based AppVMs. In that case, please solve
    the problem with your GPU support in Dom0 in the first place (by
