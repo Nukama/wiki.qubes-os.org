@@ -1,5 +1,5 @@
 <h1 id="HardwareCompatibilityListHCLforAllQubesOSReleases">Hardware Compatibility List (HCL) for All Qubes OS Releases</h1>
-<p>This list contains information about the <a href="/wiki/wiki/HCL#LatestStableRelease">latest stable release</a> (<strong>R1</strong>) and the <a href="/wiki/wiki/HCL#LatestDevelopmentRelease">latest development release</a> (<strong>R2B3</strong>). You can also find information about the <a href="/wiki/wiki/HCL#PreviousReleases">previous releases</a> here.</p>
+<p>This list contains information about the <a href="/wiki/wiki/HCL#LatestStableRelease">latest stable release</a> (<strong>R1</strong>) and the <a href="/wiki/wiki/HCL#LatestDevelopmentRelease">latest development release</a> (<strong>R2RC1</strong>). You can also find information about the <a href="/wiki/wiki/HCL#PreviousReleases">previous releases</a> here.</p>
 <h2 id="GeneratingandSubmittingNewReports">Generating and Submitting New Reports</h2>
 <p>In order to generate an HCL report in Qubes, simply open a terminal in dom0 and run <code>qubes-hcl-report &lt;vm-name&gt;</code>, where <code>&lt;vm-name&gt;</code> is the name of the VM to which the generated HCL files will be saved. <br /> (Note: If you are working with a new Qubes installation, you may need to update your system in order to download this script.)</p>
 <p>Users are encouraged to submit their HCL reports for the benefit of further Qubes development and other users. If you would like to submit your HCL report, please send the <strong>HCL Info</strong> <code>.txt</code> file to <code>qubes-users@googlegroups.com</code> (see <a href="/wiki/wiki/QubesLists">here</a> information about the mailing lists) with the subject <code>HCL - &lt;your machine model name&gt;</code>. <br /> Please include any useful information about any Qubes features you may have tested (see the legend above), as well as general machine compatibility (video, networking, sleep, etc.). <br /> If you have problems with your hardware, please send the <strong>HCL Support Files</strong> <code>.cpio.gz</code> file as well.</p>
@@ -27,6 +27,142 @@
 <p>A blank cell indicates that we lack information about a feature.</p>
 <p><br /></p>
 <h2 id="LatestDevelopmentRelease">Latest Development Release</h2>
+<h1>Qubes R2 RC1</h1>
+<p>Device</p>
+<p>Runs out of the box</p>
+<p>Dom0 Kernel</p>
+<p>VT-x<br />(HVM)</p>
+<p>VT-d</p>
+<p>Remarks</p>
+<p>Reported by</p>
+<p><strong>Laptop Devices</strong></p>
+<p>Dell Latitude E6430<br /> (i5-3340M; Ivy Bridge; Intel HD graphics; BIOS A11)</p>
+<p>Yes</p>
+<p>3.12.14</p>
+<p>Yes</p>
+<p>Yes</p>
+<p><a href="">​Zrubi</a></p>
+<p>Lenovo T510 (4384-WGZ)<br /> (i5-M520; Arrandale; Intel HD graphics; BIOS 1.52)</p>
+<p>Yes</p>
+<p>3.9.2</p>
+<p>Yes</p>
+<p>Yes</p>
+<p>Audio is always muted after reboot</p>
+<p><a href="https://groups.google.com/d/topic/qubes-users/4ASK0cBfMM0/discussion">​pete</a></p>
+<p><strong>Motherboards</strong></p>
+<p><br /></p>
+<h2 id="LatestStableRelease">Latest Stable Release</h2>
+<h1>Qubes R1</h1>
+<p>Device</p>
+<p>Standard features</p>
+<p>VT-d</p>
+<p>Remarks</p>
+<p>Reported by</p>
+<p><strong>Developer Reported Machines</strong></p>
+<p>Lenovo Thinkpad T420</p>
+<p>OK</p>
+<p>OK</p>
+<p>Qubes core developers</p>
+<p>Lenovo Thinkpad T420s<br /> (Intel HD graphics; Sandy Bridge; i5-2520M)</p>
+<p>OK</p>
+<p>OK</p>
+<p>Qubes core developers</p>
+<p>Lenovo Thinkpad T61<br /> (Nvidia Quadro NVS 140M)</p>
+<p>OK</p>
+<p>X</p>
+<p>Qubes core developers</p>
+<p>Samsung X460</p>
+<p>OK</p>
+<p>X</p>
+<p>Qubes core developers</p>
+<p>Sony Vaio Z 12 <br /> (2010 edition)</p>
+<p>OK</p>
+<p>OK</p>
+<p><a href="/trac/wiki/SonyVaioTinkering">read more</a></p>
+<p>Qubes core developers</p>
+<p>Dell Latitude E6420<br /> (Intel HD graphics; Sandy Bridge; i5-2520M)</p>
+<p>OK</p>
+<p>OK</p>
+<p>needs kernel 3.4.17+</p>
+<p>Qubes core developers</p>
+<p><strong>User Reported Laptops</strong></p>
+<p>ASUS UX-31</p>
+<p>*</p>
+<p><a href="https://groups.google.com/d/topic/qubes-devel/6I07Bbzn5M4/discussion">​Stephen Boyd</a></p>
+<p>ASUS X55A</p>
+<p>X</p>
+<p>X</p>
+<p><a href="https://groups.google.com/d/topic/qubes-devel/2csjvHia9Rw/discussion">​read more</a></p>
+<p><a href="https://groups.google.com/d/msg/qubes-devel/2csjvHia9Rw/NRsqR0g6wIMJ">​Zrubi</a></p>
+<p>Dell Latitude 5520</p>
+<p>OK</p>
+<p>OK</p>
+<p><a href="https://groups.google.com/group/qubes-devel/msg/7418e7084c2de99f?hl=en">​read more</a></p>
+<p><a href="https://groups.google.com/group/qubes-devel/msg/7418e7084c2de99f?hl=en">​Erik Edin</a></p>
+<p>Dell Latitude E6520</p>
+<p>OK</p>
+<p>OK</p>
+<p><a href="https://groups.google.com/group/qubes-devel/msg/340afc6fc2d06d0e">​read more</a></p>
+<p><a href="https://groups.google.com/group/qubes-devel/msg/340afc6fc2d06d0e">​Steven Collins</a></p>
+<p>Dell PowerEdge T110 II <br /> (onboard Matrox; Xeon E3-1230)</p>
+<p>OK</p>
+<p>OK</p>
+<p><a href="https://groups.google.com/group/qubes-devel/msg/8a894915909eeaee">​Geoff</a></p>
+<p>Dell Precision M4600 <br /> (i7-2860QM; NVIDIA Quadro 1000M)</p>
+<p>OK</p>
+<p>OK</p>
+<p><a href="https://groups.google.com/group/qubes-devel/browse_thread/thread/ddf35d12a35f96a3">​nqe</a></p>
+<p>Dell XPS 13<br /> (i5; intel HD; sandy bridge; BIOS A03)</p>
+<p>OK</p>
+<p><a href="https://groups.google.com/d/msg/qubes-devel/7JumqdldVJM/n9TiDVxc2jkJ">​j</a></p>
+<p>Fujitsu S751<br /> (HD3000; QM67; i5-2520M; BIOS 1.18)</p>
+<p>OK</p>
+<p>OK</p>
+<p><a href="https://groups.google.com/forum/#!msg/qubes-devel/xoyNCigBvFE/ER61L6TbVpwJ">​Zrubi</a></p>
+<p>Lenovo Thinkpad W510<br /> (nVidia; i7-Q820)</p>
+<p>OK</p>
+<p>OK</p>
+<p><a href="https://groups.google.com/forum/#!msg/qubes-devel/TgDWwBs36yA/IUFZPHs716cJ">​read more</a></p>
+<p><a href="https://groups.google.com/forum/#!msg/qubes-devel/TgDWwBs36yA/IUFZPHs716cJ">​Sebastian Hültenschmidt</a></p>
+<p>Lenovo Thinkpad x220<br /> (Sandy Bridge; HD Graphics; i5-2520M; BIOS: 1.39)</p>
+<p>OK</p>
+<p>OK</p>
+<p><a href="https://groups.google.com/group/qubes-devel/msg/f41578eef913446a">​Stefan Boresch</a><br /></p>
+<p>Lenovo Thinkpad x230<br /> (Ivy Bridge; HD Graphics; i5-3320M; BIOS:2.51)</p>
+<p>*</p>
+<p>OK</p>
+<p><a href="https://groups.google.com/d/msg/qubes-devel/XN6JrEXVOVA/lkxGRA00EqgJ">​read more</a></p>
+<p><a href="https://groups.google.com/d/msg/qubes-devel/XN6JrEXVOVA/lkxGRA00EqgJ">​Chris</a><br /></p>
+<p>Toshiba Tecra S11</p>
+<p>OK</p>
+<p>OK</p>
+<p><a href="https://groups.google.com/group/qubes-devel/browse_thread/thread/fdec0ec165a87726">​read more</a></p>
+<p><a href="https://groups.google.com/group/qubes-devel/browse_thread/thread/fdec0ec165a87726">​Jan Beerden</a></p>
+<p>Toshiba Tecra A11-15X <br /> (i7-M620)</p>
+<p>OK</p>
+<p>OK</p>
+<p><a href="https://groups.google.com/group/qubes-devel/browse_thread/thread/c0d5f6a33d672b62">​PirBoazo</a></p>
+<p>Toshiba M780 S7240 <br /> (BIOS latest)</p>
+<p>OK</p>
+<p>OK</p>
+<p><a href="https://groups.google.com/group/qubes-devel/browse_thread/thread/66e97c990a08d8e2">​Franz</a></p>
+<p>Samsung Series 7 Chronos NP700Z5C<br /> (nVidia Optimus; i7-3635QM; BIOS P04ABJ)</p>
+<p>OK</p>
+<p><a href="https://groups.google.com/d/msg/qubes-devel/0xBeX8NZFiU/bUqxGdn6KOMJ">​read more</a></p>
+<p><a href="https://groups.google.com/d/msg/qubes-devel/0xBeX8NZFiU/bUqxGdn6KOMJ">​Outback Dingo</a></p>
+<p>Sony Vaio Z2<br /> (2011 edition)</p>
+<p>OK</p>
+<p>OK</p>
+<p><a href="https://groups.google.com/d/msg/qubes-devel/xoyNCigBvFE/fkC6em-Wqd0J">​read more</a></p>
+<p><a href="https://groups.google.com/d/msg/qubes-devel/xoyNCigBvFE/fkC6em-Wqd0J">​Danny Fullerton</a></p>
+<p><strong>User Reported Desktops and Workstations</strong></p>
+<p>Supermicro X10SAE<br /> (Haswell; Radeon HD 5700; Xeon E3-1245; BIOS: 1.0)</p>
+<p>X</p>
+<p>X</p>
+<p><a href="https://groups.google.com/d/topic/qubes-users/V9BLpdf4xCs/discussion">read more</a></p>
+<p><a href="https://groups.google.com/d/msg/qubes-users/V9BLpdf4xCs/v4XcOjLT6uUJ">Qubes Fan</a></p>
+<p><br /></p>
+<h2 id="PreviousReleases">Previous Releases</h2>
 <h1>Qubes R2 Beta3</h1>
 <p>Device</p>
 <p>Runs out of the box</p>
@@ -260,118 +396,6 @@
 <p>Yes</p>
 <p>VT-d option in BIOS according to <a href="http://download.gigabyte.eu/FileList/Manual/mb-manual_ga-x79s-up5_e.pdf">manual</a></p>
 <p><br /></p>
-<h2 id="LatestStableRelease">Latest Stable Release</h2>
-<h1>Qubes R1</h1>
-<p>Device</p>
-<p>Standard features</p>
-<p>VT-d</p>
-<p>Remarks</p>
-<p>Reported by</p>
-<p><strong>Developer Reported Machines</strong></p>
-<p>Lenovo Thinkpad T420</p>
-<p>OK</p>
-<p>OK</p>
-<p>Qubes core developers</p>
-<p>Lenovo Thinkpad T420s<br /> (Intel HD graphics; Sandy Bridge; i5-2520M)</p>
-<p>OK</p>
-<p>OK</p>
-<p>Qubes core developers</p>
-<p>Lenovo Thinkpad T61<br /> (Nvidia Quadro NVS 140M)</p>
-<p>OK</p>
-<p>X</p>
-<p>Qubes core developers</p>
-<p>Samsung X460</p>
-<p>OK</p>
-<p>X</p>
-<p>Qubes core developers</p>
-<p>Sony Vaio Z 12 <br /> (2010 edition)</p>
-<p>OK</p>
-<p>OK</p>
-<p><a href="/trac/wiki/SonyVaioTinkering">read more</a></p>
-<p>Qubes core developers</p>
-<p>Dell Latitude E6420<br /> (Intel HD graphics; Sandy Bridge; i5-2520M)</p>
-<p>OK</p>
-<p>OK</p>
-<p>needs kernel 3.4.17+</p>
-<p>Qubes core developers</p>
-<p><strong>User Reported Laptops</strong></p>
-<p>ASUS UX-31</p>
-<p>*</p>
-<p><a href="https://groups.google.com/d/topic/qubes-devel/6I07Bbzn5M4/discussion">​Stephen Boyd</a></p>
-<p>ASUS X55A</p>
-<p>X</p>
-<p>X</p>
-<p><a href="https://groups.google.com/d/topic/qubes-devel/2csjvHia9Rw/discussion">​read more</a></p>
-<p><a href="https://groups.google.com/d/msg/qubes-devel/2csjvHia9Rw/NRsqR0g6wIMJ">​Zrubi</a></p>
-<p>Dell Latitude 5520</p>
-<p>OK</p>
-<p>OK</p>
-<p><a href="https://groups.google.com/group/qubes-devel/msg/7418e7084c2de99f?hl=en">​read more</a></p>
-<p><a href="https://groups.google.com/group/qubes-devel/msg/7418e7084c2de99f?hl=en">​Erik Edin</a></p>
-<p>Dell Latitude E6520</p>
-<p>OK</p>
-<p>OK</p>
-<p><a href="https://groups.google.com/group/qubes-devel/msg/340afc6fc2d06d0e">​read more</a></p>
-<p><a href="https://groups.google.com/group/qubes-devel/msg/340afc6fc2d06d0e">​Steven Collins</a></p>
-<p>Dell PowerEdge T110 II <br /> (onboard Matrox; Xeon E3-1230)</p>
-<p>OK</p>
-<p>OK</p>
-<p><a href="https://groups.google.com/group/qubes-devel/msg/8a894915909eeaee">​Geoff</a></p>
-<p>Dell Precision M4600 <br /> (i7-2860QM; NVIDIA Quadro 1000M)</p>
-<p>OK</p>
-<p>OK</p>
-<p><a href="https://groups.google.com/group/qubes-devel/browse_thread/thread/ddf35d12a35f96a3">​nqe</a></p>
-<p>Dell XPS 13<br /> (i5; intel HD; sandy bridge; BIOS A03)</p>
-<p>OK</p>
-<p><a href="https://groups.google.com/d/msg/qubes-devel/7JumqdldVJM/n9TiDVxc2jkJ">​j</a></p>
-<p>Fujitsu S751<br /> (HD3000; QM67; i5-2520M; BIOS 1.18)</p>
-<p>OK</p>
-<p>OK</p>
-<p><a href="https://groups.google.com/forum/#!msg/qubes-devel/xoyNCigBvFE/ER61L6TbVpwJ">​Zrubi</a></p>
-<p>Lenovo Thinkpad W510<br /> (nVidia; i7-Q820)</p>
-<p>OK</p>
-<p>OK</p>
-<p><a href="https://groups.google.com/forum/#!msg/qubes-devel/TgDWwBs36yA/IUFZPHs716cJ">​read more</a></p>
-<p><a href="https://groups.google.com/forum/#!msg/qubes-devel/TgDWwBs36yA/IUFZPHs716cJ">​Sebastian Hültenschmidt</a></p>
-<p>Lenovo Thinkpad x220<br /> (Sandy Bridge; HD Graphics; i5-2520M; BIOS: 1.39)</p>
-<p>OK</p>
-<p>OK</p>
-<p><a href="https://groups.google.com/group/qubes-devel/msg/f41578eef913446a">​Stefan Boresch</a><br /></p>
-<p>Lenovo Thinkpad x230<br /> (Ivy Bridge; HD Graphics; i5-3320M; BIOS:2.51)</p>
-<p>*</p>
-<p>OK</p>
-<p><a href="https://groups.google.com/d/msg/qubes-devel/XN6JrEXVOVA/lkxGRA00EqgJ">​read more</a></p>
-<p><a href="https://groups.google.com/d/msg/qubes-devel/XN6JrEXVOVA/lkxGRA00EqgJ">​Chris</a><br /></p>
-<p>Toshiba Tecra S11</p>
-<p>OK</p>
-<p>OK</p>
-<p><a href="https://groups.google.com/group/qubes-devel/browse_thread/thread/fdec0ec165a87726">​read more</a></p>
-<p><a href="https://groups.google.com/group/qubes-devel/browse_thread/thread/fdec0ec165a87726">​Jan Beerden</a></p>
-<p>Toshiba Tecra A11-15X <br /> (i7-M620)</p>
-<p>OK</p>
-<p>OK</p>
-<p><a href="https://groups.google.com/group/qubes-devel/browse_thread/thread/c0d5f6a33d672b62">​PirBoazo</a></p>
-<p>Toshiba M780 S7240 <br /> (BIOS latest)</p>
-<p>OK</p>
-<p>OK</p>
-<p><a href="https://groups.google.com/group/qubes-devel/browse_thread/thread/66e97c990a08d8e2">​Franz</a></p>
-<p>Samsung Series 7 Chronos NP700Z5C<br /> (nVidia Optimus; i7-3635QM; BIOS P04ABJ)</p>
-<p>OK</p>
-<p><a href="https://groups.google.com/d/msg/qubes-devel/0xBeX8NZFiU/bUqxGdn6KOMJ">​read more</a></p>
-<p><a href="https://groups.google.com/d/msg/qubes-devel/0xBeX8NZFiU/bUqxGdn6KOMJ">​Outback Dingo</a></p>
-<p>Sony Vaio Z2<br /> (2011 edition)</p>
-<p>OK</p>
-<p>OK</p>
-<p><a href="https://groups.google.com/d/msg/qubes-devel/xoyNCigBvFE/fkC6em-Wqd0J">​read more</a></p>
-<p><a href="https://groups.google.com/d/msg/qubes-devel/xoyNCigBvFE/fkC6em-Wqd0J">​Danny Fullerton</a></p>
-<p><strong>User Reported Desktops and Workstations</strong></p>
-<p>Supermicro X10SAE<br /> (Haswell; Radeon HD 5700; Xeon E3-1245; BIOS: 1.0)</p>
-<p>X</p>
-<p>X</p>
-<p><a href="https://groups.google.com/d/topic/qubes-users/V9BLpdf4xCs/discussion">read more</a></p>
-<p><a href="https://groups.google.com/d/msg/qubes-users/V9BLpdf4xCs/v4XcOjLT6uUJ">Qubes Fan</a></p>
-<p><br /></p>
-<h2 id="PreviousReleases">Previous Releases</h2>
 <h1>Qubes R2 Beta2</h1>
 <p>Device</p>
 <p>Standard features</p>
