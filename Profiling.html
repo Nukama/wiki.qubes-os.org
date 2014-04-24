@@ -34,3 +34,7 @@ def real_foo(self, a, b, c):
 <pre class="wiki"><code>make index.html</code></pre>
 <p>This creates <code>index.html</code> with all SVG graphics linked to TXT files. Ready for upload.</p>
 <pre class="wiki"><code>make REMOTE=example.com:public_html/qubes/profiling/ upload</code></pre>
+<h2 id="Example">Example</h2>
+<p>This example is from <code>qubes-manager</code> (<code>qubesmanager/main.py</code>).</p>
+<p><a href="/wiki/attachment/wiki/Profiling/update_table-20140424-170010.svg"><img src="/wiki/chrome/common/attachment.png" title="No image &quot;update_table-20140424-170010.svg&quot; attached to Profiling" alt="No image &quot;update_table-20140424-170010.svg&quot; attached to Profiling" /></a></p>
+<p>It is apparent than problem is around <code>get_disk_usage</code> which calls something via <code>subprocess.call</code>. It does it 15 times, probably once per VM.</p>
