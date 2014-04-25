@@ -25,6 +25,8 @@ mkdir -p ~/profiling
 qvm-run -p qubes-dev 'cat ~/profiling/Upload.sh' > ~/profiling/Upload.sh
 ```
 
+-   WARNING: this will obviously be running third party code which is not signed by ITL nor Fedora. You have been warned.
+
 Workflow
 --------
 
