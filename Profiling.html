@@ -7,6 +7,9 @@ git clone http://git.woju.eu/qubes/profiling.git</code></pre>
 <p>If you profile something on dom0, move <code>Upload.sh</code> from repository to dom0:</p>
 <pre class="wiki"><code>mkdir -p ~/profiling
 qvm-run -p qubes-dev &#39;cat ~/profiling/Upload.sh&#39; &gt; ~/profiling/Upload.sh</code></pre>
+<ul>
+<li>WARNING: this will obviously be running third party code which is not signed by ITL nor Fedora. You have been warned.</li>
+</ul>
 <h2 id="Workflow">Workflow</h2>
 <h3 id="Identifyfunctionresponsibleforsomeslowaction">Identify function responsible for some slow action</h3>
 <p>You have to select area in which you suspect less than optimal performance. If you do not narrow the area, graphs may be unreadable.</p>
