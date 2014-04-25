@@ -15,11 +15,11 @@ qvm-run -p qubes-dev &#39;cat ~/profiling/Upload.sh&#39; &gt; ~/profiling/Upload
 <pre><code>def foo(self, bar):
     # function content</code></pre>
 <p>with</p>
-<pre><code>def foo(self, *args):
-    profile.runctx(&#39;self.real_foo(*args)&#39;, globals(), locals(),
+<pre><code>def foo(self, *args, **kwargs):
+    profile.runctx(&#39;self.real_foo(*args, **kwargs)&#39;, globals(), locals(),
         time.strftime(&#39;/home/user/profiling/foo-%Y%m%d-%H%M%S.pstats&#39;))
 
-def real_foo(self, a, b, c):
+def real_foo(self, bar):
     # function content</code></pre>
 <h3 id="Runapplication">Run application</h3>
 <p>Beware that some functions may be called often. For example <code>qubesmanager/main.py:update_table</code> gets run once per second. This will produce one pstat file per second.</p>
