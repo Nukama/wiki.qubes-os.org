@@ -3,7 +3,7 @@ title: WikiStart
 permalink: /wiki/WikiStart
 ---
 
-[![](http://files.qubes-os.org/Architecture_files/droppedImage.png "http://files.qubes-os.org/Architecture_files/droppedImage.png")](/wiki/QubesArchitecture)
+[![No image "qubes-arch-diagram-1.png" attached to QubesArchitecture](/chrome/common/attachment.png "No image "qubes-arch-diagram-1.png" attached to QubesArchitecture")](/wiki/QubesArchitecture)
 
 Welcome to the Qubes OS Project
 ===============================
