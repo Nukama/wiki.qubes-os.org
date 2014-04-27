@@ -1,4 +1,4 @@
-|http://files.qubes-os.org/Architecture\_files/droppedImage.png|
+|No image "qubes-arch-diagram-1.png" attached to QubesArchitecture|
 
 Welcome to the Qubes OS Project
 ===============================
@@ -46,5 +46,5 @@ Recent News
 -  ``Apr 21, 2014`` Qubes OS R2 rc1 has been released!
    `​announcement <http://theinvisiblethings.blogspot.com/2014/04/qubes-os-r2-rc1-has-been-released.html>`__
 
-.. |http://files.qubes-os.org/Architecture\_files/droppedImage.png| image:: http://files.qubes-os.org/Architecture_files/droppedImage.png
+.. |No image "qubes-arch-diagram-1.png" attached to QubesArchitecture| image:: /chrome/common/attachment.png
    :target: /wiki/QubesArchitecture
