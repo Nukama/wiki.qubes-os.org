@@ -6,12 +6,11 @@ have found.
 
 All bugs and suggestions should be reported to one of our `mailing
 list </wiki/QubesLists>`__. We decided that at this stage access to the
-wiki and the `​ticketing system <https://qubes-os.org/trac/report/3>`__
-should be limited and per-invitation only, and generally granted to
-those people who actually can first demonstrate that they are capable of
-contributing something useful to the project. Our main goal is to build
-a quality product, and this has a priority over building "a large
-community".
+wiki and the `ticketing system </report/3>`__ should be limited and
+per-invitation only, and generally granted to those people who actually
+can first demonstrate that they are capable of contributing something
+useful to the project. Our main goal is to build a quality product, and
+this has a priority over building "a large community".
 
 So if you have not allowed to file new tickets You should follow these
 guide lines:
@@ -19,7 +18,7 @@ guide lines:
 #. Search the issue tracker to see if your issue is already there - if
    so please cite the issue # in any comments you post.
 
-   -  `​Simple search <https://qubes-os.org/trac/search>`__
+   -  `Simple search </search>`__
    -  `​Advanced search <https://qubes-os.org/trac/query>`__
 
 2. Search the `mailing lists </wiki/QubesLists>`__ to see if your issue
@@ -39,5 +38,5 @@ guide lines:
    questions - please do follow up.
 
 6. If the issue can be validated as a definite bug then they enters it
-   into the `​issue tracker <https://qubes-os.org/trac/report/3>`__.
+   into the `issue tracker </report/3>`__.
 
