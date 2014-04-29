@@ -1,39 +1,50 @@
 <h1 id="HardwareCompatibilityListHCLforAllQubesOSReleases">Hardware Compatibility List (HCL) for All Qubes OS Releases</h1>
-<p>This list contains information about the latest stable release (<strong>R1</strong>) and the latest development release (<strong>R2RC1</strong>). You can also find information about the previous releases (<strong>R2B{1,2,3}</strong>) here.</p>
+<p>This list contains information about the latest stable release (<strong>R1</strong>) and the latest development release (<strong>R2rc1</strong>). You can also find information about the previous releases (<strong>R2B{1,2,3}</strong>) here.</p>
 <h2 id="GeneratingandSubmittingNewReports">Generating and Submitting New Reports</h2>
-<p>In order to generate an HCL report in Qubes, simply open a terminal in dom0 and run <code>qubes-hcl-report &lt;vm-name&gt;</code>, where <code>&lt;vm-name&gt;</code> is the name of the VM to which the generated HCL files will be saved. <br /> (Note: If you are working with a new Qubes installation, you may need to update your system in order to download this script.)</p>
-<p>Users are encouraged to submit their HCL reports for the benefit of further Qubes development and other users. If you would like to submit your HCL report, please send the <strong>HCL Info</strong> <code>.txt</code> file to <code>qubes-users@googlegroups.com</code> (see <a href="/wiki/wiki/QubesLists">here</a> information about the mailing lists) with the subject <code>HCL - &lt;your machine model name&gt;</code>. <br /> Please include any useful information about any Qubes features you may have tested (see the legend above), as well as general machine compatibility (video, networking, sleep, etc.). <br /> If you have problems with your hardware, please send the <strong>HCL Support Files</strong> <code>.cpio.gz</code> file as well.</p>
-<p><strong>Please note:</strong> The <strong>HCL Support Files</strong> may contain numerous hardware details, including serial numbers. If, for privacy or security reasons, you do not wish to make this information public, please <strong>do not</strong> send the <code>.cpio.gz</code> file to the public mailing list.</p>
+<p>In order to generate an HCL report in Qubes, simply open a terminal in dom0 (KDE: start-menu -&gt; System Tools -&gt; Konsole or Terminal Emulator) and run <code>qubes-hcl-report &lt;vm-name&gt;</code>, where <code>&lt;vm-name&gt;</code> is the name of the VM to which the generated HCL files will be saved. <br /> (Note: If you are working with a new Qubes installation, you may need to update your system in order to download this script.)</p>
+<p>Users are encouraged to submit their HCL reports for the benefit of further Qubes development and other users. If you would like to submit your HCL report, please send the <strong>HCL Info</strong> <code>.txt</code> file to <code>qubes-users@googlegroups.com</code> (see <a href="/wiki/wiki/QubesLists">here</a> information about the mailing lists) with the subject <code>HCL - &lt;your machine model name&gt;</code>. <br /> Please include any useful information about any Qubes features you may have tested (see the legend below), as well as general machine compatibility (video, networking, sleep, etc.). <br /> If you have problems with your hardware, please send the <strong>HCL Support Files</strong> <code>.cpio.gz</code> file as well. And try a different kernel in the <a href="/wiki/wiki/InstallationGuideR2rc1#Troubleshooting%20problems%20with%20the%20installer">Troubleshooting menu</a>.</p>
+<p><strong>Please note:</strong> <br /> The <strong>HCL Support Files</strong> may contain numerous hardware details, including serial numbers. If, for privacy or security reasons, you do not wish to make this information public, please <strong>do not</strong> send the <code>.cpio.gz</code> file to the public mailing list.</p>
 <h2 id="Legend">Legend</h2>
-<p><strong>Note:</strong> The HCL is a compilation of reports generated and submitted by users. Except in the case of developer-reported entries, the Qubes team has not independently verified the accuracy of these reports. If using the list to make a purchasing decision, we recommend that you first test the hardware yourself, if possible.</p>
 <p><strong>Legend</strong></p>
-<p><strong>Background colors</strong></p>
-<p>White</p>
-<p>We have not received a sufficient report yet</p>
-<p>Green</p>
-<p>The reporter has sent an HCL Info output which indicates everything is OK.</p>
-<p>Yellow</p>
-<p>Some non-required feature utilized by Qubes is not working (HVM, IOMMU), or manual tweaking is required in order to get some components to work.</p>
-<p>Red</p>
-<p>These are usually machines with poor or nonexistent Linux support in general.</p>
-<p><strong>Marks</strong></p>
+<p><strong>Marks and background colour</strong></p>
 <p>Yes</p>
-<p>The feature is working correctly.</p>
+<p>Working correctly.</p>
 <p>No</p>
-<p>The feature does not work or is not present.</p>
+<p>Does not work or is not present.</p>
 <p>*</p>
-<p>An asterisk (*) indicates that some kind of tweaking is needed.</p>
+<p>Indicates that some kind of tweaking is needed, see remarks for further information.</p>
 <p> </p>
-<p>A blank cell indicates that we lack information about a feature.</p>
+<p>A blank cell indicates that we lack information about it.</p>
+<p><strong>Columns</strong></p>
+<p>Device</p>
+<p>Manufacturer and Devicename <br />(Socket/CPU, Chipset/Southbridge, Graphics)</p>
+<p><a href="https://en.wikipedia.org/wiki/Hardware_virtual_machine">HVM</a></p>
+<p><a href="https://en.wikipedia.org/wiki/Intel_VT-x#Intel-VT-x">Intel VT-x</a> or <a href="https://en.wikipedia.org/wiki/AMD-V#AMD_virtualization_.28AMD-V.29">AMD-v</a> technology (required for running HVM domains, such as <a href="https://www.qubes-os.org/trac/wiki/WindowsAppVms">Windows-based AppVMs</a>)</p>
+<p><a href="https://en.wikipedia.org/wiki/IOMMU">IOMMU</a></p>
+<p>Intel VT-d or AMD IOMMU technology (required for effective isolation of network VMs and <a href="http://wiki.xen.org/wiki/Xen_PCI_Passthrough">PCI passthrough</a>)</p>
+<p><a href="https://en.wikipedia.org/wiki/Trusted_Platform_Module">TPM</a></p>
+<p>TPM with proper BIOS support (required for <a href="https://www.qubes-os.org/trac/wiki/AntiEvilMaid">Anti Evil Maid</a>)</p>
+<p>BIOS version</p>
+<p>Reported BIOS version</p>
+<p>Qubes version</p>
+<p>Reported Qubes version (R=Release, rc=release candidate, B=Beta, i.e.: R1, R2B1, R2rc1)</p>
+<p><a href="https://en.wikipedia.org/wiki/Dom0">dom0</a> <a href="https://en.wikipedia.org/wiki/Linux_kernel#Maintenance">kernel</a></p>
+<p>Reported kernel version (numbers in uname -r), can be selected during installation and boot in Troubleshooting menu.</p>
+<p>Remarks</p>
+<p>Further information field. Qubes, dom0 and this field is coloured in conjunction to reflect compatibility.</p>
+<p>Reported by</p>
+<p>Name linked to report in qubes-users (https://groups.google.com/d/msg/qubes-devel/${ID}).</p>
 <p><br /></p>
+<p><strong>Note:</strong> <br /> The HCL is a compilation of reports generated and submitted by users. Except in the case of developer-reported entries, the Qubes team has not independently verified the accuracy of these reports. <br /> If using the list to make a purchasing decision, we recommend that you first test the hardware yourself, if possible. <br /> Try to shop for hardware with best achievable Qubes security level (green columns in HVM, IOMMU, TPM) and general machine compatibility (green columns in Qubes version, dom0 kernel, remarks).</p>
 <h2 id="Reports">Reports</h2>
 <h1>Qubes HCL</h1>
 <p>Device</p>
-<p><a href="https://en.wikipedia.org/wiki/Hardware_virtual_machine">HVM</a><br />(VT-x)</p>
-<p><a href="https://en.wikipedia.org/wiki/IOMMU">IOMMU</a><br />(VT-d)</p>
+<p>HVM</p>
+<p>IOMMU</p>
+<p>TPM</p>
 <p>BIOS version</p>
 <p><strong>Qubes version</strong></p>
-<p><a href="https://en.wikipedia.org/wiki/Dom0">dom0</a> <a href="https://en.wikipedia.org/wiki/Linux_kernel#Maintenance">kernel</a></p>
+<p>dom0 kernel</p>
 <p>Remarks</p>
 <p>Reported by</p>
 <p><strong>Laptop Devices</strong></p>
@@ -65,7 +76,7 @@
 <p>Yes</p>
 <p>Yes</p>
 <p>UX31A.212</p>
-<p>R2RC1</p>
+<p>R2rc1</p>
 <p>3.12.14-4</p>
 <p>USB Ethernet dongle not working.</p>
 <p><a href="https://groups.google.com/d/msg/qubes-users/WFukA9TlQog/fua6-o89AEoJ">Darren Thurston</a></p>
@@ -136,7 +147,7 @@
 <p>R2B3</p>
 <p>3.7.4</p>
 <p><a href="https://groups.google.com/d/msg/qubes-users/pAVGe04ZC48/AJwY6yd7LeIJ">​Zrubi</a></p>
-<p>R2RC1</p>
+<p>R2rc1</p>
 <p>3.12.14</p>
 <p>The optional nVidia Optimus VGA is still not working.</p>
 <p><a href="https://groups.google.com/d/msg/qubes-users/sfV4-pMWrBY/qiHlnnza9a0J">​Zrubi</a></p>
@@ -223,8 +234,9 @@
 <p>Lenovo Thinkpad T410 (2522AC1)<br /> (i5-520M, Arrandale, HD graphics)</p>
 <p>Yes</p>
 <p>Yes</p>
+<p>Yes</p>
 <p>1.32</p>
-<p>R2RC1</p>
+<p>R2rc1</p>
 <p>3.12.14-4</p>
 <p>AEM works</p>
 <p><a href="https://groups.google.com/d/msg/qubes-users/68PRfx5FteY/H6rvQ6ojEysJ">​Vincent Penquerc'h</a></p>
@@ -238,12 +250,14 @@
 <p>Lenovo Thinkpad T420<br /> ()</p>
 <p>Yes</p>
 <p>Yes</p>
+<p>Yes</p>
 <p>R1</p>
 <p><a href="">​Qubes core developers</a></p>
 <p>R2B1</p>
 <p>AEM works</p>
 <p><a href="">​Qubes core developers</a></p>
 <p>Lenovo Thinkpad T420s<br /> (i5-2520M, Sandy Bridge, Intel HD graphics)</p>
+<p>Yes</p>
 <p>Yes</p>
 <p>Yes</p>
 <p>R1</p>
@@ -283,7 +297,7 @@
 <p>3.11</p>
 <p><a href="https://groups.google.com/d/msg/qubes-users/Ll_pPP7glwI/jtRbKtQO_rMJ">​cprise</a></p>
 <p>2.58</p>
-<p>R2RC1</p>
+<p>R2rc1</p>
 <p>3.12.14-4</p>
 <p><a href="https://groups.google.com/d/msg/qubes-users/452tkVCzvOw/_dQ8DXaDzp0J">​cprise</a></p>
 <p>Lenovo Thinkpad T430u<br /> (i7-3517M, Ivy Bridge, HD Graphics + GT 620M)</p>
@@ -316,7 +330,7 @@
 <p>R2B3</p>
 <p>3.9.2</p>
 <p><a href="https://groups.google.com/d/msg/qubes-users/UP9BK_yn-Pk/DR6PBVF4GlgJ">​pete</a></p>
-<p>R2RC1</p>
+<p>R2rc1</p>
 <p>3.9.2</p>
 <p>Audio is always muted after reboot</p>
 <p><a href="https://groups.google.com/d/msg/qubes-users/4ASK0cBfMM0/11U7Zx-f7HwJ">​pete</a></p>
@@ -352,7 +366,7 @@
 <p>Lenovo Thinkpad X201<br /> (i5-520M, HD3000)</p>
 <p>Yes</p>
 <p>Yes</p>
-<p>R2RC1</p>
+<p>R2rc1</p>
 <p>3.9.2-2</p>
 <p>X problem with activated VT-d on all other kernel versions</p>
 <p><a href="https://groups.google.com/d/msg/qubes-users/z5BEjSuR7VE/CD2JMeAhDaoJ">​Joonas Lehtonen</a></p>
@@ -482,7 +496,7 @@
 <p>3.9.2-2</p>
 <p>Problem with graphics on 3.11,3.7, only 2GB RAM.</p>
 <p><a href="https://groups.google.com/d/msg/qubes-users/RYzkSFoMsxQ/ukXhBW4ybqQJ">​Nukama</a></p>
-<p>R2RC1</p>
+<p>R2rc1</p>
 <p>3.9</p>
 <p>Problem with graphics on 3,12,3.11,3.7, only 2GB RAM stock.</p>
 <p><a href="https://groups.google.com/d/msg/qubes-users/RYzkSFoMsxQ/ukXhBW4ybqQJ">​Nukama</a></p>
@@ -530,7 +544,7 @@
 <p>3.9.2-2</p>
 <p><a href="/trac/ticket/762">#762</a></p>
 <p><a href="https://groups.google.com/d/msg/qubes-users/DTot3wX1-nQ/229c20xWrdQJ">​Nukama</a></p>
-<p>R2RC1</p>
+<p>R2rc1</p>
 <p>3.12.14-4</p>
 <p>USB-Devices are working in 3.12 installer and luks prompt again.</p>
 <p><a href="https://groups.google.com/d/msg/qubes-users/DTot3wX1-nQ/229c20xWrdQJ">​Nukama</a></p>
@@ -549,7 +563,7 @@
 <p>R2B2</p>
 <p>3.11.1-2</p>
 <p><a href="https://groups.google.com/d/msg/qubes-users/S4Ju0zDM2mI/Q4GZ4S2txdMJ">Fabian Lichte</a></p>
-<p>R2RC1</p>
+<p>R2rc1</p>
 <p>3.12.14-4</p>
 <p><a href="https://groups.google.com/d/msg/qubes-users/S4Ju0zDM2mI/Q4GZ4S2txdMJ">Fabian Lichte</a></p>
 <p>Gigabyte GA-FXA990-UD3 (rev 3.0)<br /> (AMD FX-8350, GTX 470)</p>
