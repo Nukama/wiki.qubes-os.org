@@ -102,7 +102,7 @@ installation and boot in Troubleshooting menu.
 Remarks
 
 Further information field. Qubes, dom0 and this field is coloured in
-conjunction to reflect compatibility.
+conjunction to reflect general machine compatibility.
 
 Reported by
 
