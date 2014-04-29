@@ -77,7 +77,7 @@ Reported kernel version (numbers in uname -r), can be selected during installati
 
 Remarks
 
-Further information field. Qubes, dom0 and this field is coloured in conjunction to reflect compatibility.
+Further information field. Qubes, dom0 and this field is coloured in conjunction to reflect general machine compatibility.
 
 Reported by
 
