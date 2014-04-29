@@ -106,8 +106,8 @@ conjunction to reflect compatibility.
 
 Reported by
 
-Name linked to report in qubes-users
-(https://groups.google.com/d/msg/qubes-devel/${ID}).
+Name linked to report in
+`qubes-users. <https://groups.google.com/forum/#!forum/qubes-users>`__
 
 | 
 
