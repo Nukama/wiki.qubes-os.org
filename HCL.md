@@ -51,6 +51,10 @@ Device
 Manufacturer and Devicename
 (Socket/CPU, Chipset/Southbridge, Graphics)
 
+BIOS version
+
+Reported BIOS version
+
 [HVM](https://en.wikipedia.org/wiki/Hardware_virtual_machine)
 
 [Intel VT-x](https://en.wikipedia.org/wiki/Intel_VT-x#Intel-VT-x) or [AMD-v](https://en.wikipedia.org/wiki/AMD-V#AMD_virtualization_.28AMD-V.29) technology (required for running HVM domains, such as [Windows-based AppVMs](https://www.qubes-os.org/trac/wiki/WindowsAppVms))
@@ -62,10 +66,6 @@ Intel VT-d or AMD IOMMU technology (required for effective isolation of network 
 [TPM](https://en.wikipedia.org/wiki/Trusted_Platform_Module)
 
 TPM with proper BIOS support (required for [Anti Evil Maid](https://www.qubes-os.org/trac/wiki/AntiEvilMaid))
-
-BIOS version
-
-Reported BIOS version
 
 Qubes version
 
@@ -96,13 +96,13 @@ Qubes HCL
 
 Device
 
+BIOS version
+
 HVM
 
 IOMMU
 
 TPM
-
-BIOS version
 
 **Qubes version**
 
@@ -169,11 +169,11 @@ R2B2
 ASUS Zenbook UX31A
  (i5-3317U, Ivy Bridge, HD4000)
 
-Yes
-
-Yes
-
 UX31A.212
+
+Yes
+
+Yes
 
 R2rc1
 
@@ -186,11 +186,11 @@ USB Ethernet dongle not working.
 ASUS Zenbook UX31A
  (i7-3517U, Ivy Bridge, HD4000)
 
-Yes
-
-Yes
-
 UX31A.212
+
+Yes
+
+Yes
 
 R2B3
 
@@ -203,11 +203,11 @@ Backlight keyboard keys not working. Only 4GB ram, but works.
 Clevo P150EM (Sager NP9150)
  (i7-3720QM, HD4000)
 
-Yes
-
-Yes
-
 4.6.5
+
+Yes
+
+Yes
 
 R2B3
 
@@ -220,13 +220,13 @@ Most features work on 3.7 and 3.11, but for best results use 3.9.
 Clevo P151HM1
  (i7-2720QM, Sandy Bridge, GeForce GTX 460M)
 
+4.6.4
+
 Yes
 
 Yes
 
 No
-
-4.6.4
 
 R2rc1
 
@@ -237,11 +237,11 @@ R2rc1
 Dell Latitude E4300
  (P9600, GMA 4500MHD, Mobile 4 Series Chipset)
 
-Yes
-
-Yes
-
 A24
+
+Yes
+
+Yes
 
 R2B2
 
@@ -271,11 +271,11 @@ R1
 Dell Latitude E6320
  (i5-2540M, Sandy Bridge, HD graphics)
 
-Yes
-
-Yes
-
 A06
+
+Yes
+
+Yes
 
 R2B2
 
@@ -323,11 +323,11 @@ R2B3
 Dell Latitude E6430
  (i5-3340M, Ivy Bridge, HD graphics)
 
-Yes
-
-Yes
-
 A11
+
+Yes
+
+Yes
 
 R2B2
 
@@ -393,11 +393,11 @@ R2B2
 Dell XPS 13 (L322X)
  (i7-3537U, Ivy Bridge, Intel HD)
 
+A09
+
 Yes
 
 No
-
-A09
 
 R2B2
 
@@ -408,11 +408,11 @@ R2B2
 Fujitsu S751
  (i5-2520M, QM67, HD3000)
 
-Yes
-
-Yes
-
 1.18
+
+Yes
+
+Yes
 
 R1
 
@@ -439,11 +439,11 @@ R2B3
 HP EliteBook 8540p
  (i5-2540M, Arrandale, NVIDIA GT216)
 
-Yes
-
-Yes
-
 F.0C
+
+Yes
+
+Yes
 
 R2B2
 
@@ -454,11 +454,11 @@ R2B2
 HP EliteBook 8560p
  (i5-2540M, Sandy Bridge, ATI Caicos)
 
-Yes
-
-Yes
-
 F.08
+
+Yes
+
+Yes
 
 R2B2
 
@@ -469,11 +469,11 @@ R2B2
 HP Pavilion Sleekbook 14-B030TU
  (i5-3317U, Ivy Bridge, Intel HD Graphics)
 
-Yes
-
-Yes
-
 F.06
+
+Yes
+
+Yes
 
 R2B1
 
@@ -488,11 +488,11 @@ R2B2
 Lenovo Thinkpad Edge E130
  (i3-3217U, Ivy Bridge, HD Graphics)
 
-Yes
-
-Yes
-
 2.05
+
+Yes
+
+Yes
 
 R2B2
 
@@ -522,13 +522,13 @@ R2B3
 Lenovo Thinkpad T410 (2522AC1)
  (i5-520M, Arrandale, HD graphics)
 
-Yes
-
-Yes
-
-Yes
-
 1.32
+
+Yes
+
+Yes
+
+Yes
 
 R2rc1
 
@@ -541,11 +541,11 @@ AEM works
 Lenovo Thinkpad T410 (2516CTO)
  (i7-620M, Arrandale, HD graphics)
 
-Yes
-
-Yes
-
 1.34
+
+Yes
+
+Yes
 
 R2B3
 
@@ -617,11 +617,11 @@ R2B1
 Lenovo Thinkpad T430
  (i5-3360M, Ivy Bridge, HD Graphics)
 
-Yes
-
-Yes
-
 2.5.1
+
+Yes
+
+Yes
 
 R2B2
 
@@ -632,11 +632,11 @@ R2B2
 Lenovo Thinkpad T430s
  (i5-3320M, QM77, HD4000)
 
-Yes
-
-Yes
-
 2.05
+
+Yes
+
+Yes
 
 R2B1
 
@@ -667,11 +667,11 @@ R2rc1
 Lenovo Thinkpad T430u
  (i7-3517M, Ivy Bridge, HD Graphics + GT 620M)
 
-Yes
-
-Yes
-
 2.08
+
+Yes
+
+Yes
 
 R2B1
 
@@ -682,11 +682,11 @@ R2B1
 Lenovo Thinkpad T440p
  (i7-4800MQ, Haswell, Intel HD graphics)
 
-Yes
-
-Yes
-
 2.21
+
+Yes
+
+Yes
 
 R2B3
 
@@ -699,11 +699,11 @@ R2B3
 Lenovo Thinkpad T500
  (P8400, GM45, GMA 4500MHD)
 
+3.22
+
 Yes
 
 \*
-
-3.22
 
 R2B3
 
@@ -716,11 +716,11 @@ activated VT-d BIOS option not recognized in Qubes
 Lenovo T510 (4384-WGZ)
  (i5-520M, Arrandale, Intel HD graphics)
 
-Yes
-
-Yes
-
 1.52
+
+Yes
+
+Yes
 
 R2B3
 
@@ -761,11 +761,11 @@ R2B2
 Lenovo X1 Carbon Gen 2
  (i5-4300U, Haswell-ULT, HD4000)
 
-No
-
-No
-
 1.07
+
+No
+
+No
 
 R2B3
 
@@ -778,11 +778,11 @@ needs iwl7260-firmware in netvm
 Lenovo X1 Carbon Gen 2
  (i7-4600U, Haswell-ULT, HD4000)
 
-Yes
-
-Yes
-
 1.11
+
+Yes
+
+Yes
 
 R2B3
 
@@ -817,11 +817,11 @@ X problem with activated VT-d on all other kernel versions
 Lenovo Thinkpad X220 (4290-W3W)
  (i5-2520M, QM67, HD3000)
 
-Yes
-
-Yes
-
 1.39
+
+Yes
+
+Yes
 
 R1
 
@@ -842,11 +842,11 @@ R2B3
 Lenovo Thinkpad X230
  (i5-3320M, Ivy Bridge, HD Graphics)
 
-Yes
-
-Yes
-
 2.5.1
+
+Yes
+
+Yes
 
 R1
 
@@ -863,11 +863,11 @@ R2B2
 Samsung NP300E7A
  (i3-2330M, HM65, HD3000)
 
+P04ABJ
+
 Yes
 
 No
-
-P04ABJ
 
 R2B3
 
@@ -878,11 +878,11 @@ R2B3
 Samsung Series 7 Chronos NP700Z5C
  (i7-3635QM, nVidia Optimus)
 
+P04ABJ
+
 Yes
 
 No
-
-P04ABJ
 
 R1
 
@@ -905,11 +905,11 @@ R2B2
 Samsung X460
  (P8600, PM45, GeForce 9200M GS)
 
+20091110
+
 Yes
 
 No
-
-20091110
 
 R1
 
@@ -971,9 +971,9 @@ R1
 
 [​Danny Fullerton](https://groups.google.com/d/msg/qubes-devel/xoyNCigBvFE/fkC6em-Wqd0J)
 
-Yes
-
 R0170H5
+
+Yes
 
 R2B3
 
@@ -986,9 +986,9 @@ BIOS has to be patched to activate VT-d, external Radeon HD 6700M
 Toshiba M780 S7240
  ()
 
-Yes
-
 latest
+
+Yes
 
 R1
 
@@ -1030,11 +1030,11 @@ R2B2
 Dell Inspiron 660
  (i5-3330, Xeon E3-1200 Graphics)
 
-Yes
-
-Yes
-
 A09
+
+Yes
+
+Yes
 
 R2B2
 
@@ -1054,11 +1054,11 @@ R1
 Dell Precision T3400 Workstation
  (Intel Q6600, NVIDIA Quadro NVS 290)
 
+A09
+
 Yes
 
 No
-
-A09
 
 R2B2
 
@@ -1067,13 +1067,13 @@ R2B2
 HP Compaq dc7800 SFF
  (E8400, Q35)
 
+1.32
+
 Yes
 
 \*
 
 \*
-
-1.32
 
 R2B3
 
@@ -1086,11 +1086,11 @@ IGP won't work with activated VT-d (3.12,3.11,3.7), [​3,9 works](https://group
 HP Compaq dc7900 Convertible Minitower
  (E8400, Q45/Q43)
 
-Yes
-
-Yes
-
 1.26
+
+Yes
+
+Yes
 
 R2B3
 
@@ -1111,11 +1111,11 @@ Problem with graphics on 3,12,3.11,3.7, only 2GB RAM stock.
 HP ProLiant DL360 G5
  (E5440, 5000P, ATI ES1000)
 
+P58
+
 Yes
 
 No
-
-P58
 
 R2B3
 
@@ -1128,11 +1128,11 @@ Some video glitches, no audio hardware.
 Lenovo ThinkCentre M71e
  (G620, H61, HD2000)
 
+9QKT29AUS
+
 Yes
 
 No
-
-9QKT29AUS
 
 R2B3
 
@@ -1145,11 +1145,11 @@ R2B3
 ASRock G31M-GS
  (LGA775, G31, GMA3100)
 
+P1.90
+
 Yes
 
 No
-
-P1.90
 
 R2rc1
 
@@ -1162,11 +1162,11 @@ using Q6600 and GeForce 8600 GT
 ASRock Q87M Vpro
  (LGA1150, Q87)
 
-Yes
-
-Yes
-
 P1.50
+
+Yes
+
+Yes
 
 R2B3
 
@@ -1179,11 +1179,11 @@ Problems with Power Saving, Audio and USB3
 ASRock Z77 Pro4
  (i7-3770, Ivy Bridge, HD Graphics 4000)
 
-Yes
-
-Yes
-
 P1.40
+
+Yes
+
+Yes
 
 R2B2
 
@@ -1194,13 +1194,13 @@ R2B2
 Asus M4A89GTD USB3/PRO
  ()
 
+3029
+
 Yes
 
 No
 
 No
-
-3029
 
 R2rc1
 
@@ -1222,11 +1222,11 @@ R2B3
 Biostar TA790GX A3+
  (AM3, 790GX/SB750)
 
+78DAA420
+
 Yes
 
 No
-
-78DAA420
 
 R2B3
 
@@ -1247,11 +1247,11 @@ USB-Devices are working in 3.12 installer and luks prompt again.
 EVGA\_E685
  (LGA1150, Z68)
 
+4.6.4
+
 Yes
 
 No
-
-4.6.4
 
 R2B3
 
@@ -1264,11 +1264,11 @@ Problems with Audio
 Gigabyte GA-870A-UD3
  (Phenom II X4 955, 870/SB850, GTX 460)
 
+F5a
+
 Yes
 
 No
-
-F5a
 
 R2B2
 
@@ -1296,11 +1296,11 @@ R2B2
 Gigabyte GA-X79S-UP5 Wi-Fi
  (LGA2011, C606)
 
-Yes
-
-Yes
-
 1.0
+
+Yes
+
+Yes
 
 VT-d option in BIOS according to [manual](http://download.gigabyte.eu/FileList/Manual/mb-manual_ga-x79s-up5_e.pdf)
 
@@ -1316,11 +1316,11 @@ R2B2
 MSI GX660
  (i5-460M, PM55, Radeon HD5870)
 
+1.0L
+
 Yes
 
 No
-
-1.0L
 
 R2B3
 
@@ -1331,11 +1331,11 @@ R2B3
 Supermicro X10SAE
  (Xeon E3-1245, Haswell)
 
-Yes
-
-Yes
-
 1.0
+
+Yes
+
+Yes
 
 R1
 
