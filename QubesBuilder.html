@@ -125,9 +125,9 @@ BRANCH_dom0_updates=devel/xserver-1.12
 <li>Restart login manager (now it will start and allow you to login graphically): initctl restart prefdm</li>
 </ol>
 <h1 id="Codeverificationkeysmanagement">Code verification keys management</h1>
-<p><a href="/wiki/wiki/QubesBuilder">QubesBuilder</a> by default verify signed tags on every downloaded code. Public keys used for that are stored in <code>keyrings/git</code>. By default Qubes developers keys are imported automatically, but if you need some additional keys (for example your own), you can add it using:</p>
+<p><a href="/wiki/wiki/QubesBuilder">QubesBuilder</a> by default verifies signed tags on every downloaded code. Public keys used for that are stored in <code>keyrings/git</code>. By default Qubes developers' keys are imported automatically, but if you need some additional keys (for example your own), you can add them using:</p>
 <pre class="wiki"><code>GNUPGHOME=$PWD/keyrings/git gpg --import /path/to/key.asc
 GNUPGHOME=$PWD/keyrings/git gpg --edit-key ID_OF_JUST_IMPORTED_KEY
-# here use &quot;trust&quot; command to set key fully or ultimately trusted - only those keys are accepted by QubesBulder</code></pre>
-<p>All Qubes developers keys are signed by Qubes Master Signing Key (which is set as ultimately trusted key), so are trusted automatically.</p>
-<p>If you are the owner of Master key and want to revoke such signature, use <code>revsig</code> gpg key edit command and update the key in qubes-developers-keys.asc - now the key will be no longer trusted (unless manually set such).</p>
+# here use &quot;trust&quot; command to set key fully or ultimately trusted - only those keys are accepted by QubesBuilder</code></pre>
+<p>All Qubes developers' keys are signed by the Qubes Master Signing Key (which is set as ultimately trusted key), so are trusted automatically.</p>
+<p>If you are the owner of Master key and want to revoke such signature, use the <code>revsig</code> gpg key edit command and update the key in qubes-developers-keys.asc - now the key will be no longer trusted (unless manually set as such).</p>
