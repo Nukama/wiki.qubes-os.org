@@ -34,6 +34,19 @@ poweroff</code></pre>
 <p><strong>It is critical to use the same (or bigger for some safety margin) size in truncate call compared to resize2fs call. Otherwise you will loose your data!</strong> Then reset kernel options back to default:</p>
 <pre class="wiki"><code>qvm-prefs -s &lt;vm-name&gt; kernelopts default</code></pre>
 <p>Done.</p>
+<h3 id="Templatediskimage">Template disk image</h3>
+<p>If you want install a lot of software in your TemplateVM, you may need to increase the amount of disk space your TemplateVM can use.</p>
+<ol>
+<li>Make sure that all the VMs based on this template are shut off (including netvms etc).</li>
+<li>Sanity check: verify that none of loop device are pointing at this template root.img: <code>sudo losetup -a</code></li>
+<li>Resize root.img file using <code>truncate -s &lt;desired size&gt;</code> (root.img path you can obtain from qvm-prefs).</li>
+<li>If any netvm/proxyvm used by this template is based on it, set template netvm to none.</li>
+<li>Start the template.</li>
+<li>Now you can execute <code>sudo resize2fs /dev/mapper/dmroot</code> in the template.</li>
+<li>Verify available space in the template.</li>
+<li>Shutdown the template.</li>
+<li>Restore original netvm setting (if changed), check firewall settings (setting netvm to none causes firewall reset to &quot;block all&quot;)</li>
+</ol>
 <h3 id="HVMdiskimage">HVM disk image</h3>
 <p>In this example we will grow the disk image of an HVM to 30GB.</p>
 <p>First, stop/shutdown the HVM.</p>
