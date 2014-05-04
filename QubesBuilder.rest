@@ -105,7 +105,7 @@ gui virtualization agent/daemon:
 
 .. code:: wiki
 
-    make gui
+    make gui-daemon
 
 Full list you can get from make help. For advanced use and preparing
 sources for use with `QubesBuilder </wiki/QubesBuilder>`__ take a look
