@@ -94,14 +94,13 @@ to increase the amount of disk space your TemplateVM can use.
    (including netvms etc).
 #. Sanity check: verify that none of loop device are pointing at this
    template root.img: ``sudo losetup -a``
-#. Resize root.img file using ``truncate -s <desired size>`` (root.img
-   path you can obtain from qvm-prefs).
+#. Resize root.img file using ``truncate -s <desired size>`` (the
+   root.img path can be obtained from qvm-prefs).
 #. If any netvm/proxyvm used by this template is based on it, set
    template netvm to none.
 #. Start the template.
-#. Now you can execute ``sudo resize2fs /dev/mapper/dmroot`` in the
-   template.
-#. Verify available space in the template.
+#. Execute ``sudo resize2fs /dev/mapper/dmroot`` in the template.
+#. Verify available space in the template using ``df -h``
 #. Shutdown the template.
 #. Restore original netvm setting (if changed), check firewall settings
    (setting netvm to none causes firewall reset to "block all")
