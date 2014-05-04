@@ -39,11 +39,11 @@ poweroff</code></pre>
 <ol>
 <li>Make sure that all the VMs based on this template are shut off (including netvms etc).</li>
 <li>Sanity check: verify that none of loop device are pointing at this template root.img: <code>sudo losetup -a</code></li>
-<li>Resize root.img file using <code>truncate -s &lt;desired size&gt;</code> (root.img path you can obtain from qvm-prefs).</li>
+<li>Resize root.img file using <code>truncate -s &lt;desired size&gt;</code> (the root.img path can be obtained from qvm-prefs).</li>
 <li>If any netvm/proxyvm used by this template is based on it, set template netvm to none.</li>
 <li>Start the template.</li>
-<li>Now you can execute <code>sudo resize2fs /dev/mapper/dmroot</code> in the template.</li>
-<li>Verify available space in the template.</li>
+<li>Execute <code>sudo resize2fs /dev/mapper/dmroot</code> in the template.</li>
+<li>Verify available space in the template using <code>df -h</code></li>
 <li>Shutdown the template.</li>
 <li>Restore original netvm setting (if changed), check firewall settings (setting netvm to none causes firewall reset to &quot;block all&quot;)</li>
 </ol>
