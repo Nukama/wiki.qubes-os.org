@@ -10,3 +10,36 @@ ln -s /rw/config/var-lib-bluetooth /var/lib/bluetooth</code></pre></li>
 <li><code>/rw/config/suspend-module-blacklist</code> - list of modules (one per line) to be unloaded before system going to sleep. The file is used only in VM with some PCI devices attached. Supposed to be used for problematic device drivers.</li>
 </ul>
 <p>Note that scripts need to be executable (chmod +x) to be used.</p>
+<h1 id="GUIandaudioconfigurationindom0">GUI and audio configuration in dom0</h1>
+<p>GUI configuration file <code>/etc/qubes/guid.conf</code> in one of few not managed by qubes-prefs nor Qubes Manager tool. Sample config (included in default installation):</p>
+<pre class="wiki"><code># Sample configuration file for Qubes GUI daemon
+#  For syntax go http://www.hyperrealm.com/libconfig/libconfig_manual.html
+
+global: {
+  # default values
+  #allow_fullscreen = false;
+  #allow_utf8_titles = false;
+  #secure_copy_sequence = &quot;Ctrl-Shift-c&quot;;
+  #secure_paste_sequence = &quot;Ctrl-Shift-v&quot;;
+  #windows_count_limit = 500;
+  #audio_low_latency = false;
+};
+
+# most of setting can be set per-VM basis
+
+VM: {
+  work: {
+    #allow_utf8_titles = true;
+  };
+  video-vm: {
+    #allow_fullscreen = true;
+  };
+};</code></pre>
+<p>Currently supported settings:</p>
+<ul>
+<li><code>allow_fullscreen</code> - allow VM to request its windows to go fullscreen (without any colorful frame). Regardless of this setting, you can also set window fullscreen using trusted window manager settings (right click on title bar).</li>
+<li><code>allow_utf8_titles</code> - allow to use UTF-8 in window titles, otherwise non-ASCII characters are replaced by underscore.</li>
+<li><code>secure_copy_sequence</code> and <code>secure_paste_sequence</code> - key sequences used to trigger secure copy and paste</li>
+<li><code>windows_count_limit</code> - limit on concurrent windows count.</li>
+<li><code>audio_low_latency</code> - force low-latency audio mode (about 40ms compared to 200-500ms by default). Note that this will cause much higher CPU usage in dom0.</li>
+</ul>
