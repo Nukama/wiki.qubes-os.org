@@ -42,6 +42,8 @@ Advanced Topics
 -  `Enabling Fullscreen Mode for AppVMs </wiki/FullScreenMode>`__
 -  `Using OpenPGP in Qubes </wiki/UserDoc/OpenPGP>`__
 -  `Installing ZFS in Qubes </wiki/ZFS>`__
+-  `Qubes service framework </wiki/QubesService>`__
+-  `Enabling TRIM for SSD disks </wiki/DiskTRIM>`__
 
 Command-Line Tool References
 ----------------------------
