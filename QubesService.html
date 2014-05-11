@@ -1,0 +1,11 @@
+<p>Usage documentation is on <a href="/wiki/wiki/Dom0Tools/QvmService">qvm-service manual page</a>. There are also described predefined services.</p>
+<p>Under the hood enabled service in VM is signaled by file in /var/run/qubes-service. This can be used to implement almost enable/disable <strong>per-VM</strong> switch controlled by dom0. Adding support for systemd services is pretty simple:</p>
+<ol>
+<li>Disable old service: <code>systemctl disable &lt;service name&gt;</code></li>
+<li><p>Create <code>/etc/systemd/system/&lt;service name&gt;.service</code> file containing:</p>
+<pre class="wiki"><code>.include /lib/systemd/system/&lt;service name&gt;.service
+[Unit]
+ConditionPathExists=/var/run/qubes-service/&lt;service name&gt;</code></pre></li>
+<li>Enable new service: <code>systemctl enable &lt;service name&gt;</code>.</li>
+</ol>
+<p>This will cause service to be started only when you enable it with qvm-service for given VM.</p>
