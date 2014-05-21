@@ -44,6 +44,7 @@ Advanced Topics
 -  `Installing ZFS in Qubes </wiki/ZFS>`__
 -  `Qubes service framework </wiki/QubesService>`__
 -  `Enabling TRIM for SSD disks </wiki/DiskTRIM>`__
+-  `Understanding and Preventing Data Leaks </wiki/DataLeaks>`__
 
 Command-Line Tool References
 ----------------------------
