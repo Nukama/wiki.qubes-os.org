@@ -61,7 +61,7 @@ must distinguish among three different types of relevant data leaks:
    VM by some non-malicious software there (e.g., non-leak-proof GPG
    accidentally leaking out bits of the private key by generating some
    timing patterns when using this key for some crypto operation). Such
-   attacks have been described in the academic literature, but it
+   attacks have been described in the academic literature, but it is
    doubtful that they would succeed in practice in a moderately busy
    general purpose system like Qubes OS (where the attacker normally has
    no way to trigger the target crypto operation explicitly, and it is
