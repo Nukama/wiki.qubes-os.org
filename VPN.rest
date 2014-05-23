@@ -40,18 +40,20 @@ Using a ProxyVM to set up a VPN client will gives you the ability to:
 
 **To setup a ProxyVM as a VPN gateway you should:**
 
+#. check (``rpm -q  qubes-core-vm``) if you have the package
+   **qubes-core-vm** version **2.1.36** (or later)
 #. create a new VM and check the ProxyVM radio button
 
 |No image "Create\_New\_VM.png" attached to VPN|
 
-2. add the network-manager service to this new VM
+3. add the network-manager service to this new VM
 
 |No image "Settings-services.png" attached to VPN|
 
-3. set up Your VPN as described in the Network Manager documentation
+4. set up Your VPN as described in the Network Manager documentation
    linked above.
 
-4. connect your AppVMs to use the new VM as a NetVM.
+5. connect your AppVMs to use the new VM as a NetVM.
 
 |No image "Settings-NetVM.png" attached to VPN|
 
