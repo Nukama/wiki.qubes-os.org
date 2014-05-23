@@ -23,6 +23,13 @@ to set up your VPN connection. However this has some disadvantages:
 -  All your AppVMs wich are connected to the NetVM will be connected to
    the VPN (by default)
 
+AppVM
+~~~~~
+
+While the Network Manager is not started here (for a good reason) You
+can configure any kind of VPN client in your AppVM as well, however it
+is only suggested if you have to use a special VPN client.
+
 ProxyVM
 ~~~~~~~
 
@@ -56,13 +63,6 @@ Using a ProxyVM to set up a VPN client will gives you the ability to:
 5. connect your AppVMs to use the new VM as a NetVM.
 
 |No image "Settings-NetVM.png" attached to VPN|
-
-AppVM
-~~~~~
-
-While the Network Manager is not started here (for a good reason) You
-can configure any kind of VPN client in your AppVM as well, however it
-is only suggested if you have to use a special VPN client.
 
 .. |No image "Create\_New\_VM.png" attached to VPN| image:: /chrome/common/attachment.png
    :target: /attachment/wiki/VPN/Create_New_VM.png
