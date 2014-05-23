@@ -15,19 +15,21 @@
 <li>Separate your VPN credentials from Your AppVM data.</li>
 <li>You can easily controll wich of your AppVMs are connected to your VPN by simply set it as a NetVM of the desired AppVM.</li>
 </ul>
-<p>To setup a ProxyVM as a VPN gateway you should:</p>
-<ul>
+<p><strong>To setup a ProxyVM as a VPN gateway you should:</strong></p>
+<ol>
 <li>create a new VM and check the ProxyVM radiobutton</li>
-</ul>
+</ol>
 <p><a href="/wiki/attachment/wiki/VPN/Settings-NetVM.png"><img src="/wiki/chrome/common/attachment.png" title="No image &quot;Settings-NetVM.png&quot; attached to VPN" alt="No image &quot;Settings-NetVM.png&quot; attached to VPN" /></a></p>
-<ul>
+<ol start="2">
 <li>add the network-manager service to this new VM</li>
-</ul>
+</ol>
 <p><a href="/wiki/attachment/wiki/VPN/Settings-services.png"><img src="/wiki/chrome/common/attachment.png" title="No image &quot;Settings-services.png&quot; attached to VPN" alt="No image &quot;Settings-services.png&quot; attached to VPN" /></a></p>
-<ul>
+<ol start="3">
 <li>set up Your VPN as described in the Network Manager documentation linked above.</li>
+</ol>
+<ol start="4">
 <li>connect your AppVMs to use the new VM as a NetVM.</li>
-</ul>
+</ol>
 <p><a href="/wiki/attachment/wiki/VPN/Settings-NetVM.png"><img src="/wiki/chrome/common/attachment.png" title="No image &quot;Settings-NetVM.png&quot; attached to VPN" alt="No image &quot;Settings-NetVM.png&quot; attached to VPN" /></a></p>
 <h3 id="AppVM">AppVM</h3>
 <p>While the Network Manager is not started here (for a good reason) You can configure any kind of VPN client in your AppVM as well, however it is only suggested if you have to use a special VPN clinet.</p>
