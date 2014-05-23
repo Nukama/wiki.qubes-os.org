@@ -8,17 +8,17 @@
 <li>All your AppVMs wich are connected to the NetVM will be connected to the VPN (by default)</li>
 </ul>
 <h3 id="ProxyVM">ProxyVM</h3>
-<p>One of the best thing in Qubes that you can use a specian type of VMs called ProxyVM (or FirewallVM). The special thing is that your AppVMs see this as a NetVM, and the NetVMs see it as an AppVM. Because of that You can place a ProxyVM between your AppVMs and Your NetVM. This is how the default firewall VM is working.</p>
-<p>Using a ProxyVM to set up a VPN clinet will gives you the ability to:</p>
+<p>One of the best thing in Qubes that you can use a special type of VMs called ProxyVM (or FirewallVM). The special thing is that your AppVMs see this as a NetVM, and the NetVMs see it as an AppVM. Because of that You can place a ProxyVM between your AppVMs and Your NetVM. This is how the default firewall VM is working.</p>
+<p>Using a ProxyVM to set up a VPN client will gives you the ability to:</p>
 <ul>
 <li>Separate your VPN credentials from Your AppVM data.</li>
-<li>You can easily controll wich of your AppVMs are connected to your VPN by simply set it as a NetVM of the desired AppVM.</li>
+<li>You can easily control which of your AppVMs are connected to your VPN by simply set it as a NetVM of the desired AppVM.</li>
 </ul>
 <p><strong>To setup a ProxyVM as a VPN gateway you should:</strong></p>
 <ol>
-<li>create a new VM and check the ProxyVM radiobutton</li>
+<li>create a new VM and check the ProxyVM radio button</li>
 </ol>
-<p><a href="/wiki/attachment/wiki/VPN/Settings-NetVM.png"><img src="/wiki/chrome/common/attachment.png" title="No image &quot;Settings-NetVM.png&quot; attached to VPN" alt="No image &quot;Settings-NetVM.png&quot; attached to VPN" /></a></p>
+<p><a href="/wiki/attachment/wiki/VPN/Create_New_VM.png"><img src="/wiki/chrome/common/attachment.png" title="No image &quot;Create_New_VM.png&quot; attached to VPN" alt="No image &quot;Create_New_VM.png&quot; attached to VPN" /></a></p>
 <ol start="2">
 <li>add the network-manager service to this new VM</li>
 </ol>
@@ -31,4 +31,4 @@
 </ol>
 <p><a href="/wiki/attachment/wiki/VPN/Settings-NetVM.png"><img src="/wiki/chrome/common/attachment.png" title="No image &quot;Settings-NetVM.png&quot; attached to VPN" alt="No image &quot;Settings-NetVM.png&quot; attached to VPN" /></a></p>
 <h3 id="AppVM">AppVM</h3>
-<p>While the Network Manager is not started here (for a good reason) You can configure any kind of VPN client in your AppVM as well, however it is only suggested if you have to use a special VPN clinet.</p>
+<p>While the Network Manager is not started here (for a good reason) You can configure any kind of VPN client in your AppVM as well, however it is only suggested if you have to use a special VPN client.</p>
