@@ -39,19 +39,20 @@ Using a ProxyVM to set up a VPN clinet will gives you the ability to:
 -  You can easily controll wich of your AppVMs are connected to your VPN
    by simply set it as a NetVM of the desired AppVM.
 
-To setup a ProxyVM as a VPN gateway you should:
+**To setup a ProxyVM as a VPN gateway you should:**
 
--  create a new VM and check the ProxyVM radiobutton
+#. create a new VM and check the ProxyVM radiobutton
 
 |No image "Settings-NetVM.png" attached to VPN|
 
--  add the network-manager service to this new VM
+2. add the network-manager service to this new VM
 
 |No image "Settings-services.png" attached to VPN|
 
--  set up Your VPN as described in the Network Manager documentation
+3. set up Your VPN as described in the Network Manager documentation
    linked above.
--  connect your AppVMs to use the new VM as a NetVM.
+
+4. connect your AppVMs to use the new VM as a NetVM.
 
 |No image "Settings-NetVM.png" attached to VPN|
 
