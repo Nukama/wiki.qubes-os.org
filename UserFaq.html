@@ -31,6 +31,7 @@
 <li><a href="#Mykeyboardlayoutsettingsarenotbehavingcorrectly.WhatshouldIdo">My keyboard layout settings are not behaving correctly. What should I do?</a></li>
 <li><a href="#Mydom0andorTemplateVMupdatestallswhenattemptingtoupdateviatheGUItool.WhatshouldIdo">My dom0 and/or TemplateVM update stalls when attempting to update via …</a></li>
 <li><a href="#HowdoIrunaWindowsHVMinnon-seamlessmodei.e.asasinglewindow">How do I run a Windows HVM in non-seamless mode (i.e., as a single window)?</a></li>
+<li><a href="#IassignedaPCIdevicetoanAppVMthenunassigneditshutdowntheAppVM.Whyisntthedeviceavailableindom0">I assigned a PCI device to an AppVM, then unassigned it/shut down the …</a></li>
 </ol></li>
 </ol>
 <p></p>
@@ -89,3 +90,15 @@
 <p>In your TemplateVMs, open a terminal and run <code>sudo yum upgrade</code>.</p>
 <h3 id="HowdoIrunaWindowsHVMinnon-seamlessmodei.e.asasinglewindow">How do I run a Windows HVM in non-seamless mode (i.e., as a single window)?</h3>
 <p>Enable &quot;debug mode&quot; in the AppVM's settings, either by checking the box labelled &quot;Run in debug mode&quot; in the Qubes VM Manager AppVM settings menu or by running the <a href="/wiki/wiki/Dom0Tools/QvmPrefs">qvm-prefs command</a>.)</p>
+<h3 id="IassignedaPCIdevicetoanAppVMthenunassigneditshutdowntheAppVM.Whyisntthedeviceavailableindom0">I assigned a PCI device to an AppVM, then unassigned it/shut down the AppVM. Why isn't the device available in dom0?</h3>
+<p>This is an intended feature. A device which was previously assigned to a less trusted AppVM could attack dom0 if it were automatically reassigned there. In order to re-enable the device in dom0, either:</p>
+<ol>
+<li>Reboot the physical machine.</li>
+</ol>
+<p>or</p>
+<ol start="2">
+<li><p>Go to the sysfs (<code>/sys/bus/pci</code>), find the right device, detach it from the pciback driver and attach back to the <code>ehci-pci</code>/<code>ehci-hcd</code> (<code>ehci-pci</code> on newer kernels). Assume that <code>00:1c.2</code> is your device:</p>
+<pre class="wiki"><code>cd /sys/bus/pci/devices/0000:00:1c.2
+echo 0000:00:1c.2 &gt; driver/unbind
+echo 0000:00:1c.2 &gt; ../../drivers/ehci-pci/bind</code></pre></li>
+</ol>
