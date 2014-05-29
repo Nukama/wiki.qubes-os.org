@@ -26,3 +26,16 @@
 kernelopts       : iommu=soft swiotlb=2048 (default)
 # qvm-prefs -s netvm kernelopts &quot;iommu=soft swiotlb=4096&quot;</code></pre>
 <p>This is <a href="https://groups.google.com/group/qubes-devel/browse_thread/thread/631c4a3a9d1186e3">​known to be needed</a> for Realtek RTL8111DL Gigabit Ethernet Controller.</p>
+<h2 id="BringingPCIdevicebacktodom0">Bringing PCI device back to dom0</h2>
+<p>By default device detached from some VM (or when VM with PCI device attached get shut down) isn't attached back to dom0. This is an intended feature. A device which was previously assigned to a less trusted AppVM could attack dom0 if it were automatically reassigned there. In order to re-enable the device in dom0, either:</p>
+<ol>
+<li>Reboot the physical machine.</li>
+</ol>
+<p>or</p>
+<ol start="2">
+<li><p>Go to the sysfs (<code>/sys/bus/pci</code>), find the right device, detach it from the pciback driver and attach back to the original driver. Replace <code>&lt;BDF&gt;</code> with your device, for example <code>00:1c.2</code>:</p>
+<pre class="wiki"><code>echo 0000:&lt;BDF&gt; &gt; /sys/bus/pci/drivers/pciback/unbind
+MODALIAS=`cat /sys/bus/pci/devices/0000:&lt;BDF&gt;/modalias`
+MOD=`modprobe -R $MODALIAS | head -n 1`
+echo &lt;BDF&gt; &gt; /sys/bus/pci/drivers/$MOD/bind </code></pre></li>
+</ol>
