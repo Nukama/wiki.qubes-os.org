@@ -985,6 +985,22 @@ more <https://groups.google.com/d/msg/qubes-users/NXIL5rEh65o/rCBf1PYr2jsJ>`__
 `​Franz
 Felix <https://groups.google.com/d/msg/qubes-users/NXIL5rEh65o/rCBf1PYr2jsJ>`__
 
+| MSI GX660
+|  (i5-460M, PM55, Radeon HD5870)
+
+1.0L
+
+Yes
+
+No
+
+R2B3
+
+3.11.1-2
+
+`​Avant
+Garden <https://groups.google.com/d/msg/qubes-users/UrWYjkHwon8/TPE0XSBiPDQJ>`__
+
 | Samsung NP300E7A
 |  (i3-2330M, HM65, HD3000)
 
@@ -1451,11 +1467,19 @@ Lichte <https://groups.google.com/d/msg/qubes-users/S4Ju0zDM2mI/Q4GZ4S2txdMJ>`__
 | Gigabyte GA-FXA990-UD3 (rev 3.0)
 |  (AMD FX-8350, GTX 470)
 
+FB
+
 Yes
 
-No
+\*
+
+\*
 
 R2B2
+
+IOMMU not tested with Qubes, working on other platforms `read
+more <https://groups.google.com/d/msg/qubes-devel/qXct-TU4tKs/_JEtbQCyHl8J>`__,
+TPM header
 
 `m
 astroj <https://groups.google.com/d/msg/qubes-devel/oox94EsIduQ/7w4xUoK5pxwJ>`__
@@ -1467,10 +1491,13 @@ astroj <https://groups.google.com/d/msg/qubes-devel/oox94EsIduQ/7w4xUoK5pxwJ>`__
 
 Yes
 
-Yes
+\*
 
-VT-d option in BIOS according to
-`manual <http://download.gigabyte.eu/FileList/Manual/mb-manual_ga-x79s-up5_e.pdf>`__
+\*
+
+IOMMU not tested with Qubes, VT-d option in BIOS according to
+`manual <http://download.gigabyte.eu/FileList/Manual/mb-manual_ga-x79s-up5_e.pdf>`__,
+TPM header
 
 | MSI Big Bang
 |  (i7-950, Radeon HD 6770)
@@ -1483,22 +1510,6 @@ more <https://groups.google.com/d/topic/qubes-devel/TxzaoodB02o/discussion>`__
 `Andrew
 Sorensen <https://groups.google.com/d/msg/qubes-devel/TxzaoodB02o/NxVHjaPoRYoJ>`__
 
-| MSI GX660
-|  (i5-460M, PM55, Radeon HD5870)
-
-1.0L
-
-Yes
-
-No
-
-R2B3
-
-3.11.1-2
-
-`​Avant
-Garden <https://groups.google.com/d/msg/qubes-users/UrWYjkHwon8/TPE0XSBiPDQJ>`__
-
 | Supermicro X10SAE
 |  (Xeon E3-1245, Haswell)
 
@@ -1508,7 +1519,11 @@ Yes
 
 Yes
 
+\*
+
 R1
+
+TPM header
 
 `​Qubes
 Fan <https://groups.google.com/d/msg/qubes-users/V9BLpdf4xCs/v4XcOjLT6uUJ>`__
