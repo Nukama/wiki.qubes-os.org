@@ -97,8 +97,9 @@
 </ol>
 <p>or</p>
 <ol start="2">
-<li><p>Go to the sysfs (<code>/sys/bus/pci</code>), find the right device, detach it from the pciback driver and attach back to the <code>ehci-pci</code>/<code>ehci-hcd</code> (<code>ehci-pci</code> on newer kernels). Assume that <code>00:1c.2</code> is your device:</p>
-<pre class="wiki"><code>cd /sys/bus/pci/devices/0000:00:1c.2
-echo 0000:00:1c.2 &gt; driver/unbind
-echo 0000:00:1c.2 &gt; ../../drivers/ehci-pci/bind</code></pre></li>
+<li><p>Go to the sysfs (<code>/sys/bus/pci</code>), find the right device, detach it from the pciback driver and attach back to the original driver. Replace <code>&lt;BDF&gt;</code> with your device, for example <code>00:1c.2</code>:</p>
+<pre class="wiki"><code>echo 0000:&lt;BDF&gt; &gt; /sys/bus/pci/drivers/pciback/unbind
+MODALIAS=`cat /sys/bus/pci/devices/0000:&lt;BDF&gt;/modalias`
+MOD=`modprobe -R $MODALIAS | head -n 1`
+echo &lt;BDF&gt; &gt; /sys/bus/pci/drivers/$MOD/bind </code></pre></li>
 </ol>
