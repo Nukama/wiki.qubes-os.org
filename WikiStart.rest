@@ -45,6 +45,10 @@ Recent News
    Foundation <https://pressfreedomfoundation.org/about/board>`__
 -  ``Apr 21, 2014`` Qubes OS R2 rc1 has been released!
    `​announcement <http://theinvisiblethings.blogspot.com/2014/04/qubes-os-r2-rc1-has-been-released.html>`__
+-  ``Jul 03, 2014`` ITL to present on Qubes OS at LinuxCon Europe: a
+   keynote by Joanna Rutkowska and hands-on training by the core dev
+   team! `​conference
+   website <http://events.linuxfoundation.org/events/linuxcon-europe>`__
 
 .. |No image "qubes-arch-diagram-1.png" attached to QubesArchitecture| image:: /chrome/common/attachment.png
    :target: /wiki/QubesArchitecture
