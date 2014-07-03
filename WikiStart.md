@@ -29,4 +29,5 @@ Recent News
 -   `Mar 28, 2014` [​Article about Qubes OS](http://www.economist.com/blogs/babbage/2014/03/computer-security) in The Economist
 -   `Apr 12, 2014` [​Article about Qubes OS](https://pressfreedomfoundation.org/blog/2014/04/operating-system-can-protect-you-even-if-you-get-hacked) by the [​Freedom of the Press Foundation](https://pressfreedomfoundation.org/about/board)
 -   `Apr 21, 2014` Qubes OS R2 rc1 has been released! [​announcement](http://theinvisiblethings.blogspot.com/2014/04/qubes-os-r2-rc1-has-been-released.html)
+-   `Jul 03, 2014` ITL to present on Qubes OS at LinuxCon Europe: a keynote by Joanna Rutkowska and hands-on training by the core dev team! [​conference website](http://events.linuxfoundation.org/events/linuxcon-europe)
 
