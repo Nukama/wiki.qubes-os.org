@@ -26,8 +26,7 @@ in the new clone instead:
 
     [user@dom0 ~]$ qvm-clone fedora-20-x64-minimal <your new template name>
 
-The sudo package is also missing from this template, but easy to
-install:
+Not even the sudo package is installed by default, so lets install it:
 
 .. code:: wiki
 
