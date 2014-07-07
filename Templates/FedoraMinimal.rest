@@ -26,6 +26,14 @@ in the new clone instead:
 
     [user@dom0 ~]$ qvm-clone fedora-20-x64-minimal <your new template name>
 
+The sudo package is also missing from this template, but easy to
+install:
+
+.. code:: wiki
+
+    [user@F20-Minimal ~]$ su - 
+    [user@F20-Minimal ~]$ yum install sudo
+
 NetVM
 ~~~~~
 
