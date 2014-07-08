@@ -221,8 +221,12 @@ would be hard to scan the Firefox profile directory reliably to find
 malware hooks there). Also note that the user filesystem's metadata
 might got maliciously modified by malware in order to exploit a
 hypothetical bug in the AppVM kernel whenever it mounts the malformed
-filesystem.
+filesystem. However, these exploits will automatically stop working (and
+so the infection might be cleared automatically) after the hypothetical
+bug got patched and the update applied (via template update), which is
+an exceptional feature of Qubes OS.
 
-But Disposable VMs do not have persistent user filesystem, and so they
-start up completely "clean" every time. Note the word "clean" means in
-this context: the same as their template filesystem, of course.
+Also note that Disposable VMs do not have persistent user filesystem,
+and so they start up completely "clean" every time. Note the word
+"clean" means in this context: the same as their template filesystem, of
+course.
