@@ -75,7 +75,7 @@ Reported BIOS version
 `Intel VT-x <https://en.wikipedia.org/wiki/Intel_VT-x#Intel-VT-x>`__ or
 `AMD-v <https://en.wikipedia.org/wiki/AMD-V#AMD_virtualization_.28AMD-V.29>`__
 technology (required for running HVM domains, such as `Windows-based
-AppVMs <https://www.qubes-os.org/trac/wiki/WindowsAppVms>`__)
+AppVMs <https://wiki.qubes-os.org/trac/wiki/WindowsAppVms>`__)
 
 `IOMMU <https://en.wikipedia.org/wiki/IOMMU>`__
 
@@ -86,7 +86,7 @@ passthrough <http://wiki.xen.org/wiki/Xen_PCI_Passthrough>`__)
 `TPM <https://en.wikipedia.org/wiki/Trusted_Platform_Module>`__
 
 TPM with proper BIOS support (required for `Anti Evil
-Maid <https://www.qubes-os.org/trac/wiki/AntiEvilMaid>`__)
+Maid <https://wiki.qubes-os.org/trac/wiki/AntiEvilMaid>`__)
 
 Qubes version
 
@@ -572,8 +572,6 @@ Boyd <https://groups.google.com/d/msg/qubes-devel/ZC_SQJhXVOM/4aLjEc7GIsUJ>`__
 Yes
 
 No
-
-# best achievable QSL - (Qubes Security Level) -->
 
 R2
 
