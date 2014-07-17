@@ -41,7 +41,7 @@ install some more packeges:
 
 .. code:: wiki
 
-    [user@F20-Minimal ~]$ sudo yum install NetworkManager network-manager-applet  wireless-tools dbus-x11 dejavu-sans-fonts
+    [user@F20-Minimal ~]$ sudo yum install NetworkManager network-manager-applet  wireless-tools dbus-x11 dejavu-sans-fonts tar tinyproxy
 
 And maybe some more optional but useful packages as well:
 
