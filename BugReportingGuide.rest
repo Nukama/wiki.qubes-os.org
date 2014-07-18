@@ -19,7 +19,8 @@ guide lines:
    so please cite the issue # in any comments you post.
 
    -  `Simple search </search>`__
-   -  `​Advanced search <https://qubes-os.org/trac/query>`__
+   -  `​Advanced
+      search <https://wiki.qubes-os.org/query?status=accepted&status=assigned&status=new&status=reopened&order=priority>`__
 
 2. Search the `mailing lists </wiki/QubesLists>`__ to see if your issue
    is already discussed - if so, add your comments to the existing
