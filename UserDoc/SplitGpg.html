@@ -48,3 +48,7 @@ exec qubes-gpg-client &quot;$@&quot;</code></pre>
 <p>... and then point Enigmail to use this script instead of the standard GnuPG binary:</p>
 <p><a href="/wiki/attachment/wiki/UserDoc/SplitGpg/tb-enigmail-split-gpg-settings.png"><img src="/wiki/chrome/common/attachment.png" title="No image &quot;tb-enigmail-split-gpg-settings.png&quot; attached to UserDoc/SplitGpg" alt="No image &quot;tb-enigmail-split-gpg-settings.png&quot; attached to UserDoc/SplitGpg" /></a></p>
 <h3 id="Importingpublickeys">Importing public keys</h3>
+<p>Use <code>qubes-gpg-import-key</code> in the client AppVM to import the key into the GPG backend VM. Of course a (safe, unspoofable) user consent dialog box is displayed to accept this.</p>
+<pre class="wiki"><code>[user@work ~]$ export QUBES_GPG_DOMAIN=work-gpg
+[user@work ~]$ qubes-gpg-import-key ~/Downloads/marmarek.asc</code></pre>
+<p><a href="/wiki/attachment/wiki/UserDoc/SplitGpg/tb-enigmail-split-gpg-5.png"><img src="/wiki/chrome/common/attachment.png" title="No image &quot;tb-enigmail-split-gpg-5.png&quot; attached to UserDoc/SplitGpg" alt="No image &quot;tb-enigmail-split-gpg-5.png&quot; attached to UserDoc/SplitGpg" /></a></p>
