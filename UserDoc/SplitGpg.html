@@ -16,6 +16,31 @@
 <li>It doesn't solve the problem of allowing the user to know what is to be signed before the operation gets approved. Perhaps the GPG backend domain could start a Disposable VM and have the to-be-signed document displayed there? To Be Determined.</li>
 </ul>
 <h2 id="ConfiguringandusingSplitGPG">Configuring and using Split GPG</h2>
-<h3 id="SettingupthevaultAppVMSplitGPGbackend">Setting up the <em>vault</em> AppVM (Split GPG backend)</h3>
-<h3 id="SettinguptheclientAppVMtousesplitGPGbackendfromvaultAppVM">Setting up the client AppVM to use split GPG backend from <em>vault</em> AppVM</h3>
+<p>Start with creating a dedicated AppVM for storing your keys (the GPG backend domain). It is recommended that this domain be network disconnected (set its netvm to <code>none</code>) and only used for this one purpose. In later examples this AppVM is named <code>work-gpg</code>, but of course it might have any other name.</p>
+<h3 id="SettinguptheGPGbackenddomain">Setting up the GPG backend domain</h3>
+<p>Make sure the gpg is installed there and there are some private keys in the keyring, e.g.:</p>
+<pre class="wiki"><code>[user@work-gpg ~]$ gpg -K
+/home/user/.gnupg/secring.gpg
+-----------------------------
+sec   4096R/3F48CB21 2012-11-15
+uid                  Qubes OS Security Team &lt;security@qubes-os.org&gt;
+ssb   4096R/30498E2A 2012-11-15
+(...)</code></pre>
+<p>This is pretty much all that is required. However one might also want to modify the default timeout which tells the backend for how long the user's approval for key access should be valid (default 5 minutes). This is adjustable via <code>QUBES_GPG_AUTOACCEPT</code> variable. One can override it e.g. in <code>~/.bash_profile</code>:</p>
+<pre class="wiki"><code>[user@work-gpg ~]$ echo &quot;export QUBES_GPG_AUTOACCEPT=86400&quot; &gt;&gt; ~/.bash_profile</code></pre>
+<h3 id="ConfiguringtheclientappstousesplitGPGbackend">Configuring the client apps to use split GPG backend</h3>
+<p>Normally it should be enough to set the <code>QUBES_GPG_DOMAIN</code> to the GPG backend domain name and use <code>qubes-gpg-client</code> in place of <code>gpg</code>, e.g.:</p>
+<pre class="wiki"><code>[user@work ~]$ export QUBES_GPG_DOMAIN=work-gpg
+[user@work ~]$ qubes-gpg-client -K
+/home/user/.gnupg/secring.gpg
+-----------------------------
+sec   4096R/3F48CB21 2012-11-15
+uid                  Qubes OS Security Team &lt;security@qubes-os.org&gt;
+ssb   4096R/30498E2A 2012-11-15
+(...)
+
+[user@work ~]$ qubes-gpg-client secret_message.txt.asc 
+(...)</code></pre>
+<p>However, when using Thunderbird with Enigmail extension it is not enough, because Thunderbird doesn't preserve the environment variables. Instead it is recommended to create a short script e.g. in the user home directory: ... and then point Enigmail to use this script instead of the standard GnuPG binary:</p>
+<p><a href="/wiki/attachment/wiki/UserDoc/SplitGpg/tb-enigmail-split-gpg-settings.png"><img src="/wiki/chrome/common/attachment.png" title="No image &quot;tb-enigmail-split-gpg-settings.png&quot; attached to UserDoc/SplitGpg" alt="No image &quot;tb-enigmail-split-gpg-settings.png&quot; attached to UserDoc/SplitGpg" /></a></p>
 <h3 id="Importingpublickeys">Importing public keys</h3>
