@@ -41,7 +41,10 @@ Advanced Topics
 -  `DispVM Customization </wiki/UserDoc/DispVMCustomization>`__
 -  `Tips for Using Linux in an HVM </wiki/LinuxHVMTips>`__
 -  `Enabling Fullscreen Mode for AppVMs </wiki/FullScreenMode>`__
--  `Using OpenPGP in Qubes </wiki/UserDoc/OpenPGP>`__
+-  `Using GPG more securely in Qubes: Split GPG
+   tutorial </wiki/UserDoc/SplitGpg>`__
+-  `Using OpenPGP in Qubes </wiki/UserDoc/OpenPGP>`__ (deprecated by
+   `UserDoc/SplitGpg </wiki/UserDoc/SplitGpg>`__)
 -  `Installing ZFS in Qubes </wiki/ZFS>`__
 -  `Qubes service framework </wiki/QubesService>`__
 -  `Enabling TRIM for SSD disks </wiki/DiskTRIM>`__
