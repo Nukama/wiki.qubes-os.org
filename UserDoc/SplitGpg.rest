@@ -112,6 +112,7 @@ e.g.:
 .. code:: wiki
 
     [user@work ~]$ export QUBES_GPG_DOMAIN=work-gpg
+    [user@work ~]$ gpg -K
     [user@work ~]$ qubes-gpg-client -K
     /home/user/.gnupg/secring.gpg
     -----------------------------
@@ -122,6 +123,9 @@ e.g.:
 
     [user@work ~]$ qubes-gpg-client secret_message.txt.asc 
     (...)
+
+Note that running normal ``gpg -K`` in the demo above shows no private
+keys stored in this AppVM.
 
 However, when using Thunderbird with Enigmail extension it is not
 enough, because Thunderbird doesn't preserve the environment variables.
