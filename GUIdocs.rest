@@ -84,7 +84,7 @@ To sum up, this solution has the following benefits:
 -  no changes to Xorg code
 -  minimal size of the supporting code
 
-|gui.png|
+|No image "gui.png" attached to GUIdocs|
 
 Security markers on dom0 windows
 --------------------------------
@@ -345,5 +345,5 @@ extracted from dom0 XEvent; see appropriate event documentation.
 |                        |  `` }; ``                              |                                                                   |
 +------------------------+----------------------------------------+-------------------------------------------------------------------+
 
-.. |gui.png| image:: /chrome/site/../../../site/gui.png
-   :target: /chrome/site/../../../site/gui.png
+.. |No image "gui.png" attached to GUIdocs| image:: /chrome/common/attachment.png
+   :target: /attachment/wiki/GUIdocs/gui.png
