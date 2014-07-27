@@ -40,7 +40,7 @@
 <li>no changes to Xorg code</li>
 <li>minimal size of the supporting code</li>
 </ul>
-<p><a href="/wiki/chrome/site/../../../site/gui.png"><img src="/wiki/chrome/site/../../../site/gui.png" title="gui.png" alt="gui.png" /></a></p>
+<p><a href="/wiki/attachment/wiki/GUIdocs/gui.png"><img src="/wiki/chrome/common/attachment.png" title="No image &quot;gui.png&quot; attached to GUIdocs" alt="No image &quot;gui.png&quot; attached to GUIdocs" /></a></p>
 <h2 id="Securitymarkersondom0windows">Security markers on dom0 windows</h2>
 <p>It is important that user knows which AppVM a given window belongs to. This prevents an attack when a rogue AppVM paints a window pretending to belong to other AppVM or dom0, and tries to steal e.g. passwords.</p>
 <p>In Qubes, the custom window decorator is used, that paints a colourful frame (the colour is determined during AppVM creation) around decorated windows. Additionally, window title always starts with <strong>[name of the AppVM]</strong>. If a window has a <em>override_redirect</em> attribute, meaning that it should not be treated by a window manager (typical case is menu windows), <em>qubes_guid</em> draws a two-pixel colourful frame around it manually.</p>
