@@ -63,7 +63,7 @@ one, which is contained in the AppVM, enables temporal modifications to
 its filesystem. These modifications will be discarded after a restart of
 the AppVM.
 
-|TemplateSharing2.png|
+|No image "TemplateSharing2.png" attached to TemplateImplementation|
 
 Snapshot device in Dom0
 -----------------------
@@ -169,5 +169,5 @@ can be created using *--standalone* switch to *qvm-create*.
 It is implemented just like TemplateVM (has own root.img connected as
 R/W device), but no other VMs can be based on it.
 
-.. |TemplateSharing2.png| image:: /chrome/site/../../../site/TemplateSharing2.png
-   :target: /chrome/site/../../../site/TemplateSharing2.png
+.. |No image "TemplateSharing2.png" attached to TemplateImplementation| image:: /chrome/common/attachment.png
+   :target: /attachment/wiki/TemplateImplementation/TemplateSharing2.png
