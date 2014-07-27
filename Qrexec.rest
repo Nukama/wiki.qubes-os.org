@@ -207,7 +207,7 @@ utility, the following steps are taken:
    created via the *qfile-daemon-dvm* program. The latter waits for the
    *qrexec-client* process to exit, and then destroys the dispvm.
 
-|qubes\_rpc.png|
+|No image "qubes\_rpc.png" attached to Qrexec|
 
-.. |qubes\_rpc.png| image:: /chrome/site/../../../site/qubes_rpc.png
-   :target: /chrome/site/../../../site/qubes_rpc.png
+.. |No image "qubes\_rpc.png" attached to Qrexec| image:: /chrome/common/attachment.png
+   :target: /attachment/wiki/Qrexec/qubes_rpc.png
