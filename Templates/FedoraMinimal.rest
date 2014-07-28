@@ -53,7 +53,7 @@ And maybe some more optional but useful packages as well:
 
 .. code:: wiki
 
-    [user@F20-Minimal ~]$ sudo yum install pciutils vim-minimal less tcpdump
+    [user@F20-Minimal ~]$ sudo yum install pciutils vim-minimal less tcpdump telnet
 
 If Your network device needs some firmware then you should also install
 the corresponding packages as well. The ``lspci; yum search firmware``
