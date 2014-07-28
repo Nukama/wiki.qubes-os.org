@@ -1,0 +1,13 @@
+<h1 id="Debiantemplate">Debian template</h1>
+<p>Debian template is one of the templates made by Qubes community. It should be considered experimental as Qubes developers team use mainly Fedora-based VMs to test new features/updates.</p>
+<h2 id="Install">Install</h2>
+<p>It can be installed via the following command:</p>
+<pre class="wiki"><code>[user@dom0 ~]$ sudo qubes-dom0-update --enablerepo=qubes-templates-community qubes-template-debian-8-x64</code></pre>
+<h2 id="Knownissues">Known issues</h2>
+<ul>
+<li>gnome-terminal by default is configured to black text on black background</li>
+<li>GTK applications looks ugly (GTK theme not installed/set?)</li>
+<li>Probably not working as netvm or proxyvm (untested as of today)</li>
+<li>Slow VM shutdown - qrexec agent termination takes a while (SIGTERM not handled?)</li>
+</ul>
+<p>If you want to help in improving the template, feel free to <a href="/wiki/wiki/ContributingHowto">contribute</a>.</p>
