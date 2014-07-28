@@ -7,16 +7,18 @@
 <h2 id="Usage">Usage</h2>
 <p>It is a good idea to clone the original template, and make any changes in the new clone instead:</p>
 <pre class="wiki"><code>[user@dom0 ~]$ qvm-clone fedora-20-x64-minimal &lt;your new template name&gt;</code></pre>
-<p>Not even the sudo package is installed by default, so lets install it:</p>
+<p>The sudo package is not installed by default, so lets install it:</p>
 <pre class="wiki"><code>[user@F20-Minimal ~]$ su - 
 [user@F20-Minimal ~]$ yum install sudo</code></pre>
-<h3 id="NetVM">NetVM</h3>
+<p>The rsyslog logging service is not installed by default. All logging is now being handled by the systemd journal. Users requiring the rsyslog service should install it manually.</p>
+<p>To access the journald log, use the following command: <code>journalctl</code></p>
+<h3 id="asaNetVM">as a NetVM</h3>
 <p>If You want to use this template to for standard NetVMs You should install some more packeges:</p>
 <pre class="wiki"><code>[user@F20-Minimal ~]$ sudo yum install NetworkManager network-manager-applet  wireless-tools dbus-x11 dejavu-sans-fonts tar tinyproxy</code></pre>
 <p>And maybe some more optional but useful packages as well:</p>
 <pre class="wiki"><code>[user@F20-Minimal ~]$ sudo yum install pciutils vim-minimal less tcpdump</code></pre>
 <p>If Your network device needs some firmware then you should also install the corresponding packages as well. The <code>lspci; yum search firmware</code> command will help to choose the right one :)</p>
-<h3 id="ProxyVM">ProxyVM</h3>
+<h3 id="asaProxyVM">as a ProxyVM</h3>
 <p>If You want to use this template as a ProxyVM You may want to install evem more packages</p>
 <h4 id="Firewall">Firewall</h4>
 <p>This template is reqady to use for a standard firewall VM.</p>
