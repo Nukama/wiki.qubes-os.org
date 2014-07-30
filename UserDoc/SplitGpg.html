@@ -43,11 +43,13 @@ ssb   4096R/30498E2A 2012-11-15
 [user@work ~]$ qubes-gpg-client secret_message.txt.asc 
 (...)</code></pre>
 <p>Note that running normal <code>gpg -K</code> in the demo above shows no private keys stored in this AppVM.</p>
+<h3 id="ConfiguringThunderbirdEnigmailforusewithSplitGPG">Configuring <a href="/wiki/wiki/UserDoc/Thunderbird/Enigmail">Thunderbird/Enigmail?</a> for use with Split GPG</h3>
 <p>However, when using Thunderbird with Enigmail extension it is not enough, because Thunderbird doesn't preserve the environment variables. Instead it is recommended to use a simple script provided by <code>/usr/bin/qubes-gpg-client-wrapper</code> file by pointing Enigmail to use this script instead of the standard GnuPG binary:</p>
 <p><a href="/wiki/attachment/wiki/UserDoc/SplitGpg/tb-enigmail-split-gpg-settings-2.png"><img src="/wiki/chrome/common/attachment.png" title="No image &quot;tb-enigmail-split-gpg-settings-2.png&quot; attached to UserDoc/SplitGpg" alt="No image &quot;tb-enigmail-split-gpg-settings-2.png&quot; attached to UserDoc/SplitGpg" /></a></p>
 <p>The script also sets the QUBES_GPG_DOMAIN variable automatically based on the content of the file <code>/rw/config/gpg-split-domain</code>, which should be set to the name of the GPG backend VM. This file survives the AppVM reboot, of course.</p>
 <pre class="wiki"><code>[user@work ~]$ sudo bash
 [user@work ~]$ echo &quot;work-gpg&quot; &gt; /rw/config/gpg-split-domain</code></pre>
+<p><em>NOTE</em>: A recent engimail update, version <code>thunderbird-enigmail-1.7-1</code>, introduced changes in how Enigmail expects to execute GPG binary and so requires an updated split-gpg package with version &gt;= <code>qubes-gpg-split-2.0.7-1</code>. As of 30/07/2014 this package is available in the current-testing repo.</p>
 <h3 id="Importingpublickeys">Importing public keys</h3>
 <p>Use <code>qubes-gpg-import-key</code> in the client AppVM to import the key into the GPG backend VM. Of course a (safe, unspoofable) user consent dialog box is displayed to accept this.</p>
 <pre class="wiki"><code>[user@work ~]$ export QUBES_GPG_DOMAIN=work-gpg
