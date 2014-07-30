@@ -46,8 +46,8 @@ ssb   4096R/30498E2A 2012-11-15
 <p>However, when using Thunderbird with Enigmail extension it is not enough, because Thunderbird doesn't preserve the environment variables. Instead it is recommended to use a simple script provided by <code>/usr/bin/qubes-gpg-client-wrapper</code> file by pointing Enigmail to use this script instead of the standard GnuPG binary:</p>
 <p><a href="/wiki/attachment/wiki/UserDoc/SplitGpg/tb-enigmail-split-gpg-settings-2.png"><img src="/wiki/chrome/common/attachment.png" title="No image &quot;tb-enigmail-split-gpg-settings-2.png&quot; attached to UserDoc/SplitGpg" alt="No image &quot;tb-enigmail-split-gpg-settings-2.png&quot; attached to UserDoc/SplitGpg" /></a></p>
 <p>The script also sets the QUBES_GPG_DOMAIN variable automatically based on the content of the file <code>/rw/config/gpg-split-domain</code>, which should be set to the name of the GPG backend VM. This file survives the AppVM reboot, of course.</p>
-<pre class="wiki"><code>sudo bash
-echo &quot;work-gpg&quot; &gt; /rw/config/gpg-split-domain</code></pre>
+<pre class="wiki"><code>[user@work ~]$ sudo bash
+[user@work ~]$ echo &quot;work-gpg&quot; &gt; /rw/config/gpg-split-domain</code></pre>
 <h3 id="Importingpublickeys">Importing public keys</h3>
 <p>Use <code>qubes-gpg-import-key</code> in the client AppVM to import the key into the GPG backend VM. Of course a (safe, unspoofable) user consent dialog box is displayed to accept this.</p>
 <pre class="wiki"><code>[user@work ~]$ export QUBES_GPG_DOMAIN=work-gpg
