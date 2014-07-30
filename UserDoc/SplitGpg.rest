@@ -143,6 +143,7 @@ reboot, of course.
 
 .. code:: wiki
 
+    sudo bash
     echo "work-gpg" > /rw/config/gpg-split-domain
 
 Importing public keys
