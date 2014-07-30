@@ -1,0 +1,10 @@
+ITL Supported
+-------------
+
+-  `Fedora - Minimal </wiki/Templates/FedoraMinimal>`__
+
+Community Supported
+-------------------
+
+-  `Debian </wiki/Templates/Debian>`__
+
