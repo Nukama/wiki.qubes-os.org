@@ -2,7 +2,7 @@
 <p>It is possible to change the settings of each new Disposable VM (DispVM). This can be done by customizing the DispVM template:</p>
 <ol>
 <li><p>Start a terminal in the <code>fedora-20-x64-dvm</code> TemplateVM by running the following command in a dom0 terminal. (By default, this TemplateVM is not shown in Qubes VM Manager. However, it can be shown by selecting &quot;Show/Hide internal VMs.&quot;)</p>
-<pre class="wiki"><code>qvm-run -a fedora-20-x64-dvm gnome-terminal</code></pre></li>
+<pre class="wiki"><code>[user@dom0 ~]$ qvm-run -a fedora-20-x64-dvm gnome-terminal</code></pre></li>
 <li>Change the VM's settings and/or applications, as desired. Note that currently Qubes supports exactly one DispVM template, so any changes you make here will affect all DispVMs. Some examples of changes you may want to make include:
 <ul>
 <li>Changing Firefox's default startup settings and homepage.</li>
@@ -10,9 +10,9 @@
 <li>Changing the DispVM's default NetVM. For example, you may wish to set the NetVM to &quot;none.&quot; Then, whenever you start a new DispVM, you can choose your desired ProxyVM manually (by changing the newly-started DipsVMs settings). This is useful if you sometimes wish to use a DispVM with a TorVM, for example. It is also useful if you sometimes wish to open untrusted files in a network-disconnected DispVM.</li>
 </ul></li>
 <li><p>Create an empty <code>/home/user/.qubes-dispvm-customized</code> file:</p>
-<pre class="wiki"><code>touch /home/user/.qubes-dispvm-customized</code></pre></li>
+<pre class="wiki"><code>[user@fedora-20-x64-dvm ~]$ touch /home/user/.qubes-dispvm-customized</code></pre></li>
 <li>Shutdown the VM (either by <code>poweroff</code> from VM terminal, or <code>qvm-shutdown</code> from dom0 terminal).</li>
 <li><p>Regenerate the DispVM template:</p>
-<pre class="wiki"><code>qvm-create-default-dvm --default-template --default-script</code></pre></li>
+<pre class="wiki"><code>[user@dom0 ~]$ qvm-create-default-dvm --default-template --default-script</code></pre></li>
 </ol>
 <p><strong>Note:</strong> All of the above requires at least qubes-core-vm &gt;= 2.1.2 installed in template.</p>
