@@ -53,7 +53,7 @@ And maybe some more optional but useful packages as well:
 
 .. code:: wiki
 
-    [user@F20-Minimal ~]$ sudo yum install pciutils vim-minimal less tcpdump telnet
+    [user@F20-Minimal ~]$ sudo yum install pciutils vim-minimal less tcpdump telnet psmisc nmap nmap-ncat
 
 If Your network device needs some firmware then you should also install
 the corresponding packages as well. The ``lspci; yum search firmware``
@@ -68,12 +68,12 @@ evem more packages
 Firewall
 ^^^^^^^^
 
-This template is reqady to use for a standard firewall VM.
+This template is ready to use for a standard firewall VM.
 
 VPN
 ^^^
 
-The needed packkages are depend on the VPN technology.
+The needed packages are depend on the VPN technology.
 ``yum search "NetworkManager VPN plugin"`` command may help you to
 choose the right one.
 
