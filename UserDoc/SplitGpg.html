@@ -49,7 +49,7 @@ ssb   4096R/30498E2A 2012-11-15
 <p>The script also sets the QUBES_GPG_DOMAIN variable automatically based on the content of the file <code>/rw/config/gpg-split-domain</code>, which should be set to the name of the GPG backend VM. This file survives the AppVM reboot, of course.</p>
 <pre class="wiki"><code>[user@work ~]$ sudo bash
 [user@work ~]$ echo &quot;work-gpg&quot; &gt; /rw/config/gpg-split-domain</code></pre>
-<p><em>NOTE</em>: A recent engimail update, version <code>thunderbird-enigmail-1.7-1</code>, introduced changes in how Enigmail expects to execute GPG binary and so requires an updated split-gpg package with version &gt;= <code>qubes-gpg-split-2.0.7-1</code>. As of 30/07/2014 this package is available in the current-testing repo.</p>
+<p><em>NOTE</em>: A recent engimail update, version <code>thunderbird-enigmail-1.7-1</code>, introduced changes in how Enigmail expects to execute GPG binary and so requires an updated split-gpg package with version &gt;= <code>qubes-gpg-split-2.0.7-1</code>. Please make sure you have all the latest qubes packages installed in your template.</p>
 <h3 id="Importingpublickeys">Importing public keys</h3>
 <p>Use <code>qubes-gpg-import-key</code> in the client AppVM to import the key into the GPG backend VM. Of course a (safe, unspoofable) user consent dialog box is displayed to accept this.</p>
 <pre class="wiki"><code>[user@work ~]$ export QUBES_GPG_DOMAIN=work-gpg
