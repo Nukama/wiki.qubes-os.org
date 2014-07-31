@@ -11,7 +11,7 @@ It is possible to change the settings of each new Disposable VM
 
    .. code:: wiki
 
-       qvm-run -a fedora-20-x64-dvm gnome-terminal
+       [user@dom0 ~]$ qvm-run -a fedora-20-x64-dvm gnome-terminal
 
 #. Change the VM's settings and/or applications, as desired. Note that
    currently Qubes supports exactly one DispVM template, so any changes
@@ -32,7 +32,7 @@ It is possible to change the settings of each new Disposable VM
 
    .. code:: wiki
 
-       touch /home/user/.qubes-dispvm-customized
+       [user@fedora-20-x64-dvm ~]$ touch /home/user/.qubes-dispvm-customized
 
 #. Shutdown the VM (either by ``poweroff`` from VM terminal, or
    ``qvm-shutdown`` from dom0 terminal).
@@ -40,7 +40,7 @@ It is possible to change the settings of each new Disposable VM
 
    .. code:: wiki
 
-       qvm-create-default-dvm --default-template --default-script
+       [user@dom0 ~]$ qvm-create-default-dvm --default-template --default-script
 
 **Note:** All of the above requires at least qubes-core-vm >= 2.1.2
 installed in template.
