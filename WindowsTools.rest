@@ -69,7 +69,7 @@ under the root key mentioned above and name it as the executable name,
 without ``.exe`` extension. For example, to change qrexec-agent's log
 level to Debug, set it like this:
 
-(image)
+|No image "qtw-log-level.png" attached to WindowsTools|
 
 Component-specific settings currently available:
 
@@ -109,3 +109,5 @@ Below is a list of components:
 | register-startup-script   | Registers move-profiles as a startup script during installation (if enabled).                                                                                                                                                                                                                                  |
 +---------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
+.. |No image "qtw-log-level.png" attached to WindowsTools| image:: /chrome/common/attachment.png
+   :target: /attachment/wiki/WindowsTools/qtw-log-level.png
