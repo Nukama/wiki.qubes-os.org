@@ -16,6 +16,7 @@ with Release 2.
 -  `Architecture Overview </wiki/QubesArchitecture>`__
 -  `Qubes Security Goals </wiki/SecurityGoals>`__
 -  `FAQ </wiki/UserFaq>`__
+-  `User Documentation </wiki/UserDoc>`__
 -  `​How is Qubes OS different
    from...? <http://theinvisiblethings.blogspot.com/2012/09/how-is-qubes-os-different-from.html>`__
 -  Beyond Qubes R2 -- the `​Qubes Odyssey
