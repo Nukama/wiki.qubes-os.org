@@ -1,63 +1,101 @@
-<h1 id="QubesUserGuides">Qubes User Guides</h1>
-<h2 id="StandardTopics">Standard Topics</h2>
-<ul>
+<h1 id="QubesUserDocumentation">Qubes User Documentation</h1>
+<ol>
+<li><strong>Basic Reading</strong>
+<ol>
 <li><a href="/wiki/wiki/GettingStarted">Getting Started</a></li>
-<li><a href="/wiki/wiki/HvmCreate">Creating and Using HVM and Windows Domains (Qubes R2 Only)</a></li>
-<li><a href="/wiki/wiki/WindowsAppVms">Installing and Using Windows-based AppVMs (Qubes R2 Beta 3 and Later)</a></li>
 <li><a href="/wiki/wiki/SecurityGuidelines">Security Guidelines</a></li>
-<li><a href="/wiki/wiki/CopyPaste">Copying and Pasting Between Domains</a></li>
-<li><a href="/wiki/wiki/CopyingFiles">Copying Files Between Domains</a></li>
-<li><a href="/wiki/wiki/SoftwareUpdateVM">Updating and Adding New Software to AppVMs</a></li>
+<li><a href="/wiki/wiki/BackupRestore">Backup, Restoration, and Migration</a></li>
+</ol></li>
+<li><strong>Domain Zero (dom0)</strong>
+<ol>
+<li><a href="/wiki/wiki/DomZeroTools">Dom0 Command-Line Tools</a></li>
 <li><a href="/wiki/wiki/SoftwareUpdateDom0">Updating Software in dom0</a></li>
-<li><a href="/wiki/wiki/DisposableVms">Disposable VMs</a></li>
-<li><a href="/wiki/wiki/QubesFirewall">Understanding Qubes Firewall</a></li>
-<li><a href="/wiki/wiki/StickMounting">How to Mount USB Sticks to AppVMs</a></li>
-<li><a href="/wiki/wiki/AssigningDevices">Assigning PCI Devices to AppVMs</a></li>
-<li><a href="/wiki/wiki/BackupRestore">Qubes Backup, Restoration, and Migration</a></li>
-<li><a href="/wiki/wiki/NetworkPrinter">Configuring a Network Printer</a></li>
-<li><a href="/wiki/wiki/ResizeDiskImage">Resizing AppVM and HVM Disk Images</a></li>
-<li><a href="/wiki/wiki/ManagingAppVmShortcuts">Managing Shortcuts to Applications Installed in AppVMs</a></li>
-</ul>
-<h2 id="AdvancedTopics">Advanced Topics</h2>
-<ul>
-<li><a href="http://theinvisiblethings.blogspot.com/2011/09/playing-with-qubes-networking-for-fun.html">​Creating Custom NetVMs and ProxyVMs</a></li>
-<li><a href="/wiki/wiki/VPN">How to set up a ProxyVM as a VPN Gateway</a></li>
-<li><a href="/wiki/wiki/CopyToDomZero">How to Copy Files to dom0</a></li>
-<li><a href="https://groups.google.com/group/qubes-devel/msg/9d1ac581236ca9b4">​Extending root.img Size</a></li>
+<li><a href="/wiki/wiki/CopyToDomZero">Copying Files to and from dom0</a></li>
+<li>Advanced Topics
+<ol>
 <li><a href="/wiki/wiki/AntiEvilMaid">Installing Anti Evil Maid</a></li>
-<li><a href="/wiki/wiki/UserDoc/TorVM">How to Install a Transparent Tor ProxyVM</a></li>
 <li><a href="/wiki/wiki/UserDoc/XFCE">XFCE Installation in dom0</a></li>
-<li><a href="/wiki/wiki/UserDoc/ConfigFiles">Configuration files</a></li>
-<li><a href="/wiki/wiki/UserDoc/DispVMCustomization">DispVM Customization</a></li>
-<li><a href="/wiki/wiki/LinuxHVMTips">Tips for Using Linux in an HVM</a></li>
-<li><a href="/wiki/wiki/FullScreenMode">Enabling Fullscreen Mode for AppVMs</a></li>
-<li><a href="/wiki/wiki/UserDoc/SplitGpg">Using GPG more securely in Qubes: Split GPG tutorial</a></li>
-<li><a href="/wiki/wiki/UserDoc/OpenPGP">Using OpenPGP in Qubes</a> (deprecated by <a href="/wiki/wiki/UserDoc/SplitGpg">UserDoc/SplitGpg</a>)</li>
 <li><a href="/wiki/wiki/ZFS">Installing ZFS in Qubes</a></li>
-<li><a href="/wiki/wiki/QubesService">Qubes service framework</a></li>
-<li><a href="/wiki/wiki/DiskTRIM">Enabling TRIM for SSD disks</a></li>
+</ol></li>
+</ol></li>
+<li><strong>Unprivileged Domains (domUs)</strong>
+<ol>
+<li><a href="/wiki/wiki/VmTools">DomU Command-Line Tools</a></li>
+<li><strong>Intra-VM Actions</strong>
+<ol>
+<li><a href="/wiki/wiki/FullScreenMode">Enabling Fullscreen Mode</a></li>
+<li><a href="/wiki/wiki/ManagingAppVmShortcuts">Managing Application Shortcuts</a></li>
+</ol></li>
+<li><strong>Inter-VM Actions</strong>
+<ol>
+<li><a href="/wiki/wiki/CopyPaste">Copying and Pasting Text Between Domains</a></li>
+<li><a href="/wiki/wiki/CopyingFiles">Copying and Moving Files Between Domains</a></li>
+<li><a href="/wiki/wiki/UserDoc/SplitGpg">Using GPG more securely in Qubes: Split GPG tutorial</a></li>
+</ol></li>
+<li><strong>NetworkVMs and ProxyVMs (NetVMs and ProxyVMs)</strong>
+<ol>
+<li><a href="/wiki/wiki/QubesFirewall">Understanding Qubes Firewall</a></li>
 <li><a href="/wiki/wiki/DataLeaks">Understanding and Preventing Data Leaks</a></li>
-</ul>
-<ul>
+<li><a href="/wiki/wiki/UserDoc/TorVM">How to Install a Transparent Tor ProxyVM (TorVM)</a></li>
+<li><a href="/wiki/wiki/VPN">How to set up a ProxyVM as a VPN Gateway</a></li>
+<li><a href="/wiki/wiki/NetworkBridgeSupport">Adding Bridge Support to the NetVM (EXPERIMENTAL)</a></li>
+<li>External Links
+<ol>
+<li><a href="http://theinvisiblethings.blogspot.com/2011/09/playing-with-qubes-networking-for-fun.html">​Creating Custom NetVMs and ProxyVMs</a></li>
+<li><a href="https://groups.google.com/group/qubes-devel/msg/34f67194d3422bfa">​How to run TorBrowser using external tor proxy (from TorVM)</a></li>
+<li><a href="https://groups.google.com/group/qubes-devel/msg/4ca950ab6d7cd11a">​How to make proxy for individual tcp connection from networkless VM</a></li>
+<li><a href="https://groups.google.com/group/qubes-devel/browse_thread/thread/5252bc3f6ed4b43e/d881deb5afaa2a6c#39c95d63fccca12b">​HTTP filtering proxy in Qubes firewall VM</a></li>
+</ol></li>
+</ol></li>
+<li><strong>TemplateVMs</strong>
+<ol>
+<li><a href="/wiki/wiki/SoftwareUpdateVM">Updating and Installing Software in VMs</a></li>
 <li><a href="/wiki/wiki/Templates/FedoraMinimal">Templates: Fedora - minimal</a></li>
 <li><a href="/wiki/wiki/Templates/Debian">Templates: Debian</a></li>
-</ul>
-<h2 id="Command-LineToolReferences">Command-Line Tool References</h2>
-<ul>
-<li><a href="/wiki/wiki/DomZeroTools">Dom0 Tools</a></li>
-<li><a href="/wiki/wiki/VmTools">VM Tools</a></li>
-</ul>
-<h2 id="AdditionalTopics">Additional Topics</h2>
-<ul>
+<li>External Links
+<ol>
+<li><a href="https://groups.google.com/group/qubes-devel/msg/9d1ac581236ca9b4">​Extending `root.img` Size</a></li>
+</ol></li>
+</ol></li>
+<li><strong>DisposableVMs (DispVMs)</strong>
+<ol>
+<li><a href="/wiki/wiki/DisposableVms">Disposable VMs</a></li>
+<li><a href="/wiki/wiki/UserDoc/DispVMCustomization">DispVM Customization</a></li>
+</ol></li>
+<li><strong>HardwareVMs (HVMs)</strong>
+<ol>
+<li><a href="/wiki/wiki/ResizeDiskImage">Resizing AppVM and HVM Disk Images</a></li>
+<li><a href="/wiki/wiki/LinuxHVMTips">Tips for Using Linux in an HVM</a></li>
+<li><a href="/wiki/wiki/HvmCreate">Creating and Using HVM and Windows Domains (Qubes R2 Only)</a></li>
+<li>External Links
+<ol>
+<li><a href="https://groups.google.com/group/qubes-devel/msg/4015c8900a813985">​Creating NetBSD VM</a></li>
+</ol></li>
+</ol></li>
+<li><strong>Windows VMs</strong>
+<ol>
+<li><a href="/wiki/wiki/WindowsAppVms">Installing and Using Windows-based AppVMs (Qubes R2 Beta 3 and Later)</a></li>
+</ol></li>
+<li>Advanced Topics
+<ol>
+<li><a href="/wiki/wiki/UserDoc/ConfigFiles">Configuration files</a></li>
+<li><a href="/wiki/wiki/QubesService">Qubes service framework</a></li>
+</ol></li>
+</ol></li>
+<li><strong>Hardware</strong>
+<ol>
+<li><a href="/wiki/wiki/StickMounting">How to Mount USB Sticks to AppVMs</a></li>
+<li><a href="/wiki/wiki/ExternalDeviceMountPoint">Where are my external storage devices mounted?</a></li>
+<li><a href="/wiki/wiki/AssigningDevices">Assigning PCI Devices to AppVMs</a></li>
+<li><a href="/wiki/wiki/DiskTRIM">Enabling TRIM for SSD disks</a></li>
+<li><a href="/wiki/wiki/NetworkPrinter">Configuring a Network Printer</a></li>
 <li><a href="/wiki/wiki/InstallNvidiaDriver">How to install an Nvidia driver in dom0</a></li>
 <li><a href="/wiki/wiki/SonyVaioTinkering">Getting Sony Vaio Z laptop to work with Qubes</a></li>
+<li>External Links
+<ol>
 <li><a href="https://groups.google.com/group/qubes-devel/browse_thread/thread/e27a57b0eda62f76">​Installing on system with new AMD GPU (missing firmware problem)</a></li>
-<li><a href="https://groups.google.com/group/qubes-devel/msg/4ca950ab6d7cd11a">​How to make proxy for individual tcp connection from networkless VM</a></li>
-<li><a href="https://groups.google.com/group/qubes-devel/msg/34f67194d3422bfa">​How to run TorBrowser using external tor proxy (from TorVM)</a></li>
-<li><a href="https://groups.google.com/group/qubes-devel/msg/4015c8900a813985">​Creating NetBSD VM</a></li>
-<li><a href="https://groups.google.com/group/qubes-devel/browse_thread/thread/e4ac093cabd37d2b/d5090c20d92c4128#d5090c20d92c4128">​Booting with GRUB2 and GPT</a></li>
-<li><a href="https://groups.google.com/group/qubes-devel/browse_thread/thread/5252bc3f6ed4b43e/d881deb5afaa2a6c#39c95d63fccca12b">​HTTP filtering proxy in Qubes firewall VM</a></li>
 <li><a href="https://groups.google.com/group/qubes-devel/browse_thread/thread/b8b0d819d2a4fc39/d50a72449107ab21#8a9268c09d105e69">​Solving problems with Macbook Air 2012</a></li>
-<li><a href="/wiki/wiki/NetworkBridgeSupport">Adding Bridge Support to the NetVM (EXPERIMENTAL)</a></li>
-<li><a href="/wiki/wiki/ExternalDeviceMountPoint">Where are my external storage devices mounted?</a></li>
-</ul>
+<li><a href="https://groups.google.com/group/qubes-devel/browse_thread/thread/e4ac093cabd37d2b/d5090c20d92c4128#d5090c20d92c4128">​Booting with GRUB2 and GPT</a></li>
+</ol></li>
+</ol></li>
+</ol>
