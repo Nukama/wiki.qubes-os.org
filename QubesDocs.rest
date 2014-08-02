@@ -4,7 +4,7 @@ Qubes Documentation
 For Users
 ---------
 
--  **`User Guides </wiki/UserDoc>`__ (New to Qubes? Start here!)**
+-  `User Documentation </wiki/UserDoc>`__
 -  `Users' FAQ </wiki/UserFaq>`__
 -  `System Requirements </wiki/SystemRequirements>`__
 -  `Hardware Compatibility List </wiki/HCL>`__
