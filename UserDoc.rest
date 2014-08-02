@@ -1,87 +1,117 @@
-Qubes User Guides
-=================
+Qubes User Documentation
+========================
 
-Standard Topics
----------------
+#. **Basic Reading**
 
--  `Getting Started </wiki/GettingStarted>`__
--  `Creating and Using HVM and Windows Domains (Qubes R2
-   Only) </wiki/HvmCreate>`__
--  `Installing and Using Windows-based AppVMs (Qubes R2 Beta 3 and
-   Later) </wiki/WindowsAppVms>`__
--  `Security Guidelines </wiki/SecurityGuidelines>`__
--  `Copying and Pasting Between Domains </wiki/CopyPaste>`__
--  `Copying Files Between Domains </wiki/CopyingFiles>`__
--  `Updating and Adding New Software to
-   AppVMs </wiki/SoftwareUpdateVM>`__
--  `Updating Software in dom0 </wiki/SoftwareUpdateDom0>`__
--  `Disposable VMs </wiki/DisposableVms>`__
--  `Understanding Qubes Firewall </wiki/QubesFirewall>`__
--  `How to Mount USB Sticks to AppVMs </wiki/StickMounting>`__
--  `Assigning PCI Devices to AppVMs </wiki/AssigningDevices>`__
--  `Qubes Backup, Restoration, and Migration </wiki/BackupRestore>`__
--  `Configuring a Network Printer </wiki/NetworkPrinter>`__
--  `Resizing AppVM and HVM Disk Images </wiki/ResizeDiskImage>`__
--  `Managing Shortcuts to Applications Installed in
-   AppVMs </wiki/ManagingAppVmShortcuts>`__
+   #. `Getting Started </wiki/GettingStarted>`__
+   #. `Security Guidelines </wiki/SecurityGuidelines>`__
+   #. `Backup, Restoration, and Migration </wiki/BackupRestore>`__
 
-Advanced Topics
----------------
+#. **Domain Zero (dom0)**
 
--  `​Creating Custom NetVMs and
-   ProxyVMs <http://theinvisiblethings.blogspot.com/2011/09/playing-with-qubes-networking-for-fun.html>`__
--  `How to set up a ProxyVM as a VPN Gateway </wiki/VPN>`__
--  `How to Copy Files to dom0 </wiki/CopyToDomZero>`__
--  `​Extending root.img
-   Size <https://groups.google.com/group/qubes-devel/msg/9d1ac581236ca9b4>`__
--  `Installing Anti Evil Maid </wiki/AntiEvilMaid>`__
--  `How to Install a Transparent Tor ProxyVM </wiki/UserDoc/TorVM>`__
--  `XFCE Installation in dom0 </wiki/UserDoc/XFCE>`__
--  `Configuration files </wiki/UserDoc/ConfigFiles>`__
--  `DispVM Customization </wiki/UserDoc/DispVMCustomization>`__
--  `Tips for Using Linux in an HVM </wiki/LinuxHVMTips>`__
--  `Enabling Fullscreen Mode for AppVMs </wiki/FullScreenMode>`__
--  `Using GPG more securely in Qubes: Split GPG
-   tutorial </wiki/UserDoc/SplitGpg>`__
--  `Using OpenPGP in Qubes </wiki/UserDoc/OpenPGP>`__ (deprecated by
-   `UserDoc/SplitGpg </wiki/UserDoc/SplitGpg>`__)
--  `Installing ZFS in Qubes </wiki/ZFS>`__
--  `Qubes service framework </wiki/QubesService>`__
--  `Enabling TRIM for SSD disks </wiki/DiskTRIM>`__
--  `Understanding and Preventing Data Leaks </wiki/DataLeaks>`__
+   #. `Dom0 Command-Line Tools </wiki/DomZeroTools>`__
+   #. `Updating Software in dom0 </wiki/SoftwareUpdateDom0>`__
+   #. `Copying Files to and from dom0 </wiki/CopyToDomZero>`__
+   #. Advanced Topics
 
--  `Templates: Fedora - minimal </wiki/Templates/FedoraMinimal>`__
--  `Templates: Debian </wiki/Templates/Debian>`__
+      #. `Installing Anti Evil Maid </wiki/AntiEvilMaid>`__
+      #. `XFCE Installation in dom0 </wiki/UserDoc/XFCE>`__
+      #. `Installing ZFS in Qubes </wiki/ZFS>`__
 
-Command-Line Tool References
-----------------------------
+#. **Unprivileged Domains (domUs)**
 
--  `Dom0 Tools </wiki/DomZeroTools>`__
--  `VM Tools </wiki/VmTools>`__
+   #. `DomU Command-Line Tools </wiki/VmTools>`__
+   #. **Intra-VM Actions**
 
-Additional Topics
------------------
+      #. `Enabling Fullscreen Mode </wiki/FullScreenMode>`__
+      #. `Managing Application
+         Shortcuts </wiki/ManagingAppVmShortcuts>`__
 
--  `How to install an Nvidia driver in
-   dom0 </wiki/InstallNvidiaDriver>`__
--  `Getting Sony Vaio Z laptop to work with
-   Qubes </wiki/SonyVaioTinkering>`__
--  `​Installing on system with new AMD GPU (missing firmware
-   problem) <https://groups.google.com/group/qubes-devel/browse_thread/thread/e27a57b0eda62f76>`__
--  `​How to make proxy for individual tcp connection from networkless
-   VM <https://groups.google.com/group/qubes-devel/msg/4ca950ab6d7cd11a>`__
--  `​How to run TorBrowser using external tor proxy (from
-   TorVM) <https://groups.google.com/group/qubes-devel/msg/34f67194d3422bfa>`__
--  `​Creating NetBSD
-   VM <https://groups.google.com/group/qubes-devel/msg/4015c8900a813985>`__
--  `​Booting with GRUB2 and
-   GPT <https://groups.google.com/group/qubes-devel/browse_thread/thread/e4ac093cabd37d2b/d5090c20d92c4128#d5090c20d92c4128>`__
--  `​HTTP filtering proxy in Qubes firewall
-   VM <https://groups.google.com/group/qubes-devel/browse_thread/thread/5252bc3f6ed4b43e/d881deb5afaa2a6c#39c95d63fccca12b>`__
--  `​Solving problems with Macbook Air
-   2012 <https://groups.google.com/group/qubes-devel/browse_thread/thread/b8b0d819d2a4fc39/d50a72449107ab21#8a9268c09d105e69>`__
--  `Adding Bridge Support to the NetVM
-   (EXPERIMENTAL) </wiki/NetworkBridgeSupport>`__
--  `Where are my external storage devices
-   mounted? </wiki/ExternalDeviceMountPoint>`__
+   #. **Inter-VM Actions**
+
+      #. `Copying and Pasting Text Between Domains </wiki/CopyPaste>`__
+      #. `Copying and Moving Files Between
+         Domains </wiki/CopyingFiles>`__
+      #. `Using GPG more securely in Qubes: Split GPG
+         tutorial </wiki/UserDoc/SplitGpg>`__
+
+   #. **NetworkVMs and ProxyVMs (NetVMs and ProxyVMs)**
+
+      #. `Understanding Qubes Firewall </wiki/QubesFirewall>`__
+      #. `Understanding and Preventing Data Leaks </wiki/DataLeaks>`__
+      #. `How to Install a Transparent Tor ProxyVM
+         (TorVM) </wiki/UserDoc/TorVM>`__
+      #. `How to set up a ProxyVM as a VPN Gateway </wiki/VPN>`__
+      #. `Adding Bridge Support to the NetVM
+         (EXPERIMENTAL) </wiki/NetworkBridgeSupport>`__
+      #. External Links
+
+         #. `​Creating Custom NetVMs and
+            ProxyVMs <http://theinvisiblethings.blogspot.com/2011/09/playing-with-qubes-networking-for-fun.html>`__
+         #. `​How to run TorBrowser using external tor proxy (from
+            TorVM) <https://groups.google.com/group/qubes-devel/msg/34f67194d3422bfa>`__
+         #. `​How to make proxy for individual tcp connection from
+            networkless
+            VM <https://groups.google.com/group/qubes-devel/msg/4ca950ab6d7cd11a>`__
+         #. `​HTTP filtering proxy in Qubes firewall
+            VM <https://groups.google.com/group/qubes-devel/browse_thread/thread/5252bc3f6ed4b43e/d881deb5afaa2a6c#39c95d63fccca12b>`__
+
+   #. **TemplateVMs**
+
+      #. `Updating and Installing Software in
+         VMs </wiki/SoftwareUpdateVM>`__
+      #. `Templates: Fedora - minimal </wiki/Templates/FedoraMinimal>`__
+      #. `Templates: Debian </wiki/Templates/Debian>`__
+      #. External Links
+
+         #. `​Extending \`root.img\`
+            Size <https://groups.google.com/group/qubes-devel/msg/9d1ac581236ca9b4>`__
+
+   #. **DisposableVMs (DispVMs)**
+
+      #. `Disposable VMs </wiki/DisposableVms>`__
+      #. `DispVM Customization </wiki/UserDoc/DispVMCustomization>`__
+
+   #. **HardwareVMs (HVMs)**
+
+      #. `Resizing AppVM and HVM Disk Images </wiki/ResizeDiskImage>`__
+      #. `Tips for Using Linux in an HVM </wiki/LinuxHVMTips>`__
+      #. `Creating and Using HVM and Windows Domains (Qubes R2
+         Only) </wiki/HvmCreate>`__
+      #. External Links
+
+         #. `​Creating NetBSD
+            VM <https://groups.google.com/group/qubes-devel/msg/4015c8900a813985>`__
+
+   #. **Windows VMs**
+
+      #. `Installing and Using Windows-based AppVMs (Qubes R2 Beta 3 and
+         Later) </wiki/WindowsAppVms>`__
+
+   #. Advanced Topics
+
+      #. `Configuration files </wiki/UserDoc/ConfigFiles>`__
+      #. `Qubes service framework </wiki/QubesService>`__
+
+#. **Hardware**
+
+   #. `How to Mount USB Sticks to AppVMs </wiki/StickMounting>`__
+   #. `Where are my external storage devices
+      mounted? </wiki/ExternalDeviceMountPoint>`__
+   #. `Assigning PCI Devices to AppVMs </wiki/AssigningDevices>`__
+   #. `Enabling TRIM for SSD disks </wiki/DiskTRIM>`__
+   #. `Configuring a Network Printer </wiki/NetworkPrinter>`__
+   #. `How to install an Nvidia driver in
+      dom0 </wiki/InstallNvidiaDriver>`__
+   #. `Getting Sony Vaio Z laptop to work with
+      Qubes </wiki/SonyVaioTinkering>`__
+   #. External Links
+
+      #. `​Installing on system with new AMD GPU (missing firmware
+         problem) <https://groups.google.com/group/qubes-devel/browse_thread/thread/e27a57b0eda62f76>`__
+      #. `​Solving problems with Macbook Air
+         2012 <https://groups.google.com/group/qubes-devel/browse_thread/thread/b8b0d819d2a4fc39/d50a72449107ab21#8a9268c09d105e69>`__
+      #. `​Booting with GRUB2 and
+         GPT <https://groups.google.com/group/qubes-devel/browse_thread/thread/e4ac093cabd37d2b/d5090c20d92c4128#d5090c20d92c4128>`__
+
 
