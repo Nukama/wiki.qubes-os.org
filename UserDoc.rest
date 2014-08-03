@@ -101,10 +101,13 @@ Qubes User Documentation
    #. `Assigning PCI Devices to AppVMs </wiki/AssigningDevices>`__
    #. `Enabling TRIM for SSD disks </wiki/DiskTRIM>`__
    #. `Configuring a Network Printer </wiki/NetworkPrinter>`__
-   #. `How to install an Nvidia driver in
-      dom0 </wiki/InstallNvidiaDriver>`__
-   #. `Getting Sony Vaio Z laptop to work with
-      Qubes </wiki/SonyVaioTinkering>`__
+   #. Proprietary
+
+      #. `How to install an Nvidia driver in
+         dom0 </wiki/InstallNvidiaDriver>`__
+      #. `Getting Sony Vaio Z laptop to work with
+         Qubes </wiki/SonyVaioTinkering>`__
+
    #. External Links
 
       #. `​Installing on system with new AMD GPU (missing firmware
