@@ -56,7 +56,7 @@ ssb   4096R/30498E2A 2012-11-15
 [user@work ~]$ qubes-gpg-import-key ~/Downloads/marmarek.asc</code></pre>
 <p><a href="/wiki/attachment/wiki/UserDoc/SplitGpg/r2-split-gpg-5.png"><img src="/wiki/chrome/common/attachment.png" title="No image &quot;r2-split-gpg-5.png&quot; attached to UserDoc/SplitGpg" alt="No image &quot;r2-split-gpg-5.png&quot; attached to UserDoc/SplitGpg" /></a></p>
 <h2 id="Advanced:UsingSplitGPGwithSubkeys">Advanced: Using Split GPG with Subkeys</h2>
-<p>Users with particularly high security requirements may wish to use split GPG with <a href="https://wiki.debian.org/Subkeys">​subkeys</a>. However, this setup comes at a significant cost: It will be impossible to sign other people's keys without breaking this security model. Nonetheless, if signing others' keys is not required, then split GPG with subkeys offers unparalleled security for one's master secret key.</p>
+<p>Users with particularly high security requirements may wish to use split GPG with <a href="https://wiki.debian.org/Subkeys">​subkeys</a>. However, this setup comes at a significant cost: It will be impossible to sign other people's keys with the master secret key without breaking this security model. Nonetheless, if signing others' keys is not required, then split GPG with subkeys offers unparalleled security for one's master secret key.</p>
 <h3 id="SetupDescription">Setup Description</h3>
 <p>In this example, the following keys are stored in the following locations:</p>
 <table>
