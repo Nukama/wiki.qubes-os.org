@@ -30,7 +30,7 @@
 <h2 id="Clipboardautomaticpolicyenforcement">Clipboard automatic policy enforcement</h2>
 <p>The Qubes clipboard policy is configurable in:</p>
 <pre class="wiki"><code>/etc/qubes-rpc/policy/qubes.ClipboardPaste</code></pre>
-<p>You may wish to configure this policy in order to prevent user error. For example, if you are certain that you never wish to paste <em>into</em> your &quot;vault&quot; AppVM, then you might edit the policy as follows:</p>
+<p>You may wish to configure this policy in order to prevent user error. For example, if you are certain that you never wish to paste <em>into</em> your &quot;vault&quot; AppVM (and it is highly recommended that you do not), then you should edit the policy as follows:</p>
 <pre class="wiki"><code>$anyvm  vault   deny
 $anyvm  $anyvm  ask</code></pre>
 <h2 id="ShortcutConfiguration">Shortcut Configuration</h2>
