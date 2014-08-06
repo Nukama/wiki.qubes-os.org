@@ -79,8 +79,8 @@ InstallationGuideR2rc2|
 Upgrading
 ---------
 
-Upgrading from Qubes R2 rc1 should be a simple matter of install updates
-for `dom0 </wiki/SoftwareUpdateDom0>`__ and
+Upgrading from Qubes R2 rc1 should be a simple matter of installing
+updates for `dom0 </wiki/SoftwareUpdateDom0>`__ and
 `VMs </wiki/SoftwareUpdateVM>`__.
 
 Users of R2 beta 3 should follow instructions on how to upgrade to Qubes
