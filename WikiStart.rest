@@ -54,6 +54,8 @@ Recent News
    might also want to
    `​read <https://groups.google.com/forum/#!topic/qubes-users/LsDpKnwN6w8>`__
    also why this is mostly irrelevant)
+-  ``Aug 06, 2014`` Qubes OS R2 rc2 has been released!
+   `​announcement <http://theinvisiblethings.blogspot.com/2014/08/qubes-os-r2-rc2-debian-template-ssled.html>`__
 
 .. |No image "qubes-arch-diagram-1.png" attached to QubesArchitecture| image:: /chrome/common/attachment.png
    :target: /wiki/QubesArchitecture
