@@ -57,9 +57,10 @@ TemplateVMs and black-labeled domains). If dom0 were ever compromised,
 it would be Game Over\ :sup:`TM`. (The entire system would effectively
 be compromised.) Due to its overarching importance, dom0 has no network
 connectivity and is used only for running the Window and Desktop
-Managers. Dom0 shouldn't be used for anything else. In particular, you
-should *never* run user applications in dom0. (That's what your AppVMs
-are for!)
+Managers. Dom0 shouldn't be used for anything else. In particular, `you
+should never run user applications in
+dom0 </wiki/SecurityGuidelines#Dom0Precautions>`__. (That's what your
+AppVMs are for!)
 
 Qubes VM Manager and Command Line Tools
 ---------------------------------------
