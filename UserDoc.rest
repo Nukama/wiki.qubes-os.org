@@ -92,6 +92,8 @@ Qubes User Documentation
 
       #. `Configuration files </wiki/UserDoc/ConfigFiles>`__
       #. `Qubes service framework </wiki/QubesService>`__
+      #. `Note regarding password-less root access in
+         VM </wiki/VMSudo>`__
 
 #. **Hardware**
 
