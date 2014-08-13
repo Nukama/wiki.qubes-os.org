@@ -1,0 +1,26 @@
+<h1 id="VMConfigurationInterface">VM Configuration Interface</h1>
+<p>Qubes VM have some settings set by dom0 based on VM settings. There are multiple configuration channels, which includes:</p>
+<ul>
+<li>XenStore</li>
+<li>QubesDB - replacing most of xenstore (in R3 only)</li>
+<li>Qubes RPC (called at VM startup, or when configuration changed)</li>
+<li>GUI protocol</li>
+</ul>
+<h2 id="xenstore">xenstore</h2>
+<p>Keys exposed by dom0 to VM (only Qubes specific included):</p>
+<ul>
+<li><code>qubes-vm-type</code> - VM type, the same as <code>type</code> field in <code>qvm-prefs</code>. One of <code>AppVM</code>, <code>ProxyVM</code>, <code>NetVM</code>, <code>TemplateVM</code>, <code>HVM</code>, <code>TemplateHVM</code></li>
+<li><code>qubes-vm-updatable</code> - flag whether VM is updatable (whether changes in root.img will survive VM restart). One of <code>True</code>, <code>False</code></li>
+<li><code>qubes-timezone - name of timezone based on dom0 timezone. For example </code><a href="/wiki/wiki/SystemDoc/Europe/Warsaw">Europe/Warsaw?</a>`</li>
+<li><code>qubes-keyboard</code> - keyboard layout based on dom0 layout. Its syntax is suitable for <code>xkbcomp</code> command (after expanding escape sequences like <code>\n</code> or <code>\t</code>). This is meant only as some default value, VM can ignore this option and choose its own keyboard layout (this is what keyboard setting from Qubes Manager does).</li>
+<li><code>qubes-debug-mode</code> - flag whether VM have debug mode enabled (qvm-prefs setting). One of <code>1</code>, <code>0</code></li>
+<li><code>qubes-service/SERVICE_NAME</code> - subtree for VM services controlled from dom0 (using qvm-service command or Qubes Manager). One of <code>1</code>, <code>0</code>. Note that not every service will be listed here, if entry is missing, it means &quot;use VM default&quot;. List of currently supported services is in <a href="/wiki/wiki/Dom0Tools/QvmService">qvm-service man page</a></li>
+<li><code>qubes-netmask</code> - network mask (only when VM has netvm set); currently hardcoded &quot;255.255.255.0&quot;</li>
+<li>`qubes-ip - IP address for this VM (only when VM has netvm set)</li>
+<li><code>qubes-gateway</code> - default gateway IP and primary DNS address (only when VM has netvm set); VM should add host route to this address directly via eth0 (or whatever default interface name is)</li>
+<li><code>qubes-secondary-dns</code> - secondary DNS address (only when VM has netvm set)</li>
+<li><code>qubes-netvm-gateway</code> - same as <code>qubes-gateway</code> in connected VMs (only when VM serves as network backend - ProxyVM and NetVM); because this is also set as primary DNS in connected VMs, traffic sent to this IP on port 53 should be redirected to DNS server</li>
+<li><code>qubes-netvm-netmask</code> - same as <code>qubes-netmask</code> in connected VMs (only when VM serves as network backend - ProxyVM and NetVM)</li>
+<li><code>qubes-netvm-network</code> - network address (only when VM serves as network backend - ProxyVM and NetVM); can be also calculated from qubes-netvm-gateway and qubes-netvm-netmask</li>
+<li><code>qubes-netvm-secondary-dns</code> - same as <code>qubes-secondary-dns</code> in connected VMs (only when VM serves as network backend - ProxyVM and NetVM); traffic sent to this IP on port 53 should be redirected to secondary DNS server</li>
+</ul>
