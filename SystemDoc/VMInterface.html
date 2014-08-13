@@ -24,3 +24,18 @@
 <li><code>qubes-netvm-network</code> - network address (only when VM serves as network backend - ProxyVM and NetVM); can be also calculated from qubes-netvm-gateway and qubes-netvm-netmask</li>
 <li><code>qubes-netvm-secondary-dns</code> - same as <code>qubes-secondary-dns</code> in connected VMs (only when VM serves as network backend - ProxyVM and NetVM); traffic sent to this IP on port 53 should be redirected to secondary DNS server</li>
 </ul>
+<p>Keys set by VM for passing info to dom0:</p>
+<ul>
+<li><code>memory/meminfo</code> - used memory (updated by qubes-meminfo-writer), input information for qmemman; Format: 6 lines (EOL encoded as <code>\n</code>), each in format &quot;FIELD: VALUE kB&quot;; fields: <code>MemTotal</code>, <code>MemFree</code>, <code>Buffers</code>, <code>Cached</code>, <code>SwapTotal</code>, <code>SwapFree</code>; meaning the same as in <code>/proc/meminfo</code> in Linux</li>
+<li><code>qubes-block-devices</code> - list of block devices exposed by this VM, each device (subdirectory) should be named in a way that VM can attach the device based on it. Each should contain those entries:
+<ul>
+<li><code>desc</code> - device description (ASCII text)</li>
+<li><code>size</code> - device size in bytes</li>
+<li><code>mode</code> - default connection mode; <code>r</code> for read-only, <code>w</code> for read-write</li>
+</ul></li>
+<li><code>qubes-usb-devices</code> - list of USB devices exposed by this VM, each device (subdirectory) should contain:
+<ul>
+<li><code>desc</code> - device description (ASCII text)</li>
+<li><code>usb-ver</code> - USB version (1, 2 or 3)</li>
+</ul></li>
+</ul>
