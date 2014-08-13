@@ -12,7 +12,7 @@
 <li><code>qubes-vm-type</code> - VM type, the same as <code>type</code> field in <code>qvm-prefs</code>. One of <code>AppVM</code>, <code>ProxyVM</code>, <code>NetVM</code>, <code>TemplateVM</code>, <code>HVM</code>, <code>TemplateHVM</code></li>
 <li><code>qubes-vm-updatable</code> - flag whether VM is updatable (whether changes in root.img will survive VM restart). One of <code>True</code>, <code>False</code></li>
 <li><code>qubes-timezone - name of timezone based on dom0 timezone. For example </code><a href="/wiki/wiki/SystemDoc/Europe/Warsaw">Europe/Warsaw?</a>`</li>
-<li><code>qubes-keyboard</code> - keyboard layout based on dom0 layout. Its syntax is suitable for <code>xkbcomp</code> command (after expanding escape sequences like <code>\n</code> or <code>\t</code>). This is meant only as some default value, VM can ignore this option and choose its own keyboard layout (this is what keyboard setting from Qubes Manager does).</li>
+<li><code>qubes-keyboard</code> - keyboard layout based on dom0 layout. Its syntax is suitable for <code>xkbcomp</code> command (after expanding escape sequences like <code>\n</code> or <code>\t</code>). This is meant only as some default value, VM can ignore this option and choose its own keyboard layout (this is what keyboard setting from Qubes Manager does). This entry is created as part of gui-daemon initialization (so not available when gui-daemon disabled, or not started yet).</li>
 <li><code>qubes-debug-mode</code> - flag whether VM have debug mode enabled (qvm-prefs setting). One of <code>1</code>, <code>0</code></li>
 <li><code>qubes-service/SERVICE_NAME</code> - subtree for VM services controlled from dom0 (using qvm-service command or Qubes Manager). One of <code>1</code>, <code>0</code>. Note that not every service will be listed here, if entry is missing, it means &quot;use VM default&quot;. List of currently supported services is in <a href="/wiki/wiki/Dom0Tools/QvmService">qvm-service man page</a></li>
 <li><code>qubes-netmask</code> - network mask (only when VM has netvm set); currently hardcoded &quot;255.255.255.0&quot;</li>
@@ -39,3 +39,13 @@
 <li><code>usb-ver</code> - USB version (1, 2 or 3)</li>
 </ul></li>
 </ul>
+<h2 id="QubesRPC">Qubes RPC</h2>
+<p>Services called by dom0 to provide some VM configuration:</p>
+<ul>
+<li>qubes.SetMonitorLayout - provide list of monitors, one in a line, each line contains four numbers: width height X Y</li>
+<li>qubes.WaitForSession - called to wait for full VM startup</li>
+<li>qubes.GetAppmenus - receive appmenus from given VM (template); TODO: describe format here</li>
+<li>qubes.GetImageRGBA - receive image/application icon: TODO: describe format and parameters here</li>
+</ul>
+<h2 id="GUIprotocol">GUI protocol</h2>
+<p>GUI initialization includes passing the whole screen dimensions from dom0 to VM. This will most likely be overwritten by qubes.<a href="/wiki/wiki/SystemDoc/SetMonitorLayout">SetMonitorLayout?</a> Qubes RPC call.</p>
