@@ -13,7 +13,9 @@ with Release 2.
 
 -  `Getting Started </wiki/GettingStarted>`__
 -  `Screenshots </wiki/QubesScreenshots>`__
--  `Architecture Overview </wiki/QubesArchitecture>`__
+-  `Architecture Overview </wiki/QubesArchitecture>`__, and also the
+   more recent: `​Why Qubes OS is more than a bunch of
+   VMs? <http://www.invisiblethingslab.com/resources/2014/Software_compartmentalization_vs_physical_separation.pdf>`__
 -  `Qubes Security Goals </wiki/SecurityGoals>`__
 -  `FAQ </wiki/UserFaq>`__
 -  `User Documentation </wiki/UserDoc>`__
