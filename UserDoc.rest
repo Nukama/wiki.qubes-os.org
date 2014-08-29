@@ -80,6 +80,8 @@ Qubes User Documentation
          Only) </wiki/HvmCreate>`__
       #. External Links
 
+         #. `​Creating Whonix HVMs in
+            Qubes <https://www.whonix.org/wiki/Qubes>`__
          #. `​Creating NetBSD
             VM <https://groups.google.com/group/qubes-devel/msg/4015c8900a813985>`__
 
