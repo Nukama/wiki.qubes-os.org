@@ -5,20 +5,21 @@ Qubes User Documentation
 
    #. `Getting Started </wiki/GettingStarted>`__
    #. `Security Guidelines </wiki/SecurityGuidelines>`__
-   #. `Backup, Restoration, and Migration </wiki/BackupRestore>`__
+   #. `Glossary of Qubes Terminology </wiki/Glossary>`__
 
-#. **Domain Zero (dom0)**
+#. **Dom0**
 
    #. `Dom0 Command-Line Tools </wiki/DomZeroTools>`__
    #. `Updating Software in dom0 </wiki/SoftwareUpdateDom0>`__
    #. `Copying Files to and from dom0 </wiki/CopyToDomZero>`__
+   #. `Backup, Restoration, and Migration </wiki/BackupRestore>`__
    #. Advanced Topics
 
       #. `Installing Anti Evil Maid </wiki/AntiEvilMaid>`__
       #. `XFCE Installation in dom0 </wiki/UserDoc/XFCE>`__
       #. `Installing ZFS in Qubes </wiki/ZFS>`__
 
-#. **Unprivileged Domains (domUs)**
+#. **`DomUs? </wiki/DomUs>`__**
 
    #. `DomU Command-Line Tools </wiki/VmTools>`__
    #. **Intra-VM Actions**
@@ -35,7 +36,7 @@ Qubes User Documentation
       #. `Using GPG more securely in Qubes: Split GPG
          tutorial </wiki/UserDoc/SplitGpg>`__
 
-   #. **NetworkVMs and ProxyVMs (NetVMs and ProxyVMs)**
+   #. **NetVMs and ProxyVMs**
 
       #. `Understanding Qubes Firewall </wiki/QubesFirewall>`__
       #. `Understanding and Preventing Data Leaks </wiki/DataLeaks>`__
@@ -67,12 +68,12 @@ Qubes User Documentation
          #. `​Extending \`root.img\`
             Size <https://groups.google.com/group/qubes-devel/msg/9d1ac581236ca9b4>`__
 
-   #. **DisposableVMs (DispVMs)**
+   #. **DispVMs**
 
       #. `Disposable VMs </wiki/DisposableVms>`__
       #. `DispVM Customization </wiki/UserDoc/DispVMCustomization>`__
 
-   #. **HardwareVMs (HVMs)**
+   #. **HVMs**
 
       #. `Resizing AppVM and HVM Disk Images </wiki/ResizeDiskImage>`__
       #. `Tips for Using Linux in an HVM </wiki/LinuxHVMTips>`__
