@@ -1,7 +1,8 @@
 <h1 id="Copyingfilesbetweendomains">Copying files between domains</h1>
 <p>Qubes also supports secure file coping between domains. In order to copy file(s) from domain A to domain B, follow those steps:</p>
+<h2 id="GUI">GUI</h2>
 <ol>
-<li>Open file manager in the source domain (domain A), choose file(s) that you wish to copy, and right click on the selection, and choose <a href="/wiki/wiki/Scripts/Copy">Scripts/Copy?</a> to another AppVM...</li>
+<li>Open file manager in the source domain (domain A), choose file(s) that you wish to copy, and right click on the selection, and choose <code>Copy to another AppVM</code></li>
 </ol>
 <ol start="2">
 <li>A dialog box will appear asking for the name of the destination domain (domain B). Ensure the domain B is running (start it by pressing the Play button in the manager if needed)</li>
@@ -10,11 +11,13 @@
 <li>You will get now a confirmation dialog box (this will be displayed by Dom0, so none of the domains can fake your consent). After you click ok, the file copy operation will start, and the files will be copied into the following folder in domain B:</li>
 </ol>
 <ul>
-<li><code></code><code>/home/user/incoming/from-&lt;srcdomain&gt;</code><code></code></li>
+<li><code>/home/user/QubesIncoming/&lt;srcdomain&gt;</code></li>
 </ul>
 <ol start="4">
 <li>You can now move them whenever you like in the domain B filesystem using the file manager there.</li>
 </ol>
+<h2 id="CLI">CLI</h2>
+<p><a href="/wiki/wiki/VmTools/QvmCopyToVm">qvm-copy-to-vm</a></p>
 <h2 id="Oninter-domainfilecopysecurity">On inter-domain file copy security</h2>
 <p>The scheme is <em>secure</em> because it doesn't allow other domains to steal the files that are being copying, and also doesn't allow the source domain to overwrite arbitrary file on the destination domain. Also, Qubes file copy scheme doesn't use any sort of virtual block devices for file copy -- instead we use Xen shared memory, which eliminates lots of processing of untrusted data. For example, the receiving domain is <em>not</em> forced to parse untrusted partitions or file systems. In this respect our files copy mechanism provides even more security than file copy between two physically separated (air-gapped) machines!</p>
 <p>However, one should keep in mind that performing a data transfer from <em>less trusted</em> to <em>more trusted</em> domain can always be potentially insecure, because the data that we insert might potentially try to exploit some hypothetical bug in the destination VM (e.g. a seemingly innocent JPEG that we copy from untrusted domain, might turned out to be specially craft exploit for some hypothetical bug in JPEG parsing application in the destination domain). This is a general problem and applies to any data transfer between <em>less trusted to more trusted</em> domain. It even applies to the scenario of copying files between air-gapped machines. So, you should always copy data only from <em>more trusted</em> to <em>less trusted</em> domains.</p>
