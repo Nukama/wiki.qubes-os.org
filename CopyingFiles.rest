@@ -4,9 +4,12 @@ Copying files between domains
 Qubes also supports secure file coping between domains. In order to copy
 file(s) from domain A to domain B, follow those steps:
 
+GUI
+---
+
 #. Open file manager in the source domain (domain A), choose file(s)
    that you wish to copy, and right click on the selection, and choose
-   `Scripts/Copy? </wiki/Scripts/Copy>`__ to another AppVM...
+   ``Copy to another AppVM``
 
 2. A dialog box will appear asking for the name of the destination
    domain (domain B). Ensure the domain B is running (start it by
@@ -17,10 +20,15 @@ file(s) from domain A to domain B, follow those steps:
    ok, the file copy operation will start, and the files will be copied
    into the following folder in domain B:
 
--  ````\ ``/home/user/incoming/from-<srcdomain>``\ ````
+-  ``/home/user/QubesIncoming/<srcdomain>``
 
 4. You can now move them whenever you like in the domain B filesystem
    using the file manager there.
+
+CLI
+---
+
+`qvm-copy-to-vm </wiki/VmTools/QvmCopyToVm>`__
 
 On inter-domain file copy security
 ----------------------------------
