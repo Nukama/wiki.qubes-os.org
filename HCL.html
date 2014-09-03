@@ -35,7 +35,13 @@
 <p>Reported by</p>
 <p>Name linked to report in <a href="https://groups.google.com/forum/#!forum/qubes-users">qubes-users.</a></p>
 <p><br /></p>
-<p><strong>Note:</strong> <br /> The HCL is a compilation of reports generated and submitted by users. Except in the case of developer-reported entries, the Qubes team has not independently verified the accuracy of these reports. <br /> If using the list to make a purchasing decision, we recommend that you first test the hardware yourself, if possible. <br /> Try to shop for hardware with best achievable Qubes security level (green columns in HVM, IOMMU, TPM) and general machine compatibility (green columns in Qubes version, dom0 kernel, remarks).</p>
+<p><strong>Note:</strong> <br /> The HCL is a compilation of reports generated and submitted by users. Except in the case of developer-reported entries, the Qubes team has not independently verified the accuracy of these reports. <br /> If using the list to make a purchasing decision, we recommend that you first consult the datasheets (CPU, chipset, motherboard) for particular support of:</p>
+<ul>
+<li>HVM (&quot;AMD virtualization (AMD-V)&quot;, &quot;Intel virtualization (VT-x)&quot;, &quot;VIA virtualization (VIA VT)&quot;)</li>
+<li>IOMMU (&quot;AMD I/O Virtualization Technology (AMD-Vi)&quot;, &quot;Intel Virtualization Technology for Directed I/O (VT-d)&quot;)</li>
+<li>TPM (&quot;Trusted Plaform Module (TPM)&quot; connected to a &quot;20-pin TPM header&quot; on motherboards.)</li>
+</ul>
+<p>and test the hardware yourself, if possible. <br /> Try to shop for hardware with best achievable Qubes security level (green columns in HVM, IOMMU, TPM) and general machine compatibility (green columns in Qubes version, dom0 kernel, remarks).<br /></p>
 <h2 id="Reports">Reports</h2>
 <h1>Qubes HCL</h1>
 <p>Device</p>
@@ -60,6 +66,14 @@
 <p>R2B2</p>
 <p>No Network, Chipset doesn't support VT-d! <a href="https://groups.google.com/d/topic/qubes-devel/hag-MQDH_Vs/discussion">​read more</a> <a href="https://groups.google.com/d/topic/qubes-devel/hag-MQDH_Vs/discussion">​read more</a></p>
 <p><a href="https://groups.google.com/d/msg/qubes-devel/hag-MQDH_Vs/pmJ7TIWUWAsJ">​Alex Dubois</a></p>
+<p>Asus N56VZ<br /> (CPU, HM67 Express, HD Graphics)</p>
+<p>N56VZ.216</p>
+<p>Yes</p>
+<p>No</p>
+<p>R2rc2</p>
+<p>3.12.23-1</p>
+<p>Chipset does not support VT-d</p>
+<p><a href="https://groups.google.com/d/msg/qubes-users/KOBFFMJrvRw/JUB-TAoGwr8J">Oleg Artemiev</a></p>
 <p>ASUS X55A<br /> ()</p>
 <p>No</p>
 <p>No</p>
@@ -260,6 +274,12 @@
 <p><a href="https://groups.google.com/d/msg/qubes-devel/ZC_SQJhXVOM/4aLjEc7GIsUJ">​Stephen Boyd</a></p>
 <p>R2B2</p>
 <p><a href="https://groups.google.com/d/msg/qubes-devel/ZC_SQJhXVOM/4aLjEc7GIsUJ">Stephen Boyd</a></p>
+<p>Lenovo IdeaPad Y580<br /> (unknown, HM76 Express, HD Graphics)</p>
+<p>No</p>
+<p>R2rc2</p>
+<p>3.12.23-1</p>
+<p>Not able to install, HM76 Express Chipset does *not* support VT-d</p>
+<p><a href="https://groups.google.com/d/msg/qubes-users/l542hyu8gqk/IjTjjcfGvKsJ">johny jj2</a></p>
 <p>Lenovo IdeaPad Z500 Touch (20221)<br /> (i5-3230M, Ivy Bridge, HD Graphics)</p>
 <p>1.21</p>
 <p>Yes</p>
