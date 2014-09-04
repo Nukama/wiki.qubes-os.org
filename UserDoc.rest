@@ -19,7 +19,7 @@ Qubes User Documentation
       #. `XFCE Installation in dom0 </wiki/UserDoc/XFCE>`__
       #. `Installing ZFS in Qubes </wiki/ZFS>`__
 
-#. **`DomUs? </wiki/DomUs>`__**
+#. **DomUs**
 
    #. `DomU Command-Line Tools </wiki/VmTools>`__
    #. **Intra-VM Actions**
