@@ -90,6 +90,8 @@ Qubes User Documentation
 
       #. `Installing and Using Windows-based AppVMs (Qubes R2 Beta 3 and
          Later) </wiki/WindowsAppVms>`__
+      #. `Advanced options and troubleshooting of Qubes Tools for
+         Windows </wiki/WindowsTools>`__
 
    #. Advanced Topics
 
