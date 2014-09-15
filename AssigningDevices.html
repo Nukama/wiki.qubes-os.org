@@ -21,11 +21,27 @@
 <p>Now you see BDF address in the path (right before final usb3). Strip leading &quot;0000:&quot; and pass the rest to qvm-pci tool:</p>
 <pre class="wiki"><code>qvm-pci -a netvm 00:1a.0</code></pre>
 <h2 id="Possibleissues">Possible issues</h2>
+<h3 id="DMAbuffersize">DMA buffer size</h3>
 <p>VMs with assigned PCI devices in Qubes have allocated a small buffer for DMA operations (called swiotlb). By default it is 2MB, but some devices need a larger buffer. To change this allocation, edit VM's kernel parameters (this is expressed in 512B chunks):</p>
 <pre class="wiki"><code># qvm-prefs netvm |grep kernelopts
 kernelopts       : iommu=soft swiotlb=2048 (default)
 # qvm-prefs -s netvm kernelopts &quot;iommu=soft swiotlb=4096&quot;</code></pre>
 <p>This is <a href="https://groups.google.com/group/qubes-devel/browse_thread/thread/631c4a3a9d1186e3">​known to be needed</a> for Realtek RTL8111DL Gigabit Ethernet Controller.</p>
+<h3 id="PCIpassthroughissues">PCI passthrough issues</h3>
+<p>Sometimes PCI arbitrator is too strict. There is a way to enable permissive mode for it. Create <code>/etc/systemd/system/qubes-pre-netvm.service</code>:</p>
+<pre class="wiki"><code>[Unit]
+Description=Netvm fixup
+Before=qubes-netvm.service
+
+[Service]
+ExecStart=/bin/sh -c &#39;echo 0000:04:00.0 &gt; /sys/bus/pci/drivers/pciback/permissive&#39;
+Type=oneshot
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target</code></pre>
+<p>Then enable it with <code>systemctl enable qubes-pre-netvm.service</code></p>
+<p>See also: <a href="https://groups.google.com/forum/#!topic/qubes-users/Fs94QAc3vQI">​https://groups.google.com/forum/#!topic/qubes-users/Fs94QAc3vQI</a>, <a href="http://wiki.xen.org/wiki/Xen_PCI_Passthrough">​http://wiki.xen.org/wiki/Xen_PCI_Passthrough</a></p>
 <h2 id="BringingPCIdevicebacktodom0">Bringing PCI device back to dom0</h2>
 <p>By default device detached from some VM (or when VM with PCI device attached get shut down) isn't attached back to dom0. This is an intended feature. A device which was previously assigned to a less trusted AppVM could attack dom0 if it were automatically reassigned there. In order to re-enable the device in dom0, either:</p>
 <ol>
