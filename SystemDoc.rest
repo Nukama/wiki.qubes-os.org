@@ -19,6 +19,7 @@ System Documentation for Developers
    updating </wiki/TemplateImplementation>`__
 -  `Dom0 secure update mechanism </wiki/Dom0SecureUpdates>`__
 -  `Debugging Windows VMs </wiki/WindowsDebugging>`__
+-  `Profiling python code </wiki/Profiling>`__
 -  `VM secure update mechanism? </wiki/VMSecureUpdates>`__
 -  `VM-dom0 internal configuration
    interface </wiki/SystemDoc/VMInterface>`__
