@@ -24,5 +24,4 @@ For Developers
 -  `Coding Guidelines </wiki/CodingStyle>`__
 -  `Books for Developers </wiki/DevelBooks>`__
 -  `Research Papers </wiki/QubesResearch>`__
--  `Profiling python code </wiki/Profiling>`__
 
