@@ -166,7 +166,7 @@ No. Qubes does not pretend to be a multi-user system. Qubes assumes that
 the user who controls Dom0 controls the whole system. It would be very
 difficult to **securely** implement multi-user support. See
 `​here <https://groups.google.com/group/qubes-devel/msg/899f6f3efc4d9a06>`__
-for details.]
+for details.
 
 Installation & Hardware Compatibility
 -------------------------------------
