@@ -42,6 +42,7 @@ RemainAfterExit=yes
 WantedBy=multi-user.target</code></pre>
 <p>Then enable it with <code>systemctl enable qubes-pre-netvm.service</code></p>
 <p>See also: <a href="https://groups.google.com/forum/#!topic/qubes-users/Fs94QAc3vQI">​https://groups.google.com/forum/#!topic/qubes-users/Fs94QAc3vQI</a>, <a href="http://wiki.xen.org/wiki/Xen_PCI_Passthrough">​http://wiki.xen.org/wiki/Xen_PCI_Passthrough</a></p>
+<p><strong>NOTE:</strong> By setting the permissive flag for the PCI device, you're potentially weakening the device isolation, especially if your system is not equipped with VT-d Interrupt Remapping unit -- see <a href="http://www.invisiblethingslab.com/resources/2011/Software%20Attacks%20on%20Intel%20VT-d.pdf">​this paper, page 7</a> for more details.</p>
 <h2 id="BringingPCIdevicebacktodom0">Bringing PCI device back to dom0</h2>
 <p>By default device detached from some VM (or when VM with PCI device attached get shut down) isn't attached back to dom0. This is an intended feature. A device which was previously assigned to a less trusted AppVM could attack dom0 if it were automatically reassigned there. In order to re-enable the device in dom0, either:</p>
 <ol>
