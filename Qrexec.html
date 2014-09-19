@@ -33,6 +33,11 @@
 <p><em>/usr/lib/qubes/qrexec-client-vm target_vm_name RPC_ACTION_NAME rpc_client_path client arguments</em></p>
 <p>Note that only stdin/stdout is passed between rpc server and client - notably, the no cmdline argument are passed. Source VM name is given by QREXEC_REMOTE_DOMAIN environment variable. By default, stderr of client and server is logged to respective /var/log/qubes/qrexec.XID files.</p>
 <p>Be very careful when coding and adding a new rpc service. Unless the offered functionality equals full control over the target (it is the case with e.g. qubes.VMShell action), any vulnerability in a rpc server can be fatal to qubes security. On the other hand, this mechanism allows to delegate processing of untrusted input to less privileged (or throwaway) AppVMs, thus wise usage of it increases security.</p>
+<h3 id="RevokingYestoAllauthorization">Revoking &quot;Yes to All&quot; authorization</h3>
+<p>Qubes RPC policy supports &quot;ask&quot; action. This will prompt the user whether given RPC call should be allowed. That prompt window has also &quot;Yes to All&quot; option, which will allow the action and add new entry to the policy file, which will unconditionally allow further calls for given service-srcVM-dstVM tuple.</p>
+<p>In order to remove such authorization, issue this command from a Dom0 terminal (for qubes.Filecopy service):</p>
+<pre class="wiki"><code>sudo nano /etc/qubes-rpc/policy/qubes.Filecopy</code></pre>
+<p>and then remove the first line/s (before the first ## comment) which are the &quot;Yes to All&quot; results.</p>
 <h3 id="QubesRPCexample">Qubes RPC example</h3>
 <p>We will show the necessary files to create rpc call that adds two integers on the target and returns back the result to the invoker.</p>
 <ul>
