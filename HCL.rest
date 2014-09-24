@@ -188,7 +188,7 @@ more <https://groups.google.com/d/topic/qubes-devel/hag-MQDH_Vs/discussion>`__
 `​Alex
 Dubois <https://groups.google.com/d/msg/qubes-devel/hag-MQDH_Vs/pmJ7TIWUWAsJ>`__
 
-| Asus N56VZ
+| ASUS N56VZ
 |  (CPU, HM67 Express, HD Graphics)
 
 N56VZ.216
@@ -1598,7 +1598,7 @@ more <https://groups.google.com/d/topic/qubes-users/lycnE-LcJBo/discussion>`__
 
 `gorka <https://groups.google.com/d/msg/qubes-users/lycnE-LcJBo/0u10xl7AMrIJ>`__
 
-| Asus M4A89GTD USB3/PRO
+| ASUS M4A89GTD USB3/PRO
 |  ()
 
 3029
@@ -1615,6 +1615,24 @@ with Phenom II X4 965 and Radeon HD 5750
 
 `David
 Kennedy <https://groups.google.com/d/msg/qubes-users/6UPz3B0hg_U/bNcRAMiYJekJ>`__
+
+| ASUS SABERTOOTH 990FX R2.0
+|  (FX-8350, 990FX, GeForce GTX 470)
+
+2301
+
+Yes
+
+Yes
+
+# best achievable QSL - (Qubes Security Level) -->
+
+R2
+
+3.12.23-1
+
+`M
+Astroj <https://groups.google.com/d/msg/qubes-users/DYDXbVI_x80/CGoHOQobdWwJ>`__
 
 | Biostar A880GZ
 |  (AM3+, 880G/SB850)
