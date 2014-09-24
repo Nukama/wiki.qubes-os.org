@@ -1,8 +1,18 @@
 <h1 id="HardwareCompatibilityListHCLforAllQubesOSReleases">Hardware Compatibility List (HCL) for All Qubes OS Releases</h1>
-<p>This list contains information about the latest stable release (<strong>R1</strong>) and the latest development release (<strong>R2rc1</strong>). You can also find information about the previous releases (<strong>R2B{1,2,3}</strong>) here.</p>
+<p>The HCL is a compilation of reports generated and submitted by users across various Qubes versions. <br /> <br /> <strong>Note:</strong> <br /> Except in the case of developer-reported entries, the Qubes team has not independently verified the accuracy of these reports. <br /> <br /> Please first consult the data sheets (CPU, chipset, motherboard) prior to buying new hardware for Qubes.<br /> Meet the <a href="/wiki/wiki/SystemRequirements">SystemRequirements</a> and search particular for support of:</p>
+<ul>
+<li>HVM (&quot;AMD virtualization (AMD-V)&quot;, &quot;Intel virtualization (VT-x)&quot;, &quot;VIA virtualization (VIA VT)&quot;)</li>
+<li>IOMMU (&quot;AMD I/O Virtualization Technology (AMD-Vi)&quot;, &quot;Intel Virtualization Technology for Directed I/O (VT-d)&quot;)</li>
+<li>TPM (&quot;Trusted Platform Module (TPM)&quot; connected to a &quot;20-pin TPM header&quot; on motherboards.)</li>
+</ul>
+<p>Test the hardware yourself, if possible. <br /> <br /> If using the list to make a purchasing decision, we recommend that you choose hardware with: <br /></p>
+<ul>
+<li>the best achievable Qubes security level (green columns in HVM, IOMMU, TPM) <br /></li>
+<li>and general machine compatibility (green columns in Qubes version, dom0 kernel, remarks).<br /></li>
+</ul>
 <h2 id="GeneratingandSubmittingNewReports">Generating and Submitting New Reports</h2>
-<p>In order to generate an HCL report in Qubes, simply open a terminal in dom0 (KDE: start-menu -&gt; System Tools -&gt; Konsole or Terminal Emulator) and run <code>qubes-hcl-report &lt;vm-name&gt;</code>, where <code>&lt;vm-name&gt;</code> is the name of the VM to which the generated HCL files will be saved. <br /> (Note: If you are working with a new Qubes installation, you may need to update your system in order to download this script.)</p>
-<p>Users are encouraged to submit their HCL reports for the benefit of further Qubes development and other users. If you would like to submit your HCL report, please send the <strong>HCL Info</strong> <code>.txt</code> file to <code>qubes-users@googlegroups.com</code> (see <a href="/wiki/wiki/QubesLists">here</a> information about the mailing lists) with the subject <code>HCL - &lt;your machine model name&gt;</code>. <br /> Please include any useful information about any Qubes features you may have tested (see the legend below), as well as general machine compatibility (video, networking, sleep, etc.). <br /> If you have problems with your hardware, please send the <strong>HCL Support Files</strong> <code>.cpio.gz</code> file as well. And try a different kernel in the <a href="/wiki/wiki/InstallationGuideR2rc1#Troubleshooting%20problems%20with%20the%20installer">Troubleshooting menu</a>.</p>
+<p>In order to generate a HCL report in Qubes, simply open a terminal in dom0 (KDE: start-menu -&gt; System Tools -&gt; Konsole or Terminal Emulator) <br /> and run <code>qubes-hcl-report &lt;vm-name&gt;</code>, where <code>&lt;vm-name&gt;</code> is the name of the VM to which the generated HCL files will be saved. <br /> (Note: If you are working with a new Qubes installation, you may need to update your system in order to download this script.)</p>
+<p>You are encouraged to submit your HCL report for the benefit of further Qubes development and other users. <br /> If you would like to submit your HCL report, please send the <strong>HCL Info</strong> <code>.txt</code> file to <a href="/wiki/wiki/QubesLists">`qubes-users@googlegroups.com`</a> with the subject <code>HCL - &lt;your machine model name&gt;</code>. <br /> Please include any useful information about any Qubes features you may have tested (see the legend below), as well as general machine compatibility (video, networking, sleep, etc.). <br /> <br /> If you have problems with your hardware try a different kernel in the <a href="/wiki/wiki/InstallationGuideR2rc1#Troubleshooting%20problems%20with%20the%20installer">Troubleshooting menu</a>. <br /> Please consider sending the <strong>HCL Support Files</strong> <code>.cpio.gz</code> file as well.</p>
 <p><strong>Please note:</strong> <br /> The <strong>HCL Support Files</strong> may contain numerous hardware details, including serial numbers. If, for privacy or security reasons, you do not wish to make this information public, please <strong>do not</strong> send the <code>.cpio.gz</code> file to the public mailing list.</p>
 <h2 id="Legend">Legend</h2>
 <p><strong>Legend</strong></p>
@@ -35,13 +45,6 @@
 <p>Reported by</p>
 <p>Name linked to report in <a href="https://groups.google.com/forum/#!forum/qubes-users">qubes-users.</a></p>
 <p><br /></p>
-<p><strong>Note:</strong> <br /> The HCL is a compilation of reports generated and submitted by users. Except in the case of developer-reported entries, the Qubes team has not independently verified the accuracy of these reports. <br /> If using the list to make a purchasing decision, we recommend that you first consult the datasheets (CPU, chipset, motherboard) for particular support of:</p>
-<ul>
-<li>HVM (&quot;AMD virtualization (AMD-V)&quot;, &quot;Intel virtualization (VT-x)&quot;, &quot;VIA virtualization (VIA VT)&quot;)</li>
-<li>IOMMU (&quot;AMD I/O Virtualization Technology (AMD-Vi)&quot;, &quot;Intel Virtualization Technology for Directed I/O (VT-d)&quot;)</li>
-<li>TPM (&quot;Trusted Plaform Module (TPM)&quot; connected to a &quot;20-pin TPM header&quot; on motherboards.)</li>
-</ul>
-<p>and test the hardware yourself, if possible. <br /> Try to shop for hardware with best achievable Qubes security level (green columns in HVM, IOMMU, TPM) and general machine compatibility (green columns in Qubes version, dom0 kernel, remarks).<br /></p>
 <h2 id="Reports">Reports</h2>
 <h1>Qubes HCL</h1>
 <p>Device</p>
@@ -597,7 +600,7 @@
 <p><a href="https://groups.google.com/d/msg/qubes-users/uKI-VBtKWxg/uKjsdGNSpSQJ">​Ant</a></p>
 <p><strong>Desktop, Workstation and Server</strong></p>
 <p>Apple Mac mini (late 2012)<br /> (i7-3615QM, Ivy Bridge, HD Graphics)</p>
-<p>MM61.88Z.0106.B03.1211161202</p>
+<p>MM61.88Z.0106. B03.1211161202</p>
 <p>Yes</p>
 <p>Yes</p>
 <p>R2</p>
@@ -634,13 +637,14 @@
 <p>1.26</p>
 <p>Yes</p>
 <p>Yes</p>
+<p>*</p>
 <p>R2B3</p>
 <p>3.9.2-2</p>
 <p>Problem with graphics on 3.11,3.7, only 2GB RAM.</p>
 <p><a href="https://groups.google.com/d/msg/qubes-users/RYzkSFoMsxQ/ukXhBW4ybqQJ">​Nukama</a></p>
 <p>R2rc1</p>
 <p>3.9</p>
-<p>Problem with graphics on 3,12,3.11,3.7, only 2GB RAM stock.</p>
+<p>Problem with graphics on 3,12,3.11,3.7, only 2GB RAM stock, TPM not tested</p>
 <p><a href="https://groups.google.com/d/msg/qubes-users/RYzkSFoMsxQ/ukXhBW4ybqQJ">​Nukama</a></p>
 <p>HP ProLiant DL360 G5<br /> (E5440, 5000P, ATI ES1000)</p>
 <p>P58</p>
@@ -671,6 +675,7 @@
 <p>P1.90</p>
 <p>Yes</p>
 <p>No</p>
+<p>No</p>
 <p>R2rc1</p>
 <p>3.12.14-4</p>
 <p>using Q6600 and GeForce 8600 GT</p>
@@ -679,14 +684,16 @@
 <p>P1.50</p>
 <p>Yes</p>
 <p>Yes</p>
+<p>*</p>
 <p>R2B3</p>
 <p>3.11.1-2</p>
-<p>Problems with Power Saving, Audio and USB3</p>
+<p>Problems with Power Saving, Audio and USB3, TPM not tested</p>
 <p><a href="https://groups.google.com/d/msg/qubes-users/oExJBIDsAwQ/lwAzNNe7OcYJ">​suricabile</a></p>
 <p>ASRock Z77 Pro4<br /> (i7-3770, Ivy Bridge, HD Graphics 4000)</p>
 <p>P1.40</p>
 <p>Yes</p>
 <p>Yes</p>
+<p>No</p>
 <p>R2B2</p>
 <p><a href="https://groups.google.com/d/topic/qubes-users/lycnE-LcJBo/discussion">read more</a></p>
 <p><a href="https://groups.google.com/d/msg/qubes-users/lycnE-LcJBo/0u10xl7AMrIJ">gorka</a></p>
@@ -702,11 +709,13 @@
 <p>2301</p>
 <p>Yes</p>
 <p>Yes</p>
-<p># best achievable QSL - (Qubes Security Level) --&gt;</p>
+<p>*</p>
 <p>R2</p>
 <p>3.12.23-1</p>
+<p>TPM header available</p>
 <p><a href="https://groups.google.com/d/msg/qubes-users/DYDXbVI_x80/CGoHOQobdWwJ">M Astroj</a></p>
 <p>Biostar A880GZ<br /> (AM3+, 880G/SB850)</p>
+<p>No</p>
 <p>R2B3</p>
 <p>3.9.2-2</p>
 <p><a href="/trac/ticket/762">#762</a></p>
@@ -714,6 +723,7 @@
 <p>Biostar TA790GX A3+<br /> (AM3, 790GX/SB750)</p>
 <p>78DAA420</p>
 <p>Yes</p>
+<p>No</p>
 <p>No</p>
 <p>R2B3</p>
 <p>3.9.2-2</p>
@@ -723,9 +733,10 @@
 <p>3.12.14-4</p>
 <p>USB-Devices are working in 3.12 installer and luks prompt again.</p>
 <p><a href="https://groups.google.com/d/msg/qubes-users/DTot3wX1-nQ/229c20xWrdQJ">​Nukama</a></p>
-<p>EVGA_E685<br /> (LGA1150, Z68)</p>
+<p>EVGA Z68<br /> (LGA1150, Z68)</p>
 <p>4.6.4</p>
 <p>Yes</p>
+<p>No</p>
 <p>No</p>
 <p>R2B3</p>
 <p>3.11.1-2</p>
@@ -743,6 +754,7 @@
 <p>Gigabyte GA-870A-UD3<br /> (Phenom II X4 955, 870/SB850, GTX 460)</p>
 <p>F5a</p>
 <p>Yes</p>
+<p>No</p>
 <p>No</p>
 <p>R2B2</p>
 <p>3.11.1-2</p>
