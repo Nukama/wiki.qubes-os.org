@@ -16,7 +16,7 @@ Qubes Release 2
    (via sourceforge.net)
 
 -  **`Installation Guide for Qubes R2 </wiki/InstallationGuideR2>`__**
--  `Upgrading to Qubes R2 rc2 </wiki/InstallationGuideR2#Upgrading>`__
+-  `Upgrading to Qubes R2 </wiki/InstallationGuideR2#Upgrading>`__
 
 -  `​Qubes-R2-rc2-x86\_64-DVD.iso <http://sourceforge.net/projects/qubesos/files/Qubes-R2-rc2-x86_64-DVD.iso/download>`__
    (via sourceforge.net)
