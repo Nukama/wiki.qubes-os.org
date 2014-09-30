@@ -8,7 +8,7 @@ permalink: /wiki/WikiStart
 Welcome to the Qubes OS Project
 ===============================
 
-Qubes is an open-source operating system designed to provide strong security for desktop computing. Qubes is based on Xen, the X Window System, and Linux, and can run most Linux applications and utilize most of the Linux drivers. Qubes **Release 1** was released in September 2012. Qubes **Release 2** is almost complete, with rc2 having been released in August 2014. Qubes supports Windows-based AppVMs beginning with Release 2.
+Qubes is an open-source operating system designed to provide strong security for desktop computing. Qubes is based on Xen, the X Window System, and Linux, and can run most Linux applications and utilize most of the Linux drivers. Qubes **Release 1** was released in September 2012 and **Release 2** in September 2014. Qubes supports Windows-based AppVMs beginning with Release 2 (but currently in "beta").
 
 -   [Getting Started](/wiki/GettingStarted)
 -   [Screenshots](/wiki/QubesScreenshots)
@@ -33,4 +33,5 @@ Recent News
 -   `Jul 03, 2014` ITL to present on Qubes OS at LinuxCon Europe: a keynote by Joanna Rutkowska and hands-on training by the core dev team! [​conference website](http://events.linuxfoundation.org/events/linuxcon-europe)
 -   `Jul 16, 2014` Qubes Wiki now uses a CA-signed SSL cert (but you might also want to [​read](https://groups.google.com/forum/#!topic/qubes-users/LsDpKnwN6w8) also why this is mostly irrelevant)
 -   `Aug 06, 2014` Qubes OS R2 rc2 has been released! [​announcement](http://theinvisiblethings.blogspot.com/2014/08/qubes-os-r2-rc2-debian-template-ssled.html)
+-   `Sep 26, 2014` **Qubes OS R2** has been released! [​announcement](http://theinvisiblethings.blogspot.com/2014/09/announcing-qubes-os-release-2.html)
 
