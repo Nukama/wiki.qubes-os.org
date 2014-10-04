@@ -1,7 +1,41 @@
-<h1 id="ImplementionofqrexecinQubesR2">Implemention of qrexec in Qubes R2</h1>
+<h1 id="ImplementationofqrexecinQubesR2">Implementation of qrexec in Qubes R2</h1>
 <p>This page describes implementation of the <a href="/wiki/wiki/Qrexec">qrexec framework</a> in Qubes OS R2. Note that the implementation has changed significantly in Qubes R3 (see <a href="/wiki/wiki/Qrexec3Implementation">Qrexec3Implementation</a>), although the user API reminded backwards compatible (i.e. qrexec apps written for Qubes R2 should run without modifications on Qubes R3).</p>
-<h2 id="Generalarchitecture">General architecture</h2>
-<h2 id="Dom0-specificdetails">Dom0-specific details</h2>
-<h2 id="VM-specificdetailsLinuxAppVMs">VM-specific details (Linux AppVMs)</h2>
-<h2 id="VM-specificdetailsWindowsAppVMs">VM-specific details (Windows AppVMs)</h2>
-<h2 id="Protocoldescription">Protocol description</h2>
+<h2 id="Dom0toolsimplementation">Dom0 tools implementation</h2>
+<p>Players:</p>
+<ul>
+<li><code>/usr/lib/qubes/qrexec-daemon</code> &lt;- started by mgmt stack (qubes.py) when a VM is started.</li>
+<li><code>/usr/lib/qubes/qrexec-policy</code> &lt;- internal program used to evaluate the policy file and making the 2nd half of the connection.</li>
+<li><code>/usr/lib/qubes/qrexec-client</code> &lt;- raw command line tool that talks to the daemon via unix socket (<code>/var/run/qubes/qrexec.XID</code>)</li>
+</ul>
+<p>Note: neither of the above tools are designed to be used by users.</p>
+<h2 id="LinuxVMsimplementation">Linux VMs implementation</h2>
+<p>Players:</p>
+<ul>
+<li><code>/usr/lib/qubes/qrexec-agent</code> &lt;- started by VM bootup scripts, a daemon.</li>
+<li><code>/usr/lib/qubes/qubes-rpc-multiplexer</code> &lt;- executes the actual service program, as specified in VM's <code>/etc/qubes-rpc/qubes.XYZ</code></li>
+<li><code>/usr/lib/qubes/qrexec-client-vm</code> &lt;- raw command line tool that talks to the agent</li>
+</ul>
+<p>Note: neither of the above tools are designed to be used by users. <code>qrexec-client-vm</code> is designed to be wrapped up by Qubes apps.</p>
+<h2 id="WindowsVMsimplemention">Windows VMs implemention</h2>
+<p>TODO</p>
+<h2 id="Allthepiecestogetheratwork">All the pieces together at work</h2>
+<p>Note: this section is not needed to use qrexec for writing Qubes apps. Also note the qrexec framework implemention in Qubes R3 significantly differs from what is described in this section.</p>
+<p>The VM-VM channels in Qubes R2 are made via &quot;gluing&quot; two VM-Dom0 and Dom0-VM vchan connections:</p>
+<p><a href="/wiki/attachment/wiki/Qrexec2Implementation/qrexec2-implemention.png"><img src="/wiki/chrome/common/attachment.png" title="No image &quot;qrexec2-implemention.png&quot; attached to Qrexec2Implementation" alt="No image &quot;qrexec2-implemention.png&quot; attached to Qrexec2Implementation" /></a></p>
+<p>Note: Dom0 never examines the actual data flowing in neither of the two vchan connections.</p>
+<p>When a user in a source VM executes <code>qrexec-client-vm</code> utility, the following steps are taken:</p>
+<ul>
+<li><code>qrexec-client-vm</code> connects to <code>qrexec-agent</code>'s <code>/var/run/qubes/qrexec-agent-fdpass</code> unix socket 3 times. Reads 4 bytes from each of them, which is the fd number of the accepted socket in agent. These 3 integers, in text, concatenated, form &quot;connection identifier&quot; (CID)</li>
+<li><code>qrexec-client-vm</code> writes to <code>/var/run/qubes/qrexec-agent</code> fifo a blob, consisting of target vmname, rpc action, and CID</li>
+<li><code>qrexec-client-vm</code> executes the rpc client, passing the above mentioned unix sockets as process stdin/stdout, and optionally stderr (if the PASS_LOCAL_STDERR env variable is set)</li>
+<li><code>qrexec-agent</code> passes the blob to <code>qrexec-daemon</code>, via MSG_AGENT_TO_SERVER_TRIGGER_CONNECT_EXISTING message over vchan</li>
+<li><code>qrexec-daemon</code> executes <code>qrexec-policy</code>, passing source vmname, target vmname, rpc action, and CID as cmdline arguments</li>
+<li><code>qrexec-policy</code> evaluates the policy file. If successful, creates a pair of <code>qrexec-client</code> processes, whose stdin/stdout are cross-connencted.
+<ul>
+<li>The first <code>qrexec-client</code> connects to the src VM, using the <code>-c ClientID</code> parameter, which results in not creating a new process, but connecting to the existing process file descriptors (these are the fds of unix socket created in step 1).</li>
+<li>The second <code>qrexec-client</code> connects to the target VM, and executes <code>qubes-rpc-multiplexer</code> command there with the rpc action as the cmdline argument. Finally, <code>qubes-rpc-multiplexer</code> executes the correct rpc server on the target.</li>
+</ul></li>
+<li>In the above step, if the target VM is <code>$dispvm</code>, the dispvm is created via the <code>qfile-daemon-dvm</code> program. The latter waits for the <code>qrexec-client</code> process to exit, and then destroys the dispvm.</li>
+</ul>
+<h2 id="Protocoldescriptionwire-levelspec">Protocol description (&quot;wire-level&quot; spec)</h2>
+<p>TODO</p>
