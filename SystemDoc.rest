@@ -14,6 +14,8 @@ System Documentation for Developers
       #. `In Qubes R3/Odyssey </wiki/Qrexec3>`__
       #. `Qrexec v3 protocol details
          (R3/Odyssey)? </wiki/QrexecProtocol>`__
+      #. Tutorial on writing Qrexec Inter-VM service in Qubes OS `​blog
+         post <http://theinvisiblethings.blogspot.com/2013/02/converting-untrusted-pdfs-into-trusted.html>`__
 
    #. `Qubes GUI virtualization protocol </wiki/GUIdocs>`__
    #. `Networking in Qubes </wiki/QubesNet>`__
