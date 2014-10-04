@@ -10,12 +10,13 @@ System Documentation for Developers
       OS </wiki/SecurityCriticalCode>`__
    #. Qubes RPC framework (qrexec):
 
-      #. `In Qubes R1 and R2 </wiki/Qrexec>`__
-      #. `In Qubes R3/Odyssey </wiki/Qrexec3>`__
-      #. `Qrexec v3 protocol details
-         (R3/Odyssey)? </wiki/QrexecProtocol>`__
-      #. Tutorial on writing Qrexec Inter-VM service in Qubes OS `​blog
+      #. `The Qubes RPC/Service API </wiki/Qrexec>`__
+      #. Example for writing a qrexec service in Qubes OS `​blog
          post <http://theinvisiblethings.blogspot.com/2013/02/converting-untrusted-pdfs-into-trusted.html>`__
+      #. `qrexec implementation in Qubes
+         R2 </wiki/Qrexec2Implementation>`__
+      #. `qrexec implementation in Qubes
+         R3/Odyssey </wiki/Qrexec3Implementation>`__
 
    #. `Qubes GUI virtualization protocol </wiki/GUIdocs>`__
    #. `Networking in Qubes </wiki/QubesNet>`__
