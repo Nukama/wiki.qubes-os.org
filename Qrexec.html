@@ -1,19 +1,24 @@
 <h1 id="CommandexecutioninVMandQubesRPC">Command execution in VM (and Qubes RPC)</h1>
-<p>In order to manage VMs easily, there is a need for a mechanism to allow dom0 to force command execution in a VM. For instance, when user selects from KDE menu an application, it should be started in the selected VM. Also it is often useful to be able to pass stdin/stdout/stderr from an application running in VM to dom0.</p>
-<h2 id="Qrexecbasics">Qrexec basics</h2>
-<p>During domain creation a process named <em>qrexec-daemon</em> is started in dom0, and a process named <em>qrexec-agent</em> is started in the VM. They are connected over <em>vchan</em> channel. <em>qrexec-daemon</em> listens on the the unix socket <em>/var/run/qubes/qrexec.XID</em> for connections from dom0 utility named <em>qrexec-client</em>. Typically, the first thing that a <em>qrexec-client</em> instance does is to send a request to <em>qrexec-agent</em> to start a process (let's name it VMprocess) with a given command line. Since then, stdin/stdout/stderr from the VMprocess is passed via <em>qrexec-daemon</em> and <em>qrexec-agent</em> to the <em>qrexec-client</em> process.</p>
-<p>So, for example, executing in dom0</p>
-<p><em>qrexec-client -d someVM user:bash//</em></p>
-<p>allows to work with the remote shell. The string before first semicolon specifies what user to run the command as. Adding <em>-e</em> on the <em>qrexec-client</em> command line results in mere command execution (no data passing), and <em>qrexec-client</em> exits immediately after sending the execution request. There is also the <em>-l local_program</em> flag - with it, <em>qrexec-client</em> passes stdin/stdout of the remote program not to its stdin/stdout, but to the (spawned for this purpose) <em>local_program</em>.</p>
-<p>The <em>qvm-run</em> command is heavily based on <em>qrexec-client</em>. It also takes care for additional activities, e.g. starting the domain if it is not up yet, and starting the GUI daemon. Thus, it is usually more convenient to use <em>qvm-run</em>.</p>
-<p>There can be almost arbitrary number of <em>qrexec-client</em> processes for a domain (so, connected to the same <em>qrexec-daemon</em>, same domain) - their data is multiplexed independently.</p>
-<h2 id="QubesRPCbasics">Qubes RPC basics</h2>
-<p>Some tasks (like intervm file copy) share the same rpc-like structure: a process in one VM (say, file sender) needs to invoke and pass/receive data to some process in other VM (say, file receiver). Thus, the Qubes RPC framework was written, facilitating such actions.</p>
-<p>Obviously, such interVM communication must be tightly controlled, to prevent one VM from taking control over other, possibly more privileged, VM. Therefore the design decision was made to pass all communication via dom0, that can enforce proper authorization. Then, it is natural to reuse the already-existing qrexec framework. As basically it provides only dom0&lt;-&gt;VM channel, then we need to glue two qrexec connections in order to provide VM&lt;-&gt;VM channel.</p>
-<p>Also, note that bare qrexec provides VM&lt;-&gt;dom0 connectivity, but the command execution is always initiated by dom0. There are cases when VM needs to invoke and send data to a command in dom0 (e.g. to pass information on newly installed .desktop files). Thus, the framework allows dom0 to be the rpc target as well.</p>
-<p>Thanks to the framework, RPC programs are very simple - both rpc client and server just use their stdin/stdout to pass data. The framework does all the inner work to connect these file descriptors to each other via <em>qrexec-daemon</em> and <em>qrexec-agent</em>. Additionally, disposable VMs are tightly integrated - rpc to a disposableVM is identical to rpc to a normal domain, all one needs is to pass &quot;$dispvm&quot; as the remote domain name.</p>
-<h2 id="QubesRPCadministration">Qubes RPC administration</h2>
-<p>In dom0, there is a bunch of files in <em>/etc/qubes-rpc/policy</em> directory, whose names describe the available rpc actions; their content is the rpc access policy database. Currently defined actions are:</p>
+<p>Qubes <strong>qrexec</strong> is a framework for implementing inter-VM (incl. Dom0-VM) services. It offers a mechanism to start programs in VMs, redirect their stdin/stdout, and a policy framework to control this all.</p>
+<h2 id="BasicDom0-VMcommandexecution">Basic Dom0-VM command execution</h2>
+<p>During domain creation a process named <code>qrexec-daemon</code> is started in dom0, and a process named <code>qrexec-agent</code> is started in the VM. They are connected over <code>vchan</code> channel.</p>
+<p>Typically, the first thing that a <code>qrexec-client</code> instance does is to send a request to <code>qrexec-agent</code> to start a process in the VM. Since then, the stdin/stdout/stderr from this remote process is passed to the <code>qrexec-client</code> process.</p>
+<p>E.g. to start a primitive shell in a VM type the following in Dom0 console:</p>
+<pre class="wiki"><code>[user@dom0 ~]$ /usr/lib/qubes/qrexec-client -d &lt;vm name&gt; user:bash</code></pre>
+<p>The string before first semicolon specifies what user to run the command as.</p>
+<p>Adding <code>-e</code> on the <code>qrexec-client</code> command line results in mere command execution (no data passing), and <code>qrexec-client</code> exits immediately after sending the execution request.</p>
+<p>There is also the <code>-l &lt;local program&gt;</code> flag, which directs <code>qrexec-client</code> to pass stdin/stdout of the remote program not to its stdin/stdout, but to the (spawned for this purpose) <code>&lt;local program&gt;</code>.</p>
+<p>The <code>qvm-run</code> command is heavily based on <code>qrexec-client</code>. It also takes care for additional activities, e.g. starting the domain if it is not up yet, and starting the GUI daemon. Thus, it is usually more convenient to use <code>qvm-run</code>.</p>
+<p>There can be almost arbitrary number of <code>qrexec-client</code> processes for a domain (so, connected to the same <code>qrexec-daemon</code>, same domain) - their data is multiplexed independently.</p>
+<p>There is a similar command line utility avilable inside Linux AppVMs (note the <code>-vm</code> suffix): <code>qrexec-client-vm</code> that will be described in subsequent sections.</p>
+<h2 id="QubesInter-VMServicesQubesRPC">Qubes Inter-VM Services (Qubes RPC)</h2>
+<p>Apart from simple Dom0-&gt;VM command executions, as discussed above, it is also useful to have more advanced infrastructure for controlled inter-VM RPC/services. This might be used for simple things like inter-VM file copy operations, as well as more complex tasks like starting a Disposable VM, and requesting it to do certain operations on a handed file(s).</p>
+<p>Instead of implementing complex RPC-like mechanisms for inter-VM communication, Qubes takes a much simpler and pragmatic approach and aims to only provide simple <em>pipes</em> between the VMs, plus ability to request <em>pre-defined</em> programs (servers) to be started on the other end of such pipes, and a centralized policy (enforced in Dom0) which says which VMs can request what services from what VMs.</p>
+<p>Thanks to the framework and automatic stdin/stdout redirection, RPC programs are very simple - both the client and server just use their stdin/stdout to pass data. The framework does all the inner work to connect these file descriptors to each other via <code>qrexec-daemon</code> and <code>qrexec-agent</code>. Additionally, disposable VMs are tightly integrated - RPC to a DisposableVM is a simple matter of using a magic <code>$dispvm</code> keyword as the target VM name.</p>
+<p>All services in Qubes are identified by a single string, which by convention takes a form of <code>qubes.ServiceName</code>. Each VM can provide handlers for each of the known services by providing a file in <code>/etc/qubes-rpc/</code> directory with the same name as the service it is supposed to handle. This file will be then executed by the qrexec service, if the Dom0 policy allowed service to be requested (see below). Typically the files in <code>/etc/qubes-rpc/</code> contain just one line, which is a path to the specific binary that acts as a server for the incoming request, however they might also be the actual executable themselves. Qrexec framework takes care about connecting the stdin/stdout of the server provess with the corresponding stdin/stdout of the requesting process in the requesting VM (see example Hello World service described below).</p>
+<h2 id="QubesServicesRPCpolicy">Qubes Services (RPC) policy</h2>
+<p>Besides each VM needing to provide explicit programs to serve each supported service, the inter-VM service RPC is also governed by a central policy in Dom0.</p>
+<p>In dom0, there is a bunch of files in <code>/etc/qubes-rpc/policy/</code> directory, whose names describe the available RPC actions; their content is the RPC access policy database. Some example of the default services in Qubes are:</p>
 <ul>
 <li>qubes.Filecopy</li>
 <li>qubes.OpenInVM</li>
@@ -26,50 +31,49 @@
 <li>qubes.<a href="/wiki/wiki/PdfConvert">PdfConvert?</a></li>
 </ul>
 <p>These files contain lines with the following format:</p>
-<p>srcvm destvm (allow|deny|ask)[,user=user_to_run_as][,target=VM_to_redirect_to]</p>
-<p>You can specify srcvm and destvm by name, or by one of &quot;$anyvm&quot;, &quot;$dispvm&quot;, &quot;dom0&quot; reserved keywords (note string &quot;dom0&quot; does not match the $anyvm pattern; all other names do). Only &quot;$anyvm&quot; keyword makes sense in srcvm field (service calls from dom0 are currently always allowed, &quot;$dispvm&quot; means &quot;new VM created for this particular request&quot; - so it is never a source of request). Currently there is no way to specify source VM by type. Whenever a rpc request for action X is received, the first line in /etc/qubes-rpc/policy/X that match srcvm/destvm is consulted to determine whether to allow rpc, what user account the program should run in target VM under, and what VM to redirect the execution to. If the policy file does not exits, user is prompted to create one; if still there is no policy file after prompting, the action is denied.</p>
-<p>On target VM, the <em>/etc/qubes-rpc/RPC_ACTION_NAME</em> must exist, containing the file name of the program that will be invoked.</p>
-<p>On src VM, one should invoke the client via</p>
-<p><em>/usr/lib/qubes/qrexec-client-vm target_vm_name RPC_ACTION_NAME rpc_client_path client arguments</em></p>
-<p>Note that only stdin/stdout is passed between rpc server and client - notably, the no cmdline argument are passed. Source VM name is given by QREXEC_REMOTE_DOMAIN environment variable. By default, stderr of client and server is logged to respective /var/log/qubes/qrexec.XID files.</p>
-<p>Be very careful when coding and adding a new rpc service. Unless the offered functionality equals full control over the target (it is the case with e.g. qubes.VMShell action), any vulnerability in a rpc server can be fatal to qubes security. On the other hand, this mechanism allows to delegate processing of untrusted input to less privileged (or throwaway) AppVMs, thus wise usage of it increases security.</p>
+<pre class="wiki"><code>srcvm destvm (allow|deny|ask)[,user=user_to_run_as][,target=VM_to_redirect_to]</code></pre>
+<p>You can specify <code>srcvm</code> and <code>destvm</code> by name, or by one of <code>$anyvm</code>, <code>$dispvm</code>, <code>dom0</code> reserved keywords (note string <code>dom0</code> does not match the <code>$anyvm</code> pattern; all other names do). Only <code>$anyvm</code> keyword makes sense in the <code>srcvm</code> field (service calls from dom0 are currently always allowed, <code>$dispvm</code> means &quot;new VM created for this particular request&quot; - so it is never a source of request). Currently there is no way to specify source VM by type, but this is planned for Qubes R3.</p>
+<p>Whenever a RPC request for service named &quot;XYZ&quot; is received, the first line in <code>/etc/qubes-rpc/policy/XYZ</code> that matches the actual <code>srcvm</code>/<code>destvm</code> is consulted to determine whether to allow RPC, what user account the program should run in target VM under, and what VM to redirect the execution to. If the policy file does not exits, user is prompted to create one <em>manually</em>; if still there is no policy file after prompting, the action is denied.</p>
+<p>On the target VM, the <code>/etc/qubes-rpc/XYZ</code> must exist, containing the file name of the program that will be invoked.</p>
+<h2 id="RequestingVM-VMandVM-Dom0servicesexecution">Requesting VM-VM (and VM-Dom0) services execution</h2>
+<p>On src VM, one should invoke the qrexec client via the follwing command:</p>
+<pre class="wiki"><code>/usr/lib/qubes/qrexec-client-vm &lt;target vm name&gt; &lt;service name&gt; &lt;local program path&gt; [local program arguments]`</code></pre>
+<p>Note that only stdin/stdout is passed between RPC server and client - notably, no cmdline argument are passed.</p>
+<p>The source VM name can be accessed in the server process via QREXEC_REMOTE_DOMAIN environment variable. (Note the source VM has <em>no</em> control over the name provided in this variable -- the name of the VM is provided by Dom0, and so is trusted).</p>
+<p>By default, stderr of client and server is logged to respective <code>/var/log/qubes/qrexec.XID</code> files, in each of the VM.</p>
+<p>Be very careful when coding and adding a new RPC service! Any vulnerability in a RPC server can be fatal to security of the target VM!</p>
 <h3 id="RevokingYestoAllauthorization">Revoking &quot;Yes to All&quot; authorization</h3>
-<p>Qubes RPC policy supports &quot;ask&quot; action. This will prompt the user whether given RPC call should be allowed. That prompt window has also &quot;Yes to All&quot; option, which will allow the action and add new entry to the policy file, which will unconditionally allow further calls for given service-srcVM-dstVM tuple.</p>
-<p>In order to remove such authorization, issue this command from a Dom0 terminal (for qubes.Filecopy service):</p>
+<p>Qubes RPC policy supports the &quot;ask&quot; action. This will prompt the user whether a given RPC call should be allowed. That prompt window has an option to click &quot;Yes to All&quot;, which allows the action and adds a new entry to the policy file, which will unconditionally allow further calls for given service-srcVM-dstVM tuple.</p>
+<p>In order to remove such authorization, issue this command from a Dom0 terminal (example below for qubes.Filecopy service):</p>
 <pre class="wiki"><code>sudo nano /etc/qubes-rpc/policy/qubes.Filecopy</code></pre>
 <p>and then remove the first line/s (before the first ## comment) which are the &quot;Yes to All&quot; results.</p>
-<h3 id="QubesRPCexample">Qubes RPC example</h3>
-<p>We will show the necessary files to create rpc call that adds two integers on the target and returns back the result to the invoker.</p>
+<h3 id="QubesRPCHelloWorldservice">Qubes RPC &quot;Hello World&quot; service</h3>
+<p>We will show the necessary files to create a simple RPC call that adds two integers on the target VM and returns back the result to the invoking VM.</p>
 <ul>
-<li><p>rpc client code (<em>/usr/bin/our_test_add_client</em>)</p>
+<li>Client code on source VM (<code>/usr/bin/our_test_add_client</code>)</li>
+</ul>
 <pre class="wiki"><code>#!/bin/sh
 echo $1 $2    # pass data to rpc server
-exec cat &gt;&amp;$SAVED_FD_1 # print result to the original stdout, not to the other rpc endpoint</code></pre></li>
-<li><p>rpc server code (<em>/usr/bin/our_test_add_server</em>)</p>
+exec cat &gt;&amp;$SAVED_FD_1 # print result to the original stdout, not to the other rpc endpoint</code></pre>
+<ul>
+<li>Server code on target VM (<code>/usr/bin/our_test_add_server</code>)</li>
+</ul>
 <pre class="wiki"><code>#!/bin/sh
 read arg1 arg2 # read from stdin, which is received from the rpc client
-echo $(($arg1+$arg2)) # print to stdout - so, pass to the rpc client</code></pre></li>
-<li><p>policy file in dom0 (<em>/etc/qubes-rpc/policy/test.Add</em> )</p>
-<pre class="wiki"><code>$anyvm $anyvm ask</code></pre></li>
-<li><p>server path definition ( <em>/etc/qubes-rpc/test.Add</em>)</p>
-<pre class="wiki"><code>/usr/bin/our_test_add_server</code></pre></li>
-<li><p>invoke rpc via</p>
-<pre class="wiki"><code>/usr/lib/qubes/qrexec-client-vm target_vm test.Add /usr/bin/our_test_add_client 1 2</code></pre></li>
+echo $(($arg1+$arg2)) # print to stdout - so, pass to the rpc client</code></pre>
+<ul>
+<li>Policy file in dom0 (<code>/etc/qubes-rpc/policy/test.Add</code>)</li>
 </ul>
-<p>and we should get &quot;3&quot; as answer, after dom0 allows it.</p>
+<pre class="wiki"><code>$anyvm $anyvm ask</code></pre>
+<ul>
+<li>Server path definition on target VM (<code>/etc/qubes-rpc/test.Add</code>)</li>
+</ul>
+<pre class="wiki"><code>/usr/bin/our_test_add_server</code></pre>
+<ul>
+<li>To test this service, run the following in the source VM:</li>
+</ul>
+<pre class="wiki"><code>/usr/lib/qubes/qrexec-client-vm &lt;target VM&gt; test.Add /usr/bin/our_test_add_client 1 2</code></pre>
+<p>and we should get &quot;3&quot; as answer, provided dom0 policy allows the call to pass through, which would happen after we click &quot;Yes&quot; in the popup that should appear after the invocation of this command. If we changed the policy from &quot;ask&quot; to &quot;allow&quot;, then no popup should be presented, and the call will always be allowed.</p>
+<h2 id="Morehigh-levelRPCs">More high-level RPCs?</h2>
 <h2 id="QubesRPCinternals">Qubes RPC internals</h2>
-<p>When an user in VM executes the <em>/usr/lib/qubes/qrexec-client-vm</em> utility, the following steps are taken:</p>
-<ul>
-<li><em>qrexec-client-vm</em> connects to <em>qrexec-agent's</em> <em>/var/run/qubes/qrexec-agent-fdpass</em> unix socket 3 times. Reads 4 bytes from each of them, which is the fd number of the accepted socket in agent. These 3 integers, in text, concatenated, form &quot;connection identifier&quot; (CID)</li>
-<li><em>qrexec-client-vm</em> writes to <em>/var/run/qubes/qrexec-agent</em> fifo a blob, consisting of target vmname, rpc action, and CID</li>
-<li><em>qrexec-client-vm</em> executes the rpc client, passing the above mentioned unix sockets as process stdin/stdout, and optionally stderr (if the PASS_LOCAL_STDERR env variable is set)</li>
-<li><em>qrexec-agent</em> passes the blob to <em>qrexec-daemon</em>, via MSG_AGENT_TO_SERVER_TRIGGER_CONNECT_EXISTING message over vchan</li>
-<li><em>qrexec-daemon</em> executes <em>qrexec-policy</em>, passing source vmname, target vmname, rpc action, and CID as cmdline arguments</li>
-<li><em>qrexec-policy</em> evaluates the policy file. If successful, creates a pair of <em>qrexec-client</em> processes, whose stdin/stdout are cross-connencted.
-<ul>
-<li>The first <em>qrexec-client</em> connects to the src VM, using the <em>-c CID</em> parameter, which results in not creating a new process, but connecting to the existing process file descriptors (these are the fds of unix socket created in step 1).</li>
-<li>The second <em>qrexec-client</em> connects to the target VM, and executes <em>qubes-rpc-multiplexer</em> command there with the rpc action as the cmdline argument. Finally, <em>qubes-rpc-multiplexer</em> executes the correct rpc server on the target.</li>
-</ul></li>
-<li>In the above step, if the target VM is <em>$dispvm</em>, the dispvm is created via the <em>qfile-daemon-dvm</em> program. The latter waits for the <em>qrexec-client</em> process to exit, and then destroys the dispvm.</li>
-</ul>
-<p><a href="/wiki/attachment/wiki/Qrexec/qubes_rpc.png"><img src="/wiki/chrome/common/attachment.png" title="No image &quot;qubes_rpc.png&quot; attached to Qrexec" alt="No image &quot;qubes_rpc.png&quot; attached to Qrexec" /></a></p>
+<p>The internal implementation of qrexec in Qubes R2 is described <a href="/wiki/wiki/Qrexec2Implementation">here</a>, and in Qubes R3 <a href="/wiki/wiki/Qrexec3Implementation">here</a>.</p>
