@@ -1,26 +1,36 @@
 <h1 id="SystemDocumentationforDevelopers">System Documentation for Developers</h1>
-<ul>
-<li>Qubes OS Architecture v0.3 <a href="http://files.qubes-os.org/files/doc/arch-spec-0.3.pdf">​(pdf)</a> (A bit outdated, but it was the original document that started this all...)</li>
+<ol>
+<li>Fundamentals:
+<ol>
+<li>Qubes OS Architecture v0.3 <a href="http://files.qubes-os.org/files/doc/arch-spec-0.3.pdf">​(pdf)</a> (The original 2009 document that started this all...)</li>
 <li><a href="/wiki/wiki/SecurityCriticalCode">Security-critical elements of Qubes OS</a></li>
+<li>Qubes RPC framework (qrexec):
+<ol>
+<li><a href="/wiki/wiki/Qrexec">In Qubes R1 and R2</a></li>
+<li><a href="/wiki/wiki/Qrexec3">In Qubes R3/Odyssey</a></li>
+<li><a href="/wiki/wiki/QrexecProtocol">Qrexec v3 protocol details (R3/Odyssey)?</a></li>
+</ol></li>
 <li><a href="/wiki/wiki/GUIdocs">Qubes GUI virtualization protocol</a></li>
 <li><a href="/wiki/wiki/QubesNet">Networking in Qubes</a></li>
+<li><a href="/wiki/wiki/TemplateImplementation">Implementation of template sharing and updating</a></li>
+</ol></li>
+<li>Services:
+<ol>
 <li><a href="/wiki/wiki/Qfilecopy">Inter-domain file copying</a></li>
-<li>Qubes RPC framework (qrexec): <a href="/wiki/wiki/Qrexec">In Qubes R1 and R2</a> and <a href="/wiki/wiki/Qrexec3">In Qubes R3/Odyssey</a>
-<ul>
-<li><a href="/wiki/wiki/QrexecProtocol">Qrexec v3 protocol details (R3/Odyssey)?</a></li>
-</ul></li>
 <li><a href="/wiki/wiki/Qmemman">Dynamic memory management in Qubes</a></li>
 <li><a href="/wiki/wiki/DVMimpl">Implementation of DisposableVMs</a></li>
 <li><a href="http://theinvisiblethings.blogspot.com/2010/06/disposable-vms.html">​Article about disposable VMs</a></li>
-<li><a href="/wiki/wiki/TemplateImplementation">Implementation of template sharing and updating</a></li>
 <li><a href="/wiki/wiki/Dom0SecureUpdates">Dom0 secure update mechanism</a></li>
+<li><a href="/wiki/wiki/VMSecureUpdates">VM secure update mechanism?</a></li>
+</ol></li>
+<li>Debugging:
+<ol>
 <li><a href="/wiki/wiki/WindowsDebugging">Debugging Windows VMs</a></li>
 <li><a href="/wiki/wiki/Profiling">Profiling python code</a></li>
-<li><a href="/wiki/wiki/VMSecureUpdates">VM secure update mechanism?</a></li>
 <li><a href="/wiki/wiki/SystemDoc/VMInterface">VM-dom0 internal configuration interface</a></li>
-</ul>
-<p>Build instructions:</p>
-<ul>
+</ol></li>
+<li>Building:
+<ol>
 <li><a href="/wiki/wiki/QubesBuilder">Building Qubes</a></li>
 <li><a href="/wiki/wiki/DevelopmentWorkflow">Development Workflow</a></li>
 <li><a href="/wiki/wiki/KdeDom0">KDE Dom0 packages for Qubes</a></li>
@@ -28,4 +38,5 @@
 <li><a href="/wiki/wiki/USBVM">Building USB passthrough support (experimental)</a></li>
 <li><a href="/wiki/wiki/BuildingNonFedoraTemplate">Building a TemplateVM based on a new OS (ArchLinux example)</a></li>
 <li><a href="/wiki/wiki/BuildingArchlinuxTemplate">Building the Archlinux Template</a></li>
-</ul>
+</ol></li>
+</ol>
