@@ -12,12 +12,18 @@
 <p>Players:</p>
 <ul>
 <li><code>/usr/lib/qubes/qrexec-agent</code> &lt;- started by VM bootup scripts, a daemon.</li>
-<li><code>/usr/lib/qubes/qubes-rpc-multiplexer</code> &lt;- executes the actual service program, as specified in VM's <code>/etc/qubes-rpc/qubes.XYZ</code></li>
-<li><code>/usr/lib/qubes/qrexec-client-vm</code> &lt;- raw command line tool that talks to the agent</li>
+<li><code>/usr/lib/qubes/qubes-rpc-multiplexer</code> &lt;- executes the actual service program, as specified in VM's <code>/etc/qubes-rpc/qubes.XYZ</code>.</li>
+<li><code>/usr/lib/qubes/qrexec-client-vm</code> &lt;- raw command line tool that talks to the agent.</li>
 </ul>
 <p>Note: neither of the above tools are designed to be used by users. <code>qrexec-client-vm</code> is designed to be wrapped up by Qubes apps.</p>
 <h2 id="WindowsVMsimplemention">Windows VMs implemention</h2>
-<p>TODO</p>
+<p>%QUBES_DIR% is the installation path (<code>c:\Program Files\Invisible Things Lab\Qubes OS Windows Tools</code> by default).</p>
+<ul>
+<li><code>%QUBES_DIR%\bin\qrexec-agent.exe</code> &lt;- runs as a system service. Responsible both for raw command execution and interpreting RPC service requests.</li>
+<li><code>%QUBES_DIR%\qubes-rpc</code> &lt;- directory with <code>qubes.XYZ</code> files that contain commands for executing RPC services. Binaries for the services are contained in <code>%QUBES_DIR%\qubes-rpc-services</code>.</li>
+<li><code>%QUBES_DIR%\bin\qrexec-client-vm</code> &lt;- raw command line tool that talks to the agent.</li>
+</ul>
+<p>Note: neither of the above tools are designed to be used by users. <code>qrexec-client-vm</code> is designed to be wrapped up by Qubes apps.</p>
 <h2 id="Allthepiecestogetheratwork">All the pieces together at work</h2>
 <p>Note: this section is not needed to use qrexec for writing Qubes apps. Also note the qrexec framework implemention in Qubes R3 significantly differs from what is described in this section.</p>
 <p>The VM-VM channels in Qubes R2 are made via &quot;gluing&quot; two VM-Dom0 and Dom0-VM vchan connections:</p>
