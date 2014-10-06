@@ -15,6 +15,9 @@
 <ul>
 <li>It doesn't solve the problem of allowing the user to know what is to be signed before the operation gets approved. Perhaps the GPG backend domain could start a Disposable VM and have the to-be-signed document displayed there? To Be Determined.</li>
 </ul>
+<ul>
+<li>Verifying detached signatures does not work (see #900). You have to have public keys in AppVM and some means to use different command to verify them. Both git and Enigmail does not allow that and you have to choose between <a href="/wiki/wiki/UserDoc/SplitGpg">SplitGpg</a> and PGP/MIME.</li>
+</ul>
 <h2 id="ConfiguringandusingSplitGPG">Configuring and using Split GPG</h2>
 <p>Start with creating a dedicated AppVM for storing your keys (the GPG backend domain). It is recommended that this domain be network disconnected (set its netvm to <code>none</code>) and only used for this one purpose. In later examples this AppVM is named <code>work-gpg</code>, but of course it might have any other name.</p>
 <h3 id="SettinguptheGPGbackenddomain">Setting up the GPG backend domain</h3>
