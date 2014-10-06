@@ -94,8 +94,8 @@ followed by an optional data packet.
        uint32_t len;            /* data length */
     };
 
-When two peers **in different domains** establish connection, the server
-sends ``MSG_HELLO`` followed by ``peer_info`` struct:
+When two peers establish connection, the server sends ``MSG_HELLO``
+followed by ``peer_info`` struct:
 
 .. code:: wiki
 
@@ -105,7 +105,8 @@ sends ``MSG_HELLO`` followed by ``peer_info`` struct:
 
 The client then should reply with its own ``MSG_HELLO`` and
 ``peer_info``. If protocol versions don't match, the connection is
-closed. TODO: fallback for backwards compatibility.
+closed. TODO: fallback for backwards compatibility, don't do handshake
+in the same domain?.
 
 Details of all possible use cases and the messages involved are
 described below.
