@@ -74,11 +74,11 @@ struct msg_header {
    uint32_t type;           /* message type */
    uint32_t len;            /* data length */
 };</code></pre>
-<p>When two peers <strong>in different domains</strong> establish connection, the server sends <code>MSG_HELLO</code> followed by <code>peer_info</code> struct:</p>
+<p>When two peers establish connection, the server sends <code>MSG_HELLO</code> followed by <code>peer_info</code> struct:</p>
 <pre class="wiki"><code>struct peer_info {
    uint32_t version; /* qrexec protocol version */
 };</code></pre>
-<p>The client then should reply with its own <code>MSG_HELLO</code> and <code>peer_info</code>. If protocol versions don't match, the connection is closed. TODO: fallback for backwards compatibility.</p>
+<p>The client then should reply with its own <code>MSG_HELLO</code> and <code>peer_info</code>. If protocol versions don't match, the connection is closed. TODO: fallback for backwards compatibility, don't do handshake in the same domain?.</p>
 <p>Details of all possible use cases and the messages involved are described below.</p>
 <h3 id="dom0:requestexecutionofsome_commandindomXandpassstdinstdout">dom0: request execution of some_command in domX and pass stdin/stdout</h3>
 <ul>
