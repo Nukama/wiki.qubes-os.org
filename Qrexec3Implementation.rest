@@ -1,8 +1,8 @@
-Implementation of qrexec in Qubes R2
+Implementation of qrexec in Qubes R3
 ====================================
 
 This page describes implementation of the `qrexec
-framework </wiki/Qrexec>`__ in Qubes OS R2.
+framework </wiki/Qrexec>`__ in Qubes OS R3.
 
 Qrexec framework consists of a number of processes communicating with
 each other using common IPC protocol (described in detail below).
