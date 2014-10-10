@@ -158,6 +158,13 @@ By default, stderr of client and server is logged to respective
 Be very careful when coding and adding a new RPC service! Any
 vulnerability in a RPC server can be fatal to security of the target VM!
 
+Requesting VM-VM (and VM-Dom0) services execution (without cmdline helper)
+--------------------------------------------------------------------------
+
+Connect directly to ``/var/run/qubes/qrexec-agent-fdpass`` socket as
+described
+`​here <https://wiki.qubes-os.org/wiki/Qrexec2Implementation#Allthepiecestogetheratwork>`__.
+
 Revoking "Yes to All" authorization
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
