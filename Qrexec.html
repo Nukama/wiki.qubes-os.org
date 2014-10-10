@@ -42,6 +42,8 @@
 <p>The source VM name can be accessed in the server process via QREXEC_REMOTE_DOMAIN environment variable. (Note the source VM has <em>no</em> control over the name provided in this variable -- the name of the VM is provided by Dom0, and so is trusted).</p>
 <p>By default, stderr of client and server is logged to respective <code>/var/log/qubes/qrexec.XID</code> files, in each of the VM.</p>
 <p>Be very careful when coding and adding a new RPC service! Any vulnerability in a RPC server can be fatal to security of the target VM!</p>
+<h2 id="RequestingVM-VMandVM-Dom0servicesexecutionwithoutcmdlinehelper">Requesting VM-VM (and VM-Dom0) services execution (without cmdline helper)</h2>
+<p>Connect directly to <code>/var/run/qubes/qrexec-agent-fdpass</code> socket as described <a href="https://wiki.qubes-os.org/wiki/Qrexec2Implementation#Allthepiecestogetheratwork">​here</a>.</p>
 <h3 id="RevokingYestoAllauthorization">Revoking &quot;Yes to All&quot; authorization</h3>
 <p>Qubes RPC policy supports the &quot;ask&quot; action. This will prompt the user whether a given RPC call should be allowed. That prompt window has an option to click &quot;Yes to All&quot;, which allows the action and adds a new entry to the policy file, which will unconditionally allow further calls for given service-srcVM-dstVM tuple.</p>
 <p>In order to remove such authorization, issue this command from a Dom0 terminal (example below for qubes.Filecopy service):</p>
