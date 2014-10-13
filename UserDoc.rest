@@ -109,6 +109,7 @@ Qubes User Documentation
    #. `Assigning PCI Devices to AppVMs </wiki/AssigningDevices>`__
    #. `Enabling TRIM for SSD disks </wiki/DiskTRIM>`__
    #. `Configuring a Network Printer </wiki/NetworkPrinter>`__
+   #. `Using External Audio Devices </wiki/ExternalAudio>`__
    #. Vendor-specific
 
       #. `How to install an Nvidia driver in
