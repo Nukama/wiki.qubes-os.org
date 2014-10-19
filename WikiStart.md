@@ -11,6 +11,7 @@ Welcome to the Qubes OS Project
 Qubes is an open-source operating system designed to provide strong security for desktop computing using **Security by Compartmentalization** approach. Qubes is based on Xen, the X Window System, and Linux, and can run most Linux applications and utilize most of the Linux drivers. Qubes **Release 1** was released in September 2012 and **Release 2** in September 2014. Qubes also supports Windows-based AppVMs beginning with Release 2 (currently in "Beta"). Qubes **Release 3** is coming soon and will introduce **Hypervisor Abstraction Layer (HAL)**, allowing easy porting to alternative virtualization systems.
 
 -   [Getting Started](/wiki/GettingStarted)
+-   [​Qubes OS Tutorial slides by ITL](http://www.invisiblethingslab.com/resources/2014/LinuxCon_2014_Qubes_Tutorial.pdf) (LinuxCon October 2014)
 -   [Screenshots](/wiki/QubesScreenshots)
 -   [Architecture Overview](/wiki/QubesArchitecture), and also the more recent: [​Why Qubes OS is more than a bunch of VMs?](http://www.invisiblethingslab.com/resources/2014/Software_compartmentalization_vs_physical_separation.pdf)
 -   [Qubes Security Goals](/wiki/SecurityGoals)
@@ -34,4 +35,5 @@ Recent News
 -   `Jul 16, 2014` Qubes Wiki now uses a CA-signed SSL cert (but you might also want to [​read](https://groups.google.com/forum/#!topic/qubes-users/LsDpKnwN6w8) also why this is mostly irrelevant)
 -   `Aug 06, 2014` Qubes OS R2 rc2 has been released! [​announcement](http://theinvisiblethings.blogspot.com/2014/08/qubes-os-r2-rc2-debian-template-ssled.html)
 -   `Sep 26, 2014` **Qubes OS R2** has been released! [​announcement](http://theinvisiblethings.blogspot.com/2014/09/announcing-qubes-os-release-2.html)
+-   `Oct 19, 2014` LinuxCon EU 2014 slides: [​keynote](http://www.invisiblethingslab.com/resources/2014/LinuxCon_2014_Qubes_Keynote.pdf) and [​tutorial](http://www.invisiblethingslab.com/resources/2014/LinuxCon_2014_Qubes_Tutorial.pdf)
 
