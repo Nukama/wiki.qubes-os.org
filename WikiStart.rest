@@ -14,6 +14,9 @@ AppVMs beginning with Release 2 (currently in "Beta"). Qubes **Release
 (HAL)**, allowing easy porting to alternative virtualization systems.
 
 -  `Getting Started </wiki/GettingStarted>`__
+-  `​Qubes OS Tutorial slides by
+   ITL <http://www.invisiblethingslab.com/resources/2014/LinuxCon_2014_Qubes_Tutorial.pdf>`__
+   (LinuxCon October 2014)
 -  `Screenshots </wiki/QubesScreenshots>`__
 -  `Architecture Overview </wiki/QubesArchitecture>`__, and also the
    more recent: `​Why Qubes OS is more than a bunch of
@@ -62,6 +65,10 @@ Recent News
    `​announcement <http://theinvisiblethings.blogspot.com/2014/08/qubes-os-r2-rc2-debian-template-ssled.html>`__
 -  ``Sep 26, 2014`` **Qubes OS R2** has been released!
    `​announcement <http://theinvisiblethings.blogspot.com/2014/09/announcing-qubes-os-release-2.html>`__
+-  ``Oct 19, 2014`` LinuxCon EU 2014 slides:
+   `​keynote <http://www.invisiblethingslab.com/resources/2014/LinuxCon_2014_Qubes_Keynote.pdf>`__
+   and
+   `​tutorial <http://www.invisiblethingslab.com/resources/2014/LinuxCon_2014_Qubes_Tutorial.pdf>`__
 
 .. |No image "qubes-arch-diagram-1.png" attached to QubesArchitecture| image:: /chrome/common/attachment.png
    :target: /wiki/QubesArchitecture
