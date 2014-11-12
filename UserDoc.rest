@@ -103,7 +103,7 @@ Qubes User Documentation
 
 #. **Applications**
 
-   #. [Languages]
+   #. `Languages </wiki/LanguageLocalization>`__
 
 #. **Hardware**
 
