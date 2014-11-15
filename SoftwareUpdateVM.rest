@@ -28,6 +28,12 @@ reboot (as the root filesystem for this AppVM will again be "taken" from
 the Template VM). **This means one normally install software in the
 Template VM, not in AppVMs.**
 
+Unlike VM private filesystems, the template VM root filesystem does not
+support discard, so deleting files does not free the space in dom0. See
+`these
+instructions </wiki/FedoraTemplateUpgrade#Compactingtemplatesroot.img>`__
+to recover space in dom0.
+
 Installing (or updating) software in the template VM
 ----------------------------------------------------
 
