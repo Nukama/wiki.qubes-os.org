@@ -34,9 +34,9 @@ ProxyVM
 ~~~~~~~
 
 **WARNING:** *Currently the `NetworkManager? </wiki/NetworkManager>`__
-not working in a ProxyVM as expected. Actually it will mess up the
+is not working in ProxyVMs as expected. Actually it will mess up the
 routing table and because of that your packets may not be routed to the
-VPN tunnel. - This surely occures if your VPN wanna to be the default
+VPN tunnel. - This surely occurs if your VPN wants to be the default
 gateway.*
 
 One of the best thing in Qubes that you can use a special type of VMs
