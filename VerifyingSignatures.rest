@@ -57,7 +57,10 @@ signing keys. Each such key is signed by the Qubes Master Signing Key
 (`​\`0x36879494\` <https://keys.qubes-os.org/keys/qubes-master-signing-key.asc>`__).
 
 The public portion of the Qubes Master Signing Key can be imported
-directly from a keyserver,
+directly from a `​
+keyserver <https://en.wikipedia.org/wiki/Key_server_%28cryptographic%29#Keyserver_examples>`__
+(specified on first use with --keyserver URI, keyserver saved in
+~/.gnupg/gpg.conf),
 
 .. code:: wiki
 
@@ -65,11 +68,17 @@ directly from a keyserver,
 
 or downloaded
 `​here <https://keys.qubes-os.org/keys/qubes-master-signing-key.asc>`__
-and imported with gpg.
+and imported with gpg,
 
 .. code:: wiki
 
     $ gpg --import ./qubes-master-signing-key.asc 
+
+or fetched directly with gpg.
+
+.. code:: wiki
+
+    $ gpg --fetch-keys https://keys.qubes-os.org/keys/qubes-master-signing-key.asc
 
 For additional security we also publish the fingerprint of the Qubes
 Master Signing Key
