@@ -36,4 +36,5 @@ Recent News
 -   `Aug 06, 2014` Qubes OS R2 rc2 has been released! [​announcement](http://theinvisiblethings.blogspot.com/2014/08/qubes-os-r2-rc2-debian-template-ssled.html)
 -   `Sep 26, 2014` **Qubes OS R2** has been released! [​announcement](http://theinvisiblethings.blogspot.com/2014/09/announcing-qubes-os-release-2.html)
 -   `Oct 19, 2014` LinuxCon EU 2014 slides: [​keynote](http://www.invisiblethingslab.com/resources/2014/LinuxCon_2014_Qubes_Keynote.pdf) and [​tutorial](http://www.invisiblethingslab.com/resources/2014/LinuxCon_2014_Qubes_Tutorial.pdf)
+-   `Nov 20, 2014` [​Article about Qubes OS](http://www.wired.com/2014/11/protection-from-hackers/) in Wired
 
