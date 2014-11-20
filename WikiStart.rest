@@ -69,6 +69,9 @@ Recent News
    `​keynote <http://www.invisiblethingslab.com/resources/2014/LinuxCon_2014_Qubes_Keynote.pdf>`__
    and
    `​tutorial <http://www.invisiblethingslab.com/resources/2014/LinuxCon_2014_Qubes_Tutorial.pdf>`__
+-  ``Nov 20, 2014`` `​Article about Qubes
+   OS <http://www.wired.com/2014/11/protection-from-hackers/>`__ in
+   Wired
 
 .. |No image "qubes-arch-diagram-1.png" attached to QubesArchitecture| image:: /chrome/common/attachment.png
    :target: /wiki/QubesArchitecture
