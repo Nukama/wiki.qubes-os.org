@@ -10,7 +10,7 @@
 <h2 id="ImportingQubesSigningKeys">Importing Qubes Signing Keys</h2>
 <p>Every file published by the Qubes Project (ISO, RPM, TGZ files and git repositories) is digitally signed by one of the developer or release signing keys. Each such key is signed by the Qubes Master Signing Key (<a href="https://keys.qubes-os.org/keys/qubes-master-signing-key.asc">​`0x36879494`</a>).</p>
 <p>The public portion of the Qubes Master Signing Key can be imported directly from a <a href="https://en.wikipedia.org/wiki/Key_server_%28cryptographic%29#Keyserver_examples">​ keyserver</a> (specified on first use with --keyserver URI, keyserver saved in ~/.gnupg/gpg.conf),</p>
-<pre class="wiki"><code>gpg --recv-keys 0x36879494</code></pre>
+<pre class="wiki"><code>gpg --recv-keys 0x427F11FD0FAA4B080123F01CDDFA1A3E36879494</code></pre>
 <p>or downloaded <a href="https://keys.qubes-os.org/keys/qubes-master-signing-key.asc">​here</a> and imported with gpg,</p>
 <pre class="wiki"><code>$ gpg --import ./qubes-master-signing-key.asc </code></pre>
 <p>or fetched directly with gpg.</p>
@@ -25,7 +25,7 @@ uid   Qubes Master Signing Key</code></pre>
 and then: fpr, trust, 5, y, q</code></pre>
 <p>Now you can easily download any of the developer or release signing keys that happen to be used to sign particular ISO, RPM, TGZ files or git tags.</p>
 <p>For example: Qubes OS Release 2 Signing Key (<a href="https://keys.qubes-os.org/keys/qubes-release-2-signing-key.asc">​`0x0A40E458`</a>) is used for all Release 2 ISO images.</p>
-<pre class="wiki"><code>$ gpg --recv-keys 0x0A40E458
+<pre class="wiki"><code>$ gpg --recv-keys 0x3F01DEF49719158EF86266F80C73B9D40A40E458
 gpg: requesting key 0A40E458 from hkp server keys.gnupg.net
 gpg: key 0A40E458: public key &quot;Qubes OS Release 2 Signing Key&quot; imported
 gpg: 3 marginal(s) needed, 1 complete(s) needed, PGP trust model
