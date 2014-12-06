@@ -847,6 +847,8 @@ Yes
 
 Yes
 
+Yes
+
 R2B1
 
 [​read more](https://groups.google.com/d/topic/qubes-devel/Z9seyOT46Ro/discussion)
@@ -870,6 +872,8 @@ R2B3
 R2rc1
 
 3.12.14-4
+
+AEM works
 
 [​cprise](https://groups.google.com/d/msg/qubes-users/452tkVCzvOw/_dQ8DXaDzp0J)
 
