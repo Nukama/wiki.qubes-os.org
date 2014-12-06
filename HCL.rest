@@ -1227,6 +1227,8 @@ Yes
 
 Yes
 
+Yes
+
 R1
 
 `​read
@@ -1245,6 +1247,8 @@ more <https://groups.google.com/d/topic/qubes-users/hf0vkL3TE7k/discussion>`__
 |  (i7-3520M, Ivy Bridge, HD Graphics)
 
 2.54
+
+Yes
 
 Yes
 
