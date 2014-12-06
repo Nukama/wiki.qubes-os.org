@@ -1116,6 +1116,8 @@ Yes
 
 Yes
 
+Yes
+
 R1
 
 [​read more](https://groups.google.com/d/msg/qubes-devel/XN6JrEXVOVA/lkxGRA00EqgJ)
@@ -1132,6 +1134,8 @@ Lenovo Thinkpad X230 (2306CTO)
  (i7-3520M, Ivy Bridge, HD Graphics)
 
 2.54
+
+Yes
 
 Yes
 
