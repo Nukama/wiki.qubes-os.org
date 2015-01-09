@@ -9,6 +9,9 @@
 <li>Disable UAC: disables User Account Control prompts. <em>Is this still needed/wanted? Gui agent can handle UAC prompts now.</em></li>
 </ul>
 <p>It's probably a good idea to install a VNC server in the VM before installing QTW. If something goes very wrong with the Qubes gui agent, a VNC server should still allow access to the OS.</p>
+<h2 id="Verboseinstallation">Verbose installation</h2>
+<p>If the install process fails you can retry it using the command line below to get a detailed installation log (and send that to us):</p>
+<p><code>msiexec /i path-to-qubes-tools.msi /lv path-to-log-file.txt</code></p>
 <h2 id="Configuration">Configuration</h2>
 <p>Starting from version 2.2.* various aspects of Qubes Tools for Windows can be configured through registry. Main configuration key is located in <code>HKEY_LOCAL_MACHINE\SOFTWARE\Invisible Things Lab\Qubes Tools</code>. Configuration values set on this level are global to all QTW components. It's possible to override global values with component-specific keys, this is useful mainly for setting log verbosity for troubleshooting. Possible configuration values are:</p>
 <table>
@@ -139,6 +142,7 @@
 </tr>
 </tbody>
 </table>
+<h2 id="Updates">Updates</h2>
 <p>When we publish new QTW version (which is announced on <code>qubes-users</code> Google Group) it's usually pushed to the <code>current-testing</code> repository first. To use versions from current-testing, run this in dom0:</p>
 <p><code>qubes-dom0-update --enablerepo=qubes-dom0-current-testing qubes-windows-tools</code></p>
 <p>That command will download a new QTW .iso from the testing repository. It goes without saying that you should <strong>backup your VMs</strong> before installing anything from testing repos.</p>
