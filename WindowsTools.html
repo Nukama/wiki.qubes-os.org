@@ -90,7 +90,7 @@
 <td style="text-align: left;">wga</td>
 <td style="text-align: left;">UseDirtyBits</td>
 <td style="text-align: left;">DWORD</td>
-<td style="text-align: left;">Enable experimental feature of the gui agent/qvideo driver: use page table dirty bits to determine changed display regions. This can improve performance but may impact display responsiveness (some changes may not be detected resulting in &quot;stale&quot; image). Needs VM restart to apply change. Gui agent is currently undergoing a significant architectural change and this setting may be removed/not needed in the future.</td>
+<td style="text-align: left;">Enable experimental feature of the gui agent/qvideo driver: use page table dirty bits to determine changed display regions. This can improve performance but may impact display responsiveness (some changes may not be detected resulting in &quot;stale&quot; image). Needs VM restart to apply change.</td>
 <td style="text-align: left;">0</td>
 </tr>
 <tr class="even">
@@ -105,16 +105,17 @@
 <h2 id="Troubleshooting">Troubleshooting</h2>
 <p>If the VM is inaccessible (doesn't respond to qrexec commands, gui is not functioning), try to boot it in safe mode:</p>
 <ul>
-<li>qvm-start --debug vmname</li>
+<li><code>qvm-start --debug vmname</code></li>
 <li>mash F8 on the boot screen to enable boot options and select Safe Mode (optionally with networking)</li>
 </ul>
 <p>Safe Mode should at least give you access to logs (see above).</p>
+<p><strong>Please include appropriate logs when reporting bugs/problems.</strong> Starting from version 2.4.2 logs contain QTW version, but if you're using an earlier version be sure to mention which one. If the OS crashes (BSOD) please include the BSOD code and parameters in your bug report. The BSOD screen should be visible if you run the VM in debug mode (<code>qvm-start --debug vmname</code>). If it's not visible or the VM reboots automatically, try to start Windows in safe mode (see above) and 1) disable automatic restart on BSOD (Control Panel - System - Advanced system settings - Advanced - Startup and recovery), 2) check the system event log for BSOD events.</p>
 <p>If a specific component is malfunctioning, you can increase it's log verbosity as explained above to get more troubleshooting information. Below is a list of components:</p>
 <table>
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">qrexec-agent</td>
-<td style="text-align: left;">Responsible for most communication with Qubes (dom0 and other domains), secure clipboard, qrexec services.</td>
+<td style="text-align: left;">Responsible for most communication with Qubes (dom0 and other domains), secure clipboard, file copying, qrexec services.</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">qrexec-client-vm</td>
@@ -138,3 +139,6 @@
 </tr>
 </tbody>
 </table>
+<p>When we publish new QTW version (which is announced on <code>qubes-users</code> Google Group) it's usually pushed to the <code>current-testing</code> repository first. To use versions from current-testing, run this in dom0:</p>
+<p><code>qubes-dom0-update --enablerepo=qubes-dom0-current-testing qubes-windows-tools</code></p>
+<p>That command will download a new QTW .iso from the testing repository. It goes without saying that you should <strong>backup your VMs</strong> before installing anything from testing repos.</p>
