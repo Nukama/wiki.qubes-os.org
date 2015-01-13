@@ -1,0 +1,96 @@
+<h1 id="TestbenchforDom0">Test bench for Dom0</h1>
+<p>This guide shows how to set up simple test bench that automatically test your code you're about to push. It is written especially for <code>core3</code> branch of <code>core-admin.git</code> repo, but some ideas are universal.</p>
+<p>We will set up a spare machine (bare metal, not a virtual) that will be hosting our experimental Dom0. We will communicate with it via Ethernet and SSH. This tutorial assumes you are familiar with <a href="/wiki/wiki/QubesBuilder">QubesBuilder</a> and you have it set up and running flawlessly.</p>
+<h2 id="Settingupthemachine">Setting up the machine</h2>
+<p>First, do a clean install from ISO you built or grabbed elsewhere.</p>
+<p>You have to fix network, because it is intentionally broken. This script should reenable your network card without depending on anything else.</p>
+<pre><code>#!/bin/sh
+
+# adjust this for your NIC (run lspci)
+BDF=0000:02:00.0
+
+prog=$(basename $0)
+
+pciunbind() {
+    local path
+    path=/sys/bus/pci/devices/${1}/driver/unbind
+    if ! [ -w ${path} ]; then
+        echo &quot;${prog}: Device ${1} not bound&quot;
+        return 1
+    fi
+    echo -n ${1} &gt;${path}
+}
+
+pcibind() {
+    local path
+    path=/sys/bus/pci/drivers/${2}/bind
+    if ! [ -w ${path} ]; then
+        echo &quot;${prog}: Driver ${2} not found&quot;
+        return 1
+    fi
+    echo ${1} &gt;${path}
+}
+
+pciunbind ${BDF}
+pcibind ${BDF} e1000e
+
+dhclient</code></pre>
+<p>TODO: describe how to run this at every startup</p>
+<p>Now configure your DHCP server so your testbench gets static IP and connect your machine to your local network. You should ensure that your testbench can reach the Internet.</p>
+<p>Install <code>openssh-server</code> on your testbench:</p>
+<pre class="wiki"><code>yum install openssh-server</code></pre>
+<p>Ensure that sudo works without password from your user account (it should by default).</p>
+<h2 id="DevelopmentVM">Development VM</h2>
+<h3 id="SSH">SSH</h3>
+<p>Arrange firewall so you can reach the testbench from your <code>qubes-dev</code> VM. Generate SSH key in <code>qubes-dev</code>:</p>
+<pre class="wiki"><code>ssh-keygen -t ecdsa -b 521</code></pre>
+<p>Add the following section in <code>.ssh/config</code> in <code>qubes-dev</code>:</p>
+<pre class="wiki"><code>Host testbench
+    # substitute username in testbench
+    User user
+    # substitute address of your testbench
+    HostName 192.168.123.45</code></pre>
+<p>Then connect to your testbench and paste newly generated <code>id_ecdsa</code> to <code>.ssh/authorized_keys</code> on testbench so you can log in without entering password every time.</p>
+<h3 id="Scripting">Scripting</h3>
+<p>This step is optional, but very helpful. Put these scripts somewhere in your <code>${PATH}</code>, like <code>/usr/local/bin</code>.</p>
+<p><code>qtb-installrpm</code>:</p>
+<pre><code>#!/bin/sh
+
+ssh testbench python -m qubes.tests.run</code></pre>
+<p><code>qtb-runtests</code>:</p>
+<pre><code>#!/bin/sh
+
+if [ $# -ne 1 ]; then
+        echo &quot;usage: $(basename $0) &lt;rpmfile&gt;&quot;
+        exit 2
+fi
+
+scp ${1} testbench:/tmp/
+ssh testbench sudo rpm -i --replacepkgs --replacefiles /tmp/&quot;$(basename ${1})&quot;</code></pre>
+<p><code>qtb-iterate</code>:</p>
+<pre><code>#!/bin/sh
+
+set -e
+
+# substitute path to your builder installation
+pushd ${HOME}/builder &gt;/dev/null
+
+# the following are needed only if you have sources outside builder
+#rm -rf qubes-src/core-admin 
+#make COMPONENTS=core-admin get-sources
+
+make core-admin
+qtb-install qubes-src/core-admin/rpm/x86_64/qubes-core-dom0-2.1.64-1.fc20.x86_64.rpm
+qtb-runtests</code></pre>
+<h3 id="Hookinggit">Hooking git</h3>
+<p>I (woju) have those two git hooks. They ensure tests are passing (or are marked as expected failure) when commiting and pushing. For committing it is only possible to run tests that may be executed from git repo (even if the rest were available, I probably wouldn't want to do that). For pushing, I also install RPM and run tests on testbench.</p>
+<p><code>core-admin/.git/hooks/pre-commit</code>: (you may retain also the default hook, here omitted for readability)</p>
+<pre><code>#!/bin/sh
+
+set -e
+
+python -c &quot;import sys, qubes.tests.run; sys.exit(not qubes.tests.run.main())&quot;</code></pre>
+<p><code>core-admin/.git/hooks/pre-push</code>:</p>
+<pre><code>#!/bin/sh
+
+exec qtb-iterate</code></pre>
