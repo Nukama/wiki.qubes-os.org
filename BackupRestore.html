@@ -90,10 +90,14 @@
 </ol>
 <h2 id="EmergencyBackupRecoverywithoutQubes">Emergency Backup Recovery without Qubes</h2>
 <p>The Qubes backup system has been designed with emergency disaster recovery in mind. No special Qubes-specific tools are required to access data backed up by Qubes. In the event a Qubes system is unavailable, you can access your data on any GNU/Linux system with the following procedure.</p>
+<blockquote>
+<p><strong>Note:</strong> In the following example, the backup file is assumed to be both encrypted and compressed.</p>
+</blockquote>
 <ol>
 <li><p>Untar the main backup file.</p>
-<pre class="wiki"><code>[user@restore ~]$ cd backups
-[user@restore backups]$ tar -i -xvf qubes-backup-2013-12-26-123456
+<pre class="wiki"><code>[user@restore ~]$ tar -i -xvf qubes-backup-2013-12-26-123456
+backup-header
+backup-header.hmac
 qubes.xml.000
 qubes.xml.000.hmac
 vm1/private.img.000
@@ -109,18 +113,21 @@ dom0-home/dom0user.000.hmac</code></pre></li>
 </ol>
 <ol start="2">
 <li><p>Verify the integrity of the <code>private.img</code> file which houses your data.</p>
-<pre class="wiki"><code>[user@restore backups]$ openssl dgst -hmac &quot;your_passphrase&quot; vm1/private.img.000
-HMAC-SHA1(vm1/private.img.000)= 0d5855222a697d0568cf97792318fe53fe963a05
-[user@restore backups]$ cat vm1/private.img.000.hmac 
-(stdin)= 0d5855222a697d0568cf97792318fe53fe963a05</code></pre></li>
+<pre class="wiki"><code>[user@restore ~]$ cd vm1/
+[user@restore vm1]$ openssl dgst -sha512 -hmac &quot;your_passphrase&quot; private.img.000
+HMAC-SHA512(private.img.000)= cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e
+[user@restore vm1]$ cat private.img.000.hmac 
+(stdin)= cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e</code></pre></li>
 </ol>
 <blockquote>
 <p><strong>Note:</strong> The hash values should match. If they do not match, then the backup file may have been tampered with, or there may have been a storage error.</p>
 </blockquote>
+<blockquote>
+<p><strong>Note:</strong> If your backup was hashed with a message digest algorithm other than <code>sha512</code>, you must substitute the correct message digest command. A complete list of supported message digest algorithms can be found with <code>openssl list-message-digest-algorithms</code>.</p>
+</blockquote>
 <ol start="3">
 <li><p>Decrypt the <code>private.img</code> file.</p>
-<pre class="wiki"><code>[user@restore ~]$ cd vm1
-[user@restore vm1]$ openssl enc -d -pass pass:your_passphrase -aes-256-cbc -in private.img.000 -out private.img.dec.000</code></pre></li>
+<pre class="wiki"><code>[user@restore vm1]$ openssl enc -d -pass pass:your_passphrase -aes-256-cbc -in private.img.000 -out private.img.dec.000</code></pre></li>
 </ol>
 <blockquote>
 <p><strong>Note:</strong> For multi-part files, a loop can be used:</p>
@@ -130,10 +137,18 @@ ${f/.img/.img.dec}
 done</code></pre>
 </blockquote>
 <blockquote>
-<p><strong>Note:</strong> If your backup was encrypted with a cipher algorithm other than <code>aes-256-cbc</code>, you must replace it with the correct cipher command. Available ciphers algorithms can be found with <code>openssl list-cipher-algorithms</code>.</p>
+<p><strong>Note:</strong> If your backup was encrypted with a cipher algorithm other than <code>aes-256-cbc</code>, you must substitute the correct cipher command. A complete list of supported cipher algorithms can be found with <code>openssl list-cipher-algorithms</code>.</p>
 </blockquote>
 <ol start="4">
-<li><p>Untar the decrypted <code>private.img</code> file.</p>
+<li><p>Decompress the decrypted <code>private.img</code> file.</p>
+<pre class="wiki"><code>[user@restore vm1]$ zforce private.img.dec.*
+[user@restore vm1]$ gunzip private.img.dec.000.gz</code></pre></li>
+</ol>
+<blockquote>
+<p><strong>Note:</strong> If your backup was compressed with a program other than <code>gzip</code>, you must substitute the correct compression program.</p>
+</blockquote>
+<ol start="5">
+<li><p>Untar the decrypted and decompressed <code>private.img</code> file.</p>
 <pre class="wiki"><code>[user@restore vm1]$ tar -M -xvf private.img.dec.000
 vm1/private.img</code></pre>
 <p><strong>Note:</strong> For multi-part files, a script is required:</p>
@@ -147,15 +162,17 @@ echo $name.$suffix &gt;&amp;$TAR_FD</code></pre></li>
 <li><code>tar --new-volume-script=./new-volume-script -xvf private.img.dec.000</code>. (The <code>--new-volume-script</code> option enables multi-volume untaring.)</li>
 </ol></li>
 </ol>
-<ol start="5">
+<ol start="6">
 <li><p>Mount the private.img file and access your data.</p>
-<pre class="wiki"><code>[user@restore vm1]$ cd vm1
-[user@restore vm1]$ sudo mkdir /mnt/recovered-image
-[user@restore vm1]$ sudo mount -o loop private.img /mnt/recovered-image
-[user@restore vm1]$ cd
-[user@restore ~]$ cat /mnt/recovered-image/home/user/recovered-data.txt
-This data has been recovered successfully!</code></pre></li>
+<pre class="wiki"><code>[user@restore vm1]$ sudo mkdir /mnt/img
+[user@restore vm1]$ sudo mount -o loop vm1/private.img /mnt/img/
+[user@restore vm1]$ cat /mnt/img/home/user/your_data.txt
+This data has been successfully recovered!</code></pre></li>
 </ol>
+<blockquote>
+<p><strong>Note:</strong> You may wish to store a plain text copy of these instructions with your Qubes backups in the event that you fail to recall the above procedure while this web page is inaccessible. You may download a plain text copy of this page by clicking the <code>Plain Text</code> link at the bottom of this page (as with every page on this wiki). In addition, the whole wiki is synced hourly with a public Git repo at:</p>
+<pre class="wiki"><code>git://gitorious.org/qubes-os/wiki.git</code></pre>
+</blockquote>
 <h2 id="MigratingBetweenTwoPhysicalMachines">Migrating Between Two Physical Machines</h2>
 <p>In order to migrate your Qubes system from one physical machine to another, simply follow the backup procedure on the old machine, <a href="/wiki/wiki/QubesDownloads">install Qubes</a> on the new machine, and follow the restoration procedure on the new machine. All of your settings and data will be preserved!</p>
 <h2 id="TroubleshootingandTechnicalDetails">Troubleshooting and Technical Details</h2>
