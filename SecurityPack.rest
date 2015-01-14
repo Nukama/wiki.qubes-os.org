@@ -219,6 +219,8 @@ verifying its contents, and reading them.
     fingerprint from a trustworthy source (ideally, multiple sources)
     *other than* this website and visually compare it (them) to the
     fingerprint displayed in the preceding step, ensuring they match.
+    You can read more about digital signatures and key verification
+    `here </wiki/VerifyingSignatures>`__.
 
 4. Verify and read the canaries.
 
