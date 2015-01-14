@@ -54,7 +54,7 @@
 <pre class="wiki"><code>qvm-create &lt;vmname&gt; --standalone --label &lt;label&gt;</code></pre>
 <p>... or click appropriate options in the Qubes Manager's Create VM window.</p>
 <h2 id="Usingmorethanonetemplate">Using more than one template</h2>
-<p>It's also possible to have more than one template VM in the system. E.g. one could clone the default template using the <code>qvm-clone</code> command in Dom0. This allows to have a customized template, e.g. with devel packages, or less trusted apps, shared by some subset of domains.</p>
+<p>It's also possible to have more than one template VM in the system. E.g. one could clone the default template using the <code>qvm-clone</code> command in Dom0. This allows to have a customized template, e.g. with devel packages, or less trusted apps, shared by some subset of domains. It is important to note that the default template is &quot;system managed&quot; and therefore cannot be backed up using Qubes' built-in backup function. In order to ensure the preservation of your custom settings and the availability of a &quot;known-good&quot; backup template, you may wish to clone the default system template and use your clone as the default template for your AppVMs.</p>
 <p>When you create a new domain you can choose which template this VM should be based on. If you use command line, you should use the <code>--template</code> switch:</p>
 <pre class="wiki"><code>qvm-create &lt;vmname&gt; --template &lt;templatename&gt; --label &lt;label&gt;</code></pre>
 <h2 id="Temporarilyallowingnetworkingforsoftwareinstallation">Temporarily allowing networking for software installation</h2>
