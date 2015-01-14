@@ -20,9 +20,7 @@ The **Qubes Security Pack (QSP)** is a Git repository which contains:
 
 The QSP is located here:
 
-.. code:: wiki
-
-    https://github.com/QubesOS/qubes-secpack
+    `​https://github.com/QubesOS/qubes-secpack <https://github.com/QubesOS/qubes-secpack>`__
 
 History and Rationale
 ---------------------
