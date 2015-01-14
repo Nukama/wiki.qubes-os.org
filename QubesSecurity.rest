@@ -2,6 +2,7 @@ Qubes Security
 ==============
 
 -  `Reporting Security Issues in Qubes OS </wiki/SecurityPage>`__
+-  `Qubes Security Pack </wiki/SecurityPack>`__
 -  `Qubes Security Bulletins </wiki/SecurityBulletins>`__
 -  `Qubes Security Goals </wiki/SecurityGoals>`__
 -  `On digital signatures and how to verify Qubes keys and
