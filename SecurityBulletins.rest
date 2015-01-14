@@ -13,52 +13,60 @@ Pack </wiki/SecurityPack>`__.
 ----
 
 -  `​Qubes Security Bulletin
-   #1 <https://groups.google.com/d/msg/qubes-devel/kRQSQircYKk/KW1lihKLFjYJ>`__
+   #01 <https://github.com/QubesOS/qubes-secpack/blob/master/QSBs/qsb-001-2011.txt>`__
    (Gui daemon bug, Intel VT-d escape on non-IR hardware)
 
 2012
 ----
 
 -  `​Qubes Security Bulletin
-   #2 <https://groups.google.com/d/msg/qubes-devel/JIpZoQUP6dQ/g6TvtpUHzBQJ>`__
+   #02 <https://github.com/QubesOS/qubes-secpack/blob/master/QSBs/qsb-002-2012.txt>`__
    (Intel SYSRET bug)
 -  `​Qubes Security Bulletin
-   #3 <https://groups.google.com/d/msg/qubes-devel/KM1jMCE5SZM/La350T7h7C0J>`__
+   #03 <https://github.com/QubesOS/qubes-secpack/blob/master/QSBs/qsb-003-2012.txt>`__
    (Xen hypervisor bugs: XSA 13, others with DoS potential)
 -  `​Qubes Security Bulletin
-   #4 <https://groups.google.com/d/msg/qubes-devel/0y8ikKy5l7c/sME-x9Ov7CgJ>`__
+   #04 <https://github.com/QubesOS/qubes-secpack/blob/master/QSBs/qsb-004-2012.txt>`__
    (Qubes firewall misconfiguration: ipv6 allowed)
 -  `​Qubes Security Bulletin
-   #5 <https://groups.google.com/d/msg/qubes-devel/pXADmQOMmvo/VSdk2IDk0a0J>`__
+   #05 <https://github.com/QubesOS/qubes-secpack/blob/master/QSBs/qsb-005-2012.txt>`__
    (Xen hypervisor bugs: XSA 29, others with DoS potential)
 
 2013
 ----
 
 -  `​Qubes Security Bulletin
-   #6 <https://groups.google.com/d/msg/qubes-devel/UirCw7R3Muo/muBA8UixL54J>`__
+   #06 <https://github.com/QubesOS/qubes-secpack/blob/master/QSBs/qsb-006-2013.txt>`__
    (Xen hypervisor bugs: XSA 50, others with DoS potential)
 -  `​Qubes Security Bulletin
-   #7 <https://groups.google.com/d/msg/qubes-devel/KqZdbcgkTGU/YaTwNcQhcrgJ>`__
+   #07 <https://github.com/QubesOS/qubes-secpack/blob/master/QSBs/qsb-007-2013.txt>`__
    (Xen hypervisor bugs: XSA 57 potential escalation, also XSA 52-54
    with potential leaks)
 -  `​Qubes Security Bulletin
-   #8 <https://groups.google.com/d/msg/qubes-devel/xj9KAW5inQc/YOrhOAQ7HU0J>`__
+   #08 <https://github.com/QubesOS/qubes-secpack/blob/master/QSBs/qsb-008-2013.txt>`__
    (Xen hypervisor bugs: XSA 45,58 potential DoS)
 
 2014
 ----
 
 -  `​Qubes Security Bulletin
-   #9 <https://groups.google.com/d/msg/qubes-devel/XgTo6L8-5XA/JLOadvBqnqMJ>`__
+   #09 <https://github.com/QubesOS/qubes-secpack/blob/master/QSBs/qsb-009-2014.txt>`__
    (Qubes qvm-open-in-[d]vm environment inter-VM leak)
 -  `​Qubes Security Bulletin
-   #10 <https://groups.google.com/d/msg/qubes-devel/VO1URqYWbok/8vp-VnE7iXEJ>`__
+   #10 <https://github.com/QubesOS/qubes-secpack/blob/master/QSBs/qsb-010-2014.txt>`__
    (Qubes pulseaudio & vchan bugs, Xen XSA 87)
 -  `​Qubes Security Bulletin
-   #11 <https://groups.google.com/d/msg/qubes-devel/QHXI0qXAPhk/gSF7m4KD37QJ>`__
+   #11 <https://github.com/QubesOS/qubes-secpack/blob/master/QSBs/qsb-011-2014.txt>`__
    (Qubes clipboard inter-VM leak)
 -  `​Qubes Security Bulletin
-   #12 <https://groups.google.com/d/msg/qubes-devel/HgQ_aWt-EBU/8VWzu2IrQdQJ>`__
+   #12 <https://github.com/QubesOS/qubes-secpack/blob/master/QSBs/qsb-012-2014.txt>`__
    (Memory leak in Xen hypervisor via RDMSR emulation bug (XSA 108))
+
+2015
+----
+
+-  `​Qubes Security Bulletin
+   #13 <https://github.com/QubesOS/qubes-secpack/blob/master/QSBs/qsb-013-2015.txt>`__
+   (Qubes Clipboard Timing Attacks and Qubes Core Python API
+   Inconsistency)
 
