@@ -57,16 +57,25 @@ dhclient</code></pre>
 <pre><code>#!/bin/sh
 
 ssh testbench python -m qubes.tests.run</code></pre>
-<p><code>qtb-installrpm</code>:</p>
+<p><code>qtb-install</code>:</p>
 <pre><code>#!/bin/sh
 
-if [ $# -ne 1 ]; then
-        echo &quot;usage: $(basename $0) &lt;rpmfile&gt;&quot;
+TMPDIR=/tmp/qtb-rpms
+
+if [ $# -eq 0 ]; then
+        echo &quot;usage: $(basename $0) &lt;rpmfile&gt; ...&quot;
         exit 2
 fi
 
-scp ${1} testbench:/tmp/
-ssh testbench sudo rpm -i --replacepkgs --replacefiles /tmp/&quot;$(basename ${1})&quot;</code></pre>
+set -e
+
+ssh testbench mkdir -p &quot;${TMPDIR}&quot;
+scp &quot;${@}&quot; testbench:&quot;${TMPDIR}&quot;
+
+while [ $# -gt 0 ]; do
+        ssh testbench sudo rpm -i --replacepkgs --replacefiles &quot;${TMPDIR}/$(basename ${1})&quot;
+        shift
+done</code></pre>
 <p><code>qtb-iterate</code>:</p>
 <pre><code>#!/bin/sh
 
@@ -80,7 +89,7 @@ pushd ${HOME}/builder &gt;/dev/null
 #make COMPONENTS=core-admin get-sources
 
 make core-admin
-qtb-install qubes-src/core-admin/rpm/x86_64/qubes-core-dom0-2.1.64-1.fc20.x86_64.rpm
+qtb-install qubes-src/core-admin/rpm/x86_64/qubes-core-dom0-*.rpm
 qtb-runtests</code></pre>
 <h3 id="Hookinggit">Hooking git</h3>
 <p>I (woju) have those two git hooks. They ensure tests are passing (or are marked as expected failure) when commiting and pushing. For committing it is only possible to run tests that may be executed from git repo (even if the rest were available, I probably wouldn't want to do that). For pushing, I also install RPM and run tests on testbench.</p>
