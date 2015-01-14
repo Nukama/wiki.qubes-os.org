@@ -1,6 +1,9 @@
 Qubes Security Bulletins
 ========================
 
+Qubes Security Bulletins are published through the `Qubes Security
+Pack </wiki/SecurityPack>`__.
+
 2010
 ----
 
