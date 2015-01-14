@@ -9,8 +9,8 @@
 <p>However, for digital signatures to make any sense, we must ensure that the public keys we use for signature verification are indeed the original ones. Anybody can generate a GPG key pair that purports to belong to &quot;The Qubes Project,&quot; but of course only the key pair that we (i.e., the Qubes developers) generated is the legitimate one. The next section explains how to verify the validity of the Qubes signing keys.</p>
 <h2 id="ImportingQubesSigningKeys">Importing Qubes Signing Keys</h2>
 <p>Every file published by the Qubes Project (ISO, RPM, TGZ files and git repositories) is digitally signed by one of the developer or release signing keys. Each such key is signed by the Qubes Master Signing Key (<a href="https://keys.qubes-os.org/keys/qubes-master-signing-key.asc">​`0x36879494`</a>).</p>
-<p>The public portion of the Qubes Master Signing Key can be imported directly from a <a href="https://en.wikipedia.org/wiki/Key_server_%28cryptographic%29#Keyserver_examples">​ keyserver</a> (specified on first use with --keyserver URI, keyserver saved in ~/.gnupg/gpg.conf),</p>
-<pre class="wiki"><code>gpg --recv-keys 0x427F11FD0FAA4B080123F01CDDFA1A3E36879494</code></pre>
+<p>The public portion of the Qubes Master Signing Key can be imported directly from a <a href="https://en.wikipedia.org/wiki/Key_server_%28cryptographic%29#Keyserver_examples">​ keyserver</a> (specified on first use with --keyserver URI, keyserver saved in ~/.gnupg/gpg.conf), e.g.,</p>
+<pre class="wiki"><code>gpg --keyserver pool.sks-keyservers.net --recv-keys 0x427F11FD0FAA4B080123F01CDDFA1A3E36879494</code></pre>
 <p>or downloaded <a href="https://keys.qubes-os.org/keys/qubes-master-signing-key.asc">​here</a> and imported with gpg,</p>
 <pre class="wiki"><code>$ gpg --import ./qubes-master-signing-key.asc </code></pre>
 <p>or fetched directly with gpg.</p>
