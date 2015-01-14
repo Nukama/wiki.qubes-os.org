@@ -19,7 +19,7 @@
 <pre class="wiki"><code>pub   4096R/36879494 2010-04-01
       Key fingerprint = 427F 11FD 0FAA 4B08 0123  F01C DDFA 1A3E 3687 9494
 uid   Qubes Master Signing Key</code></pre>
-<p>There should also be a copy of this key at the project's main website, as well as in the archives of the project's <a href="https://groups.google.com/forum/#!msg/qubes-devel/RqR9WPxICwg/kaQwknZPDHkJ">​developer</a> and <a href="https://groups.google.com/d/msg/qubes-users/CLnB5uFu_YQ/ZjObBpz0S9UJ">​user</a> mailing lists.</p>
+<p>There should also be a copy of this key at the project's main website, in the <a href="/wiki/wiki/SecurityPack">Qubes Security Pack</a>, and in the archives of the project's <a href="https://groups.google.com/forum/#!msg/qubes-devel/RqR9WPxICwg/kaQwknZPDHkJ">​developer</a> and <a href="https://groups.google.com/d/msg/qubes-users/CLnB5uFu_YQ/ZjObBpz0S9UJ">​user</a> mailing lists.</p>
 <p>Once you have obtained the Qubes Master Signing Key (<a href="https://keys.qubes-os.org/keys/qubes-master-signing-key.asc">​`0x36879494`</a>), you should verify the fingerprint of this key very carefully. Then set its trust level to &quot;ultimate&quot; (oh, well), so that it can be used to automatically verify all the keys signed by the Qubes Master Signing Key:</p>
 <pre class="wiki"><code>gpg --edit-key 0x36879494
 and then: fpr, trust, 5, y, q</code></pre>
@@ -33,8 +33,7 @@ gpg: depth: 0  valid:   1  signed:   1  trust: 0-, 0q, 0n, 0m, 0f, 1u
 gpg: depth: 1  valid:   1  signed:   0  trust: 1-, 0q, 0n, 0m, 0f, 0u
 gpg: Total number processed: 1
 gpg:               imported: 1  (RSA: 1)</code></pre>
-<p>You can also download all the currently used developers' signing keys and current and older release signing keys (and also a copy of the Qubes Master Signing Key) in the keys directory on our server:</p>
-<p><a href="https://keys.qubes-os.org/keys/">​https://keys.qubes-os.org/keys/</a></p>
+<p>You can also download all the currently used developers' signing keys and current and older release signing keys (and also a copy of the Qubes Master Signing Key) from the <a href="https://keys.qubes-os.org/keys/">​keys directory on our server</a> and from the <a href="/wiki/wiki/SecurityPack">Qubes Security Pack</a>.</p>
 <p>The developer signing keys are set to be valid for 1 year only, while the Qubes Master Signing Key (<a href="https://keys.qubes-os.org/keys/qubes-master-signing-key.asc">​`0x36879494`</a>) has no expiration date. This latter key was generated and is kept only within a dedicated, air-gapped &quot;vault&quot; machine, and the private portion will (hopefully) never leave this isolated machine.</p>
 <p>You can now verify the ISO image (Qubes-R2-x86_64-DVD.iso) matches its signature (Qubes-R2-x86_64-DVD.iso.asc):</p>
 <pre class="wiki"><code>$ gpg --verify Qubes-R2-x86_64-DVD.iso.asc
