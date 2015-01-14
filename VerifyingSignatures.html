@@ -73,9 +73,7 @@ gpg:               imported: 1  (RSA: 1)</code></pre>
 <p>You can also download all the currently used developers' signing keys and current and older release signing keys (and also a copy of the Qubes Master Signing Key) from the <a href="https://keys.qubes-os.org/keys/">​keys directory on our server</a> and from the <a href="/wiki/wiki/SecurityPack">Qubes Security Pack</a>.</p>
 <p>The developer signing keys are set to be valid for 1 year only, while the Qubes Master Signing Key (<a href="https://keys.qubes-os.org/keys/qubes-master-signing-key.asc">​`0x36879494`</a>) has no expiration date. This latter key was generated and is kept only within a dedicated, air-gapped &quot;vault&quot; machine, and the private portion will (hopefully) never leave this isolated machine.</p>
 <p>You can now verify the ISO image (Qubes-R2-x86_64-DVD.iso) matches its signature (Qubes-R2-x86_64-DVD.iso.asc):</p>
-<pre class="wiki"><code>$ gpg --verify Qubes-R2-x86_64-DVD.iso.asc
-or
-$ gpg -v Qubes-R2-x86_64-DVD.iso.asc
+<pre class="wiki"><code>$ gpg -v --verify Qubes-R2-x86_64-DVD.iso.asc
 gpg: armor header: Version: GnuPG v1
 gpg: assuming signed data in `Qubes-R2-x86_64-DVD.iso&#39;
 gpg: Signature made Tue Sep 23 08:38:40 2014 UTC using RSA key ID 0A40E458
