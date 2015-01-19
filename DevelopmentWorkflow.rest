@@ -172,6 +172,9 @@ rpms back to dom0 for testing.
 
 Here are some handy scripts Marek has shared to facilitate this.
 
+You may also like to run your `test environment on separate
+machine </wiki/TestBench>`__.
+
 Syncing dom0 files
 ~~~~~~~~~~~~~~~~~~
 
