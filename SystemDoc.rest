@@ -35,10 +35,12 @@ System Documentation for Developers
 
 #. Debugging:
 
-   #. `Debugging Windows VMs </wiki/WindowsDebugging>`__
    #. `Profiling python code </wiki/Profiling>`__
+   #. `Test environment in separate machine for automatic
+      tests </wiki/TestBench>`__
    #. `VM-dom0 internal configuration
       interface </wiki/SystemDoc/VMInterface>`__
+   #. `Debugging Windows VMs </wiki/WindowsDebugging>`__
 
 #. Building:
 
