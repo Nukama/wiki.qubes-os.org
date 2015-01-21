@@ -69,4 +69,7 @@ Pack </wiki/SecurityPack>`__.
    #13 <https://github.com/QubesOS/qubes-secpack/blob/master/QSBs/qsb-013-2015.txt>`__
    (Qubes Clipboard Timing Attacks and Qubes Core Python API
    Inconsistency)
+-  `​Qubes Security Bulletin
+   #14 <https://github.com/QubesOS/qubes-secpack/blob/master/QSBs/qsb-014-2015.txt>`__
+   (Race condition in Qubes Inter-VM File-Copy Mechanism)
 
