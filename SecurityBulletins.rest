@@ -72,4 +72,7 @@ Pack </wiki/SecurityPack>`__.
 -  `​Qubes Security Bulletin
    #14 <https://github.com/QubesOS/qubes-secpack/blob/master/QSBs/qsb-014-2015.txt>`__
    (Race condition in Qubes Inter-VM File-Copy Mechanism)
+-  `​Qubes Security Bulletin
+   #15 <https://github.com/QubesOS/qubes-secpack/blob/master/QSBs/qsb-015-2015.txt>`__
+   (Critical Xen Hypervisor Vulnerability (XSA 109))
 
