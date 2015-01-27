@@ -17,6 +17,7 @@ sudo yum --releasever=20 --setopt=cachedir=/mnt/removable distro-sync</code></pr
 <p>After upgrade is finished, you can remove /var/tmp/template-upgrade-cache.img file.</p>
 <h1 id="Compactingtemplatesroot.img">Compacting templates root.img</h1>
 <p>fstrim, nor &quot;discard&quot; mount option do not work on template root fs, so when some file is removed in the template, space isn't freed in dom0. This means that template will use about twice a space that is really need after upgrade.</p>
+<p><strong>If you have at least <code>qubes-core-dom0-2.1.68</code> installed, you can use <code>qvm-trim-template</code> tool. Otherwise use instructions below.</strong></p>
 <p>You can compact root.img in the &quot;old way&quot;, you'll need about 15GB (template's max size + really used space there) in dom0 for this operation: Start the template, fill all the free space with zeros, for example with:</p>
 <pre class="wiki"><code>dd if=/dev/zero of=/var/tmp/zero
 (wait for &quot;No space left on device&quot; error)
