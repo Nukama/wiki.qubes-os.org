@@ -5,13 +5,14 @@ but IMO not very serious.
 
 To enable TRIM in dom0 you need:
 
-#. Get your root device UUID:
+#. Get your LUKS device UUID:
 
    .. code:: wiki
 
-       blkid /dev/mapper/*root
+       ls /dev/mapper/luks-*
 
-#. Add entry to ``/etc/crypttab`` (replace <UUID> with the device UUID):
+#. Add entry to ``/etc/crypttab`` (replace luks-<UUID> with the device
+   name and the <UUID> with UUID alone):
 
    .. code:: wiki
 
