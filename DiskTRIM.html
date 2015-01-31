@@ -1,9 +1,9 @@
 <p>VMs have already TRIM enabled by default, but dom0 doesn't. There are some security implications (read for example <a href="http://asalor.blogspot.com/2011/08/trim-dm-crypt-problems.html">​this article</a>), but IMO not very serious.</p>
 <p>To enable TRIM in dom0 you need:</p>
 <ol>
-<li><p>Get your root device UUID:</p>
-<pre class="wiki"><code>blkid /dev/mapper/*root</code></pre></li>
-<li><p>Add entry to <code>/etc/crypttab</code> (replace &lt;UUID&gt; with the device UUID):</p>
+<li><p>Get your LUKS device UUID:</p>
+<pre class="wiki"><code>ls /dev/mapper/luks-*</code></pre></li>
+<li><p>Add entry to <code>/etc/crypttab</code> (replace luks-&lt;UUID&gt; with the device name and the &lt;UUID&gt; with UUID alone):</p>
 <pre class="wiki"><code>luks-&lt;UUID&gt; UUID=&lt;UUID&gt; none allow-discards</code></pre></li>
 <li>Add <code>rd.luks.allow-discards=1</code> to kernel cmdline (<code>/etc/default/grub</code>, GRUB_CMDLINE_LINUX line)</li>
 <li>Rebuild grub config (<code>grub2-mkconfig -o /boot/grub2/grub.cfg</code>)</li>
