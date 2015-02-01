@@ -21,7 +21,7 @@
 <h3 id="asaProxyVM">as a ProxyVM</h3>
 <p>If You want to use this template as a ProxyVM You may want to install evem more packages</p>
 <h4 id="Firewall">Firewall</h4>
-<p>This template is ready to use for a standard firewall VM.</p>
+<p>This template is ready to use for a standard firewall VM. However, using the default minimal template with the default firewall and default update settings will result in an error when attempting to update dom0 (<code>qubes-dom0-update</code>), since this process requires <code>tar</code>, which is not present by default in the minimal template.</p>
 <h4 id="VPN">VPN</h4>
 <p>The needed packages are depend on the VPN technology. <code>yum search &quot;NetworkManager VPN plugin&quot;</code> command may help you to choose the right one.</p>
 <p><a href="/wiki/wiki/VPN#ProxyVM">More details about setting up a VPN Gateway</a></p>
