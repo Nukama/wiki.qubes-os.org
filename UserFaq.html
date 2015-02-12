@@ -11,6 +11,7 @@
 <li><a href="#WhydoesQubesusevirtualization">Why does Qubes use virtualization?</a></li>
 <li><a href="#DoesQubesruneveryappinaseparateVM">Does Qubes run every app in a separate VM?</a></li>
 <li><a href="#WhydoesQubesuseXeninsteadofKVMorsomeotherhypervisor">Why does Qubes use Xen instead of KVM or some other hypervisor?</a></li>
+<li><a href="#Whataboutthisothernewmicrokernelhypervisor">What about this other/new (micro)kernel/hypervisor?</a></li>
 <li><a href="#WhatssospecialaboutQubesGUIvirtualization">What's so special about Qubes' GUI virtualization?</a></li>
 <li><a href="#CanIwatchYouTubevideosinAppVMs">Can I watch YouTube videos in AppVMs?</a></li>
 <li><a href="#CanIrunapplicationslikegameswhichrequire3Dsupport">Can I run applications, like games, which require 3D support?</a></li>
@@ -53,6 +54,29 @@
 <p>No! This would not make much sense. Qubes uses lightweight VMs to create security domains (e.g., &quot;work,&quot; &quot;personal,&quot; and &quot;banking,&quot;). A typical user would likely need around five domains. Very paranoid users, or those who are high-profile targets, might use a dozen or more domains.</p>
 <h3 id="WhydoesQubesuseXeninsteadofKVMorsomeotherhypervisor">Why does Qubes use Xen instead of KVM or some other hypervisor?</h3>
 <p>In short: we believe the Xen architecture allows for the creation of more secure systems (i.e. with a much smaller TCB, which translates to a smaller attack surface). We discuss this in much greater depth in our <a href="http://files.qubes-os.org/files/doc/arch-spec-0.3.pdf">​Architecture Specification document</a>.</p>
+<h3 id="Whataboutthisothernewmicrokernelhypervisor">What about this other/new (micro)kernel/hypervisor?</h3>
+<p>Whenever starting a discussion about another (micro)kernel or hypervisor in relation to Qubes, we strongly suggest including answers to the following questions first:</p>
+<ol>
+<li>What kinds of containers does it use for isolation? Processes? PV VMs? Fully virtualized VMs (HVMs)? And what underlying h/w technology is used (ring0/3, VT-x)?</li>
+<li>Does it require specially written/built applications (e.g. patched Firefox)?</li>
+<li>Does it require custom drivers, or can it use Linux/Windows ones?</li>
+<li>Does it support VT-d, and does it allow for the creation of untrusted driver domains?</li>
+<li>Does it support S3 sleep?</li>
+<li>Does it work on multiple CPUs/Chipsets?</li>
+<li>What are the performance costs, more or less? (e.g. &quot;XYZ prevents concurrent execution of two domains/processes on shared cores of a single processor&quot;, etc.)</li>
+<li>Other special features? E.g. eliminates cooperative covert channels between VMs?</li>
+</ol>
+<p>Here are the answers for Xen 4.1 (which we use as of 2014-04-28):</p>
+<ol>
+<li>PV and HVM Virtual Machines (ring0/3 for PV domains, VT-x/AMD-v for HVMs).</li>
+<li>Runs unmodified usermode apps (binaries).</li>
+<li>Runs unmodified Linux drivers (dom0 and driver domains). PV VMs require special written pvdrivers.</li>
+<li>Full VT-d support including untrusted driver domains.</li>
+<li>S3 sleep supported well.</li>
+<li>Works on most modern CPUs/Chipsets.</li>
+<li>Biggest performance hit on disk operations (especially in Qubes when complex 2-layer mapping used for Linux AppVMs). No GPU virtualization.</li>
+<li>Mostly Works<sup>TM</sup> :)</li>
+</ol>
 <h3 id="WhatssospecialaboutQubesGUIvirtualization">What's so special about Qubes' GUI virtualization?</h3>
 <p>We have designed the GUI virtualization subsystem with two primary goals: security and performance. Our GUI infrastructure introduces only about 2,500 lines of C code (LOC) into the privileged domain (Dom0), which is very little, and thus leaves little space for bugs and potential attacks. At the same time, due to the smart use of Xen shared memory, our GUI implementation is very efficient, so most virtualized applications really feel as if they were executed natively.</p>
 <h3 id="CanIwatchYouTubevideosinAppVMs">Can I watch YouTube videos in AppVMs?</h3>
