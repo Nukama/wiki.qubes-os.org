@@ -5,7 +5,7 @@
 <p><code>yum install mutt</code></p>
 <h2 id="Configuration">Configuration</h2>
 <p>Mutt generally works out of the box. This configuration guide discusses only Qubes-specific setup. In this example we will have one TemplateVM and several AppVMs. It also takes advantage of <a href="/wiki/wiki/SplitGPG">SplitGPG?</a>, which is assumed to be already working.</p>
-<p><strong>NOTE:</strong> this requires <code>qubes-gpg-split &gt;= 2.0.8</code>. 2.0.7 and earlier contains bug which causes this setup to hang in specific situations.</p>
+<p><strong>NOTE:</strong> this requires <code>qubes-gpg-split &gt;= 2.0.9</code>. 2.0.8 and earlier contains bug which causes this setup to hang in specific situations and does not allow to list keys.</p>
 <p>First, paste this to <code>/etc/Muttrc.local</code> in TemplateVM:</p>
 <pre class="wiki"><code># specify your key or override in ~/.mutt/muttrc in AppVM
 set pgp_sign_as=&quot;0xDEADBEEF&quot;
@@ -18,8 +18,7 @@ set pgp_decode_command=&quot;qubes-gpg-client-wrapper --status-fd=2 --batch %f&q
 
 set pgp_decrypt_command=&quot;$pgp_decode_command&quot;
 
-# qubes-gpg-client does not know, how to pass two files; this has to be done locally; see #900
-set pgp_verify_command=&quot;gpg --status-fd=2 --no-verbose --quiet --batch --output - --verify %s %f&quot;
+set pgp_verify_command=&quot;qubes-gpg-client-wrapper --status-fd=2 --no-verbose --quiet --batch --output - --verify %s %f&quot;
 
 set pgp_sign_command=&quot;qubes-gpg-client-wrapper --batch --armor --detach-sign --textmode %?a?-u %a? %f&quot;
 set pgp_clearsign_command=&quot;qubes-gpg-client-wrapper --batch --armor --textmode --clearsign %?a?-u %a? %f&quot;
@@ -38,9 +37,11 @@ set pgp_import_command=&quot;qubes-gpg-import-key %f; gpg --no-verbose --import 
 set pgp_export_command=&quot;gpg --no-verbose --export --armor %r&quot;
 set pgp_verify_key_command=&quot;gpg --no-verbose --batch --fingerprint --check-sigs %r&quot;
 
-# &lt;/dev/null is critical, without that command deadlocks
-set pgp_list_pubring_command=&quot;/usr/lib/qubes/qrexec-client-vm $QUBES_GPG_DOMAIN qubes.GpgListKeys /bin/sh -c &#39;echo %r; exec cat &gt;/proc/self/fd/\$SAVED_FD_1&#39; &lt;/dev/null 2&gt;/dev/null&quot;
-set pgp_list_secring_command=&quot;/usr/lib/qubes/qrexec-client-vm $QUBES_GPG_DOMAIN qubes.GpgListSecretKeys /bin/sh -c &#39;echo %r; exec cat &gt; /proc/self/fd/\$SAVED_FD_1&#39; &lt;/dev/null 2&gt;/dev/null&quot;
+# read in the public key ring
+set pgp_list_pubring_command=&quot;qubes-gpg-client-wrapper --no-verbose --batch --quiet --with-colons --list-keys %r&quot;
+
+# read in the secret key ring
+set pgp_list_secring_command=&quot;qubes-gpg-client-wrapper --no-verbose --batch --quiet --with-colons --list-secret-keys %r&quot;
 
 # this set the number of seconds to keep in memory the passpharse used to encrypt/sign
 # the more the less secure it will be
