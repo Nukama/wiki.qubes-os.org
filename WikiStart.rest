@@ -13,6 +13,7 @@ AppVMs beginning with Release 2 (currently in "Beta"). Qubes **Release
 3** is coming soon and will introduce **Hypervisor Abstraction Layer
 (HAL)**, allowing easy porting to alternative virtualization systems.
 
+-  `A Simple Introduction to Qubes </wiki/SimpleIntro>`__
 -  `Getting Started </wiki/GettingStarted>`__
 -  `​Qubes OS Tutorial slides by
    ITL <http://www.invisiblethingslab.com/resources/2014/LinuxCon_2014_Qubes_Tutorial.pdf>`__
